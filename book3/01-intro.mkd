@@ -19,6 +19,8 @@ assistants" who can take care of many things on our behalf. The hardware
 in our current-day computers is essentially built to continuously ask us
 the question, "What would you like me to do next?"
 
+teste teste 
+
 ![Personal Digital Assistant](height=1.0in@../images/pda)
 
 Programmers add an operating system and a set of applications to the
