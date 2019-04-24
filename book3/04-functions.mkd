@@ -651,33 +651,22 @@ finds the smallest in a list of values and we will present it to you as
 a function named `min` which takes a list of values as its
 argument and returns the smallest value in the list.
 
-Debugging
+Depuração 
 ---------
 
 \index{debugging}
 
-If you are using a text editor to write your scripts, you might run into
-problems with spaces and tabs. The best way to avoid these problems is
-to use spaces exclusively (no tabs). Most text editors that know about
-Python do this by default, but some don't.
+Se você estiver usando um editor de texto para escrever seus scripts, você pode encontrar problemas com espaços e guias. A melhor maneira de evitar esses problemas é usar espaços exclusivamente (sem guias). A maioria dos editores de texto que sabem sobre Python fazem isso por padrão, mas alguns não.
 
 \index{whitespace}
 
-Tabs and spaces are usually invisible, which makes them hard to debug,
-so try to find an editor that manages indentation for you.
+Tabulações e espaços são geralmente invisíveis, o que os torna difíceis de depurar, então tente encontrar um editor que gerencia o recuo para você.
 
-Also, don't forget to save your program before you run it. Some
-development environments do this automatically, but some don't. In that
-case, the program you are looking at in the text editor is not the same
-as the program you are running.
+Além disso, não se esqueça de salvar seu programa antes de executá-lo. Alguns ambientes de desenvolvimento fazem isso automaticamente, mas alguns não. Nesse caso, o programa que você está olhando no editor de texto não é o mesmo que o programa que você está executando.
 
-Debugging can take a long time if you keep running the same incorrect
-program over and over!
+A depuração pode ser longa se você estiver executando o programa errado repetidamente!
 
-Make sure that the code you are looking at is the code you are running.
-If you're not sure, put something like `print("hello")` at the beginning
-of the program and run it again. If you don't see `hello`, you're not
-running the right program!
+Certifique-se de que o código que você está olhando é o código que você está executando. se você não tiver certeza, colocar algo como ' Print ("Olá") ' no início do programa e executá-lo novamente. Se você não vir ' Olá ', você não está executando o programa certo!
 
 Glossary
 --------
