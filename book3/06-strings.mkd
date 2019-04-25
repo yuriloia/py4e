@@ -44,7 +44,7 @@ of the string, and the offset of the first letter is zero.
 >>> print(letter)
 b
 ~~~~
-
+  
 So "b" is the 0th letter ("zero-th") of "banana",
 "a" is the 1th letter ("one-th"), and "n" is the
 2th ("two-th") letter.
