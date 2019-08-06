@@ -460,95 +460,65 @@ When the program runs, it produces the following output:
 ...
 ~~~~
 
-Escape character
+Caractere de Escape
 ----------------
 
-Since we use special characters in regular expressions to match the
-beginning or end of a line or specify wild cards, we need a way to
-indicate that these characters are "normal" and we want to match the
-actual character such as a dollar sign or caret.
+Como usamos caracteres especiais em expressões regulares para corresponder ao início ou ao final de uma linha ou para especificar curingas, precisamos indicar como esses caracteres são "normais" e queremos corresponder ao caractere atual, como um cifrão.
 
-We can indicate that we want to simply match a character by prefixing
-that character with a backslash. For example, we can find money amounts
-with the following regular expression.
+Podemos indicar que queremos simplesmente combinar um caractere prefixando com uma barra invertida. Por exemplo, podemos encontrar montantes de dinheiro com a seguinte expressão regular
 
 ~~~~ {.python}
 import re
-x = 'We just received $10.00 for cookies.'
+x = 'Acabamos de receber R$ 10,00 por cookies.'
 y = re.findall('\$[0-9.]+',x)
 ~~~~
 
-Since we prefix the dollar sign with a backslash, it actually matches
-the dollar sign in the input string instead of matching the "end of
-line", and the rest of the regular expression matches one or more digits
-or the period character. *Note:* Inside square brackets,
-characters are not "special". So when we say `[0-9.]`, it really means
-digits or a period. Outside of square brackets, a period is the
-"wild-card" character and matches any character. Inside square brackets,
-the period is a period.
+Como prefixamos o cifrão com uma barra invertida, ele realmente corresponde ao cifrão na string de entrada, em vez de corresponder ao "fim da linha", e o restante da expressão regular corresponde a um ou mais dígitos ou ao caractere do período. Nota: Entre colchetes, os caracteres não são "especiais". Então, quando dizemos [0-9], isso realmente significa dígitos ou um período. Fora dos colchetes, um período é o caractere curinga e corresponde a qualquer caractere. Dentro de colchetes, o período é  de fato um período.
 
-Summary
+Sumário
 -------
 
-While this only scratched the surface of regular expressions, we have
-learned a bit about the language of regular expressions. They are search
-strings with special characters in them that communicate your wishes to
-the regular expression system as to what defines "matching" and what is
-extracted from the matched strings. Here are some of those special
-characters and character sequences:
+Enquanto isso apenas arranhou a superfície das expressões regulares, aprendemos um pouco sobre a linguagem das expressões regulares. Eles são sequências de busca com caracteres especiais que comunicam seus desejos ao sistema de expressões regulares quanto ao que define “correspondência” e o que é extraído das sequências combinadas. Aqui estão alguns desses caracteres especiais e sequências de caracteres:
 
-`^` Matches the beginning of the line.
+`^` Corresponde ao começo da linha
 
-`$` Matches the end of the line.
+`$` Corresponde ao final da linha.
 
-`.` Matches any character (a wildcard).
+`.` Corresponde a qualquer caractere (um curinga).
 
-`\s` Matches a whitespace character.
+`\s` Corresponde a um caractere de espaço em branco.
 
-`\S` Matches a non-whitespace character (opposite of \\s).
+`\S` Corresponde a um caractere sem espaço em branco (oposto de \\ s).
 
-`*` Applies to the immediately preceding character(s) and indicates to match
-zero or more times.
+`*` Aplica-se ao (s) caractere (s) imediatamente anterior (es) e indica para corresponder a zero ou mais vezes.
 
-`*?` Applies to the immediately preceding character(s) and indicates to
-match zero or more times in "non-greedy mode".
+`*?` Aplica-se ao (s) caractere (s) imediatamente anterior (es) e indica
+coincidir com zero ou mais vezes no "modo não-ganancioso".
 
-`+` Applies to the immediately preceding character(s) and indicates to match
-one or more times.
+`+` Aplica-se ao caractere imediatamente anterior e indica a correspondência de uma ou mais vezes.
 
-`+?` Applies to the immediately preceding character(s) and indicates to
-match one or more times in "non-greedy mode".
+`+?` Aplica-se ao (s) caractere (s) imediatamente anterior (es) e indica a correspondência de uma ou mais vezes no "modo não-ganancioso".
 
-`?` Applies to the immediately preceding character(s) and indicates to match
-zero or one time.
+`?` Aplica-se ao (s) caractere (s) imediatamente anterior (es) e indica para corresponder a zero ou uma vez.
 
-`??` Applies to the immediately preceding character(s) and indicates to
-match zero or one time in "non-greedy mode".
+`??` Aplica-se ao (s) caractere (s) imediatamente anterior (es) e indica
+coincidir com zero ou uma vez no "modo não-ganancioso".
 
-`[aeiou]` Matches a single character as long as that character is in the
-specified set. In this example, it would match "a", "e", "i", "o", or
-"u", but no other characters.
+`[aeiou]` Corresponde a um único caractere, desde que esse caractere esteja no conjunto especificado. Neste exemplo, ele corresponderia a "a", "e", "i", "o" ou "u", mas nenhum outro caractere.
 
-`[a-z0-9]` You can specify ranges of characters using the minus sign. This
-example is a single character that must be a lowercase letter or a
-digit.
+`[a-z0-9]` Você pode especificar intervalos de caracteres usando o sinal de menos. Este exemplo é um único caractere que deve ser uma letra minúscula ou um dígito.
 
-`[^A-Za-z]` When the first character in the set notation is a caret, it
-inverts the logic. This example matches a single character that is
-anything *other than* an uppercase or lowercase letter.
+`[^A-Za-z]` Quando o primeiro caractere na notação de conjunto é um acento circunflexo, ele inverte a lógica. Este exemplo corresponde a um único caractere que é qualquer coisa * diferente de * uma letra maiúscula ou minúscula.
 
-`( )` When parentheses are added to a regular expression, they are ignored
-for the purpose of matching, but allow you to extract a particular
-subset of the matched string rather than the whole string when using
-`findall()`.
+`( )` Quando parênteses são adicionados a uma expressão regular, eles são ignorados com a finalidade de correspondência, mas permitem que você extraia um subconjunto específico da string correspondida, em vez da string inteira ao usar `findall ()`.
 
-`\b` Matches the empty string, but only at the start or end of a word.
+`\b` Corresponde à string vazia, mas apenas no início ou no final de uma palavra.
 
-`\B` Matches the empty string, but not at the start or end of a word.
+`\B` Corresponde à string vazia, mas não no início ou no final de uma palavra.
 
-`\d` Matches any decimal digit; equivalent to the set [0-9].
+`\d` Corresponde a qualquer dígito decimal; equivalente ao conjunto [0-9].
 
-`\D` Matches any non-digit character; equivalent to the set [^0-9].
+`\D` Corresponde a qualquer caractere não dígito; equivalente ao conjunto [^ 0-9].
 
 Seção bônus para usuários de Unix/Linux
 ------------------------------------
