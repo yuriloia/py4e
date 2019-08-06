@@ -106,6 +106,7 @@ certeza de que sabe o que está fazendo.
 
 Execução condicional
 ---------------------
+
 \index{declaração condicional}
 \index{declaração! condicional}
 \index{declaração if}
@@ -642,3 +643,5 @@ Digite a Pontuação: 0.5
 F
 ~~~~
 Rode o programa repetidamente como mostrado acima para testar diferentes valores de entrada.
+
+
