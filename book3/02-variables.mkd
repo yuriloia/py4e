@@ -616,3 +616,4 @@ Para cada uma das expressões a seguir, escreva o valor da expressão e o tipo (
 Use o interpretador Python para verificar suas respostas.
 
 **Exercício 5: Escreva um programa que solicite ao usuário uma temperatura Celsius, converta para Fahrenheit, e mostre a temperatura convertida.**
+
