@@ -39,11 +39,11 @@ Quando queremos ler ou escrever um arquivo (digamos no seu disco rígido), prime
 
 \index{file handle}
 
-Se o aberto for bem-sucedido, o sistema operacional retornará um identificador de arquivo. O identificador de arquivo não é os dados reais contidos no arquivo, mas em vez disso, é um "identificador" que podemos usar para ler os dados. Você recebe um identificador se o arquivo solicitado existe e você tem as permissões apropriadas para ler o arquivo.
+Se `open`for bem-sucedido, o sistema operacional retornará um identificador de arquivo. O identificador de arquivo não é os dados reais contidos no arquivo, mas em vez disso, é um "identificador" que podemos usar para ler os dados. Você recebe um identificador se o arquivo solicitado existe e você tem as permissões apropriadas para ler o arquivo.
 
 ![A File Handle](height=2.0in@../images/handle)
 
-Se o arquivo não existir, abrir falhará com um Traceback e você não receberá um identificador para acessar o conteúdo do arquivo:
+Se o arquivo não existir, `open` falhará com um Traceback e você não receberá um identificador para acessar o conteúdo do arquivo:
 
 ~~~~ {.python}
 >>> fhand = open('stuff.txt')
@@ -53,12 +53,14 @@ FileNotFoundError: [Errno 2] No such file or directory: 'stuff.txt'
 
 ~~~~
 
-Mais tarde, usaremos try e exceto para lidar mais graciosamente com a situação em que tentamos abrir um arquivo que não existe.
+Mais tarde, usaremos `try` e `except` para lidar mais graciosamente com a situação em que tentamos abrir um arquivo que não existe.
+
 
 Arquivos de texto e linhas
 --------------------
 
 Um arquivo de texto pode ser pensado como uma seqüência de linhas, muito parecido com um Python, cadeia de caracteres pode ser pensado como uma seqüência de caracteres. Por exemplo, este é uma amostra de um arquivo de texto que registra a atividade de correio de vários indivíduos em uma equipe de desenvolvimento de projeto de código aberto:
+
 
 ~~~~
 From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
@@ -70,6 +72,7 @@ Subject: [sakai] svn commit: r39772 - content/branches/
 Details: http://source.sakaiproject.org/viewsvn/?view=rev&rev=39772
 ...
 ~~~~
+
 
 Todo o arquivo de interações de email está disponível a partir de
 
@@ -122,6 +125,7 @@ linha que marca o fim da linha.
 
 Portanto, o caractere de nova linha separa os caracteres no arquivo em
 Linhas.
+
 
 Reading files
 -------------
