@@ -186,33 +186,19 @@ JSON is quickly becoming the format of choice for nearly all data
 exchange between applications because of its relative simplicity
 compared to XML.
 
-Parsing JSON
+Análise JSON
 ------------
 
-We construct our JSON by nesting dictionaries and lists as
-needed. In this example, we represent a list of users where each user is
-a set of key-value pairs (i.e., a dictionary). So we have a list of
-dictionaries.
+Construímos nosso JSON por dicionários e listas de aninhamento, conforme necessário. Neste exemplo, representamos uma lista de usuários, onde estes fazem parte de um conjunto de pares de valores-chave (por exemplo, um dicionário). Então nós temos uma lista de dicionários.
 
-In the following program, we use the built-in `json`
-library to parse the JSON and read through the data. Compare this
-closely to the equivalent XML data and code above. The JSON has less
-detail, so we must know in advance that we are getting a list and that
-the list is of users and each user is a set of key-value pairs. The JSON
-is more succinct (an advantage) but also is less self-describing (a
-disadvantage).
+No programa a seguir, usamos a biblioteca `json` interna para analisar o JSON e ler os dados. Compare isso de perto com os dados e códigos XML equivalentes acima. O JSON tem menos detalhes, portanto, devemos saber antecipadamente que estamos obtendo uma lista de usuários, e cada usuário é um conjunto de pares de valores-chave. O JSON é mais sucinto (uma vantagem), mas também é menos autodescritivo (uma desvantagem).
+
 
 \VerbatimInput{../code3/json2.py}
 
-If you compare the code to extract data from the parsed JSON and XML you
-will see that what we get from `json.loads()` is a Python
-list which we traverse with a `for` loop, and each item
-within that list is a Python dictionary. Once the JSON has been parsed,
-we can use the Python index operator to extract the various bits of data
-for each user. We don't have to use the JSON library to dig through the
-parsed JSON, since the returned data is simply native Python structures.
+Se você comparar o código para extrair dados do JSON e XML analisados, verá que o que obtemos de `json.loads()` é uma lista do Python que percorremos com um loop `for`, e cada item dentro dessa lista é um dicionário do Python. Uma vez que o JSON tenha sido analisado, podemos usar o operador de indexação do Python para extrair os vários bits de dados para cada usuário. Não precisamos usar a biblioteca JSON para analisar o JSON, pois os dados retornados são simplesmente estruturas nativas do Python.
 
-The output of this program is exactly the same as the XML version above.
+A saída deste programa é exatamente igual à versão XML acima.
 
 ~~~~
 User count: 2
@@ -224,60 +210,24 @@ Id 009
 Attribute 7
 ~~~~
 
-In general, there is an industry trend away from XML and towards JSON
-for web services. Because the JSON is simpler and more directly maps to
-native data structures we already have in programming languages, the
-parsing and data extraction code is usually simpler and more direct when
-using JSON. But XML is more self-descriptive than JSON and so there are
-some applications where XML retains an advantage. For example, most word
-processors store documents internally using XML rather than JSON.
+Em geral, há uma tendência do setor de XML e de JSON para serviços da web. Como o JSON é mais simples e mapeia mais diretamente estruturas de dados nativas que já temos nas linguagens de programação, o código de análise e extração de dados é geralmente mais simples e mais direto ao usar o JSON. Mas o XML é mais autodescritivo e, portanto, há alguns aplicativos em que o XML mantém uma vantagem. Por exemplo, a maioria dos processadores de texto armazena documentos internamente usando XML em vez de JSON.
 
-Application Programming Interfaces
+Interfaces de Programação de Aplicativos
 ----------------------------------
 
-We now have the ability to exchange data between applications using
-HyperText Transport Protocol (HTTP) and a way to represent complex data
-that we are sending back and forth between these applications using
-eXtensible Markup Language (XML) or JavaScript Object Notation (JSON).
+Agora temos a capacidade de trocar dados entre aplicativos usando o HyperText Transport Protocol (HTTP) e uma maneira de representar dados complexos que estamos enviando entre esses aplicativos usando XML (Extensible Markup Language) ou JavaScript Object Notation (JSON).
 
-The next step is to begin to define and document "contracts" between
-applications using these techniques. The general name for these
-application-to-application contracts is *Application Program
-Interfaces* (APIs). When we use an API, generally one program
-makes a set of *services* available for use by other
-applications and publishes the APIs (i.e., the "rules") that must be
-followed to access the services provided by the program.
+O próximo passo é começar a definir e documentar “contratos” entre aplicativos usando essas técnicas. O nome geral para esses contratos de aplicativo é *Application Program Interfaces* (APIs). Quando usamos uma API, geralmente um programa disponibiliza um conjunto de serviços para uso por outros aplicativos e publica as APIs (ou seja, as "regras") que devem ser seguidas para acessar os serviços fornecidos pelo programa.
 
-When we begin to build our programs where the functionality of our
-program includes access to services provided by other programs, we call
-the approach a *Service-oriented architecture* (SOA). A
-SOA approach is one where our overall application makes use of the
-services of other applications. A non-SOA approach is where the
-application is a single standalone application which contains all of the
-code necessary to implement the application.
+Quando começamos a construir nossos programas nos quais a funcionalidade dele inclui o acesso a serviços fornecidos por outros programas, chamamos a abordagem de *Service-Oriented Architecture*  (SOA). Uma abordagem SOA é aquela em que nosso aplicativo geral faz uso dos serviços de outros aplicativos. Uma abordagem não SOA é onde o aplicativo é um aplicativo autônomo único que contém todo o código necessário para implementar o aplicativo.
 
-We see many examples of SOA when we use the web. We can go to a single
-web site and book air travel, hotels, and automobiles all from a single
-site. The data for hotels is not stored on the airline computers.
-Instead, the airline computers contact the services on the hotel
-computers and retrieve the hotel data and present it to the user. When
-the user agrees to make a hotel reservation using the airline site, the
-airline site uses another web service on the hotel systems to actually
-make the reservation. And when it comes time to charge your credit card
-for the whole transaction, still other computers become involved in the
-process.
+Nós vemos muitos exemplos de SOA quando usamos a web. Podemos ir a um único site e reservar viagens aéreas, hotéis e automóveis em um único site. Os dados para hotéis não são armazenados nos computadores da companhia aérea. Em vez disso, os computadores da companhia aérea entram em contato com os serviços nos computadores do hotel, recuperam os dados do hotel e os apresentam ao usuário. Quando o usuário concorda em fazer uma reserva de hotel usando o site da companhia aérea, o site da companhia aérea usa outro serviço da web nos sistemas do hotel para realmente fazer a reserva. E quando chega a hora de cobrar seu cartão de crédito por toda a transação, outros computadores ficam envolvidos no processo.
 
 ![Service-oriented architecture](height=3.0in@../images/soa)
 
-A Service-oriented architecture has many advantages, including: (1) we
-always maintain only one copy of data (this is particularly important
-for things like hotel reservations where we do not want to over-commit)
-and (2) the owners of the data can set the rules about the use of their
-data. With these advantages, an SOA system must be carefully designed to
-have good performance and meet the user's needs.
+Uma Service-Oriented Architecture tem muitas vantagens, incluindo: (1) sempre mantemos apenas uma cópia de dados (isso é particularmente importante para coisas como reservas de hotéis em que não queremos ser excessivamente comprometidos) e (2) os proprietários podem definir as regras sobre o uso de seus dados. Com essas vantagens, um sistema SOA deve ser cuidadosamente projetado para ter um bom desempenho e atender às necessidades do usuário.
 
-When an application makes a set of services in its API available over
-the web, we call these *web services*.
+Quando um aplicativo disponibiliza um conjunto de serviços em sua API pela internet, chamamos de *serviços web*.
 
 Security and API usage
 ----------------------
