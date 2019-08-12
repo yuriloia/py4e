@@ -1,8 +1,8 @@
 
-Contributions
+Contribuições
 =============
 
-Contributor List for Python for Everybody 
+Lista de Contribuidores de Python for Everybody 
 -------------------------------------------
 
 Elliott Hauser,
@@ -24,14 +24,14 @@ Louis Luangkesorn,
 and
 Michael Fudge
 
-You can see contribution details at:
+Você pode ver os detalhes das contribuições em:
 
 https://github.com/csev/py4e/graphs/contributors
 
-Contributor List for Python for Informatics 
+Lista de Contribuidores de Python for Informatics 
 -------------------------------------------
 
-Bruce Shields for copy editing early drafts, Sarah Hegge, Steven Cherry,
+Bruce Shields pela revisão e correção dos primeiros rascunhos, Sarah Hegge, Steven Cherry,
 Sarah Kathleen Barbarow, Andrea Parker, Radaphat Chongthammakun, Megan
 Hixon, Kirby Urner, Sarah Kathleen Barbrow, Katie Kujala, Noah Botimer,
 Emily Alinder, Mark Thompson-Kular, James Perry, Eric Hofer, Eytan Adar,
@@ -41,128 +41,113 @@ Thomas Strassel, Ryan Clement, Alissa Talley, Caitlin Holman, Yong-Mi
 Kim, Karen Stover, Cherie Edmonds, Maria Seiferle, Romer Kristi D.
 Aranas (RK), Grant Boyer, Hedemarrie Dussan,
 
-Preface for "Think Python"
+Prefácio de "Think Python"
 --------------------------
 
-### The strange history of "Think Python"
+### A estranha história de "Think Python"
 
 (Allen B. Downey)
 
-In January 1999 I was preparing to teach an introductory programming
-class in Java. I had taught it three times and I was getting frustrated.
-The failure rate in the class was too high and, even for students who
-succeeded, the overall level of achievement was too low.
+Em janeiro de 1999 eu estava me preparando para ensinar uma disciplina introdutória de programação em Java. Eu já a havia ministrado três vezes e estava ficando frustrado.
+A taxa de reprovação da disciplina era muito alta e, mesmo para alunos que
+eram bem sucedido, a satisfação era muito baixa.
 
-One of the problems I saw was the books. They were too big, with too
-much unnecessary detail about Java, and not enough high-level guidance
-about how to program. And they all suffered from the trap door effect:
-they would start out easy, proceed gradually, and then somewhere around
-Chapter 5 the bottom would fall out. The students would get too much new
-material, too fast, and I would spend the rest of the semester picking
-up the pieces.
+Um dos problemas que vi foram os livros. Eles eram muito grandes, além de possuírem
+muito detalhe desnecessário sobre Java, mas não tinham orientação de alto nível
+sobre como programar. Todos eles sofriam com o efeito de alçapão:
+eles começavam fácil, prosseguiam gradualmente e depois em algum lugar perto do 
+Capítulo 5 o fundo caia. Os estudantes recebiam muito conteúdo inédito, muito rápido, e eu passaria o resto do semestre juntando os pedaços.
 
-Two weeks before the first day of classes, I decided to write my own
-book. My goals were:
+Duas semanas antes do primeiro dia de aula, decidi escrever meu próprio
+livro. Meus objetivos eram:
 
--   Keep it short. It is better for students to read 10 pages than not
-    read 50 pages.
+- Ser curto. É melhor que os alunos lessem 10 páginas do que não lessem 50.
 
--   Be careful with vocabulary. I tried to minimize the jargon and
-    define each term at first use.
+- Ter cuidado com o vocabulário. Eu tentei minimizar o jargão e definia cada termo na primeira utilização.
 
--   Build gradually. To avoid trap doors, I took the most difficult
-    topics and split them into a series of small steps.
+- Construir gradualmente. Para evitar alçapões, eu peguei os conteúdos mais difíceis
+   e os dividi em uma série de pequenos passos.
 
--   Focus on programming, not the programming language. I included the
-    minimum useful subset of Java and left out the rest.
+- Concentrar na programação, não na linguagem de programação. Eu incluí osubconjunto mínimo útil de Java e deixou de fora o resto.
 
-I needed a title, so on a whim I chose *How to Think Like a Computer
+Eu precisei de um título, então então, por um capricho, eu escolhi *How to Think Like a Computer
 Scientist*.
 
-My first version was rough, but it worked. Students did the reading, and
-they understood enough that I could spend class time on the hard topics,
-the interesting topics and (most important) letting the students
-practice.
+Minha primeira versão foi difícil, mas funcionou. Os alunos fizeram a leitura e
+entenderam o suficiente para que eu pudesse gastar o tempo de aula nos tópicos difíceis,
+nos tópicos interessantes e (mais importante) deixar os alunos praticarem.
 
-I released the book under the GNU Free Documentation License, which
-allows users to copy, modify, and distribute the book.
+Eu lancei o livro sob a Licença GNU de Documentação Livre, esta permite que os usuários copiem, modifiquem e distribuam o livro.
 
-\index{GNU Free Documentation License}
-\index{Free Documentation License, GNU}
+\index{Licença GNU de Documentação Livre}
+\index{Licença de Documentação Livre, GNU}
 
-What happened next is the cool part. Jeff Elkner, a high school teacher
-in Virginia, adopted my book and translated it into Python. He sent me a
-copy of his translation, and I had the unusual experience of learning
-Python by reading my own book.
+O que aconteceu em seguida é a parte legal. Jeff Elkner, um professor de ensino médio em 
+Virginia, adotoou meu livro e o traduziu para Python. Ele me mandou uma cópia das traduções e eu tive a experiência não usual de aprender Python lendo o meu próprio livro
 
-Jeff and I revised the book, incorporated a case study by Chris Meyers,
-and in 2001 we released *How to Think Like a Computer Scientist:
-Learning with Python*, also under the GNU Free Documentation License. As
-Green Tea Press, I published the book and started selling hard copies
-through Amazon.com and college book stores. Other books from Green Tea
-Press are available at [greenteapress.com](greenteapress.com).
+Jeff e eu revisamos o livro, incorporamos um estudo de caso de Chris Meyers,
+e em 2001 nós lançamos *How to Think Like a Computer Scientist:
+Aprendendo com Python*, também sob a Licença GNU de Documentação Livre. Como
+Green Tea Press, publiquei o livro e comecei a vender cópias impressas
+através da Amazon.com e lojas de livros universitários. Outros livros de Green Tea Press estão disponíveis em [greenteapress.com] (greenteapress.com).
 
-In 2003 I started teaching at Olin College and I got to teach Python for
-the first time. The contrast with Java was striking. Students struggled
-less, learned more, worked on more interesting projects, and generally
-had a lot more fun.
+Em 2003, comecei a lecionar na Olin College e comecei a ensinar Python pela
+primeira vez. O contraste com o Java foi impressionante. Estudantes tiveram menos dificuldades, aprenderam mais, trabalharam em projetos mais interessantes, e geralmente se divertiram muito mais.
 
-Over the last five years I have continued to develop the book,
-correcting errors, improving some of the examples and adding material,
-especially exercises. In 2008 I started work on a major revision—at the
-same time, I was contacted by an editor at Cambridge University Press
-who was interested in publishing the next edition. Good timing!
+Nos últimos cinco anos, continuei desenvolvendo o livro,
+corrigindo erros, melhorando alguns dos exemplos e adicionando material,
+especialmente exercícios. Em 2008, comecei a trabalhar em uma grande revisão - no
+mesmo tempo, fui contatado por um editor da Cambridge University Press
+quem estava interessado em publicar a próxima edição. Bom momento!
 
-I hope you enjoy working with this book, and that it helps you learn to
-program and think, at least a little bit, like a computer scientist.
+Espero que você goste de trabalhar com este livro e que o ajude a aprender
+programa e pense, pelo menos um pouco, como um cientista da computação.
 
-### Acknowledgements for "Think Python"
+### Agradecimentos de "Think Python"
 
 (Allen B. Downey)
 
-First and most importantly, I thank Jeff Elkner, who translated my Java
-book into Python, which got this project started and introduced me to
-what has turned out to be my favorite language.
+Primeiramente e mais importante, eu agradeço a Jeff Elkner, que traduziu meu livro de Java
+para Python, o que comunou no começo desse projeto e me introduziu para o que se tornou a minha linguagem favorita.
 
-I also thank Chris Meyers, who contributed several sections to *How to
+Eu também agradeço a Chris Meyers, que contribuiu com várias seções em *How to
 Think Like a Computer Scientist*.
 
-And I thank the Free Software Foundation for developing the GNU Free
-Documentation License, which helped make my collaboration with Jeff and
-Chris possible.
+E eu agradeço a Fundação de Software Livre por desenvolver a Licença GNU de Documentação Livre, a qual me ajudou a fazer a minha colaboração com Jeff e Chris possível
 
-\index{GNU Free Documentation License}
-\index{Free Documentation License, GNU}
+\index{Licença GNU de Documentação Livre}
+\index{Licença de Documentação Livre, GNU}
 
-I also thank the editors at Lulu who worked on *How to Think Like a
+
+Agradeço também aos editores da Lulu que trabalharam no *How to Think Like a
 Computer Scientist*.
 
-I thank all the students who worked with earlier versions of this book
-and all the contributors (listed in an Appendix) who sent in corrections
-and suggestions.
+Agradeço a todos os alunos que trabalharam com versões anteriores deste livro
+e todos os contribuintes (listados no Apêndice) que enviaram correções
+e sugestões.
 
-And I thank my wife, Lisa, for her work on this book, and Green Tea
-Press, and everything else, too.
+E agradeço à minha esposa, Lisa, por seu trabalho neste livro e pela Green Tea
+Press e tudo mais.
 
 Allen B. Downey\
 Needham MA\
 
-Allen Downey is an Associate Professor of Computer Science at the
+Allen Downey é um Professor Associado de Ciência de Computação na
 Franklin W. Olin College of Engineering.
 
-Contributor List for "Think Python"
+Lista de Contribuidores de "Think Python"
 -----------------------------------
 
-\index{contributors}
+\index{contribuidores}
 
 (Allen B. Downey)
 
-More than 100 sharp-eyed and thoughtful readers have sent in suggestions
-and corrections over the past few years. Their contributions, and
-enthusiasm for this project, have been a huge help.
+Mais de 100 leitores perspicazes e atenciosos enviaram sugestões
+e correções nos últimos anos. Suas contribuições e
+entusiasmo por este projeto, tem sido uma grande ajuda.
 
-For the detail on the nature of each of the contributions from these
-individuals, see the "Think Python" text.
+Para os detalhes sobre a natureza de cada uma das contribuições destes
+indivíduos, consulte o livro "Think Python".
 
 Lloyd Hugh Allen, Yvon Boulianne, Fred Bremmer, Jonah Cohen, Michael
 Conlon, Benoit Girard, Courtney Gleason and Katherine Smith, Lee Harr,
