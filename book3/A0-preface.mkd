@@ -1,18 +1,18 @@
 \thispagestyle{empty}
 
-Credits
+Créditos
 -------
 
-    Editorial Support: Elliott Hauser, Sue Blumenberg
+    Suporte Editorial : Elliott Hauser, Sue Blumenberg
     Cover Design: Aimee Andrion
 
 Printing History
 ----------------
 
-* 2016-Jul-05 First Complete Python 3.0 version
-* 2015-Dec-20 Initial Python 3.0 rough conversion
+* 2016-Jul-05 Primeira Edição Completa em versão Python 3.0
+* 2015-Dec-20 Conversão inicial para Python 3.0 
 
-Copyright Details
+Detalhes de Direitos Autorais
 -----------------
 
 Copyright ~2009- Charles Severance.
@@ -23,16 +23,14 @@ This license is available at
 
 http://creativecommons.org/licenses/by-nc-sa/3.0/
 
-You can see what the author considers commercial and non-commercial
-uses of this material as well as license exemptions
-in the Appendix titled "Copyright Detail".
+Você pode ver o que o autor considera como uso comercial e não comercial do trabalho assim como as excessões da licensa utilizando o apêndice na seção "Detalhes de Direitos Autorais".
 
 \cleardoublepage
 
-Preface
+Prefácio
 =======
 
-Remixing an Open Book
+Remisturando um Livro Aberto
 ---------------------
 
 É bem comum para os acadêmicos ouvirem frases como "publique ou pereça" quando se trata de produzir novas ideias, onde se perpetua uma cultura de começar tudo do zero para que se obtenha uma criação genuína. Este livro é um experimento em não começar da etapa inicial, ao invés disso será "misturado" o livro *Pense em Python: Pense como um Cientista da Computação* escrito por Allen B.Downey, Jeff Elkner, e outros.
