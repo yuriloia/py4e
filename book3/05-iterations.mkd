@@ -195,7 +195,7 @@ Finalizando iterações com `continue`
 Às vezes, você está em uma iteração de um laço e deseja finalizar esta
 iteração atual e pular imediatamente para a próxima. Nesse
 caso, você pode usar o comando `continue` para avançar para a próxima
-iteração, sem executar as instruções restantes da iteração
+iteração sem executar as instruções restantes da iteração
 atual.
 
 Aqui está um exemplo de laço que copia as entradas do usuário até ele digitar
@@ -218,7 +218,7 @@ exiba isso!
 Pronto!
 ~~~~
 
-Todas as linhas são exibidas, exceto a que começa com o sinal cerquilha,
+Todas as linhas são exibidas exceto a que começa com o sinal cerquilha,
 pois quando o `continue` é executado, ele termina a iteração
 atual e pula de volta para o topo do bloco `while` para começar
 a próxima iteração, pulando, portanto, o comando `print`.
@@ -227,86 +227,79 @@ a próxima iteração, pulando, portanto, o comando `print`.
 Definindo um laço usando `for` 
 --------------------------------------
 
-\index{for statement}
-\index{statement!for}
+\index{comando for}
+\index{comando!for}
 
-Às vezes, queremos fazer um loop através de um conjunto de coisas, como uma lista de palavras, linhas em um arquivo, ou uma lista de números. Quando temos uma lista de coisas para um loop, podemos construir um definitivo usando uma declaração ' for '.  Nós chamamos a instrução ' While ' na loop indefinido porque ele simplesmente permanece em loop até que alguma condição se torne ' falsa ', enquanto o loop ' for ' é  um conjunto de argumentos ou itens que ele executado através de iterações.
+Às vezes, queremos fazer um laço por meio de um conjunto de coisas, como uma lista de palavras, as linhas em um arquivo, ou uma lista de números. Quando temos uma lista de coisas para iterar sobre, podemos construir um laço definido usando uma declaração `for`.  Nós chamamos a declaração `while` como um laço indefinido, porque ela simplesmente permanece iterando até que alguma condição se torne falsa, enquanto o laço `for` itera sobre um conjunto de itens conhecidos até que sejam executadas tantas iterações quanto o número de itens nesse conjunto.
 
-A sintaxe de um ‘ for ‘ é similar à do ‘while’  em que há uma condição e um corpo de repetição:
+A sintaxe de um laço `for`  é similar a de um laço `while`, em que há uma declaração ` for` e um corpo de repetição:
 
 ~~~~ {.python}
-Amigos = [‘Jose’, ‘Gleice’, ‘Sara’]
+amigos = [‘Jose’, ‘Gleice’, ‘Sara’]
 For amigo in amigos:
-    print('Feliz ano novo',amigo)   
+    print('Feliz Ano Novo',amigo)   
 print('Feito !')
 
 ~~~~
 
-Em termos Python, a variável ' amigos ' é uma lista  [examinaremos as listas com mais detalhes em um capítulo posterior.] de três cadeias de caracteres e o loop ' for ' passa pela lista e executa o corpo uma vez para cada uma das três cadeias de caracteres na lista, resultando nesta saída :
+Em termos Python, a variável `amigos` é uma lista  [examinaremos as listas com mais detalhes em um capítulo posterior.] de três cadeias de caracteres e o laço `for` percorre a lista e executa o corpo uma vez para cada uma das três palavras na lista, resultando nesta saída:
 
 ~~~~ {.python}
-Feliz ano novo: Jose
-Feliz ano novo: Gleice
-Feliz ano novo: Sara
+Feliz Ano Novo: Jose
+Feliz Ano Novo: Gleice
+Feliz Ano Novo: Sara
 Feito!
 ~~~~
 
-Traduzir este loop 'for' para o portuquês não é tão direto quanto
-o ' While ', mas se você pensar em amigos como um
-* conjunto *, ele vai como este: "executar as instruções no corpo
-do 'for' uma vez para cada amigo * in * conjunto de amigos nomeados. "
+Traduzir este loop `for` para o português não é tão direto quanto o `while`, mas se você pensar em amigos como um *lista*, ele vai como este: "executar as instruções no corpo do `for` uma vez para cada amigo *in* lista de amigos nomeados."
 
-Olhando para o loop 'for', * for * e
-* in * são palavras-chave do Python reservadas e
-' amigo ' e ' amigos ' são variáveis
+Olhando para o laço `for`, *for* e *in* são palavras-chave do Python reservadas e `amigo` e `amigos` são variáveis.
 
 ~~~~ {.python}
 for amigo in amigos:
-    Print (' feliz ano novo: ', amigo)
+    Print ('Feliz Ano Novo: ', amigo)
 ~~~~
 
-Em particular, ' amigo ' é a * iteração da
-variável * para o loop for. A variável ' amigo '
-causa uma interação para cada loop e controla o loop' for 'quando  é concluído. A * variável  * passos sucessivamente através das três condições armazenadas na
-variável 'amigos'.
+Em particular, `amigo` é a *variável de iteração* o laço `for`. A variável `amigo` muda a cada iteração do laço e controla quando o laço deve ser concluído. A *variável de iteração* percorre sucessivamente as três palavras armazenadas na
+variável `amigos`.
 
-Padrões de loop
+Padrões de laço
 -------------
 
-Muitas vezes usamos um loop ' for ' ou ' While ' para percorrer
-uma lista de itens, o conteúdo de um arquivo ou procuramos
-algo como o maior ou menor valor dos dados que Digitalizamos.
+Muitas vezes usamos um laço `for` ou `while` para percorrer
+uma lista de itens ou os conteúdos de um arquivo e nós estamos procurando por
+algo como o maior ou menor valor dos dados que nós percorremos.
 
-Esses loops são geralmente construídos por:
+Esses laços são geralmente construídos:
 
--Inicializando uma ou mais variáveis antes que o loop comece
+-Inicializando uma ou mais variáveis antes que o laço comece
 
--Realizando algum cálculo em cada item no corpo do loop, possivelmente
+-Realizando algum cálculo em cada item no corpo do laço, possivelmente
     alterando as variáveis no corpo do loop
 
 -Olhando para as variáveis resultantes quando o loop é concluído
 
-Utilizaremos uma lista de números para demonstrar os conceitos e
+Utilizaremos uma lista de números para demonstrar os conceitos e a
 construção destes padrões de loop.
 
-### Contando e Somando Repetições
+### Contando e somando repetições
 
-Por exemplo, para contar o número de itens em uma lista, escreveríamos o seguinte para a repetição usando `for`:
+Por exemplo, para contar o número de itens em uma lista, escreveríamos o seguinte laço ` for`:
 
 ~~~~ {.python}
-count = 0
+contador = 0
 for itervar in [3, 41, 12, 9, 74, 15]:
-    count = count + 1
-print('Count: ', count)
+    contador = contador + 1
+print('Contagem: ', contador)
 ~~~~
 
-Nós ajustamos `count`  para zero antes da repetição começar, então nós escrevemos uma repetição `for` para percorrer a lista de números. Nossa variável de *iteração* é chamada de `itervar` e enquanto nós não usamos o `itervar` na repetição, ele controla o loop e faz com que o corpo desta parte do código seja executada uma vez para cada um dos valores na lista.
+Nós ajustamos `contador`  para zero antes do laço começar, então nós escrevemos um laço ` for` para percorrer a lista de números. Nossa variável de *iteração* é chamada de `itervar` e enquanto nós não usamos o `itervar` no laço, ele controla o laço e faz com que o corpo desse laço seja executado uma vez para cada um dos valores na lista.
  
-No corpo da repetição, adicionamos 1 ao valor atual de `count`  para cada um dos valores na lista. Enquanto o loop está em execução, o valor de `count` é o número de valores que vimos "até agora". 
+No corpo da repetição, adicionamos 1 ao valor atual de `contador`  para cada um dos valores na lista. Enquanto o laço está executando, o valor de `contador` é o número de valores que percorremos "até agora". 
  
-Depois que a repetição é concluída, o valor de `count` é o número total de itens. O  número total "cai do céu" no final do ciclo. Nós construímos a repetição e então temos o que queremos quando ela termina.
+Depois que a repetição é concluída, o valor de `contador` é o número total de itens. O  número total "cai do céu" no final do ciclo. Nós construímos o laço para que tenhamos o que queremos quando ele terminar.
  
-Outra repetição semelhante que calcula o total de um conjunto de números é o seguinte
+Outro laço semelhante que calcula o total de um conjunto de números é o seguinte:
 
 ~~~~ {.python}
 total = 0
@@ -315,115 +308,117 @@ for itervar in [3, 41, 12, 9, 74, 15]:
 print('Total: ', total)
 ~~~~
 
-Neste loop, *usamos* a *variável de iteração*. Em vez de simplesmente adicionar um à `contagem`, como na repetição anterior, adicionamos o número real (3, 41, 12, etc.) ao executando total durante cada iteração de repetição. Se você pensar na variável `total`, ela contém o "total de valores executados até agora". Então, antes que a repetição comece,`total` é zero porque ainda não vimos nenhum valor. Durante toda a repetição `total`  é compilado e, ao final do loop, `total` é o valor geral de todos os valores na lista.
+Neste loop, *usamos* a *variável de iteração*. Em vez de simplesmente adicionar um a `contagem`, como na repetição anterior, nós adicionamos o número real (3, 41, 12, etc.) ao total durante cada iteração de repetição. Se você pensar na variável `total`, ela contém o "total de valores percorridos até agora". Então, antes que a repetição comece,`total` é zero porque ainda não vimos nenhum valor. Durante todo o laço `total`  é aualizado e, ao final do laço, `total` é o valor de todos os valores na lista.
  
-Conforme o loop é executado, `total` acumula a soma dos elementos; uma variável usada desta forma às vezes é chamada de *accumulator*.
+Conforme o laço é executado, `total` acumula a soma dos elementos; uma variável usada desta forma às vezes é chamada de *acumulador*.
 
-\index{accumulator!sum}
+\index{acumulador!soma}
 
-Nem a repetição de contagem nem a repetição de soma são particularmente úteis na prática porque existem funções internas `len()` e
-`sum()` que calculam o número de itens em uma lista e o total dos itens na lista, respectivamente.
+Nem o laço de contagem nem o de soma são particularmente úteis na prática, porque existem funções internas `len()` e `sum()` que calculam o número de itens em uma lista e o total dos itens em uma lista, respectivamente.
 
 
-### Repetições Máximas e Mínimas
+### Repetições máximas e mínimas
 
-\index{loop!maximum}
-\index{loop!minimum}
+\index{laço!máximo}
+\index{laço!mínimo}
 \index{None special value}
 \index{special value!None}
 
 Para achar o máximo valor em uma lista ou sequência, construímos a seguinte repetição:
 
 ~~~~ {.python}
-largest = None
-print('Before:', largest)
+maximo = None
+print('Antes:', maximo)
 for itervar in [3, 41, 12, 9, 74, 15]:
-    if largest is None or itervar > largest :
-        largest = itervar
-    print('Loop:', itervar, largest)
-print('Largest:', largest)
+    if maximo is None or itervar > maximo :
+        maximo = itervar
+    print('Laço:', itervar, maximo)
+print('Máximo:', maximo)
 ~~~~
 
 Quando o programa é executado, a saída é a seguinte:
 
 ~~~~
-Before: None
-Loop: 3 3
-Loop: 41 41
-Loop: 12 41
-Loop: 9 41
-Loop: 74 74
-Loop: 15 74
-Largest: 74
+Antes: None
+Laço: 3 3
+Laço: 41 41
+Laço: 12 41
+Laço: 9 41
+Laço: 74 74
+Laço: 15 74
+Máximo: 74
 ~~~~
 
-A variável `largest` é melhor considerada como o “maior valor que vimos até agora”. Antes da repetição, definimos `largest` para a constante `None`. `None` é uma constante especial de valor que podemos armazenar em uma variável para marca-la como "vazia".
+A variável `maximo` é melhor considerada como o “maior valor que vimos até agora”. Antes da repetição, definimos `maximo` como a constante `None`. `None` é uma constante de valor especialque podemos armazenar em uma variável para marca-la como "vazia".
 
-Antes do início da repetição, o maior valor que temos até agora é `None`, desde que nós ainda não tenhamos nenhum valor. Enquanto a repetição está sendo executada, se o `maior` for `None`, então nós pegamos o primeiro valor que vemos como o maior até agora. Você pode ver na primeira iteração quando o valor do `itervar` é 3, já que `largest` é `None`, nós imediatamente definimos `largest` como sendo 3.
+Antes do início do laço, o maior valor que temos até agora é `None`, já que nós ainda não percorremos nenhum valor. Enquanto o laço está sendo executado, se o `maximo` for `None`, então nós pegamos o primeiro valor que vemos como o maior até agora. Você pode ver na primeira iteração quando o valor do `itervar` é 3, já que `maximo` é `None`, nós imediatamente definimos `maximo` como sendo 3.
 
-Após a primeira iteração, `largest` não é mais `None`, então a segunda parte da expressão lógica composta verifica se `itervar > largest` acionando apenas quando vemos que um valor que é maior que o "maior até agora". Quando vemos um novo "mesmo maior ”valorizamos esse novo valor para o `largest`. Você pode ver na saída do programa que `largest` progride de 3 para 41 e de 41 para 74.
+Após a primeira iteração, `maximo` não é mais `None`, então a segunda parte da expressão lógica composta que verifica se `itervar > maximo` é acionada apenas quando vemos um valor que é maior que o "maior até agora". Quando vemos um novo "ainda maior”, nós levamos esse novo valor para o `maximo`. Você pode ver na saída do programa que `maximo` progride de 3 para 41 e de 41 para 74.
 
-No final da repetição, verificamos todos os valores e a variável `largest` agora contém o maior valor da lista.
+No final do laço, verificamos todos os valores e a variável `maximo` agora contém o maior valor da lista.
 
 Para calcular o menor número, o código é muito semelhante com uma pequena alteração:
 
 ~~~~ {.python}
-smallest = None
-print('Before:', smallest)
+minimo = None
+print('Antes:', minimo)
 for itervar in [3, 41, 12, 9, 74, 15]:
-    if smallest is None or itervar < smallest:
-        smallest = itervar
-    print('Loop:', itervar, smallest)
-print('Smallest:', smallest)
+    if minimo is None or itervar < minimo:
+        minimo = itervar
+    print('Laço:', itervar, minimo)
+print('Mínimo:', minimo)
 ~~~~
 
-Novamente, `smallest` é o “menor até agora” antes, durante e depois que a repetição é executada.
-Quando a repetição está concluída, `smallest` contém o valor mínimo na lista.
+Novamente, `minimo` é o “menor até agora” antes, durante e depois que o laço é executado. Quando o laço concluir, `minimo` contém o menor valor da lista.
  
-Novamente como na contagem e na soma, as funções incorporadas `max()` e `min()` fazem o mesmo sem escrever esses laços desnecessários.
+Novamente, como na contagem e na soma, as funções incorporadas `max()` e `min()` fazem esses laços desnecessários.
  
-A seguir, uma versão simples da função `min()` embutida do Python:
+A seguir, uma versão simples da função embutida `min()` do Python:
 
 ~~~~ {.python}
-def min(values):
-    smallest = None
-    for value in values:
-        if smallest is None or value < smallest:
-            smallest = value
-    return smallest
+def min(valores):
+    minimo = None
+    for valor in valores:
+        if minimo is None or valor < minimo:
+            minimo = valor
+    return minimo
 ~~~~
 
-Na versão de função do menor código, removemos todas as declarações de `print`, de  modo a ser equivalente à função `min` que já está embutida no Python.
+Na versão da função para encontrar o menor valor, nós removemos todas os comandos `print`, de  modo a ser equivalente à função `min` que já está embutida no Python.
 
-Debugging 
+Depuração 
 -------------
-Ao começar a escrever programas maiores, você pode se encontrar gastando muito tempo com depuração. Mais código significa mais chances de cometer um erro e mais lugares para ocultar erros.
+Ao começar a escrever programas maiores, você pode se encontrar gastando mais tempo com depuração. Mais código significa mais chances de cometer um erro e mais lugares para que erros se escondam.
 
-\index{debugging!por bisseção}
-\index{bisseção, debugging}
+\index{depuração!por bisseção}
+\index{bisseção, depuração}
 
-Um modo de reduzir seu tempo de depuração é "depuração por bisseção". Por exemplo, se existes 100 linhas em seu programa e você verifica um de cada vez, levaria 100 passos.
-Em vez disso, experimente quebrar o problema pela metade. Olhe para o meio do programa, ou perto dele, para um valor intermediário que você pode verificar.  Adicione o comando `print` (ou alguma outra coisa que tenha um efeito verificável ) e execute o programa.
-Se a verificação no ponto médio estiver incorreta, o problema deve estar na primeira metade do programa, se está correto, o problema está na segunda metade.
-Toda vez que você faz um teste como esse, você reduz o número de linhas que você tem que pesquisar. Após seis passos (o que é muito menos que 100), você ficaria com uma ou duas linhas de código, pelo menos em teoria.
-Na prática isso nem sempre é claro o que é o "meio do programa" e nem sempre é possível verifica-lo. Não faz sentido contar linhas e encontrar o ponto médio exato. Em vez disso pense sobre lugares no programa onde pode haver erros e lugares onde é fácil fazer um teste. Em seguida escolha um ponto em que você acha que as chances são as mesmas que o erro esteja antes ou depois do teste.
+Um modo de reduzir seu tempo de depuração é "depurar por bisseção". Por exemplo, se existes 100 linhas em seu programa e você verifica uma de cada vez, isso levaria 100 passos.
+
+Em vez disso, experimente quebrar o problema pela metade. Olhe para o meio do programa, ou perto dele, para um valor intermediário que você pode verificar.  Adicione o comando `print` (ou alguma outra coisa que tenha um efeito de verificação) e execute o programa.
+
+Se a verificação no ponto médio estiver incorreta, o problema deve estar na primeira metade do programa. Se está correta, o problema está na segunda metade.
+
+Toda vez que você faz um teste como esse, você reduz ao meio o número de linhas que você tem que pesquisar. Após seis passos (o que é muito menos que 100), você ficaria com uma ou duas linhas de código, pelo menos em teoria.
+
+Na prática nem sempre é claro qual é o "meio do programa" e nem sempre é possível verificá-lo. Não faz sentido contar linhas e encontrar o ponto médio exato. Em vez disso, pense sobre lugares no programa onde pode haver erros e lugares onde é fácil fazer um teste. Em seguida, escolha um ponto em que você acha que as chances são as mesmas que o erro esteja antes ou depois do teste.
 
 Glossário
 ---------
 
-Acomulador: Uma variável usada em um loop para adicionar ou acumular um resultado. \index{acumulador}
+Acumulador: Uma variável usada em um laço para adicionar ou acumular um resultado. \index{acumulador}
 Contador: Uma variável usada em um loop para contar o número de vezes que alguma coisa aconteceu. Nós inicializamos um contador em zero e incrementamos o contador cada vez que queremos "contar" alguma coisa. \index{contador}
 Decremento : Uma atualização que diminuiu o valor de uma variável. \index{decremento}
 Inicializar: Uma atribuição que fornece um valor para uma variável que vai ser atualizada.
-Incremento: Uma atualização que aumenta o valor de uma variável ( geralmente em um ) . \index{incremento}
-Loop infinito:  Um loop no qual a condição de término nunca é satisfeita, ou para qual não existe condição de término. \index{ loop infinito}
-Iteração: Execução repetida de um conjunto de instruções usando uma função que chama a si mesma ou um loop. \index {Iteração}
+Incremento: Uma atualização que aumenta o valor de uma variável (geralmente em um) . \index{incremento}
+Loop infinito:  Um loop cuja condição de término nunca é satisfeita, ou para qual não existe condição de término. \index{ loop infinito}
+Iteração: Execução repetida de um conjunto de instruções usando uma função que chama a si mesma ou um laço. \index {Iteração}
 
 
 Exercícios
 ---------
 
-**Exercício 1: Escreva um programa que repetitivamente lê números até que o usuário digite "feito". Desde que "feito" é digitado, mostre a soma total, a quantidade e a médida dos números digitados. Se o usuário digitar qualquer coisa que não seja um número, detecte o erro usando o `try`e o `except` e mostre na tela uma mensagem de erro e pule para o próximo número.**
+**Exercício 1: Escreva um programa que lê repetitivamente números até que o usuário digite "pronto". Quando "pronto" for digitado, mostre a soma total, a quantidade e a média dos números digitados. Se o usuário digitar qualquer coisa que não seja um número, detecte o erro usando o `try`e o `except` e mostre na tela uma mensagem de erro e pule para o próximo número.**
 
 ~~~~
 Digite um número: 4
@@ -431,10 +426,9 @@ Digite um número: 5
 Digite um número: dado errado
 Entrada Inválida
 Digite um número: 7
-Digite um número: feito
+Digite um número: pronto
 16 3 5.333333333333333
 ~~~~
 
-**Exercise 2: Escreva outro programa que pede por uma lista de números como o falado acima e no final ele mostra 
-o máximo e o mínimo dos números ao invés da média.**
+**Exercício 2: Escreva outro programa que pede por uma lista de números como mostrada acima e mostra, no final, o máximo e o mínimo dos números ao invés da média.**
 
