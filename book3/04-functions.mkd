@@ -98,7 +98,7 @@ converte ele em um inteiro, se for possível, ou reclama, caso contrário:
 ValueError: invalid literal for int() with base 10: 'Hello'
 ~~~
 
-`int` pode converter valores em pontos-flutuante em inteiros, mas não arredonda-os; ela trunca a parte fracionária:
+`int` pode converter valores em pontos-flutuante em inteiros, mas não arredonda-os; ela trunca a parte decimal:
 
 ~~~ {.python}
 >>> int(3.99999)
