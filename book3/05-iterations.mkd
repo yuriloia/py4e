@@ -267,17 +267,17 @@ Padrões de laço
 -------------
 
 Muitas vezes usamos um laço `for` ou `while` para percorrer
-uma lista de itens ou os conteúdos de um arquivo e nós estamos procurando por
+uma lista de itens ou conteúdos de um arquivo, neste caso nós estamos procurando por
 algo como o maior ou menor valor dos dados que nós percorremos.
 
 Esses laços são geralmente construídos:
 
--Inicializando uma ou mais variáveis antes que o laço comece
+-   Inicializando uma ou mais variáveis antes que o laço comece
 
--Realizando algum cálculo em cada item no corpo do laço, possivelmente
+-   Realizando algum cálculo em cada item no corpo do laço, possivelmente
     alterando as variáveis no corpo do loop
 
--Olhando para as variáveis resultantes quando o loop é concluído
+-   Olhando para as variáveis resultantes quando o loop é concluído
 
 Utilizaremos uma lista de números para demonstrar os conceitos e a
 construção destes padrões de loop.
@@ -321,8 +321,8 @@ Nem o laço de contagem nem o de soma são particularmente úteis na prática, p
 
 \index{laço!máximo}
 \index{laço!mínimo}
-\index{None special value}
-\index{special value!None}
+\index{None valor especial}
+\index{valor especial!None}
 
 Para achar o máximo valor em uma lista ou sequência, construímos a seguinte repetição:
 
@@ -346,10 +346,10 @@ Laço: 12 41
 Laço: 9 41
 Laço: 74 74
 Laço: 15 74
-Máximo: 74
+maximo: 74
 ~~~~
 
-A variável `maximo` é melhor considerada como o “maior valor que vimos até agora”. Antes da repetição, definimos `maximo` como a constante `None`. `None` é uma constante de valor especialque podemos armazenar em uma variável para marca-la como "vazia".
+A variável `maximo` é melhor considerada como o “maior valor que vimos até agora”. Antes da repetição, definimos `maximo` como a constante `None`. `None` é uma constante de valor especial que podemos armazenar em uma variável para marca-la como "vazia".
 
 Antes do início do laço, o maior valor que temos até agora é `None`, já que nós ainda não percorremos nenhum valor. Enquanto o laço está sendo executado, se o `maximo` for `None`, então nós pegamos o primeiro valor que vemos como o maior até agora. Você pode ver na primeira iteração quando o valor do `itervar` é 3, já que `maximo` é `None`, nós imediatamente definimos `maximo` como sendo 3.
 
