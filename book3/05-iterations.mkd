@@ -321,7 +321,7 @@ Nem o laço de contagem nem o de soma são particularmente úteis na prática, p
 
 \index{laço!máximo}
 \index{laço!mínimo}
-\index{None valor especial}
+\index{Valor especial None}
 \index{valor especial!None}
 
 Para achar o máximo valor em uma lista ou sequência, construímos a seguinte repetição:
@@ -333,7 +333,7 @@ for itervar in [3, 41, 12, 9, 74, 15]:
     if maximo is None or itervar > maximo :
         maximo = itervar
     print('Laço:', itervar, maximo)
-print('Máximo:', maximo)
+print('Maximo:', maximo)
 ~~~~
 
 Quando o programa é executado, a saída é a seguinte:
@@ -346,7 +346,7 @@ Laço: 12 41
 Laço: 9 41
 Laço: 74 74
 Laço: 15 74
-maximo: 74
+Maximo: 74
 ~~~~
 
 A variável `maximo` é melhor considerada como o “maior valor que vimos até agora”. Antes da repetição, definimos `maximo` como a constante `None`. `None` é uma constante de valor especial que podemos armazenar em uma variável para marca-la como "vazia".
@@ -386,14 +386,14 @@ def min(valores):
 
 Na versão da função para encontrar o menor valor, nós removemos todas os comandos `print`, de  modo a ser equivalente à função `min` que já está embutida no Python.
 
-Depuração 
+Debugging 
 -------------
-Ao começar a escrever programas maiores, você pode se encontrar gastando mais tempo com depuração. Mais código significa mais chances de cometer um erro e mais lugares para que erros se escondam.
+Ao começar a escrever programas maiores, você pode se encontrar gastando mais tempo com debugging. Mais código significa mais chances de cometer um erro e mais lugares para que erros se escondam.
 
-\index{depuração!por bisseção}
-\index{bisseção, depuração}
+\index{Debugging!por bisseção}
+\index{bisseção, debugging}
 
-Um modo de reduzir seu tempo de depuração é "depurar por bisseção". Por exemplo, se existes 100 linhas em seu programa e você verifica uma de cada vez, isso levaria 100 passos.
+Um modo de reduzir seu tempo de debugging é "depurar por bisseção". Por exemplo, se existes 100 linhas em seu programa e você verifica uma de cada vez, isso levaria 100 passos.
 
 Em vez disso, experimente quebrar o problema pela metade. Olhe para o meio do programa, ou perto dele, para um valor intermediário que você pode verificar.  Adicione o comando `print` (ou alguma outra coisa que tenha um efeito de verificação) e execute o programa.
 
