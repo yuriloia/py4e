@@ -397,35 +397,24 @@ valid links or end up with bad data.
 
 This can be solved by using a robust HTML parsing library.
 
-Parsing HTML using BeautifulSoup
---------------------------------
+Análise de HTML usando BeautifulSoup
+------------------------------------
 
 \index{BeautifulSoup}
 
-Even though HTML looks like XML^[The XML format is described in the next chapter.]
-and some pages are carefully
-constructed to be XML, most HTML is generally broken in ways that cause
-an XML parser to reject the entire page of HTML as improperly formed.
+Mesmo que HTML se pareça com XML^[O formato XML é descrito no próximo capítulo.] e algumas páginas são realmente construídas para serem XML, a maioria das páginas HTML é geralmente quebrada de forma que causaria à um analista de XML a rejeição inteira da página por ter um formato inapropriado.
 
-There are a number of Python libraries which can help you parse HTML and
-extract data from the pages. Each of the libraries has its strengths and
-weaknesses and you can pick one based on your needs.
+Há várias bibliotecas Python que podem te ajudar a analisar HTML e extrair dados das páginas.Cada uma das bibliotecas têm seus pontos fortes e fracos e você pode escolher uma baseado nas suas necessidades.
 
-As an example, we will simply parse some HTML input and extract links
-using the *BeautifulSoup* library. BeautifulSoup tolerates highly flawed
-HTML and still lets you easily extract the data you need. You can download and
-install the BeautifulSoup code from:
+Por exemplo, vamos simplesmente analisar algumas entradas HTML e extrair links usando a biblioteca BeautifulSoup. BeautifulSoup tolera HTML altamente falho e ainda é muito simples extrair os dados que você precisa. Você pode baixar e instalar o BeautifulSoup em:
 
 <https://pypi.python.org/pypi/beautifulsoup4>
 
-Information on installing BeautifulSoup with the Python Package Index tool `pip`
-is available at:
+Informações sobre a instalação do BeautifulSoup com a ferramenta pip do Python Package Index podem ser encontradas em:
 
 <https://packaging.python.org/tutorials/installing-packages/>
 
-We will use `urllib` to read the page and then use
-`BeautifulSoup` to extract the `href` attributes
-from the anchor (`a`) tags.
+Nós vamos usar `urllib` para ler a página e então usaremos `BeautifulSoup` para extrair os atributos `href` das tags âncora (`a`).
 
 \index{BeautifulSoup}
 \index{HTML}
@@ -433,12 +422,9 @@ from the anchor (`a`) tags.
 
 \VerbatimInput{../code3/urllinks.py}
 
-The program prompts for a web address, then opens the web page, reads
-the data and passes the data to the BeautifulSoup parser, and then
-retrieves all of the anchor tags and prints out the `href`
-attribute for each tag.
+O programa solicita um endereço web, então abre a página web, lê os dados e os passa para o analisador BeautifulSoup e, em seguida, recupera todas as tags âncora e imprime o atributo href de cada tag.
 
-When the program runs, it produces the following output:
+Quando o programa é executado, ele produz a seguinte saída:
 
 ~~~~
 Enter - https://docs.python.org
@@ -487,12 +473,9 @@ bugs.html
 http://sphinx.pocoo.org/
 ~~~~
 
-This list is much longer because some HTML anchor tags are relative
-paths (e.g., tutorial/index.html) or in-page references (e.g., '#')
-that do not include "http://" or "https://", which was a
-requirement in our regular expression.
+Essa lista é muito mais longa porque algumas tags âncora são caminhos relativos (e.g., tutorial/index.html) ou referências in-page (por exemplo, '#') que não incluem "http://" ou "https://", que era um requisito em nossa expressão regular.
 
-You can use also BeautifulSoup to pull out various parts of each tag:
+Você também pode usar o BeautifulSoup para extrair várias partes de cada tag:
 
 \VerbatimInput{../code3/urllink2.py}
 
@@ -506,21 +489,16 @@ Content: ['\nSecond Page']
 Attrs: [('href', 'http://www.dr-chuck.com/page2.htm')]
 ~~~~
 
-`html.parser` is the HTML parser included in the standard Python 3 library.
-Information on other HTML parsers is available at:
+`html.parser` é o analisador de HTML incluído na biblioteca padrão do Pyhton 3. Informações sobre outros analisadores de HTML estão disponíveis em:
 
 <http://www.crummy.com/software/BeautifulSoup/bs4/doc/#installing-a-parser>
 
-These examples only begin to show the power of BeautifulSoup when it
-comes to parsing HTML.
+Esses exemplos só começam a mostrar o poder do BeautifulSoup quando se trata de analisar HTML.
 
-Bonus section for Unix / Linux users
-------------------------------------
+Seção bônus para usuários Unix / Linux
+--------------------------------------
 
-If you have a Linux, Unix, or Macintosh computer, you probably have
-commands built in to your operating system that retrieves both plain
-text and binary files using the HTTP or File Transfer (FTP) protocols.
-One of these commands is `curl`:
+Se você tem um computador Linux, Unix, ou Macintosh, você provavelmente tem no seu sistema operacional comandos incorporados que recuperam tanto textos simples quanto arquivos binários usando o HTTP ou Protocolos de transferência de arquivos (FTP).Um Destes comandos é `curl`:
 
 \index{curl}
 
@@ -528,16 +506,9 @@ One of these commands is `curl`:
 $ curl -O http://www.py4e.com/cover.jpg
 ~~~~
 
-The command `curl` is short for "copy URL" and so the two
-examples listed earlier to retrieve binary files with `urllib`
-are cleverly named `curl1.py` and `curl2.py` on
-[www.py4e.com/code3](http://www.py4e.com/code3) as
-they implement similar functionality to the `curl` command.
-There is also a `curl3.py` sample program that does this task
-a little more effectively, in case you actually want to use this pattern
-in a program you are writing.
+O comando `curl`é a abreviação para "copy URL" e, portanto, os dois exemplos listados anteriormente para recuperar arquivos binários com `urllib` são habilmente denominados `curl1.py` e `curl2.py` em www.py4e.com/code3, pois implementam uma funcionalidade semelhante ao comando `curl`. Há também um exemplo de programa `curl3.py` que faz essa tarefa de forma um pouco mais eficaz, caso você queira realmente usar esse padrão em um programa que está escrevendo.
 
-A second command that functions very similarly is `wget`:
+Um outro comando que funciona de maneira muito similar é `wget`:
 
 \index{wget}
 
@@ -545,8 +516,7 @@ A second command that functions very similarly is `wget`:
 $ wget http://www.py4e.com/cover.jpg
 ~~~~
 
-Both of these commands make retrieving webpages and remote files a
-simple task.
+Ambos os comandos tornam a recuperação de páginas da Web e arquivos remotos uma tarefa simples.
 
 Glossary
 --------
