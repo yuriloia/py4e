@@ -284,13 +284,13 @@ True
 False
 ~~~~
 
-Comparação de string
+Comparação de strings
 -----------------
 
 \index{string!comparação}
 \index{comparação!string}
 
-Os operadores de comparação trabalham em strings. Para observar se duas cadeias são iguais:
+Os operadores de comparação funcionam em strings. Para verificar se duas delas são iguais:
 
 ~~~~ {.python}
 if palavra == 'banana':
@@ -308,19 +308,19 @@ else:
     print('Certo, bananas.')
 ~~~~
 
-O Python não manipula letras maiúsculas e minúsculas do mesmo modo que as pessoas. Assim, todas as letras maiúsculas vêm antes de todas as letras minúsculas, dessa forma:
+O Python não manipula letras maiúsculas e minúsculas do mesmo modo que as pessoas. Para ele, todas as letras maiúsculas vêm antes de todas as letras minúsculas, sendo assim:
 
 ~~~~
 Sua palavra, Banana, vem antes de banana.
 ~~~~
 
-Uma maneira comum de resolver esse problema é converter sequências de caracteres em um formato padrão, como todas as minúsculas, antes de executar a comparação. Tenha isso em mente caso você tenha que se defender contra um homem armado com uma Banana.
+Uma maneira comum de resolver esse problema é converter as sequências de caracteres em um formato padrão (por exemplo, todas minúsculas) antes de executar a comparação. Tenha isso em mente caso você tenha que se defender contra um homem armado com uma Banana.
 
-Métodos de Strings
+Métodos da String
 ---------------------------
-Strings são exemplos de *objetos* no Python. Um objeto contém tanto a informação (a própria string), como *métodos*, que são funções eficientes as quais são construídas dentro do objeto e são disponíveis em qualquer *instância* do objeto.
+Strings são exemplos de *objetos* no Python. Um objeto contém tanto a informação (a própria string), como *métodos*, que são funções eficientes construídas dentro do objeto e disponíveis em qualquer *instância* do mesmo.
 
-Python tem a função chamada `dir` que lista os métodos disponíveis a este objeto. A função `type` mostra o tipo do objeto e a função `dir` mostra os métodos disponíveis.
+Python possui uma função chamada `dir`, que lista os métodos disponíveis em um objeto. A função `type` mostra o tipo do objeto e a função `dir` mostra os métodos disponíveis.
 
 ~~~~ {.python}
 >>> coisa = 'Olá Mundo'
@@ -344,21 +344,23 @@ capitalize(...)
 
     Return a capitalized version of S, i.e. make the first character
     have upper case and the rest lower case.
+   (Retorna uma versão capitalizada de S, isto é, torna o primeiro
+    caractere maiúsculo e o restante minúsculo.)
 >>>
 ~~~~
 
-Você pode usar o comando `help` para ter acesso a uma simples documentação sobre o método. Uma melhor fonte de documentação para métodos de strings pode ser encontrada em:  https://docs.python.org/library/stdtypes.html#string-methods.
+Você pode usar o comando `help` para ter acesso a uma simples documentação sobre o método. Uma melhor fonte de documentação para os métodos da string pode ser encontrada em:  https://docs.python.org/library/stdtypes.html#string-methods.
 
-Chamar um `método` é similar a chamar uma função (recebe argumentos e retorna um valor) mas a sintaxe é diferente. Nó chamamos um método anexando o nome do método ao nome da variável usando o ponto como delimitador.
+Chamar um `método` é similar a chamar uma função (recebe argumentos e retorna um valor), mas a sintaxe é diferente. Chamamos um método anexando o nome dele ao nome da variável usando o ponto como delimitador.
 
-Por exemplo, o método `upper` recebe a string e retorna uma nova string com todas as letras em maiúsculo:
+Por exemplo, o método `upper` recebe uma string e retorna uma nova com todas as letras em maiúsculo:
 
-\index{method}
-\index{string!method}
+\index{método}
+\index{string!método}
 
-Em vez da sintaxe da função `upper(palavra)`, é usado a sintaxe do método `palavra.upper()`.
+Em vez da sintaxe de função `upper(palavra)`, é usado a sintaxe de método `palavra.upper()`.
 
-\index{dot notation}
+\index{operador de ponto}
 
 ~~~~ {.python}
 >>> palavra = 'banana'
@@ -367,15 +369,15 @@ Em vez da sintaxe da função `upper(palavra)`, é usado a sintaxe do método `p
 BANANA
 ~~~~
 
-Esta forma, utilizando o ponto, especifica o nome do método, `upper`, e o nome da string em que o método está sendo utilizado, `palavra`. Os parênteses vazios indicam que o método não recebe argumento.
+Essa notação, utilizando o ponto, especifica o nome do método, `upper`, e o nome da string em que o método está sendo utilizado, `palavra`. Os parênteses vazios indicam que o método não recebe argumentos.
 
-\index{parentheses!empty}
+\index{parênteses!vazios}
 
 A chamada de um método é denotada por *invocação*. Nesse caso, nós devemos dizer que estamos invocando `upper` em `palavra`.
 
-\index{invocation}
+\index{invocação}
 
-Por exemplo, existe um método para string chamado `find` que procura pela posição de uma string dentro de outra:
+Por exemplo, existe um método na string chamado `find` que procura pela posição de uma string dentro de outra:
 
 ~~~~ {.python}
 >>> palavra = 'banana'
@@ -395,8 +397,8 @@ O método `find` pode encontrar substrings, assim como caracteres:
 
 O método pode receber como segundo argumento o índice onde deve começar:
 
-\index{optional argument}
-\index{argument!optional}
+\index{argumento opcional}
+\index{argumento!opcional}
 
 ~~~~ {.python}
 >>> palavra.find('na', 3)
@@ -421,7 +423,7 @@ True
 False
 ~~~~
 
-Você vai notar que `startswith` requer caixa para combinar, então, às vezes, nós pegamos uma linha e a mapeamos toda em caixa baixa, usando o método `lower`, antes de fazer qualquer checagem.
+Você vai notar que `startswith` requer que ambos os caracteres comparados estejam em maiúsculo ou em minúsculo para combinar. Então, às vezes, nós pegamos uma linha e a mapeamos toda em caixa baixa, usando o método `lower`, antes de fazer qualquer checagem.
 
 ~~~~ {.python}
 >>> linha = 'Tenha um bom dia'
@@ -433,32 +435,32 @@ False
 True
 ~~~~
 
-Nesse último exemplo, o método `lower` é chamado e então nós usamos `startswith` para ver se o resultado da string em letras minúsculas começa com a letra "t". Enquanto tomarmos cuidado com a ordem, nós podemos chamar múltiplos métodos em uma simples expressão.
+Nesse último exemplo, o método `lower` é chamado e então nós usamos `startswith` para ver se a versão em letras minúsculas da string começa com a letra "t". Enquanto tomarmos cuidado com a ordem, nós podemos chamar múltiplos métodos em uma simples expressão.
 
-\index{count method}
-\index{method!count}
+\index{método count}
+\index{método!count}
 
-**Exercício 4: Existe um método de string chamado `count` que é similar a função usada no exercício anterior. Leia a documentação desse método em:
+**Exercício 4: Existe um método na string chamado `count` que é similar à função usada no exercício anterior. Leia a documentação desse método em:
 
 <https://docs.python.org/library/stdtypes.html#string-methods> 
 
-Escreva uma invocação que conta o números de vezes que a letra "a" aparece em "banana**
+Escreva uma invocação que conta o número de vezes que a letra "a" aparece em "banana”.**
 
 Particionando strings
 ---------------
 
-Frequentemente, nós precisamos analisar o que temos dentro de uma string e encontrar uma substring.
-Por exemplo se nos for apresentado a sequência formatados a seguir:
+Frequentemente, nós precisamos analisar o que há dentro de uma string e encontrar uma substring.
+Por exemplo, se nos for apresentada uma sequência de linhas formatadas da seguinte forma:
 
-`From stephen.marquard@`*` uct.ac.za`*` Sat Jan  5 09:14:16 2008`
+`From stephen.marquard@`*` uct.ac.za`*` Sat Jan  5 09:14:16 2008`
 
-e nós quisermos desconsiderar somente a segunda metade do endereço (i.e.,`uct.ac.za`)
-de cada linha, nó podemos fazer isso utilizando o 
-método(a função?) `find` e o fatiamento de strings.
+e nós quisermos particionar somente a segunda metade do endereço (i.e.,`uct.ac.za`)
+de cada linha, podemos fazer isso utilizando o 
+método `find` e o fatiamento de strings.
 
 Primeiramente, acharemos a posição do sinal arroba (@) na string.
-Então acharemos a posição do primeiro espaço *após* o arroba.
-Só então utilizaremos o fatiamento de strings para extrair a parte da string que estamos buscando.
+Depois, acharemos a posição do primeiro espaço *após* o arroba.
+Só então utilizaremos o fatiamento para extrair a parte da string que estamos buscando.
 
 ~~~~ {.python}
 >>> data = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
@@ -474,30 +476,30 @@ uct.ac.za
 >>>
 ~~~~
 
-Utilizamos a versão do método (da função?) `find` que nos permite
-especificar a posição na string que queremos `find`(encontrar) para
+Utilizamos a versão do método `find` que nos permite
+especificar a posição na string onde queremos 
 começar a busca. Quando fatiamos a string, extraímos os caracteres de
-"um afrente do sinal arroba até o ,*mas não incluindo*, o caractere espaço".
+"um a frente do sinal arroba até o caractere espaço, *sem incluí-lo*".
 
-A documentação para o método(a função) `find` está disponível em
+A documentação para o método `find` está disponível em
 
 <https://docs.python.org/library/stdtypes.html#string-methods>.
 
-Operador de Formato
+Operador de Formatação
 ---------------
 
-\index{format operator}
-\index{operator!format}
+\index{operador de formatação}
+\index{operador!formatação}
 
-O *operador de formato* `%` nos permite construir strings, substituindo partes destas strings pela informação contidas em variáveis. Quando aplicamos à inteiros, `%` é um operador de módulo. Porém, quando o primeiro operando é uma string, `%` é um operador de formato.
+O *operador de formatação* `%` nos permite construir strings, substituindo partes destas strings pela informação contida em variáveis. Quando aplicamos à inteiros, `%` é o operador de módulo. Porém, quando o primeiro operando é uma string, `%` é o operador de formatação.
 
-\index{format string}
+\index{string de formatação}
 
-O primeiro operando é o *string de formato*, que contém uma ou mais *sequências de formato* que especificam como o segundo operando é formatado. O resultado é uma string.
+O primeiro operando é a *string de formatação*, que contém uma ou mais *sequências de formatação* que especificam como o segundo operando é formatado. O resultado é uma string.
 
-\index{format sequence}
+\index{sequência de formatação}
 
-Por exemplo, o formato de sequência `%d` significa que o segundo operando deve ter o formato de um inteiro ("d" significa "decimal"):
+Por exemplo, a sequência de formatação `%d` significa que o segundo operando deve ser formatado como um número inteiro ("d" significa "decimal"):
 
 ~~~~ {.python}
 >>> camelos = 42
@@ -505,40 +507,42 @@ Por exemplo, o formato de sequência `%d` significa que o segundo operando deve 
 '42'
 ~~~~
 
-O resultado é a string '42', que não é pra ser confundida com o inteiro de valor 42.
+O resultado é a string '42', que não é para ser confundida com o valor inteiro 42.
 
-Uma sequência de formato pode aparecer em qualquer lugar dentro de uma string, no intuito de você alocar um valor em uma frase:
+Uma sequência de formatação pode aparecer em qualquer lugar dentro de uma string, te permitindo alocar um valor em uma frase:
 
 ~~~~ {.python}
->>> camels = 42
+>>> camelos = 42
 >>> 'Eu vi %d camelos.' % camelos
 'Eu vi 42 camelos.'
 ~~~~
 
-Se existe mais de uma sequência de formato em uma string, o segundo argumento tem que ser uma tupla ^[Uma tupla é uma sequência de valores separados por vírgulas dentro de um par de parênteses. Nós vamos tratar sobre tuplas no Capítulo 10]. Cada sequência de formato é combinada com um elemento da tupla, em ordem.
+Se existe mais de uma sequência de formatação em uma string, o segundo argumento tem que ser uma tupla ^[Uma tupla é uma sequência de valores separados por vírgulas dentro de um par de parênteses. Nós vamos tratar sobre tuplas no Capítulo 10]. Cada uma das sequências é combinada com um elemento da tupla, em ordem.
 
-O seguinte exemplo usa `%d` para formatar um inteiro, `%g` para formatar um número de ponto flutuante (não pergunte o por que), e `%s` para formatar uma string:
+O seguinte exemplo usa `%d` para formatar um inteiro, `%g` para formatar um número de ponto flutuante (não pergunte o porquê), e `%s` para formatar uma string:
 
 ~~~~ {.python}
 >>> 'Em %d anos eu vi %g %s.' % (3, 0.1, 'camelos')
 'Em 3 anos eu vi 0.1 camelos.'
 ~~~~
 
-O número de elementos em uma tupla deve ser igual ao número de sequências de formato em uma string. Os tipos dos elementos também devem ser iguais aos tipos destas sequências:
+O número de elementos na tupla deve ser igual ao número de sequências de formatação na string. Os tipos dos elementos também devem corresponder aos tipos das sequências:
 
-\index{exception!TypeError}
+\index{exceção!TypeError}
 \index{TypeError}
 
 ~~~~ {.python}
 >>> '%d %d %d' % (1, 2)
 TypeError: not enough arguments for format string
+          (argumentos insuficientes para a string de formatação)
 >>> '%d' % 'reais'
 TypeError: %d format: a number is required, not str
+          (formatação %d: um número é requerido, não uma str)
 ~~~~
 
-No primeiro exemplo, não tem o número de elementos suficientes; no segundo, o elemento é de um outro tipo. 
+No primeiro exemplo, não há elementos suficientes; no segundo, o tipo do elemento é incorreto.
 
-O operador de formato é poderoso, mas pode ser difícil de se usar. Você pode ler mais sobre em:
+O operador de formatação é poderoso, mas pode ser difícil de se usar. Você pode ler mais sobre em:
 
 <https://docs.python.org/library/stdtypes.html#printf-style-string-formatting>.
 
@@ -549,42 +553,44 @@ Debugging
 
 Uma habilidade que você deveria desenvolver ao programar é a de sempre
 se perguntar, "O que poderia dar errado aqui?" ou, de maneira semelhante, "Qual loucura o usuário poderia fazer para gerar um problema
-no nosso (aparentemente) programa perfeito?"
+no nosso programa (aparentemente) perfeito?"
 
-Por exemplo, observe o programa que utilizamos para dmeonstrar o laço `while` no capítulo de iterações:
+Por exemplo, observe o programa que utilizamos para demonstrar o laço `while` no capítulo de iterações:
 
 \VerbatimInput{../code3/copytildone2.py}
 
 Observe o que acontece quando o usuário introduz uma linha vazia na entrada:
 
 ~~~~ {.python}
-> hello there
-hello there
-> # don't print this
-> print this!
-print this!
+> Olá
+Olá
+> # não mostre isto
+> Mostre isto!
+Mostre isto!
 >
 Traceback (most recent call last):
   File "copytildone.py", line 3, in <module>
     if line[0] == '#':
 IndexError: string index out of range
+           (índice fora dos limites da string)
 ~~~~
 
-O código funciona bem até o aparecimento da linha vazia. Então não há o caractere da posição 0, logo temos um traceback (erro).
-Existem duas soluções para transformar a linha três em uma linha segura, mesmo que a linha esteja vazia.
+O código funciona bem até o aparecimento da linha vazia, pois não há o caractere da posição 0, o que resulta no traceback (erro).
+Existem duas soluções para transformar a terceira linha do código em uma linha “segura”, mesmo que a entrada seja vazia.
 
-Uma alternativa seria simplesmente utilizar o método (a função?) `startswith` 
+Uma alternativa seria simplesmente utilizar o método `startswith`, 
 que retorna `False` se a string estiver vazia.
 
 ~~~~ {.python}
 if line.startswith('#'):
 ~~~~
 
-\index{guardian pattern}
-\index{pattern!guardian}
+\index{padrão guardião}
+\index{padrão!guardião}
 
-Outra forma é a de assegurar escrevendo uma instrunção `if` utilizando um *guardian* pattern e tenha certeza de que a segunda
-expressão lógica será testada apenas se a string conter no mínimo 1 caractere:
+Outra forma seria escrever a instrução `if` utilizando um padrão *guardião*,
+ para assegurar que a segunda expressão lógica seja 
+testada apenas quando a string conter no mínimo 1 caractere:
 
 ~~~~ {.python}
 if len(line) > 0 and line[0] == '#':
@@ -594,9 +600,9 @@ Glossário
 --------
 
 contador
-:   Uma variável que é utilizada para contar algo. Geralmente é inicializada com zero e incrementada\index{contador}
+:   Uma variável que é utilizada para contar algo. Geralmente é inicializada com zero e incrementada. \index{contador}
 fatia
-:   Uma parte de uma string specificado por uma intervalo de índices.
+:   Uma parte de uma string especificada por uma intervalo de índices.
 \index{fatia}
 
 flag
@@ -604,12 +610,12 @@ flag
 \index{flag}
 
 imutável
-:   A propriedade de uma sequência na qual os items não podem ser atribuídos
+:   A propriedade de uma sequência cujos os itens não podem ser atribuídos ou alterados.
 \index{imutabilidade}
 
-index
-:   Um valor inteiro utilizado para selecionar um item em uma sequencia, como um caractere em uma string.
-\index{index}
+índice
+:   Um valor inteiro utilizado para selecionar um item em uma sequência, como um caractere em uma string.
+\index{índice}
 \index{}
 
 invocação
@@ -617,18 +623,18 @@ invocação
 \index{invocação}
 
 item
-:   Um dos valores em uma sequencia.
+:   Um dos valores em uma sequência.
 \index{item}
 
 método
-:   Uma função que é associada a um objeto e chamada utilizando uma notação com um ponto.
+:   Uma função que é associada a um objeto e chamada utilizando a notação com um ponto.
 \index{método}
 objeto
-:   Algo que uma variável pode se referir. Até o momento, você pode utilizar "objeto" e "valor" indistintamente.
+:   Algo ao qual uma variável pode se referir. Por agora, você pode utilizar "objeto" e "valor" indistintamente.
 \index{objeto}
 
 operador de formatação
-:   Um operador,`%`, que recebe o formato da string e uma enupla e gera uma string que inclui os elementos de uma enupla e formatados como especificados pela string.
+:   Um operador,`%`, que recebe uma string de formatação e uma tupla e gera uma string que inclui os elementos da tupla formatados conforme especificado pela string.
 \index{Operador de formatação}
 \index{Operador!formatação}
 
@@ -637,17 +643,16 @@ pesquisa
 \index{padrão de pesquisa}
 \index{padrão!pesquisa}
 
-sequencia
-:   Um conjunto ordenado; ou seja, um conjunto de valores os quais são identificados
-por um index inteiro.
-\index{sequencia}
+sequência
+:   Um conjunto ordenado; ou seja, um conjunto de valores em que cada elemento é identificado por um índice.
+\index{sequência}
 
-sequencia de formatação
-:   Uma sequencia de caracteres em uma string de formatação, como `%d`, que especificam como um valor é formatadao
-\index{sequencia de formatação}
+sequência de formatação
+:   Uma sequência de caracteres em uma string de formatação, como `%d`, que especificam como um valor deve ser formatado
+\index{sequência de formatação}
 
 string de formatação
-:   Uma string, utilizada com o operador de formatação, que contém a sequência de formatação.
+:   Uma string, utilizada com o operador de formatação, que contém sequências de formatação.
 \index{string de formatação}
 
 string vazia 
@@ -655,7 +660,7 @@ string vazia
 \index{string vazia}
 
 travessia
-:   Iterar através dos elementos de uma sequencia, realizando uma operação similar em cada um deles.
+:   Iterar através dos elementos de uma sequência, realizando uma operação similar em cada um deles.
 \index{travessia}
 
 Exercícios
@@ -664,16 +669,16 @@ Exercícios
 **Exercício 5: Utilize o seguinte código em Python que guarda uma string:**
 
 `str = 'X-DSPAM-Confidence: `**`0.8475`**`'`
-**Use a função `find` e o corte de strings para extrair a porção da string depois do sinal de dois pontos
-e se a funçaõ `float` para converter a string extraída em um número de ponto flutuante.**
+**Use a função `find` e o fatiamento de strings para extrair a porção da string depois do sinal de dois pontos
+e use a função `float` para converter a string extraída em um número de ponto flutuante.**
 
-\index{métodos de string}
+\index{métodos da string}
 \index{métodos!string}
 
-**Exercícios 6: Leia a documentação dos métodos de string em
+**Exercícios 6: Leia a documentação dos métodos da string em
 <https://docs.python.org/library/stdtypes.html#string-methods>
 Você pode querer experimentar alguns deles para ter certeza que você entendeu como eles funcionam. `strip` e `replace` são particularmente úteis.**
 
 **A documentação utiliza uma sintaxe que pode ser confusa. Por exemplo, em 
-`find(sub[, start[, end]])`, as chaves indicam argumentos opcionais, então, `sub` é necessário, mas `start` é opcional e se você incluir `start`, logo `end` é opcional.**
+`find(sub[, start[, end]])`, as chaves indicam argumentos opcionais, então, `sub` é necessário, mas `start` é opcional, e se você incluir `start`, logo `end` é opcional.**
 
