@@ -111,30 +111,30 @@ The rest of this chapter will define all of the above terms so make sure to
 come back after you finish the chapter and re-read the above paragraphs to
 check your understanding.
 
-Starting with programs
+Iniciando com programas
 ----------------------
 
-A program in its most basic form takes some input, does some processing, and
-produces some output.  Our elevator conversion program demonstrates a very
-short but complete program showing all three of these steps.
+Um programa em sua forma básica recebe algumas entradas, processa algumas informações e 
+produz algumas saídas. Nosso código do elevador apresenta um programa bem pequeno,
+porém completo, que mostra todos esses três passos.
 
 \VerbatimInput{../code3/elev.py}
 
-If we think a bit more about this program, there is the "outside world" and
-the program. The input and output aspects are where the program interacts
-with the outside world.  Within the program we have code and data to accomplish
-the task the program is designed to solve.
+Se analisarmos um pouco mais o código, existe o "mundo externo" e o programa.
+As expressões de entrada e saída são onde o programa interage com o mundo externo.
+Em posse do programa, temos o código e os dados para concluir as tarefas que o 
+programa foi feito para resolver.
 
 ![A Program](height=1.20in@../images/program)
 
-One way to think about object-oriented programming is that it separates
-our program into multiple "zones." Each zone contains some code and data
-(like a program) and has well defined interactions with the outside world
-and the other zones within the program.
+Uma forma de pensar acerca de programação orientada a objetos é que ela separa o 
+programa em multiplas "zonas". Cada zona contem parte do código e dos dados (como
+um programa) e tem interações bem definidas com o mundo real e com as outras partes do
+programa.
 
-If we look back at the link extraction application where we used the
-BeautifulSoup library, we can see a program that is constructed by connecting
-different objects together to accomplish a task:
+Se olharmos novamente para a aplicação da extração de link em que usamos a
+biblioteca BeautfulSoup, podemos ver um programa que está contruído por diferentes 
+conexões de objetos juntos para realizar a tarefa
 
 \index{BeautifulSoup}
 \index{HTML}
@@ -142,44 +142,43 @@ different objects together to accomplish a task:
 
 \VerbatimInput{../code3/urllinks.py}
 
-We read the URL into a string and then pass that into `urllib` to retrieve
-the data from the web.  The `urllib` library uses the `socket` library to
-make the actual network connection to retrieve the data. We take the string
-that `urllib` returns and hand it to BeautifulSoup for parsing.
-BeautifulSoup makes use of the object
-`html.parser`^[https://docs.python.org/3/library/html.parser.html] and returns an object.
-We call the `tags()` method on the returned object that returns a dictionary of tag
-objects. We loop through the tags and call the `get()` method for each tag
-to print out the `href` attribute.
+Nós lemos o URL na string e então passamos para o `urllib` para recuperação dos
+dados da internet. A biblioteca `urllib` usa a biblioteca `socket` para firmar a 
+conexão atual para recuperação dos dados. Captamos a string que o `urllib` retorna e
+enviamos para o BeautfulSoup analisar. BeautfulSoup utiliza o objeto
+`html.parser`^[https://docs.python.org/3/library/html.parser.html] e retorna um 
+objeto. Utilizamos o método `tags()` do objeto retornado para captar um dicionário
+de objetos tag. Nós iteramos os tags em acionamos o método `get()` para cada tag
+e mostramos em tela o atributo `href`,
 
-We can draw a picture of this program and how the objects work together.
+Nó podemos desenhar uma imagem desse programa e como os objetos trabalham juntos.
 
 ![A Program as Network of Objects](height=1.50in@../images/program-oo)
 
-The key here is not to understand perfectly how this program works but to see
-how we build a network of interacting objects and orchestrate the movement
-of information between the objects to create a program.  It is also important
-to note that when you looked at that program several chapters back, you could
-fully understand what was going on in the program without even realizing
-that the program was "orchestrating the movement of data between objects."
-It was just lines of code that got the job done.
+A intenção aqui não é entender perfeitamente como o programa funciona, mas ver como
+construímos uma rede de objetos interativos e como orquestrar o fluxo de informações
+entre os objetos para criar o programa. É também importante notar que quando 
+você olhou para o programa há alguns capítulos atrás, você conseguiu entender
+completamente o que estava acontecendo com o programa sem imaginar que ele estava 
+"orquestrando o movimento dos dados entre os objetos". Isso foram apenas linhas
+de código que completaram o trabalho.
 
-Subdividing a problem
+Subdividindo um problema
 ---------------------
 
-One of the advantages of the object-oriented approach is that it can
-hide complexity. For example, while we need to know how to use the
-`urllib` and BeautifulSoup code, we do not need to know how those libraries
-work internally. This allows us to focus on the part of the problem we need to
-solve and ignore the other parts of the program.
+Umas das vantagens da programação orientada a objetos é que ela consegue esconder
+a complexidade do código. Por exemplo, enquanto precisamos saber como usar os 
+códigos do `urllib` e BeautifulSoup, nós não precisamos saber como essas bibliotecas 
+funcionam internamente. Isso nos permite focar na resolução do problema e ignorar as
+outras partes do programa
 
 ![Ignoring Detail When Using an Object](height=1.50in@../images/program-oo-code)
 
-This ability to focus exclusively on the part of a program that we care about
-and ignore the rest is also helpful to the developers of the objects that we use.
-For example, the programmers developing BeautifulSoup do not need to
-know or care about how we retrieve our HTML page, what parts we want to
-read, or what we plan to do with the data we extract from the web page.
+Essa habilidade de focar exclusivamente na parte importante do programa e ignorar
+o resto também é útil para os desenvolvedores dos objetos que usamos. Por exemplo,
+desenvolvendo o BeautifulSoup os programadores não precisam saber ou se importar 
+como recuperamos nossa página HTML, que partes queremos ler ou o quais ou planos 
+que temos com os dados extraídos da página.
 
 ![Ignoring Detail When Building an Object](height=1.50in@../images/program-oo-bs4)
 
