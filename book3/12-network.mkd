@@ -520,69 +520,60 @@ Ambos os comandos tornam a recuperação de páginas da Web e arquivos remotos u
 
 Glossary
 --------
-
+aranha
+:   O ato de ferramentas de pesquisa na web recuperarem uma página e então
+    todas as outras relacionadas e assim sucessivamente até terem quase todas as páginas
+    na Internet que são utilizadas para construir os seus índices de pesquisa.
+\index{aranha}
 BeautifulSoup
-:   A Python library for parsing HTML documents and extracting data from
-    HTML documents that compensates for most of the imperfections in the
-    HTML that browsers generally ignore. You can download the
-    BeautifulSoup code from [www.crummy.com](http://www.crummy.com).
+:   Uma biblioteca de Python usada analisar documentos HTML e extrair dados destes que compensam a maioria
+    das imperfeições no HTML  que o navegador geralmente ignora. Você pode baixar o código do 
+    BeautifulSoup em  [www.crummy.com](http://www.crummy.com).
 \index{BeautifulSoup}
 
-port
-:   A number that generally indicates which application you are
-    contacting when you make a socket connection to a server. As an
-    example, web traffic usually uses port 80 while email traffic uses
-    port 25.
-\index{port}
+porta
+:   Um número que geralmente indica com qual aplicação você está se comunicando quando
+    faz uma conexão de soquete com um servidor. Como no exemplo, o tráfego da web usualmente
+    utiliza a porta 80 enquanto o tráfego de email utiliza a porta 25.
+\index{porta}
 
-scrape
-:   When a program pretends to be a web browser and retrieves a web
-    page, then looks at the web page content. Often programs are
-    following the links in one page to find the next page so they can
-    traverse a network of pages or a social network.
-\index{socket}
+Raspar
+:   Quando um programa pretende ser um navegador da web e recupera uma página e então olha para o conteúdo dela.
+    Frequentemente programas estão seguindo links em uma página para achar a próxima e assim atravessar uma rede de páginas
+    ou uma rede social.
+\index{raspar}
 
-socket
-:   A network connection between two applications where the applications
-    can send and receive data in either direction.
-\index{socket}
+soquete
+:   Uma rede de comunicações entre duas aplicações que podem enviar e receber
+    uma informação em qualquer direção.
+\index{soquete}
 
-spider
-:   The act of a web search engine retrieving a page and then all the
-    pages linked from a page and so on until they have nearly all of the
-    pages on the Internet which they use to build their search index.
-\index{spider}
 
-Exercises
+
+Exercícios
 ---------
 
-**Exercise 1: Change the socket program `socket1.py` to prompt
-the user for the URL so it can read any web page. You can use
-`split('/')` to break the URL into its component parts so you
-can extract the host name for the socket `connect` call. Add
-error checking using `try` and `except` to handle
-the condition where the user enters an improperly formatted or
-non-existent URL.**
+**Exercício 1: Altere o programa de soquete `socket1.py` pR pedir 
+ao usuário a URL para que então possa ler qualquer página da web.Você
+pode usar `split('/')` para quebrar a URL em suas componentes para que
+então possa extrair o nome do hospedeiro para que o soquete `connect` chame.
+Adicione tratamento de erro usando `try` e `except` para lidar com a condição
+do usuário digitar uma URL formatada incorretamente ou uma não existente**
 
-**Exercise 2: Change your socket program so that it counts the number of
-characters it has received and stops displaying any text after it has
-shown 3000 characters. The program should retrieve the entire document
-and count the total number of characters and display the count of the
-number of characters at the end of the document.**
+**Exercício 2: Altere seu programa de soquete para que ele conte o número de
+caracteres que recebeu e pare de mostrar qualquer texto depois que mostrar 3000
+caracteres. O programa deve recuperar o documento inteiro e contar o número total de caracteres
+e mostrar o resultado da contagem no final do documento.**
 
-**Exercise 3: Use `urllib` to replicate the previous exercise
-of (1) retrieving the document from a URL, (2) displaying up to 3000
-characters, and (3) counting the overall number of characters in the
-document. Don't worry about the headers for this exercise, simply show
-the first 3000 characters of the document contents.**
+**Exercício 3: Use `urllib` para replicar o exercício anterior (1) 
+recuperando um documento de uma URL, (2) mostrando até 3000 caracteres e (3) contando o total destes no documento.
+Não se preocupe sobre os cabeçalhos para esse exercício, apenas mostre os 3000 primeiros caracteres
+do contepudo do documento.**
 
-**Exercise 4: Change the `urllinks.py` program to extract and
-count paragraph (p) tags from the retrieved HTML document and display
-the count of the paragraphs as the output of your program. Do not
-display the paragraph text, only count them. Test your program on
-several small web pages as well as some larger web pages.**
+**Exercício 4: Altere o programa `urllinks.py` para extrair e contar as _tags_ de parágrafos (p) do documento de HTML
+recuperado e mostrar a contagem dos parágrafos como uma saída do seu programa.Não mostre o conteúdo, apenas conte-os.
+Teste seu programa em várias páginas da web pequenas e também em algumas maiores.**
 
-**Exercise 5: (Advanced) Change the socket program so that it only shows
-data after the headers and a blank line have been received. Remember
-that `recv` receives characters (newlines and all), not lines.**
+**Exercício 5: (Avançado) Altere o programa de soquete para que ele apenas mostre uma informação depois
+dos cabeçalhos e uma linha em branco ser recebida. Lembre que `recv` recebe caracteres (_newlines_ e etc), não linhas.**
 
