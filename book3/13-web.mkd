@@ -290,60 +290,34 @@ XML
 \index{XML}
 \index{eXtensible Markup Language}
 
-Application 1: Google geocoding web service
+Aplicação 1: Web service de geocódigo Google
 ----------------------------
 
 \index{Google}
 \index{geocoding}
 \index{web service}
 
-Google has an excellent web service that allows us to make use of their
-large database of geographic information. We can submit a geographical
-search string like "Ann Arbor, MI" to their geocoding API and have
-Google return its best guess as to where on a map we might find our
-search string and tell us about the landmarks nearby.
+A Google tem um excelente serviço web que nos permite fazer uso de sua grande base de dados em relação à informação geográfica. Podemos enviar uma string de busca geográfica como: “Ann Arbor, MI” para sua API de geocódigo e fazer com que a Google nos retorne os melhores palpites para onde, no mapa, podemos encontrar nossa string de busca e nos contar sobre locais próximos
 
-The geocoding service is free but rate limited so you cannot make
-unlimited use of the API in a commercial application. But if you have
-some survey data where an end user has entered a location in a
-free-format input box, you can use this API to clean up your data quite
-nicely.
+O serviço de geocódigo é de graça, porém tem taxa limitada, de forma que você não poderá fazer uso ilimitado da API em uma aplicação comercial. Contudo, se você tiver alguns dados de pesquisa, em que o usuário final inseriu a localização em uma caixa de entrada de formato livre, essa API pode ser utilizada ajustar os dados da string de busca.
 
-*When you are using a free API like Google's geocoding API, you
-need to be respectful in your use of these resources. If too many people
-abuse the service, Google might drop or significantly curtail its free
-service.*
+*Quando se está utilizando uma API gratuita como a API de geocódigo da Google, você precisa fazer uso consciente destes recursos. Se muitas pessoas abusarem do serviço, a Google pode desistir ou reduzir significativamente seus serviços gratuitos.*
 
 \index{rate limiting}
 
-You can read the online documentation for this service, but it is quite
-simple and you can even test it using a browser by typing the following
-URL into your browser:
+Você pode ler a documentação online para este serviço, porém é bem simples e você pode até fazer o teste usando um navegador, basta digitar a URL a seguir:
 
 [http://maps.googleapis.com/maps/api/geocode/json?address=Ann+Arbor%2C+MI](http://maps.googleapis.com/maps/api/geocode/json?address=Ann+Arbor%2C+MI)
 
-Make sure to unwrap the URL and remove any spaces from the URL before
-pasting it into your browser.
-
-The following is a simple application to prompt the user for a search
-string, call the Google geocoding API, and extract information from the
-returned JSON.
+A seguir temos uma simples aplicação para solicitar ao usuário uma string de busca, chamar a API de geocódigo da Google e extrair as informações do JSON retornado.
 
 \VerbatimInput{../code3/geojson.py} 
 
-The program takes the search string and constructs a URL with the search
-string as a properly encoded parameter and then uses
-`urllib` to retrieve the text from the Google geocoding
-API. Unlike a fixed web page, the data we get depends on the parameters
-we send and the geographical data stored in Google's servers.
+O programa pega uma string de busca e constrói uma URL com essa string como parâmetro corretamente codificado, e então usa a `urllib`para recuperar o texto da API de geocódigo. Diferentemente de uma página web fixa, a informação que recebemos depende dos parâmetros que enviamos e dos dados geográficos armazenados nos servidores da Google. 
 
-Once we retrieve the JSON data, we parse it with the
-`json` library and do a few checks to make sure that we
-received good data, then extract the information that we are looking
-for.
+Uma vez que tenhamos recebida os dado JSON, analisamos ela com a biblioteca `json` e fazemos alguns teste para confirmar que recebemos bons dados, por fim extraímos as informações que procuramos. 
 
-The output of the program is as follows (some of the returned JSON has
-been removed):
+A saída do programa é como a mostrada a seguir (parte do JSON foi retirada):
 
 ~~~~
 $ python3 geojson.py
@@ -395,41 +369,25 @@ You can download
 [www.py4e.com/code3/geoxml.py](http://www.py4e.com/code3/geoxml.py) to
 explore the XML variant of the Google geocoding API.
 
-**Exercise 1: Change either**
-[**geojson.py**](http://www.py4e.com/code3/geojson.py) **or**
-[**geoxml.py**](http://www.py4e.com/code3/geoxml.py)
-**to print out the two-character country code from the retrieved data.
-Add error checking so your program does not traceback if the country
-code is not there. Once you have it working, search for
-"Atlantic Ocean" and make sure it can handle locations
-that are not in any country.**
+**Exercício 1: Altere um dos arquivos** [**geojson.py**](http://www.py4e.com/code3/geojson.py) **ou**
+[**geoxml.py**](http://www.py4e.com/code3/geoxml.py) **para que a saída do programa mostre os dois caracteres referentes ao código de país dos dados recebidos. Adicione verificadores de erro para que o programa não informe um traceback em caso de não haver código de país. Uma vez que o programa esteja funcionando, procure por “Oceano Atlântico” e confirme que o programa pode lidar com localizações que não pertencem a nenhum país.** 
 
-Application 2: Twitter
+Aplicação 2: Twitter
 ----------------------
 
-As the Twitter API became increasingly valuable, Twitter went from an
-open and public API to an API that required the use of OAuth signatures
-on each API request. 
+Como a API Twitter vem se tornado cada vez mais valiosa, o Twitter passou de uma API aberta e pública para uma API que requer o uso de assinaturas OAuth em cada requisição da API. 
 
-For this next sample program, download the files
-*twurl.py*, *hidden.py*, *oauth.py*, and *twitter1.py* from
-[www.py4e.com/code](http://www.py4e.com/code3)
-and put them all in a folder on your computer.
+Para nosso próximo programa, faça o download dos arquivos *twurl.py*, *hidden.py*, *oauth.py*, e *twitter1.py* de [www.py4e.com/code](http://www.py4e.com/code3) e os deixe na mesma pasta em seu computador.
 
-To make use of these programs you will need to have a Twitter account,
-and authorize your Python code as an application, set up a key, secret,
-token and token secret. You will edit the file
-*hidden.py* and put these four strings into the
-appropriate variables in the file:
+Para fazer uso deste programa, você precisará ter uma conta no Twitter e autorizar seu código Python com uma aplicação, definir uma key, secret, token e token secret. Você deve editar o arquivo *hidden.py* e por essas quatro strings nas variáveis adequadas, dentro do arquivo:
 
 \VerbatimInput{../code3/hidden.py} 
 
-The Twitter web service are accessed using a URL like this:
+O web service do Twitter é acessado utilizando uma URL como esta:
 
 <https://api.twitter.com/1.1/statuses/user_timeline.json>
 
-But once all of the security information has been added, the URL will
-look more like:
+Porém, uma vez que as informações de segurança tenham sido adicionadas, a URL se parecerá mais como esta:
 
 ~~~~
 https://api.twitter.com/1.1/statuses/user_timeline.json?count=2
@@ -439,26 +397,18 @@ https://api.twitter.com/1.1/statuses/user_timeline.json?count=2
 &oauth_signature_method=HMAC-SHA1
 ~~~~
 
-You can read the OAuth specification if you want to know more about the
-meaning of the various parameters that are added to meet the security
-requirements of OAuth.
+Você pode ler a especificação OAuth se quiser saber mais sobre o significado dos diversos parâmetros que foram adicionados ao cumprir os requerimentos de segurança do OAuth.
 
-For the programs we run with Twitter, we hide all the complexity in the
-files *oauth.py* and *twurl.py*. We simply
-set the secrets in *hidden.py* and then send the desired
-URL to the *twurl.augment()* function and the library
-code adds all the necessary parameters to the URL for us.
+Para os programas executados com Twitter, escondemos toda a complexidade nos arquivos *oauth.py* e *twurl.py*. Simplesmente definimos os secrets em *hidden.py* e então enviamos a URL desejada para a função *twurl.augment()* e o código da biblioteca adiciona todos os parâmetros à URL por nós.
 
-This program retrieves the timeline for a
-particular Twitter user and returns it to us in JSON format in a string.
-We simply print the first 250 characters of the string:
+Este programa requere a timeline para um usuário em particular do Twitter e a retorna numa string em formato JSON. Simplesmente mostramos os primeiros 250 caracteres da string: 
 
 \VerbatimInput{../code3/twitter1.py} 
 \begin{trinketfiles}
 ../code3/twurl.py
 \end{trinketfiles}
 
-When the program runs it produces the following output:
+Quando o programa for executado, produzirá a seguinte saída:
 
 ~~~~
 Enter Twitter Account:drchuck
@@ -482,31 +432,18 @@ Remaining 177
 Enter Twitter Account:
 ~~~~
 
-Along with the returned timeline data, Twitter also returns metadata
-about the request in the HTTP response headers. One header in
-particular, `x-rate-limit-remaining`, informs us how many
-more requests we can make before we will be shut off for a short time
-period. You can see that our remaining retrievals drop by one each time
-we make a request to the API.
+Juntamente com os dados da timeline, o Twitter também nos entrega os metadados em relação à solicitação nos headers da resposta HTTP. Um header em particular, `x-rate-limit-remaining`, nos informa a quantidade de requisições que ainda podem ser feitas antes de sermos desconectados. Podemos observar que nossa quantidade de requisições restantes diminui em uma unidade a cada requisição à API.
 
-In the following example, we retrieve a user's Twitter friends, parse
-the returned JSON, and extract some of the information about the
-friends. We also dump the JSON after parsing and "pretty-print" it with
-an indent of four characters to allow us to pore through the data when
-we want to extract more fields.
+No exemplo a seguir, recebemos informações sobre os amigos de um usuário, no Twitter. Em seguida, analisamos o conteúdo em JSON e extraímos algumas informações sobre os amigos. Ainda, desconsideramos o JSON após análise e mostramos a informação “bonitinha”, com identação de quatro caracteres para permitir examinar os dados quando quisermos extrair mais campos.
 
 \VerbatimInput{../code3/twitter2.py} 
 \begin{trinketfiles}
 ../code3/twurl.py
 \end{trinketfiles}
 
-Since the JSON becomes a set of nested Python lists and dictionaries, we
-can use a combination of the index operation and `for` loops
-to wander through the returned data structures with very little Python
-code.
+Já que o JSON se torna um conjunto de listas e dicionários Python aninhados, podemos usar uma combinação de operação indexada e laços `for` para passeamos pela estrutura de dados retornada, usando um código Python bem pequeno.
 
-The output of the program looks as follows (some of the data items are
-shortened to fit on the page):
+A saída do programa é como a mostrada a seguir (alguns dos dados foram encurtados para caber na página):
 
 ~~~~
 Enter Twitter Account:drchuck
@@ -561,18 +498,8 @@ scweeker
 Enter Twitter Account:
 ~~~~
 
-The last bit of the output is where we see the for loop reading the five
-most recent "friends" of the *@drchuck* Twitter account
-and printing the most recent status for each friend. There is a great
-deal more data available in the returned JSON. If you look in the output
-of the program, you can also see that the "find the friends" of a
-particular account has a different rate limitation than the number of
-timeline queries we are allowed to run per time period.
+A última parte da saída é onde vemos o laço for lendo os cinco “amigos” mais recentes da conta *@drchuck* no Twitter e mostramos o status mais recente para cada um desses amigos. Muito mais dados estão disponíveis no JSON obtido. Se você olhar na saída do programa, também poderá ver que de “find the friends” de uma conta em particular possui uma taxa de limitação diferente do número de consultas à timeline que são permitidas a serem executadas por período de tempo.
 
-These secure API keys allow Twitter to have solid confidence that they
-know who is using their API and data and at what level. The
-rate-limiting approach allows us to do simple, personal data retrievals
-but does not allow us to build a product that pulls data from their API
-millions of times per day.
+Essas keys da API são seguras, de forma que o Twitter sabe com confiança quem está usando seus dados e sua API, além das condições de uso. A tática de limitação de taxa nos permite que obtenhamos dados simples e pessoais, porém não permite que se desenvolva um produto que retire dados da API milhões de vezes por dia.
 
 
