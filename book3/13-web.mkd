@@ -75,24 +75,23 @@ are many rules regarding valid XML, and using `ElementTree`
 allows us to extract data from XML without worrying about the rules of
 XML syntax.
 
-Looping through nodes
+Looping através dos nós
 ---------------------
 
-\index{ElementTree!findall}
-\index{ElementTree!get}
+\index{ÁrvoreElemento!findall}
+\index{ÁrvoreElemento!get}
 
-Often the XML has multiple nodes and we need to write a loop to process
-all of the nodes. In the following program, we loop through all of the
-`user` nodes:
+Frequentemente o XML tem múltiplos nós e precisamos escrever um loop para
+processar todos esses nós. No programa a seguir, nós percorremos todos os
+nós `user`:
+
 
 \VerbatimInput{../code3/xml2.py} 
 
-The `findall` method retrieves a Python list of subtrees that
-represent the `user` structures in the XML tree. Then we can
-write a `for` loop that looks at each of the user nodes, and
-prints the `name` and `id` text elements as well
-as the `x` attribute from the `user` node.
-
+O método `findall` recupera uma lista de Python de sub-árvores que
+representam a estrutura  `user` na árvore XML. Então podemos escrever
+um loop `for` que busca em cada nó user, e imprime os elementos de texto `name` 
+e `id` assim como o atributo `x`do nó `user`.
 ~~~~
 User count: 2
 Name Chuck
@@ -103,9 +102,9 @@ Id 009
 Attribute 7
 ~~~~
 
-It is important to include all parent level elements in the `findall`
-statement except for the top level element (e.g., `users/user`).
-Otherwise, Python will not find any desired nodes.
+É importante incluir todos os elementos de nível pai no método 
+`findall` exceto pelo elemento de nível superior (e.g., `users/user`).
+De outra forma, Python não irá encontrar nenhum nó desejado.
 
 ~~~~ {.python}
 import xml.etree.ElementTree as ET
@@ -133,6 +132,9 @@ lst2 = stuff.findall('user')
 print('User count:', len(lst2))
 ~~~~
 
+`lst` armazena todos os elementos `user`que estão aninhados dentro
+de seus `users` pai. `lst2` procura por elementos que não estão
+aninhados dentro do elemento `stuff` de nível superior onde não há nenhum.
 `lst` stores all `user` elements that are nested within their `users`
 parent. `lst2` looks for `user` elements that are not nested within
 the top level `stuff` element where there are none.
@@ -142,20 +144,20 @@ User count: 2
 User count: 0
 ~~~~
 
-JavaScript Object Notation - JSON
+Notação de Objeto JavaScript - JSON
 ---------------------------------
 
 \index{JSON}
-\index{JavaScript Object Notation}
+\index{Notação de Objeto JavaScript}
 
-The JSON format was inspired by the object and array format used in the
-JavaScript language. But since Python was invented before JavaScript,
-Python's syntax for dictionaries and lists influenced the syntax of
-JSON. So the format of JSON is nearly identical to a combination of
-Python lists and dictionaries.
+O formato JSON foi inspirado pelo formato de objeto e array usado na
+linguagem JavaScript. Mas desde que Python foi inventado antes de JavaScript,
+a sintaxe de Python para dicionários e listas influenciou a sintaxe de JSON.
+Então o formato de JSON é quase idêntico a uma combinação de listas
+e dicionários Python.
 
-Here is a JSON encoding that is roughly equivalent to the simple XML
-from above:
+Aqui está uma codificação JSON que é aproximadamente equivalente ao XML simples 
+de cima:
 
 ~~~~ {.json}
 {
@@ -170,21 +172,21 @@ from above:
 }
 ~~~~
 
-You will notice some differences. First, in XML, we can add attributes
-like "intl" to the "phone" tag. In JSON, we simply have key-value pairs.
-Also the XML "person" tag is gone, replaced by a set of outer curly
-braces.
+Você notará algumas diferenças. Primeiro, em XML, podemos adicionar atributos
+como "intl" para a tag "phone". Em JSON, nós podemos simplesmente ter pares de valores-chave.
+Além disso, a tag XML "person" desapareceu, sendo substituída por um conjunto de chaves.
 
-In general, JSON structures are simpler than XML because JSON has fewer
-capabilities than XML. But JSON has the advantage that it maps
-*directly* to some combination of dictionaries and lists.
-And since nearly all programming languages have something equivalent to
-Python's dictionaries and lists, JSON is a very natural format to have
-two cooperating programs exchange data.
+Em geral, estruturas JSON são mais simples que XML pois, JSON tem
+menos capacidades que XML. Mas, JSON tem a vantagem de que mapeia
+*diretamente* para alguma combinação de dicionários e listas.
+E como quase todas as linguagens de programação têm algo equivalente a
+Dicionários e listas do Python, o JSON é um formato muito natural para ter
+dois programas cooperantes trocando dados.
 
-JSON is quickly becoming the format of choice for nearly all data
-exchange between applications because of its relative simplicity
-compared to XML.
+JSON está se tornando rapidamente o formato preferido para quase todas
+as trocas de dados entre aplicativos graças a sua simplicidade 
+comparado ao XML.
+
 
 Análise JSON
 ------------
