@@ -1,16 +1,16 @@
 Strings
 =======
 
-A string é uma sequência
-----------------------
+String é uma sequência
+-----------------------------
 
 \index{sequência}
 \index{caractere}
 \index{operator de colchetes}
 \index{operador!colchete}
 
-A string é uma sequência de caracteres. Você pode acessar
-os caracteres um de cada vez com o operador de colchetes:
+String é uma sequência de caracteres. Você pode acessar
+os caracteres um de cada vez com o operador colchetes:
 
 ~~~~ {.python}
 >>> fruta = 'banana'
@@ -20,13 +20,11 @@ os caracteres um de cada vez com o operador de colchetes:
 \index{index}
 \index{}
 
-A segunda instrução extrai o caractere na posição indexada 1, vinda da 
-variável `fruta` e atribui este valor para variável `letra`.
+A segunda instrução extrai o caractere na posição indexada 1 da
+variável `fruta` e atribui este valor à variável `letra`.
 
 A expressão em colchetes é chamada de *index*. O index indica qual
-caractere da sequência você quer
-The expression in brackets is called an *index*. The
-index indicates which character in the sequence you want.
+caractere da sequência você quer(daí o nome).
 
 Mas você talvez não receba o que espera:
 
@@ -37,7 +35,7 @@ a
 
 Para a maior parte das pessoas, a primeira letra de "banana" é "b",
 não "a". Mas em Python, o index é um deslocamento desde o início da
-string, e o deslocamento da primeira letra é 0.
+string, e o deslocamento da primeira letra é zero.
 
 ~~~~ {.python}
 >>> letra = fruta[0]
@@ -45,7 +43,7 @@ string, e o deslocamento da primeira letra é 0.
 b
 ~~~~
 
-Então "b" é a 0ª letra de "banana", "a" é a 1ª letra e "n" 
+Então "b" é a 0ª letra de "banana", "a" é a 1ª letra e "n"
 é a 2ª letra.
 
 ![String Indexes](height=0.75in@../images/string)
@@ -53,8 +51,8 @@ Então "b" é a 0ª letra de "banana", "a" é a 1ª letra e "n"
 \index{index!começando em zero}
 \index{zero, index começando em}
 
-Você pode utilizar qualquer expressão, incluindo variáveis e operadores, 
-como index, mas o valor do indexx deverá ser um inteiro. Caso não seja:
+Você pode utilizar qualquer expressão como index, incluindo variáveis e
+operadores, mas o valor deverá ser um inteiro. Caso contrário você tem:
 
 \index{index}
 \index{}
@@ -72,8 +70,8 @@ Obtendo o comprimento de uma string utilizando `len`
 \index{função len}
 \index{função!len}
 
-``len`` é uma função embutida que retorna o número de caracteres
-em uma string:
+``len`` é uma função interna que retorna o número de caracteres
+de uma string:
 
 ~~~~ {.python}
 >>> fruta = 'banana'
@@ -82,7 +80,7 @@ em uma string:
 ~~~~
 
 Para obter a última letra de uma string, você pode ficar tentado
-a tentar algo desta natureza:
+a fazer algo desta natureza:
 
 \index{exceção!IndexError}
 \index{IndexError}
@@ -93,9 +91,9 @@ a tentar algo desta natureza:
 IndexError: string index out of range
 ~~~~
 
-A razão pelo `IndexError` é que a última letra em "banana" é com o 
-index 6. Desde que nós começamos a contar até zero, as seis letras estão
-enumeradas de 0 a 5. Para obter este caractere, você tem de subtrair 1
+A razão pelo `IndexError` é que não há uma letra em "banana"  com o
+index 6. Desde que começamos a contar de zero, as seis letras estão
+enumeradas de 0 a 5. Para obter o último caractere, você precisa subtrair 1
 de `comprimento`:
 
 ~~~~ {.python}
@@ -104,14 +102,14 @@ de `comprimento`:
 a
 ~~~~
 
-Alternativamente, você pode utilizar de índices negativos, que fazendo a 
-contagem ao contrário do sentido usual da string. A expressão `fruta[-1]` 
-retorna a última letra, `fruta[-2]` retorna o penúltimo, e assim por diante.
+Alternativamente, você pode utilizar de índices negativos, que faz a
+contagem ao contrário (de trás para frente). A expressão `fruta[-1]`
+retorna a última letra, `fruta[-2]` retorna a penúltima, e assim por diante.
 
 \index{index!negativo}
 \index{index negativo}
 
-Travessia (traversal) de strings usando loop
+Travessia de strings usando laço                 
 --------------------------------------------
 
 \index{traversal}
@@ -121,7 +119,7 @@ Travessia (traversal) de strings usando loop
 \index{statement!for}
 \index{traversal}
 
-Muito em computação envolve o processamento de strings um caractere por vez. Geralmente começando pelo primeiro caractere da string, seleciona-se um por vez, alguma operação é realizada sobre ele e o processo é repetido até o fim da string. Esse modelo de processamento é chamado de *travessia (traversal)*. Uma forma de escrever uma travessia é através de um loop `while`.
+Muito em computação envolve o processamento de strings, caractere por caractere. Geralmente começando pelo primeiro caractere da string, seleciona-se um por vez, alguma operação é realizada sobre ele e o processo é repetido até o fim da string. Esse modelo de processamento é chamado de *travessia (traversal)*. Uma forma de escrever uma travessia é através de um laço `while`.
 
 ~~~~ {.python}
 indice = 0
@@ -131,20 +129,20 @@ while indice < len(fruta):
     indice = indice + 1
 ~~~~
 
-Este loop atravessa a string e imprime cada letra em uma linha diferente. A condição do loop é `indice < len(fruta)`, então quando `indice` é igual ao tamanho da string, a condição é falsa, e o corpo do loop não é executado. O último caractere acessado é o que possui o índice `len(fruit)-1`, que é o último caractere da string.
+Este laço atravessa a string e imprime cada letra em uma linha diferente. A condição do laço é `indice < len(fruta)`, então quando `indice` é igual ao tamanho da string, a condição é falsa, e o corpo do laço não é executado. O último caractere acessado é o que possui o índice `len(fruit)-1`, que é o último caractere da string.
 
 **Exercício 1: Escreva um loop `while` que inicia no último caractere da string e caminha para o primeiro caractere, imprimindo cada letra em uma linha separada.**
 
-Outra forma de escrever uma travessia com um loop `for`:
+Outra forma de escrever uma travessia é com um laço `for`:
 
 ~~~~ {.python}
 for char in fruta:
     print(char)
 ~~~~
 
-Cada vez que passa pelo loop, o próximo caractere da string é atribuído à variável `char`. O loop continua até o fim dos caracteres.
+Cada vez que passa pelo laço, o próximo caractere da string é atribuído à variável `char`. O laço continua até o fim dos caracteres.
 
-Partes de strings (Slice)
+Segmentos de strings
 -------------------------
 
 \index{slice operator}
@@ -185,7 +183,7 @@ Se o primeiro índice foi maior ou igual ao segundo índice, o resultado será u
 ''
 ~~~~
 
-Uma string vazia não contém nenhum caractere e possui length 0, mas fora isso, é como qualquer outra string.
+Uma string vazia não contém nenhum caractere e possui comprimento 0, mas fora isso, é como qualquer outra string.
 
 **Exercício 2: Dado que `fruta` é uma string, qual o resultado de `fruta[:]`?**
 
@@ -193,13 +191,13 @@ Uma string vazia não contém nenhum caractere e possui length 0, mas fora isso,
 \index{slice!copy}
 
 Strings são imutáveis
----------------------
+----------------------------
 
 \index{mutabilidade}
 \index{imutabilidade}
 \index{string!imutável}
 
-É tentator usar o operador do lado esquerdo de uma sentença com a intenção
+É tentador usar o operador do lado esquerdo de uma sentença com a intenção
 de mudar um caractere de uma string. Por exemplo:
 
 \index{TypeError}
@@ -212,8 +210,8 @@ TypeError: 'str' object does not support item assignment (objeto 'str' não perm
 ~~~~
 
 O "objeto" nesse caso é a string e o "item" é o caractere que você tentou
-atribuir. Por agora, um *objeto* é a mesma coisa que um valor, mas nós 
-refinaremos essa definição mais tarde. Um *item* é um dos valores em uma 
+atribuir. Por agora, um *objeto* é a mesma coisa que um valor, mas nós
+refinaremos essa definição mais tarde. Um *item* é um dos valores em uma
 sequência.
 
 \index{objeto}
@@ -221,7 +219,7 @@ sequência.
 \index{atribuição!item}
 \index{imutabilidade}
 
-A razão para o erro é que strings são *imutáveis*, que significa que você
+A razão para o erro é que strings são *imutáveis*, o que significa que você
 não pode alterar uma string já existente. O melhor a se fazer é criar uma
 nova string que é uma variação da original:
 
@@ -232,8 +230,8 @@ nova string que é uma variação da original:
 Olô, Mundo!
 ~~~~
 
-Esse exemplo concatena uma nova primeira letra em uma parte de
-`saudacao`. Iso não afeta a string original.
+Esse exemplo concatena uma nova primeira letra com um segmento de
+`saudacao`. Isso não afeta a string original.
 
 \index{concatenação}
 
@@ -257,17 +255,17 @@ for letra in palavra:
 print(contagem)
 ~~~~
 
-Esse programa demonstra outro padrão da computação chamado *contador*. 
+Esse programa demonstra outro padrão da computação chamado *contador*.
 A variável `contagem` é inicializada com 0 e então incrementada a cada
-vez que um "a" é encontrado. Quando o laço acaba, `contagem`tem como resultado
-o número total de a's. 
+vez que um "a" é encontrado. Quando o laço acaba, `contagem` tem como resultado
+o número total de a's.
 
 \index{encapsulamento}
 
 **Exercício 3: Encapsule esse código em uma função chamada `contagem`, e
 generalize para que ela aceite a string e a letra como argumentos.**
 
-O Operador `in`
+O operador `in`
 ----------------------------
 
 \index{operador in}
@@ -275,7 +273,7 @@ O Operador `in`
 \index{operador booleano}
 \index{operador!booleano}
 
-A palavra `in` é uma operador booleano que usa duas strings e retorna `True` se a primeira aparecer como substring na segunda:
+A palavra `in` é uma operador booleano que usa duas strings e retorna `True` se a primeira aparecer como uma substring na segunda:
 
 ~~~~ {.python}
 >>> 'a' in 'banana'
@@ -295,7 +293,7 @@ Os operadores de comparação funcionam em strings. Para verificar se duas delas
 ~~~~ {.python}
 if palavra == 'banana':
     print('Certo, bananas.')
-~~~~ 
+~~~~
 
 Outras operações de comparação são úteis para organizar palavras em ordem alfabética:
 
@@ -384,7 +382,7 @@ Por exemplo, existe um método na string chamado `find` que procura pela posiç�
 >>> indice = palavra.find('a')
 >>> print(indice)
 1
-~~~~ 
+~~~~
 
 Nesse exemplo, invocamos `find` em `palavra` e passamos a letra que estamos procurando como argumento.
 
@@ -442,7 +440,7 @@ Nesse último exemplo, o método `lower` é chamado e então nós usamos `starts
 
 **Exercício 4: Existe um método na string chamado `count` que é similar à função usada no exercício anterior. Leia a documentação desse método em:
 
-<https://docs.python.org/library/stdtypes.html#string-methods> 
+<https://docs.python.org/library/stdtypes.html#string-methods>
 
 Escreva uma invocação que conta o número de vezes que a letra "a" aparece em "banana”.**
 
@@ -455,7 +453,7 @@ Por exemplo, se nos for apresentada uma sequência de linhas formatadas da segui
 `From stephen.marquard@`*` uct.ac.za`*` Sat Jan  5 09:14:16 2008`
 
 e nós quisermos particionar somente a segunda metade do endereço (i.e.,`uct.ac.za`)
-de cada linha, podemos fazer isso utilizando o 
+de cada linha, podemos fazer isso utilizando o
 método `find` e o fatiamento de strings.
 
 Primeiramente, acharemos a posição do sinal arroba (@) na string.
@@ -477,7 +475,7 @@ uct.ac.za
 ~~~~
 
 Utilizamos a versão do método `find` que nos permite
-especificar a posição na string onde queremos 
+especificar a posição na string onde queremos
 começar a busca. Quando fatiamos a string, extraímos os caracteres de
 "um a frente do sinal arroba até o caractere espaço, *sem incluí-lo*".
 
@@ -578,7 +576,7 @@ IndexError: string index out of range
 O código funciona bem até o aparecimento da linha vazia, pois não há o caractere da posição 0, o que resulta no traceback (erro).
 Existem duas soluções para transformar a terceira linha do código em uma linha “segura”, mesmo que a entrada seja vazia.
 
-Uma alternativa seria simplesmente utilizar o método `startswith`, 
+Uma alternativa seria simplesmente utilizar o método `startswith`,
 que retorna `False` se a string estiver vazia.
 
 ~~~~ {.python}
@@ -589,7 +587,7 @@ if line.startswith('#'):
 \index{padrão!guardião}
 
 Outra forma seria escrever a instrução `if` utilizando um padrão *guardião*,
- para assegurar que a segunda expressão lógica seja 
+ para assegurar que a segunda expressão lógica seja
 testada apenas quando a string conter no mínimo 1 caractere:
 
 ~~~~ {.python}
@@ -655,7 +653,7 @@ string de formatação
 :   Uma string, utilizada com o operador de formatação, que contém sequências de formatação.
 \index{string de formatação}
 
-string vazia 
+string vazia
 :   Uma string com nenhum caractere e de dimensão 0, representada por duas aspas.
 \index{string vazia}
 
@@ -679,6 +677,5 @@ e use a função `float` para converter a string extraída em um número de pont
 <https://docs.python.org/library/stdtypes.html#string-methods>
 Você pode querer experimentar alguns deles para ter certeza que você entendeu como eles funcionam. `strip` e `replace` são particularmente úteis.**
 
-**A documentação utiliza uma sintaxe que pode ser confusa. Por exemplo, em 
+**A documentação utiliza uma sintaxe que pode ser confusa. Por exemplo, em
 `find(sub[, start[, end]])`, as chaves indicam argumentos opcionais, então, `sub` é necessário, mas `start` é opcional, e se você incluir `start`, logo `end` é opcional.**
-
