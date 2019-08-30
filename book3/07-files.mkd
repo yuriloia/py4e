@@ -1,14 +1,14 @@
 Arquivos 
 =====
 
-\index{file}
-\index{type!file}
+\index{arquivo}
+\index{tipo!arquivo}
 
 Persistência 
 -----------
 
-\index{persistence}
-\index{secondary memory}
+\index{persistência}
+\index{memória secundaria}
 
 Até agora, aprendemos como escrever programas e comunicar nossas intenções para a unidade central de processamento usando a execução condicional, funções e interações. Aprendemos como criar e usar estruturas de dados na memoria principal. A CPU e a memoria são onde o nosso software funciona e é executado, é onde todo o pensamento acontece.
 
