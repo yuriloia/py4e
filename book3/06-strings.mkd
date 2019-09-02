@@ -679,3 +679,5 @@ Você pode querer experimentar alguns deles para ter certeza que você entendeu 
 
 **A documentação utiliza uma sintaxe que pode ser confusa. Por exemplo, em
 `find(sub[, start[, end]])`, as chaves indicam argumentos opcionais, então, `sub` é necessário, mas `start` é opcional, e se você incluir `start`, logo `end` é opcional.**
+
+
