@@ -1,5 +1,5 @@
 Arquivos 
-=====
+========
 
 \index{arquivo}
 \index{tipo!arquivo}
