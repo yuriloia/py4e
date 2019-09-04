@@ -73,33 +73,23 @@ the same pattern when working with databases. You will do simple
 operations in the database manager and more complex operations will be
 most conveniently done in Python.
 
-Creating a database table
+Criando uma tabela de banco de dados
 -------------------------
 
-Databases require more defined structure than Python lists or
-dictionaries^[SQLite actually does allow some flexibility in the type of data
+Bancos de dados requerem estrutura mais definida do que listas ou bibliotecas Python.^[SQLite actually does allow some flexibility in the type of data
 stored in a column, but we will keep our data types strict in this
 chapter so the concepts apply equally to other database systems such
 as MySQL.].
 
-When we create a database *table* we must tell the
-database in advance the names of each of the *columns* in
-the table and the type of data which we are planning to store in each
-*column*. When the database software knows the type of
-data in each column, it can choose the most efficient way to store and
-look up the data based on the type of data.
+Quando criamos uma *tabela* de banco de dados, devemos informar antecipadamente os nomes de cada uma das *colunas* da tabela e o tipo de dados que estamos planejando armazenar em cada *coluna*. Quando o software de banco de dados conhece o tipo de dado em cada coluna, ele pode escolher a maneira mais eficiente de armazenar e procurar os dados com base no tipo de dados.
 
-You can look at the various data types supported by SQLite at the
-following url:
+Você pode observar os vários tipos de dados suportados pelo SQLite na seguinte URL:
 
 <http://www.sqlite.org/datatypes.html>
 
-Defining structure for your data up front may seem inconvenient at the
-beginning, but the payoff is fast access to your data even when the
-database contains a large amount of data.
+A definição da estrutura dos seus dados antecipadamente pode parecer inconveniente no início, mas a recompensa é o acesso rápido aos seus dados, mesmo quando o banco de dados contém uma grande quantidade de deles.
 
-The code to create a database file and a table named `Tracks`
-with two columns in the database is as follows:
+O código para criar um arquivo de banco de dados e uma tabela denominada `Tracks` com duas colunas no banco de dados é o seguinte:
 
 \index{sqlite3 module}
 \index{module!sqlite3}
@@ -111,88 +101,45 @@ with two columns in the database is as follows:
 \index{cursor function}
 \index{function!cursor}
 
-The `connect` operation makes a "connection" to the database
-stored in the file `music.sqlite3` in the current directory.
-If the file does not exist, it will be created. The reason this is
-called a "connection" is that sometimes the database is stored on a
-separate "database server" from the server on which we are running our
-application. In our simple examples the database will just be a local
-file in the same directory as the Python code we are running.
+A operação de `connect` faz uma "conexão" com o banco de dados armazenado no arquivo `music.sqlite` no diretório atual. Se o arquivo não existir, ele será criado. O motivo pelo qual isso é chamado de "conexão" é que, às vezes, o banco de dados é armazenado em um "servidor de banco de dados" separado do servidor no qual estamos executando nosso aplicativo. Em nossos exemplos simples, o banco de dados será apenas um arquivo local no mesmo diretório que o código Python que estamos executando.
 
-A *cursor* is like a file handle that we can use to
-perform operations on the data stored in the database. Calling
-`cursor()` is very similar conceptually to calling
-`open()` when dealing with text files.
+Um *cursor* é como um identificador de arquivo que podemos usar para executar operações nos dados armazenados no banco de dados. Chamar `cursor()` é muito semelhante conceitualmente a chamar `open()` ao lidar com arquivos de texto.
 
 ![A Database Cursor](height=2.0in@../images/cursor)
 
-Once we have the cursor, we can begin to execute commands on the
-contents of the database using the `execute()` method.
+Uma vez que temos o cursor, podemos começar a executar comandos no conteúdo do banco de dados usando o método `execute()`.
 
-Database commands are expressed in a special language that has been
-standardized across many different database vendors to allow us to learn
-a single database language. The database language is called
-*Structured Query Language* or *SQL* for
-short.
+Os comandos do banco de dados são expressos em um idioma especial que foi padronizado em muitos fornecedores diferentes para nos permitir aprender um único idioma de banco de dados. Essa linguagem é chamada de *Structured Query Language* ou *SQL*, para abreviar.
 
 <http://en.wikipedia.org/wiki/SQL>
 
-In our example, we are executing two SQL commands in our database. As a
-convention, we will show the SQL keywords in uppercase and the parts of
-the command that we are adding (such as the table and column names) will
-be shown in lowercase.
+Em nosso exemplo, estamos executando dois comandos SQL em nosso banco de dados. Como convenção, mostraremos as palavras-chave SQL em maiúsculas e as partes do comando que estamos adicionando (como os nomes de tabela e coluna) serão mostradas em minúsculas.
 
-The first SQL command removes the `Tracks` table from the
-database if it exists. This pattern is simply to allow us to run the
-same program to create the `Tracks` table over and over again
-without causing an error. Note that the `DROP TABLE` command
-deletes the table and all of its contents from the database (i.e., there
-is no "undo").
+O primeiro comando SQL remove a tabela `Tracks` do banco de dados, se existir. Esse padrão é simplesmente para permitir a execução do mesmo programa para criar a tabela `Tracks` repetidamente, sem causar erros. Observe que o comando `DROP TABLE` exclui a tabela e todo o seu conteúdo do banco de dados (ou seja, não há "desfazer").
 
 ~~~~ {.python}
 cur.execute('DROP TABLE IF EXISTS Tracks ')
 ~~~~
 
-The second command creates a table named `Tracks` with a text
-column named `title` and an integer column named
-`plays`.
+O segundo comando cria uma tabela chamada `Tracks` com uma coluna de texto chamada `title` e uma coluna inteira chamada `plays`.
 
 ~~~~ {.python}
 cur.execute('CREATE TABLE Tracks (title TEXT, plays INTEGER)')
 ~~~~
 
-Now that we have created a table named `Tracks`, we can put
-some data into that table using the SQL `INSERT` operation.
-Again, we begin by making a connection to the database and obtaining the
-`cursor`. We can then execute SQL commands using the cursor.
+Agora que criamos uma tabela chamada `Tracks`, podemos colocar alguns dados nessa tabela usando a operação SQL `INSERT`. Novamente, começamos fazendo uma conexão com o banco de dados e obtendo o `cursor`. Podemos então executar comandos SQL usando o cursor.
 
-The SQL `INSERT` command indicates which table we are using
-and then defines a new row by listing the fields we want to include
-`(title, plays)` followed by the `VALUES` we want
-placed in the new row. We specify the values as question marks `(?,
-?)` to indicate that the actual values are passed in as a tuple
-`( 'My Way', 15 ) ` as the second parameter to the
-`execute()` call.
+O comando SQL `INSERT` indica qual tabela estamos usando e, em seguida, define uma nova linha listando os campos que queremos incluir `(title, plays)` seguidos pelos `VALUES` que queremos que sejam colocados na nova linha. Especificamos os valores como pontos de interrogação `(?, ?)` Para indicar que os valores reais são passados como uma tupla `( 'My Way', 15 )` como o segundo parâmetro para a chamada `execute()`.
 
 \VerbatimInput{../code3/db2.py}
 
-First we `INSERT` two rows into our table and use
-`commit()` to force the data to be written to the database
-file.
+Primeiro, nós utilizamos `INSERT` para duas linhas em nossa tabela e usamos `commit()` para forçar os dados a serem gravados no arquivo de banco de dados.
 
 ![Rows in a Table](height=1.5in@../images/tracks)
 
-Then we use the `SELECT` command to retrieve the rows we just
-inserted from the table. On the `SELECT` command, we indicate
-which columns we would like `(title, plays)` and indicate
-which table we want to retrieve the data from. After we execute the
-`SELECT` statement, the cursor is something we can loop
-through in a `for` statement. For efficiency, the cursor does
-not read all of the data from the database when we execute the
-`SELECT` statement. Instead, the data is read on demand as we
-loop through the rows in the `for` statement.
+Em seguida, usamos o comando `SELECT` para recuperar as linhas que acabamos de inserir da tabela. No comando `SELECT`, indicamos de quais colunas gostaríamos `(title, plays)` e de qual tabela queremos recuperar os dados. Depois de executar a instrução `SELECT`, o cursor é algo pelo qual podemos percorrer uma instrução `for`. Por questões de eficiência, o cursor não lê todos os dados do banco de dados quando executamos a instrução `SELECT`. Em vez disso, os dados são lidos sob demanda, conforme percorremos as linhas na instrução `for`.
 
-The output of the program is as follows:
+A saída do programa é a seguinte:
 
 ~~~~
 Tracks:
@@ -202,111 +149,68 @@ Tracks:
 
 \index{Unicode}
 
-Our `for` loop finds two rows, and each row is a Python tuple
-with the first value as the `title` and the second value as
-the number of `plays`. 
+Nosso loop `for` são encontradas duas linhas, e cada linha é uma tupla Python com o primeiro valor como o `title` e o segundo valor como o número de `plays`.
 
-*Note: You may see strings starting with `u'` in other books or on the Internet. 
-This was an indication in Python 2 that the strings are *Unicode* strings that are capable
-of storing non-Latin character sets. In Python 3, all strings are unicode
-strings by default.*
+*Nota: Você pode ver cadeias começando com `u'` em outros livros ou na Internet. Essa foi uma indicação no Python 2 de que as strings são strings Unicode capazes de armazenar conjuntos de caracteres não latinos. No Python 3, todas as strings são unicode por padrão.
 
-At the very end of the program, we execute an SQL command to
-`DELETE` the rows we have just created so we can run the
-program over and over. The `DELETE` command shows the use of
-a `WHERE` clause that allows us to express a selection
-criterion so that we can ask the database to apply the command to only
-the rows that match the criterion. In this example the criterion happens
-to apply to all the rows so we empty the table out so we can run the
-program repeatedly. After the `DELETE` is performed, we also
-call `commit()` to force the data to be removed from the
-database.
+No final do programa, executamos um comando SQL para `DELETE` as linhas que acabamos de criar, para que possamos executar o programa repetidamente. O comando `DELETE` mostra o uso de uma cláusula `WHERE` que nos permite expressar um critério de seleção para que possamos solicitar ao banco de dados que aplique o comando apenas às linhas que correspondem ao critério. Neste exemplo, o critério se aplica a todas as linhas, de modo que esvaziamos a tabela para que possamos executar o programa repetidamente. Depois que o `DELETE` é executado, também chamamos `commit()` para forçar os dados a serem removidos do banco de dados.
 
-Structured Query Language summary
+Resumo da Structured Query Language
 ---------------------------------
 
-So far, we have been using the Structured Query Language in our Python
-examples and have covered many of the basics of the SQL commands. In
-this section, we look at the SQL language in particular and give an
-overview of SQL syntax.
+Até o momento, usamos a Structured Query Language em nossos exemplos de Python e cobrimos muitos dos princípios básicos dos comandos SQL. Nesta seção, examinamos a linguagem SQL em particular e fornecemos uma visão geral da sintaxe SQL.
 
-Since there are so many different database vendors, the Structured Query
-Language (SQL) was standardized so we could communicate in a portable
-manner to database systems from multiple vendors.
+Como existem muitos fornecedores diferentes de banco de dados, a Structured Query Language (SQL) foi padronizada para que pudéssemos nos comunicar de maneira portátil aos sistemas de banco de dados de vários fornecedores.
 
-A relational database is made up of tables, rows, and columns. The
-columns generally have a type such as text, numeric, or date data. When
-we create a table, we indicate the names and types of the columns:
+Um banco de dados relacional é composto de tabelas, linhas e colunas. As colunas geralmente têm um tipo como texto, dados numéricos ou de data. Quando criamos uma tabela, indicamos os nomes e tipos das colunas:
 
 ~~~~ {.sql}
 CREATE TABLE Tracks (title TEXT, plays INTEGER)
 ~~~~
 
-To insert a row into a table, we use the SQL `INSERT`
-command:
+Para inserir uma linha em uma tabela, usamos o comando SQL `INSERT`:
+
 
 ~~~~ {.sql}
 INSERT INTO Tracks (title, plays) VALUES ('My Way', 15)
 ~~~~
 
-The `INSERT` statement specifies the table name, then a list
-of the fields/columns that you would like to set in the new row, and
-then the keyword `VALUES` and a list of corresponding values
-for each of the fields.
+A instrução `INSERT` especifica o nome da tabela, uma lista dos campos / colunas que você deseja definir na nova linha e, em seguida, a palavra-chave `VALUES` e uma lista dos valores correspondentes para cada um dos campos.
 
-The SQL `SELECT` command is used to retrieve rows and columns
-from a database. The `SELECT` statement lets you specify
-which columns you would like to retrieve as well as a `WHERE`
-clause to select which rows you would like to see. It also allows an
-optional `ORDER BY` clause to control the sorting of the
-returned rows.
+
+O comando SQL `SELECT` é usado para recuperar linhas e colunas de um banco de dados. A instrução `SELECT` permite especificar quais colunas você gostaria de recuperar, bem como uma cláusula `WHERE` para selecionar quais linhas você gostaria de ver. Ele também permite que uma cláusula `ORDER BY` opcional controle a classificação das linhas retornadas.
+
 
 ~~~~ {.sql}
 SELECT * FROM Tracks WHERE title = 'My Way'
 ~~~~
 
-Using `*` indicates that you want the database to return all of the
-columns for each row that matches the `WHERE` clause.
+Usar `*` indica que você deseja que o banco de dados retorne todas as colunas para cada linha que corresponda à cláusula `WHERE`.
 
-Note, unlike in Python, in a SQL `WHERE` clause we use a
-single equal sign to indicate a test for equality rather than a double
-equal sign. Other logical operations allowed in a `WHERE`
-clause include `<`, `>`, `<=`, `>=`, `!=`, as well as `AND`
-and `OR` and parentheses to build your logical expressions.
+Observe que, diferentemente do Python, em uma cláusula SQL `WHERE` usamos um único sinal de igual para indicar um teste de igualdade em vez de um duplo sinal de igual. Outras operações lógicas permitidas em uma cláusula WHERE incluem `<`, `>`, `<=`, `>=`, `!=`, Além de `AND` e `OR` e parênteses para construir suas expressões lógicas.
 
-You can request that the returned rows be sorted by one of the fields as
-follows:
+Você pode solicitar que as linhas retornadas sejam classificadas por um dos campos da seguinte maneira:
 
 ~~~~ {.sql}
 SELECT title,plays FROM Tracks ORDER BY title
 ~~~~
 
-To remove a row, you need a `WHERE` clause on an SQL
-`DELETE` statement. The `WHERE` clause determines
-which rows are to be deleted:
+Para remover uma linha, você precisa de uma cláusula `WHERE` em uma instrução SQL `DELETE`. A cláusula `WHERE` determina quais linhas devem ser excluídas:
 
 ~~~~ {.sql}
 DELETE FROM Tracks WHERE title = 'My Way'
 ~~~~
 
-It is possible to `UPDATE` a column or columns within one or
-more rows in a table using the SQL `UPDATE` statement as
-follows:
+É possível `UPDATE` uma coluna ou colunas dentro de uma ou mais linhas em uma tabela usando a instrução SQL `UPDATE` da seguinte maneira:
 
 ~~~~ {.sql}
 UPDATE Tracks SET plays = 16 WHERE title = 'My Way'
 ~~~~
 
-The `UPDATE` statement specifies a table and then a list of
-fields and values to change after the `SET` keyword and then
-an optional `WHERE` clause to select the rows that are to be
-updated. A single `UPDATE` statement will change all of the
-rows that match the `WHERE` clause. If a `WHERE`
-clause is not specified, it performs the `UPDATE` on all of
-the rows in the table.
+A instrução `UPDATE` especifica uma tabela e, em seguida, uma lista de campos e valores a serem alterados após a palavra-chave `SET` e, em seguida, uma cláusula `WHERE` opcional para selecionar as linhas que devem ser atualizadas. Uma única instrução `UPDATE` poderá alterar todas as linhas que correspondem à cláusula `WHERE`. Se uma cláusula `WHERE` não for especificada, ela executará o `UPDATE` em todas as linhas da tabela
 
-These four basic SQL commands (INSERT, SELECT, UPDATE, and DELETE) allow
-the four basic operations needed to create and maintain data.
+Esses quatro comandos SQL básicos (INSERT, SELECT, UPDATE e DELETE) permitem as quatro operações básicas necessárias para criar e manter dados.
+
 
 Spidering Twitter using a database
 ----------------------------------
