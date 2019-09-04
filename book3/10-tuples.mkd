@@ -598,3 +598,4 @@ Digite o nome do arquivo: mbox-short.txt
 **Exercício 3: Escreva um programa que leia um arquivo e mostre as *letras* em ordem decrescente de frequência. Seu programa deve converter todas as entradas para Caixa baixa e apenas contar as letras de a à z. Não conte espaços, dígitos, pontuações, ou qualquer coisa que não seja uma letra do alfabeto. Encontre textos simples de diversas línguas diferentes e veja como a frequência de letras varia entre os idiomas. Compare seis resultados com as tabelas em <https://wikipedia.org/wiki/Letter_frequencies>.**
 \index{frequência de letras}
 \index{letras!frequência}
+
