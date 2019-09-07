@@ -339,19 +339,19 @@ The new list is sorted in ascending alphabetical order by the key value.
 Múltipla atribuição com dicionários
 ------------------------------------
 
-\index{traverse!dictionary}
-\index{dictionary!traversal}
+\index{examinar!dicionário}
+\index{dicionário!examinar}
 
 Combinando `items`, atribuição de tuplas e `for`, se tem um bom padrão de código para percorrer as chaves e valores de um dicionário em um único loop:
 
 ~~~~ {.python}
-for key, val in list(d.items()):
-    print(val, key)
+for chave, valor in list(d.items()):
+    print(valor, chave)
 ~~~~
 
-Esse loop tem duas *variáveis de iteração*, isso porque `items` retorna uma lista de tuplas e `key, val` é uma atribuição de tupla que itera sucessivamente em cada um dos pares de valore/chave no dicionário.
+Esse loop tem duas *variáveis de iteração*, isso porque `items` retorna uma lista de tuplas e `chave, valor` é uma atribuição de tupla que itera sucessivamente em cada um dos pares de valor/chave no dicionário.
 
-Para cada iteração através de um loop, tanto a chave quanto o valor são avançados para o próximo par de valores no dicionário(mantendo a ordem hash).
+Para cada iteração através de um loop, tanto a chave quanto o valor são avançados para o próximo par de valores no dicionário (mantendo a ordem hash).
 
 A saída deste loop é:
 
@@ -361,17 +361,17 @@ A saída deste loop é:
 1 b
 ~~~~
 
-Novamente, é na ordem da chave hash(nenhuma ordem particular).
+Novamente, é na ordem da chave hash (nenhuma ordem particular).
 
-Se nós combinarmos essas duas técnicas, nós poderemos imprimir o conteúdo do dicionário ordenado pelo *valor* armazenado em cada par de chave/valor.
+Se nós combinarmos essas duas técnicas, nós poderemos mostrar o conteúdo do dicionário ordenado pelo *valor* armazenado em cada par de chave/valor.
 
-Para fazer isso, primeiro fazemos uma lista de tuplas onde cada tupla é `(valor, chave)`. O método `items` nos daria uma lista de tuplas `(chave, valor)`, mas desta vez queremos classificar por valor, não por chave. Depois de construir a lista com as tuplas de chave e valor é simples ordenar a lista na ordem inversa e imprimir a nova lista ordenada.
+Para fazer isso, primeiro fazemos uma lista de tuplas onde cada tupla é `(valor, chave)`. O método `items` nos daria uma lista de tuplas `(chave, valor)`, mas desta vez queremos classificar por valor, não por chave. Depois de construir a lista com as tuplas de chave e valor é simples ordenar a lista na ordem inversa e mostrar em tela a nova lista ordenada.
 
 ~~~~ {.python}
 >>> d = {'a':10, 'b':1, 'c':22}
 >>> l = list()
->>> for key, val in d.items() :
-...     l.append( (val, key) )
+>>> for chave, valor in d.items() :
+...     l.append( (valor, chave) )
 ...
 >>> l
 [(10, 'a'), (22, 'c'), (1, 'b')]
@@ -395,13 +395,13 @@ Voltando ao nosso exemplo de sempre do texto de Romeu e Julieta, Ato 2, Cena 2, 
 ../code3/romeo-full.txt
 \end{trinketfiles}
 
-A primeira parte do programa que lê o arquivo e computa o dicionário que mapeia cada palavra para a contagem no documento não foi alterada. Mas, em vez de simplesmente imprimir `counts` e encerrar o programa, construímos uma lista de tuplas `(val, key)` e depois classificamos a lista na ordem inversa.
+A primeira parte do programa, que lê o arquivo e calcula o dicionário responsável por mapear cada palavra para que a contagem no documento permaneça inalterada. Mas, em vez de simplesmente mostrar `counts` e encerrar o programa, construímos uma lista de tuplas `(valor, chave)` e depois classificamos a lista na ordem inversa.
 
 Como o valor é o primeiro, ele será usado para as comparações. Se houver mais de uma tupla com o mesmo valor, ela olhará para o segundo elemento (a chave), portanto, as tuplas onde o valor é o mesmo serão classificadas pela ordem alfabética da chave.
 
-No final, escrevemos um loop `for` que faz uma iteração de atribuição múltipla e imprime as dez palavras mais comuns, percorrendo uma fatia da lista (`lst [: 10]`).
+No final, escrevemos um loop `for` que faz uma iteração de atribuição múltipla e mostra em tela as dez palavras mais comuns, percorrendo uma fatia da lista (`lst [: 10]`).
 
-Então agora a saída finalmente parece com o que queremos para nossa análise de frequência de palavras.
+Então a saída finalmente parece com o que queremos para nossa análise de frequência de palavras.
 
 ~~~~
 61 u
@@ -416,26 +416,24 @@ Então agora a saída finalmente parece com o que queremos para nossa análise d
 24 thee
 ~~~~
 
-O fato de essa análise e análise de dados complexos poderem ser feitos com um programa Python de 19 linhas e fácil de entender é uma das razões pelas quais o Python é uma boa escolha como uma linguagem para análise de dados.
+O fato dessa complexa análise de dados ser feita com um programa Python de 19 linhas de fácil entendimento é uma das razões pelas quais o Python é uma boa escolha como uma linguagem para explorar informações.
 
 
 Usando tuplas como chaves em dicionários
 ------------------------------------
 
-\index{tuple!as key in dictionary}
+\index{tupla!como uma chave no dicionário }
 \index{hashable}
 
-Como as tuplas são *mutáveis* e as listas não são, se nós
-desejamod criar uma chave *composta* para usar em um dicionário
+Como as tuplas são *mutáveis* e as listas não, se nós
+desejamos criar uma chave *composta* para usar em um dicionário
 devemos usar uma tupla como chave.
 
-Nós encontraríamos uma chave composta se quiséssemos criar um telefone
-diretório que mapeia de pares de nome e sobrenome, para números de telefone.
-Assumindo que definimos as variáveis 'last`,`first` e` number`, poderíamos escrever
+Nós encontraríamos uma chave composta se quiséssemos criar uma lista telefônica que mapeia nome-sobrenome associando a números de telefone. Assumindo que definimos as variáveis `primeiro`, `ultmo` e `numero`, poderíamos escrever
 um dicionário com a declaração de atribuição da seguinte forma:
 
 ~~~~ {.python}
-diretório [último, primeiro] = número
+diretorio[primeiro, ultimo] = número
 ~~~~
 
 A expressão entre colchetes é uma tupla. Poderíamos usar a atribuição de tupla em
@@ -444,14 +442,13 @@ uma repetição `for` para percorrer este dicionário.
 \index{tuple!in brackets}
 
 ~~~~ {.python}
-for último, primeiro in diretório:
-    imprimir (primeiro, último, diretório [último, primeiro])
+for ultimo, primeiro in diretorio:
+    mostrar (primeiro, ultimo, diretório [primeiro, ultimo])
 ~~~~
 
-Este loop percorre as chaves em `directory`, que são
-tuplas. Ele designa os elementos de cada tupla para `last` e
-`primeiro`, depois imprime o nome e o telefone correspondente
-número.
+Este loop percorre as chaves em `directorio`, que são
+tuplas. Ele designa os elementos de cada tupla para `primeiro` e
+`ultimo`, depois mostra em tela o nome e o telefone correspondente ao número.
 
 
 Sequências: strings, listas e tuplas - Oh meu Deus!
@@ -459,14 +456,10 @@ Sequências: strings, listas e tuplas - Oh meu Deus!
 
 \index{sequence}
 
-Concentrei-me em listas de tuplas, mas quase todos os exemplos neste capítulo também 
-funcionam com listas de listas, tuplas de tuplas e tuplas de listas. Para evitar 
-enumerar as combinações possíveis, às vezes é mais fácil falar sobre sequências de 
-sequências.
+Eu me concentrei nas listas de tuplas, mas quase todos os exemplos deste capítulo também trabalham com listas de listas, tuplas de tuplas e tuplas de listas. Para evitar enumerar as combinações possíveis, às vezes é mais fácil falar sobre sequências de sequências.
 
 Em muitos contextos, os diferentes tipos de sequências (strings, listas e tuplas) 
-podem ser usados de forma intercambiável. Então, como e por que você escolhe um 
-sobre os outros?
+podem ser usados de forma permutável. Então, como e por que você escolhe um em relação aos outros?
 
 \index{string}
 \index{list}
@@ -479,29 +472,29 @@ porque os elementos precisam ser caracteres. Eles também são imutáveis. Se vo
 precisar alterar os caracteres em uma string (em vez de criar uma nova string), 
 você deveria usar uma lista de caracteres.
 
-As listas são mais comuns que as tuplas, principalmente porque são mutáveis. Mas há 
+As listas são mais comuns que as tuplas, principalmente porque são mutáveis. Mas existem 
 alguns casos em que você pode preferir tuplas:
 
 1.  Em alguns contextos, como uma instrução de `return`, é sintaticamente mais
 simples criar uma tupla do que uma lista. Em outros contextos, você pode preferir 
 uma lista.
 
-2.  Se você quiser usar uma sequência como uma chave de dicionário, você tem que 
+2.  Caso queira usar uma sequência como uma chave de dicionário, você tem que 
 usar um tipo imutável como uma tupla ou uma string.
 
-3.  Se você estiver passando uma sequência como um argumento para uma função, o uso 
+3.  Mas se estiver passando uma sequência como argumento para uma função, o uso 
 de tuplas reduz o potencial de comportamento inesperado devido ao 
-aliasing(serrilhamento).
+aliasing (serrilhamento).
 
 Como as tuplas são imutáveis, elas não fornecem métodos como `sort` e `reverse`, o 
 que modifica as listas existentes. No entanto, o Python fornece as funções internas 
 `sorted` and `reversed`, que usam qualquer sequência como parâmetro e retornam uma 
-nova seqüência com os mesmos elementos em uma ordem diferente.
+nova sequência com os mesmos elementos em uma ordem diferente.
 
-\index{sorted function}
-\index{function!sorted}
-\index{reversed function}
-\index{function!reversed}
+\index{sorted função}
+\index{função!sorted}
+\index{reversed função}
+\index{função!reversed}
 
 Debugging
 ---------
@@ -511,7 +504,7 @@ Debugging
 \index{erro de forma}
 \index{erro!forma}
 
-Listas, dicionários e tuplas são ocnhecidos genericamente como *estrutura
+Listas, dicionários e tuplas são conhecidos genericamente como *estrutura
 de dados*; neste capítulo estamos começando a ver estruturas compostas, como
 listas de tuplas, e dicionários que contém tuplas como chaves e listas como valores. 
 Tais estruturas são úteis, mas elas são propensas ao que chamamos de *erros de forma*; 
@@ -519,6 +512,7 @@ Isto é, erros causados quando a estrutura de dados tem o tipo, tamanho ou compo
 Ou talvez você escreva algum código e esqueça da forma dos seus dados e introduza um erro.
 Por exemplo, se você está esperando uma lista com um inteiro e eu te dou um bom e velho inteiro
 (não em uma lista). Não funciona.
+
 Glossário
 --------
 
