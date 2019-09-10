@@ -12,44 +12,38 @@ Building a Google map from geocoded data
 ----------------------------------------
 
 \index{Google!map}
-\index{Visualization!map}
+\index{Visualização!mapa}
 
-In this project, we are using the Google geocoding API to clean up some
-user-entered geographic locations of university names and then placing
-the data on a Google map.
+Neste projeto, nós usaremos a API do Google de Geocodificação para organizar algumas informações de geográficas de localização de nomes de universidades que foram disponibilizados por usuários, para então colocar esses dados em um Google map.
+
 
 ![A Google Map](../images/google-map)
-
-To get started, download the application from:
+Para começar faça o download da aplicação em:
 
 [www.py4e.com/code3/geodata.zip](http://www.py4e.com/code3/geodata.zip)
 
-The first problem to solve is that the free Google geocoding API is
-rate-limited to a certain number of requests per day. If you have a lot
-of data, you might need to stop and restart the lookup process several
-times. So we break the problem into two phases.
+O primeiro problema a ser resolvido é que a API de geocodificação gratuita do Google é
+taxa limitada a um determinado número de solicitações por dia. Se você tem muito
+de dados, pode ser necessário parar e reiniciar o processo de pesquisa várias
+vezes. Então por isso dividiremos o problema em duas fases.
 
 \index{cache}
 
-In the first phase we take our input "survey" data in the file
-*where.data* and read it one line at a time, and retrieve
-the geocoded information from Google and store it in a database
-*geodata.sqlite*. Before we use the geocoding API for
-each user-entered location, we simply check to see if we already have
-the data for that particular line of input. The database is functioning
-as a local "cache" of our geocoding data to make sure we never ask
-Google for the same data twice.
+Na primeira fase, utilizam-se os dados de "pesquisa" de entrada no arquivo
+*where.data* e lê-se uma linha de cada vez para recuperar
+as informações geocodificadas do Google e as armazenam em um banco de dados
+*geodata.sqlite*. Antes de usarmos a API de geocodificação para
+cada informação inserida pelo usuário, nós verificamos se já temosos dados dessa linha de entrada específica. 
+O banco de dados está funcionando
+como um "cache" local dos nossos dados de geocodificação para garantir que nunca perguntemos
+Google para os mesmos dados duas vezes.
 
-You can restart the process at any time by removing the file
+Você pode reiniciar o processo a qualquer momento removendo o arquivo
 *geodata.sqlite*.
 
-Run the *geoload.py* program. This program will read the
-input lines in *where.data* and for each line check to
-see if it is already in the database. If we don't have the data for the
-location, it will call the geocoding API to retrieve the data and store
-it in the database.
+Rode o program *geoload.py*. Este programa lerá as linhas de entrada em *where.data* e para cada linha ele checará se elas já estão no banco de dados. Se não os dados não existirem para o local analisado, a API de geocodificação será chamada para recuperar o dado e guardar no banco de dados.
 
-Here is a sample run after there is already some data in the database:
+Aqui está o uma amostra de execução após já existir dados armazenados no banco de dados:
 
 ~~~~
 Found in database  Northeastern University
