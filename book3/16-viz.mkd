@@ -8,10 +8,10 @@ Neste capítulo, nós analisaremos três aplicações que reúnem todas esses co
 
 Todas essas aplicações estão num arquivo ZIP que você pode fazer o dowload e extrair no seu computador.
 
-Building a Google map from geocoded data
+Construindo um mapa do Google a partir de dados geocodificados
 ----------------------------------------
 
-\index{Google!map}
+\index{Google!mapa}
 \index{Visualização!mapa}
 
 Neste projeto, nós usaremos a API do Google de Geocodificação para organizar algumas informações de geográficas de localização de nomes de universidades que foram disponibilizados por usuários, para então colocar esses dados em um Google map.
@@ -67,25 +67,13 @@ Retrieved 1749 characters {    "results" : [
 ...
 ~~~~
 
-The first five locations are already in the database and so they are
-skipped. The program scans to the point where it finds new locations and
-starts retrieving them.
+Os cinco primeiro lugares já estão no banco de dados e portanto, eles são pulados. O programa escaneia o arquivo até o ponto em que ele encontra novos lugares e começa a recuperá-los.
 
-The *geoload.py* program can be stopped at any time, and
-there is a counter that you can use to limit the number of calls to the
-geocoding API for each run. Given that the *where.data*
-only has a few hundred data items, you should not run into the daily
-rate limit, but if you had more data it might take several runs over
-several days to get your database to have all of the geocoded data for
-your input.
+O programa *geoload.py* pode ser parado a qualquer momento, além disso, existe um contador que você pode utilizar para limitar o número de vezes que se é chamada a API de geocodificação a cada vez que se é executado o programa. Dado que *where.data* apenas possui alguma centena de itens de dados, sua execução não deverá ultrapassar o limite diário, entretanto, se você tiver possuir mais dados, pode ser que sejam necessárias várias execuções ao longo de vários dias para que se consiga extrair os dados geocodificados.
 
-Once you have some data loaded into *geodata.sqlite*, you
-can visualize the data using the *geodump.py* program.
-This program reads the database and writes the file
-*where.js* with the location, latitude, and longitude in
-the form of executable JavaScript code.
+Assim que possuir seus dados carregados em *geodata.sqlite*, poderá visualizar os dados usando o programa *geodump.py*. Este programa lê um banco de dados e armazena no arquivo *where.js* a localização, latitude e longitude na forma de um código em Javascript executável.
 
-A run of the *geodump.py* program is as follows:
+A execução do programa *geodump.py* é mostrada a seguir:
 
 ~~~~
 Northeastern University, ... Boston, MA 02115, USA 42.3396998 -71.08975
@@ -99,10 +87,7 @@ Kokshetau, Kazakhstan 53.2833333 69.3833333
 Open where.html to view the data in a browser
 ~~~~
 
-The file *where.html* consists of HTML and JavaScript to
-visualize a Google map. It reads the most recent data in
-*where.js* to get the data to be visualized. Here is the
-format of the *where.js* file:
+O arquivo *where.html* consiste em Html e Javascript para visualizar um mapa do Google. Ele lê os dados mais recentes em *where.js* para fazer com que os dados sejam visualizados. Aqui está o formato to arquivo do *where.js*:
 
 ~~~~ {.js}
 myData = [
@@ -113,15 +98,9 @@ myData = [
 ];
 ~~~~
 
-This is a JavaScript variable that contains a list of lists. The syntax
-for JavaScript list constants is very similar to Python, so the syntax
-should be familiar to you.
+Esta é uma variável em Javascript que contém uma lista de listas. A sintáxe para uma lista constante nesta linguagem é muito semelhante a lista em Python, logo esta sintáxe será familiar para você.
 
-Simply open *where.html* in a browser to see the
-locations. You can hover over each map pin to find the location that the
-geocoding API returned for the user-entered input. If you cannot see any
-data when you open the *where.html* file, you might want
-to check the JavaScript or developer console for your browser.
+Simplismente abra o arquivo *where.html* no seu navegador e veja as localizações. Você poderá se aproximar de cada um dos pins para descrobrir a localização que a API de geocodificação retornará a entrada fornecida pelo usuário. Caso você não consiga ver nenhum dado quando abrir o arquivo *where.html*, você poderá checar o Javascript ou o console de desenvolvimento do seu navegador.
 
 Visualizing networks and interconnections
 -----------------------------------------
