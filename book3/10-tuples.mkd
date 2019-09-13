@@ -5,23 +5,19 @@ Tuplas
 As tuplas são imutáveis
 --------------------
 
-\index{tuple}
-\index{type!tuple}
-\index{sequence}
+\index{tuplas}
+\index{tipo!tuplas}
+\index{sequência}
 
-A tuple^[Fun fact: The word "tuple" comes from the names given to sequences
-of numbers of varying lengths: single, double, triple, quadruple,
-quintuple, sextuple, septuple, etc.] is a sequence of values much like a list. The values stored
-em uma tupla pode ser qualquer tipo, e eles são indexados por números inteiros. O
-diferença importante é que as tuplas são * imutáveis *.
-As tuplas também são * comparáveis * e
-* hashable * para que possamos Ordenar listas deles e usar tuplas como
-valores-chave em dicionários Python.
+Uma tupla^[Fun fact: A palavra "tupla" vem dos nomes dados as sequências
+de números de comprimentos variados: simples, dobro, triplo, quádruplo,
+quintuplo, sextuplo, septuplo, etc.] é uma seqüência de valores muito parecido com uma lista.Os valores armazenados
+em uma tupla pode ser qualquer tipo, e eles são indexados por números inteiros. O diferença importante é que as tuplas são * imutáveis*. As tuplas também são * comparáveis * e * hashable * para que possamos Ordenar listas deles e usar tuplas como valores-chave em dicionários Python.
 
-\index{mutability}
+\index{mutabilidade}
 \index{hashable}
-\index{comparable}
-\index{immutability}
+\index{Comparável}
+\index{inmutável}
 
 Sintaticamente, uma tupla é uma lista separada por vírgulas de valores:
 
@@ -33,7 +29,7 @@ Embora não seja necessário, é comum incluir tuplas em
 parênteses para nos ajudar a identificar rapidamente tuplas quando olhamos para Python
 Código:
 
-\index{parentheses!tuples in}
+\index{parêntese!tuplas}
 
 ~~~~ {.python}
 >>> t = ('a', 'b', 'c', 'd', 'e')
@@ -42,7 +38,7 @@ Código:
 Para criar uma tupla com um único elemento, você precisa incluir a vírgula final:
 
 \index{singleton}
-\index{tuple!singleton}
+\index{tuplas!singleton}
 
 ~~~~ {.python .trinket}
 >>> t1 = ('a',)
@@ -50,7 +46,7 @@ Para criar uma tupla com um único elemento, você precisa incluir a vírgula fi
 <type 'tuple'>
 ~~~~
 
-Sem a vírgula Python trata ' (' a ') ' como uma expressão com uma cadeia de caracteres entre parênteses que é avaliada como uma cadeia de caracteres:
+Sem a vírgula Python trata '('a')' como uma expressão com uma cadeia de caracteres entre parênteses que é avaliada como uma cadeia de caracteres:
 
 ~~~~ {.python}
 >>> t2 = ('a')
@@ -59,10 +55,10 @@ Sem a vírgula Python trata ' (' a ') ' como uma expressão com uma cadeia de ca
 ~~~~
 
 Outra maneira de construir uma tupla é a função interna
-' Tuple '. Sem nenhum argumento, ele cria uma tupla vazia:
+'Tuple'. Sem nenhum argumento, ele cria uma tupla vazia:
 
-\index{tuple function}
-\index{function!tuple}
+\index{funçãode tuplas}
+\index{função!tuplas}
 
 ~~~~ {.python .trinket}
 >>> t = tuple()
@@ -71,7 +67,7 @@ Outra maneira de construir uma tupla é a função interna
 ~~~~
 
 Se o argumento for uma seqüência (cadeia de caracteres, lista ou tupla), o resultado de
-a chamada para ' tupla ' é uma tupla com os elementos do
+a chamada para 'tupla' é uma tupla com os elementos do
 Seqüência:
 
 ~~~~ {.python .trinket}
@@ -80,13 +76,13 @@ Seqüência:
 ('l', 'u', 'p', 'i', 'n', 's')
 ~~~~
 
-Porque ' tupla ' é o nome de um construtor, você deve
+Porque 'tupla' é o nome de um construtor, você deve
 Evite usá-lo como um nome de variável.
 
 A maioria dos operadores de lista também funcionam em tuplas. O operador de colchete indexa na elemento:
 
-\index{bracket operator}
-\index{operator!bracket}
+\index{operador de suporte}
+\index{operador! suporte}
 
 ~~~~ {.python .trinket}
 >>> t = ('a', 'b', 'c', 'd', 'e')
@@ -96,10 +92,10 @@ A maioria dos operadores de lista também funcionam em tuplas. O operador de col
 
 E o operador de fatia seleciona um intervalo de elementos.
 
-\index{slice operator}
-\index{operator!slice}
-\index{tuple!slice}
-\index{slice!tuple}
+\index{operador de secção}
+\index{operador!secção}
+\index{tupla!secção}
+\index{secção!tupla}
 
 ~~~~ {.python}
 >>> print(t[1:3])
@@ -108,10 +104,10 @@ E o operador de fatia seleciona um intervalo de elementos.
 
 Mas se você tentar modificar um dos elementos da tupla, você receberá um erro:
 
-\index{exception!TypeError}
-\index{TypeError}
-\index{item assignment}
-\index{assignment!item}
+\index{Exceção! Tipo Erro}
+\index{Tipo Erro}
+\index{atribuição de item}
+\index{atribuição!item}
 
 ~~~~ {.python}
 >>> t[0] = 'A'
@@ -129,10 +125,10 @@ Não é possível modificar os elementos de uma tupla, mas você pode substituir
 Comparando tuplas
 ----------------
 
-\index{comparison!tuple}
-\index{tuple!comparison}
-\index{sort method}
-\index{method!sort}
+\index{Comparação!tuplas}
+\index{tuplas!Comparação}
+\index{tipo de método}
+\index{método!tipo}
 
 Os operadores de comparação trabalham com tuplas e outras sequências. Python começa comparando o primeiro elemento de cada sequência. Se eles forem iguais, ele passa para o próximo elemento, e assim por diante, até encontrar elementos que diferem. Elementos subseqüentes não são considerados (mesmo se eles são realmente grandes).
 
@@ -146,23 +142,23 @@ True
 A função ' Sort ' funciona da mesma forma. Ele classifica principalmente por
 primeiro elemento, mas no caso de um empate, ele classifica por segundo elemento, e assim por diante.
 
-Este recurso presta-se a um padrão chamado * DSU * para
+Este recurso presta-se a um padrão chamado *DSU* para
 
 Decorar
-: uma sequência construindo uma lista de tuplas com uma ou mais chaves de classificação
+:uma sequência construindo uma lista de tuplas com uma ou mais chaves de classificação
     precedendo os elementos da sequência,
 
 Tipo
-: a lista de tuplas usando o Python embutido ' Sort ', e
+:a lista de tuplas usando o Python embutido ' Sort ', e
 
 Undecorate
-: extraindo os elementos classificados da sequência.
+:extraindo os elementos classificados da sequência.
 
-\index{DSU pattern}
-\index{pattern!DSU}
-\index{decorate-sort-undecorate pattern}
-\index{pattern!decorate-sort-undecorate}
-\index{Romeo and Juliet}
+\index{DSU pátrão}
+\index{patraõ!DSU}
+\index{decorar-tipo-desdecorar padrão}
+\index{Padrão!Decorar-Tipo-desdecorar}
+\index{Romeu e Julieta}
 
 Por exemplo, suponha que você tem uma lista de palavras e você deseja classificá-los de mais longo para o mais curto:
 
@@ -171,17 +167,17 @@ Por exemplo, suponha que você tem uma lista de palavras e você deseja classifi
 O primeiro loop cria uma lista de tuplas, onde cada tupla é uma palavra
 precedido pelo seu comprimento.
 
-' Sort ' compara o primeiro elemento, comprimento, primeiro e apenas
+'Sort' compara o primeiro elemento, comprimento, primeiro e apenas
 considera o segundo elemento a quebrar laços. O argumento de palavra-chave
-' Reverse = true ' diz ' Sort ' para ir em decrescente
+'Reverse = true' diz 'Sort' para ir em decrescente
 Ordem.
 
-\index{keyword argument}
-\index{argument!keyword}
-\index{traversal}
+\index{argumento de palavra-chave}
+\index{argumento! palavra-chave}
+\index{Passagem}
 
 O segundo loop atravessa a lista de tuplas e constrói uma lista de palavras
-em ordem decrescente de comprimento. As palavras de quatro caracteres são classificadas em * Reverse * ordem alfabética, então "o que" aparece antes
+em ordem decrescente de comprimento. As palavras de quatro caracteres são classificadas em *Reverse* ordem alfabética, então "o que" aparece antes
 "soft" na lista a seguir.
 
 A saída do programa é a seguinte:
