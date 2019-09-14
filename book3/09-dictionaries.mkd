@@ -1,13 +1,13 @@
 Dicionários
 ============
 
-\index{dictionary}
-\index{dictionary}
+\index{dicionário}
+\index{dicionário}
 
-\index{type!dict}
-\index{key}
-\index{key-value pair}
-\index{index}
+\index{tipo!dict}
+\index{chave}
+\index{par chave-valor}
+\index{índice}
 \index{}
 
 Um *dicionário* é como uma lista, porém mais geral.
@@ -25,12 +25,12 @@ palavras do Inglês para o Português, então os valores e
 chaves são todos strings. 
 
 A função `dict` cria um novo dicionário com nenhum item.
-Como `dict` é o nome de uma função embutida, deve-se 
+Como `dict` é o nome de uma função interna da linguagem, deve-se 
 evitar usá-lo como nome de variável.
 
 
-\index{dict function}
-\index{function!dict}
+\index{função dict}
+\index{função!dict}
 
 ~~~~ {.python .trinket}
 >>> ing2port = dict()
@@ -42,7 +42,7 @@ As chaves,  `{}`, representam um dicionário vazio. Para
 adicionar itens ao dicionário, colchetes, `[]`, podem ser
 utilizados:
 
-\index{squiggly bracket}
+\index{chaves}
 \index{bracket!squiggly}
 
 ~~~~ {.python}
@@ -52,7 +52,7 @@ utilizados:
 Esta linha cria um item que localiza, a partir da chave
 `‘one’`, o valor "um". Se pedirmos para o conteúdo do 
 dicionário ser mostrado novamente, veremos o par chave-valor
-com dois-pontos entre a chave e o valor:
+separados por dois pontos:
 
 ~~~~ {.python}
 >>> print(ing2port) 
@@ -84,12 +84,12 @@ consultar os valores correspondentes:
 'dois'
 ~~~~
 
-A chave `'two'` sempre localizará o valor ‘dois’ e,
+A chave `'two'` sempre localizará o valor "dois" e,
 portanto, a ordem dos itens não importa.
 
 Se a chave não estiver contida no dicionário, ocorrerá um erro:
 
-\index{exception!KeyError}
+\index{exceção!KeyError}
 \index{KeyError}
 
 ~~~~ {.python}
@@ -100,8 +100,8 @@ KeyError: 'four'
 A função `len` funciona em dicionários; ele retorna
 o número de pares chave-valor:
 
-\index{len function}
-\index{function!len}
+\index{função len}
+\index{função!len}
 
 ~~~~ {.python}
 >>> len(ing2port)
@@ -112,23 +112,23 @@ O operador `in` também funciona em dicionários; ele dirá
 se algo aparece no dicionário como uma chave (os valores 
 dos pares não são considerados).
 
-\index{membership!dictionary}
-\index{in operator}
-\index{operator!in}
+\index{membros!dicionário}
+\index{operador in}
+\index{operador!in}
 
 ~~~~ {.python}
 >>> 'one' in ing2port
 True
->>> 'uno' in ing2port
+>>> 'um' in ing2port
 False
 ~~~~
 
-Para ver se algo aparece com valor em um dicionário, o método
+Para ver se algo aparece como valor em um dicionário, o método
 `values` pode ser utilizado. Esse método retornará os valores
 em uma lista, e então, usando o operador `in`:
 
-\index{values method}
-\index{method!values}
+\index{método values}
+\index{método!values}
 
 ~~~~ {.python}
 >>> vals = list(ing2port.values())
@@ -142,13 +142,13 @@ e dicionários. Em listas, ele executa um algoritmo de busca
 linear. A medida que a lista vai ficando mais longa, o tempo
 de busca aumenta proporcionalmente ao comprimento da lista.
 Em dicionários, Python faz uso de um algoritmo chamado 
-*tabela de dispersão* (hash table), que possui uma notória
+*tabela de dispersão* (_hash table_), que possui uma notória
 propriedade: o operador `in` leva, aproximadamente, o mesmo 
 tempo de execução, não importando a quantidade de itens no 
 dicionário. Não explicarei porque funções hash são tão mágicas,
 porém você pode ler mais sobre em: [wikipedia.org/wiki/Hash\_table](https://wikipedia.org/wiki/Hash_table). 
 
-\index{hash table}
+\index{tabela de dispersão}
 \index{set membership}
 \index{membership!set}
 
@@ -163,7 +163,7 @@ uma maneira rápida de verificar se uma string está no dicionário.**
 Dicionário como um conjunto de contadores
 -------------------------------
 
-\index{counter}
+\index{contador}
 
 Suponha que lhe deram uma string e que você queira
 contar quantas vezes cada letra aparece. Existem várias
@@ -176,24 +176,24 @@ formas de fazer isso:
 
 2.	Você pode criar uma lista com 26 elementos. Então, você
     pode converter cada caractere para um número (usando a função
-    embutida ord), usar o número como um índice na lista, e 
+    embutida `ord`), usar o número como um índice na lista, e 
     incrementar o contador apropriado.
 
-3.	Você pode criar um dicionário com caracteres como chave
+3.	Você pode criar um dicionário, estabelecendo caracteres como chaves
     e contadores como os valores correspondentes. A primeira vez
     em que um caractere for lido, um novo item seria adicionado
     ao dicionário. Após isso, o valor de um item existente seria incrementado. 
 
 Cada uma destas opções executa a mesma computação, porém cada
-uma delas implementas essa computação de forma diferente. 
+uma delas implementa essa computação de uma forma diferente. 
 
-\index{implementation}
+\index{implementação}
 
 Uma *implementação* é uma forma de executar uma computação;
 algumas implementações são melhores que outras. Por exemplo,
 uma vantagem da implementação utilizando o dicionário é que
 não precisamos saber de antemão quais as letras presentes 
-na string e nós apenas precisamos separar espaço para letras
+na string e precisamos apenas separar espaço para letras
 que realmente aparecem.
 
 Aqui está uma ideia de como este código seria:
@@ -212,16 +212,16 @@ print(d)
 Estamos, efetivamente, computando um histograma, que é um 
 termo estatístico para um conjunto de contadores (ou frequências).
 
-\index{histogram}
-\index{frequency}
+\index{histograma}
+\index{frequência}
 \index{traversal}
 
 A repetição `for` examina a string. A cada repetição, se o 
 caractere `c` não estiver no dicionário, criamos um novo item 
-com chave `c` e valor inicial 1 (já que vimos essa letra uma 
+com chave `c` e valor inicial 1 (já que só vimos essa letra uma 
 vez). Se c já estiver contido no dicionário, incrementamos `d[c]`.
 
-\index{histogram}
+\index{histograma}
 
 Esta é a saída do programa:
 
@@ -232,8 +232,8 @@ Esta é a saída do programa:
 O histograma indica que as letras "a" e "b" aparecem uma vez; "o"
 aparece duas vezes, e assim por diante.
 
-\index{get method}
-\index{method!get}
+\index{método get}
+\index{método!get}
 
 Dicionários possuem um método chamado `get` que recebe uma chave
 e um valor padrão. Se a chave estiver contida no dicionário, `get`
@@ -248,9 +248,9 @@ padrão. Por exemplo:
 0
 ~~~~
 
-Podemos usar `get` para escrever a repetição do histograma de
-forma mais concisa. Já que  o método `get` automaticamente trata
-o caso em que a chave não está contido no dicionário, podemos 
+Podemos usar `get` para escrever o laço do histograma de
+forma mais concisa. Já que o método `get` automaticamente trata
+o caso em que a chave não está contida no dicionário, podemos 
 reduzir quatro linhas a apenas uma e descartar a instrução `if`.
 
 ~~~~ {.python}
@@ -261,11 +261,11 @@ for c in palavra:
 print(d)
 ~~~~
 
-O uso do método `get` para simplificar essa repetição é um “idiom”
-muito comum em Python e nós a usaremos muitas vezes pelo resto 
+O uso do método `get` para simplificar essa repetição é um “_idiom_”
+muito comum em Python e nós o usaremos muitas vezes pelo resto 
 deste livro. Portanto, você deveria tomar um tempo para comparar
-a repetição utilizando a instrução `if` e o operador `in` com a 
-repetição utilizando o método `get`. Ambos fazem a mesma coisa, 
+o laço utilizando a instrução `if` e o operador `in` com o 
+laço utilizando o método `get`. Ambos fazem a mesma coisa, 
 porém um é mais sucinto.
 
 \index{idiom}
@@ -273,9 +273,9 @@ porém um é mais sucinto.
 Dicionários e Arquivos
 ----------------------
 
-Um dos usos mais comum de um dicionário é para a contagem da 
-ocorrência de palavras em um arquivo com algum texto. Comecemos
-com um arquivo de palavras, muito simples, retirado do texto de
+Um dos usos mais comuns de um dicionário é a contagem da 
+ocorrência de palavras em um texto presente em algum arquivo. Comecemos
+com um arquivo de palavras, muito simples, extraído do texto de
 *Romeu e Julieta*.
 
 Para o primeiro conjunto de exemplos, usaremos uma versão reduzida
@@ -288,23 +288,23 @@ com o texto original, com a pontuação.
     Who is already sick and pale with grief
 
 Escreveremos um programa em Python para ler as linhas do arquivo,
-quebra-las em uma lista de palavras e então, contar a quantidade 
+quebrá-las em uma lista de palavras e, então, contar a ocorrência 
 de cada palavra presente no texto, usando um dicionário.
 
-\index{nested loops}
-\index{loop!nested}
+\index{laços aninhados}
+\index{laço!aninhado}
 
-Veremos que temos duas repetições `for`. A repetição externa está
-lendo a linhas do arquivo e a repetição interna está iterando para 
+Veremos que temos dois laços `for`. A repetição externa está
+lendo as linhas do arquivo e a repetição interna está iterando entre 
 cada palavra naquela linha em particular. Esse é um exemplo de padrão
-chamado *repetições aninhadas* pois uma repetição está contida dentro
-de outra. 
+chamado *laços aninhados*, pois um laço está contido dentro
+de outro. 
 
 Como a repetição interna executa todas as suas iterações enquanto 
-a externa itera uma única vez, pensamos na repetição interna iterando
-“mais rapidamente” enquanto a repetição externa itera ”mais lentamente”.  
+a externa itera uma única vez, pensamos na interna iterando
+“mais rapidamente” enquanto a externa itera “mais lentamente”.  
 
-\index{Romeo and Juliet}
+\index{Romeu e Julieta}
 
 A combinação das duas repetições aninhadas assegura que vamos contar
 cada palavra em cada linha do arquivo de entrada. 
@@ -322,7 +322,7 @@ pode ser utilizado para alterar o valor da variável em qualquer que
 seja a quantidade desejada. Alternativas similares existem para 
 `-=`, `*=`, e `/=`.
 
-Quando executamos o programa, vemos integramente todas as contagens 
+Quando executamos o programa, vemos todas as contagens dispostas
 em ordem aleatória. (o arquivo *romeo.txt* está disponível em
 [www.py4e.com/code3/romeo.txt](http://www.py4e.com/code3/romeo.txt))
 
@@ -337,19 +337,19 @@ Enter the file name: romeo.txt
 'kill': 1, 'the': 3, 'soft': 1, 'Juliet': 1}
 ~~~~
 
-É um pouco inconveniente analisar um dicionário para encontrar
-as palavras mais comuns e a sua quantidade, então precisamos 
-adicionar um pouco mais de código Python para termos a saída mais útil.
+É um pouco inconveniente ter que analisar o dicionário para encontrar
+as palavras mais comuns e a sua contagem, então precisamos 
+adicionar um pouco mais de código Python para termos uma saída mais clara.
 
-Dicionários e Repetições
+Laços e Dicionários
 ------------------------
 
-\index{dictionary!looping with}
-\index{looping!with dictionaries}
+\index{dictionário!laços com}
+\index{laço!com dicionários}
 \index{traversal}
 
 Se usarmos um dicionário como a sequência em uma instrução `for`,
-ela examinará as chaves do dicionário. Esta repetição mostra cada
+ela percorrerá as chaves do dicionário. Este laço mostra cada
 chave e seu valor correspondente:
 
 ~~~~ {.python}
@@ -370,9 +370,9 @@ Novamente, as chaves não estão em uma ordem particular.
 
 \index{idiom}
 
-Podemos usar este padrão para implementar vários “idioms”
+Podemos usar este padrão para implementar vários “_idioms_”
 de repetição que descrevemos anteriormente. Por exemplo, 
-se quisermos encontrar todas a entradas em um dicionário 
+se quisermos encontrar todas as entradas em um dicionário 
 com valor maior que dez, poderíamos escrever o seguinte 
 código:
 
@@ -383,13 +383,8 @@ for chave in conta:
         print(chave, conta[chave])
 ~~~~
 
-The `for` loop iterates through the *keys* of
-the dictionary, so we must use the index operator to retrieve the
-corresponding *value* for each key. Here's what the output
-looks like:
-
-A repetição `for` itera em relação a cada uma das *chaves* 
-do dicionário, então devemos utilizar o operador índice para 
+O laço `for` itera entre as *chaves* 
+do dicionário, então devemos utilizar o operador de índice para 
 retornar o *valor* correspondente a cada chave. A saída se pareceria com: 
 
 ~~~~
@@ -397,15 +392,15 @@ jan 100
 annie 42
 ~~~~
 
-Apenas vemos as entradas com valor acima de 10.
+Vemos apenas as entradas com valor acima de 10.
 
-\index{keys method}
-\index{method!keys}
+\index{método keys}
+\index{método!keys}
 
 Se quisermos mostrar as chaves em ordem alfabética, primeiramente
-precisamos fazer uma lista, contendo essas chaves desse dicionário,
-usando o método `keys`, disponível nos objetos do dicionário.
-Então podemos ordenar a lista e avaliar a lista ordenada, analisando
+precisamos fazer uma lista, contendo as chaves desse dicionário,
+usando o método `keys`, disponível no próprio objeto dicionário.
+A partir disso, podemos ordenar a lista e percorrê-la, analisando
 cada chave e mostrando os pares chave-valor de forma ordenada, 
 como a seguir:
 
@@ -428,17 +423,18 @@ jan 100
 ~~~~
 
 Primeiro vemos a lista de chaves desordenada que retiramos pelo método
-`key`. Em seguida, vemos os pares chave-valor em ordem, vindos da 
-repetição `for`.
+`key`. Em seguida, vemos os pares chave-valor em ordem, vindos do 
+laço `for`.
 
 Métodos avançados de divisão de texto
 ---------------------
 
-\index{Romeo and Juliet}
+\index{Romeu e Julieta}
 
-No exemplo abaixo utilizando o arquivo *romeo.txt*, criamos o arquivo o mais simples possível
+No exemplo passado utilizando o arquivo *romeo.txt*, deixamos 
+o texto o mais simples possível
 removendo todas as pontuações manualmente.
-O texto tem muitas pontuações, como mostrado abaixo.
+O texto original tem muitas pontuações, como mostrado abaixo.
 
 ~~~
 Mas, sutil! que luz ultrapassa aquela janela?
@@ -448,12 +444,13 @@ Que já está doente e pálida com o luto,
 ~~~
 
 Desde que a função `split` procura por espaços e trata
-as palavras como objetos separados por espaços, nós trataremos as pelavras "sutilmente!"
-e "sutil" como *diferentes* palavras e criaremos informações específicas
-de dicionário para cada palavra
+as palavras como objetos separados por espaços, nós trataremos as palavras "sutilmente!"
+e "sutil" como palavras *diferentes* e criaremos entradas específicas
+no dicionário para cada palavra.
 
-Também já que o arquivo tem letras maiúsculas, nós trataremos "quem" e "Quem"
-como palavras diferentes com diferentes significados
+Além disso, já que o arquivo tem letras maiúsculas,
+nós trataremos "quem" e "Quem"
+como palavras diferentes, com diferentes contadores.
 
 Podemos resolver os dois problemas utilizando os métodos de strings
 `lower`, `punctuation`, e  
@@ -462,9 +459,9 @@ métodos. Aqui está a documentação para o `translate`:
 
 `line.translate(str.maketrans(fromstr, tostr, deletestr))`
 
-*Troque os caracteres em `fromstr` com o caractere na mesma posição em `tostr`
-apague todos os caracteres que estão em `deletestr`.
-Os `fromstr` e `tostr` podem ser strings vazias e o parâmetro
+*Troca os caracteres em `fromstr` com o caractere na mesma posição em `tostr`
+e apaga todos os caracteres que estão em `deletestr`.
+`fromstr` e `tostr` podem ser strings vazias e o parâmetro
 `deletestr` pode ser omitido.*
 
 Nós não iremos especificar o `tostr` mas utilizaremos o
@@ -488,10 +485,10 @@ As seguintes modificações foram feitas no nosso programa:
 \end{trinketfiles}
 
 Parte do aprendizado em "Art of Python" ou "Thinking Pythonically" é
-perceber que o Python geralmente tem soluções pré feitas para os mais comuns
-problemas de análise de dados. Com o tempo, você verá vários exemplos de códigos e
-lerá documentações de funções suficientes para saber onde procurar caso alguém já
-tenha escrito algo que fará seu trabalho mais fácil.
+perceber que o Python geralmente tem soluções prontas para os problemas
+mais comuns de análise de dados. Com o tempo, você verá vários exemplos de códigos e
+lerá documentações de funções suficientes para saber onde procurar se alguém já
+escreveu algo que tornará seu trabalho mais fácil.
 
 A seguir está uma versão abreviada da saída:
 
@@ -509,14 +506,14 @@ dar exatamente o que estamos procurando, mas, para isso, precisamos
 aprender *tuplas*. Nós voltaremos para esse exemplo quando aprendermos 
 tuplas.
 
-Depurando
+Debugging
 ---------
 
-\index{Depurando}
+\index{Debugging}
 
 Como você trabalhou com maiores conjuntos de dados, torna-se difícil 
-depurar mostrando em tela e verificando manualmente. Aqui estão algumas 
-sugestões para depurar grandes conjuntos de dados:
+tratar erros mostrando tudo em tela e verificando manualmente. Aqui estão algumas 
+sugestões para o _debugging_ de grandes conjuntos de dados:
 
 Diminua a escala da entrada
 :	Se possível, diminua o tamanho do conjunto de 
@@ -533,9 +530,9 @@ Verifique resumos e tipos
 	de dados, considere apresentar resumos do conjunto: por exemplo o número 
 	de ítens num dicionário ou o total de uma lista de números.
 
-    Um tipo comum de erro de compilação é a entraeda que não está de acordo
-	com o modelo. Para depurar esse tipo de erro, normalmente é suficiente 
-	mostrar em tela o tipo da entrada.
+    Uma causa comum de erros em tempo de execução é a presença de um valor que
+	não é do tipo esperado. Para tratar esse tipo de erro, normalmente 
+	basta mostrar em tela o tipo da entrada.
 
 Escreva auto-verificadores
 :	Normalmente pode-se escrever códigos que 
@@ -547,102 +544,102 @@ Escreva auto-verificadores
 \index{verificação de sanidade}
 \index{verificação de consistência}
 
-    Outro tipo de verificação o resultado de duas compilações diferentes para 
-	analisar a consitência dos resultados. Isso é chamado de "verificação de 
-	consitência".
+    Outro tipo de verificação compara o resultado de duas computações diferentes 
+	para analisar a consitência dos resultados. Isso é chamado de "verificação 
+	de consitência".
 
 Organize a maneira que a saída será mostrada
-:	Depurar uma saída formatada é mais fácil de encontrar erros.
+:	Analisar uma saída formatada é mais fácil de encontrar erros.
 
-Novamente, o tempo gasto construindo os alicerces diminue o tempo gasto depurando.
+Novamente, o tempo gasto construindo os alicerces diminui o tempo gasto no _debugging_.
 \index{alicerce}
 
 Glossario
 --------
 
-Dicionário
-:	Um conjunto de uma série de chaves e suas correspondentes 
-	entradas.
-\index{dictionary}
-
-Tabela Hash
-:	O algorítmo utilizado para implementar os dicionários em 
-	Python.
-\index{hashtable}
-
-Função Hash
-:	Uma função utilizada pela tabela Hash para cacular a 
-	localização da chave.
-\index{hash function}
-
-histograma
-:	Um conjunto de contadores.
-\index{histogram}
-
-Implementação
-:	A forma como o problema é resolvido (em forma de código, por exemplo).
-\index{implementation}
-
-item
-:	Outro nome para o par chave-valor.
-\index{item!dictionary}
-
 chave
 :	Um objeto que aparece num dicionário na primeira parte do par 
 	chave-valor.
-\index{key}
+\index{chave}
+
+dicionário
+:	Um conjunto de uma série de chaves e seus correspondentes 
+	valores.
+\index{dicionário}
+
+função hash
+:	Uma função utilizada pela tabela de dispersão (_hashtable_) para cacular a 
+	localização da chave.
+\index{função hash}
+
+histograma
+:	Um conjunto de contadores.
+\index{histograma}
+
+implementação
+:	A forma como o problema é resolvido (em forma de código, por exemplo).
+\index{implementação}
+
+item
+:	Outro nome para o par chave-valor.
+\index{item!dicionário}
 
 key-value pair
 :   The representation of the mapping from a key to a value.
-\index{key-value pair}
+\index{chave-valor par}
+
+laços aninhados
+:   Quando há um ou mais laços de repetição "dentro" de outro laço. O laço
+    interno completa todas as iterações para cada iteração do
+    externo.
+\index{laços aninhados}
+\index{laço!aninhados}
 
 lookup
-:	Um dicionário que referencia a chave a chave com seu valor 
+:	Uma operação do dicionário que toma um chave e encontra seu valor 
 	correspondente.
 \index{lookup}
 
-Laços aninhados
-:   Quando há laços de repetição "dentro" de um outro laço. O laço mais 
-    interno completa todas as iterações para cada iteração do laço mais 
-    externo.
-\index{nested loops}
-\index{loop!nested}
+tabela de Dispersão (_hashtable_)
+:	O algorítmo utilizado para implementar os dicionários em 
+	Python.
+\index{tabela de dispersão}
 
 valor
 :   Um objeto que aparece num dicionário na segunda parte do par 
 chave-valor. Isso é mais específico do que nossos usos anteriores da palavra "valor".
-\index{value}
+\index{valor}
 
-Exercises
+Exercícios
 ---------
 
 **Exercício 2: Escreva um programa que categorize cada mensagem de e-mail 
 de acordo com o dia em que a mensagem foi enviada. Para isso, procure por 
-linhas que comecem com "De" então procure pela terceira palavra e 
-continue contando até encontrar o dia da semana. No final do programa, 
+linhas que comecem com "From", depois procure pela terceira palavra e 
+mantenha uma contagem de ocorrência para cada dia da semana. No final do programa, 
 mostre em tela o conteúdo do seu dicionário (a ordem não interessa).**
 
 **linha exemplo:**
 
 ~~~~
-De stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
 ~~~~
 
 **Exemplo de código:**
 
 ~~~~
 python dow.py
-Digite o nome do arquivo: mbox-short.txt
+Enter a file name: mbox-short.txt
 {'Sex': 20, 'Qui': 6, 'Sab': 1}
 ~~~~
 
-**Exercício 3: Escreva um código que leia um registro de mensagens, c
-onstrua um histograma utilizando um dicionário para contar quantas 
+**Exercício 3: Escreva um programa que leia um registro de mensagens, 
+construa um histograma, utilizando um dicionário, para contar quantas 
 mensagens chegaram em cada endereço de email e mostre em tela o 
 dicionário.**
 
 ~~~~
-Enter file name: mbox-short.txt
+Enter a file name: mbox-short.txt
 {'gopal.ramasammycook@gmail.com': 1, 'louis@media.berkeley.edu': 3,
 'cwen@iupui.edu': 5, 'antranig@caret.cam.ac.uk': 1,
 'rjlowe@iupui.edu': 2, 'gsilver@umich.edu': 3,
@@ -652,7 +649,7 @@ Enter file name: mbox-short.txt
 ~~~~
 
 **Exercício 4: Adicione linhas de código no programa abaixo para 
-identificar quem tem mais mensagens no arquivo. Após todo o dado ser lido 
+identificar quem possui mais mensagens no arquivo. Após todo o dado ser lido 
 e todo o dicionário ser criado, procure no dicionário, utilizando um 
 laço máximo (Veja o capítulo 5: Laços máximo e mínimo), quem tem o maior 
 número de mensagens e mostre em tela quantas 
@@ -666,7 +663,7 @@ Enter a file name: mbox.txt
 zqian@umich.edu 195
 ~~~~
 
-**Exercício 5: Esse programa grava o domínio do email (ao invés do 
+**Exercício 5: Esse programa grava o domínio de email (ao invés do 
 endereço) de onde a mensagem foi enviada ao invés de quem o email veio (
 i.e., o endereço completo da mensagem). No final do programa, mostre em 
 tela o conteúdo do seu dicionário.**
