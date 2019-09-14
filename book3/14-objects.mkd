@@ -182,106 +182,102 @@ que temos com os dados extraídos da página.
 
 ![Ignoring Detail When Building an Object](height=1.50in@../images/program-oo-bs4)
 
-Our first Python object
+Nosso primeiro objeto em Python
 -----------------------
 
-At a basic level, an object is simply some code plus data structures that are
-smaller than a whole program. Defining a function allows us to store
-a bit of code and give it a name and then later invoke that code using the
-name of the function.
+Em um nível básico, um objeto é simplesmente algumas estruturas de dados de código que 
+são menores do que um programa inteiro. Definir uma função nos permite armazenar um código 
+,dando-lhe um nome , em seguida, chama-la mais tarde usando o nome da função para usa-la.
 
-An object can contain a number of functions (which we call *methods*) as
-well as data that is used by those functions.  We call data items that are
-part of the object *attributes*.
+Um objeto pode conter um número de funções (que chamamos de  *métodos*) bem 
+como os dados que são usados por essas funções.  Chamamos itens de dados que 
+fazem parte dos *atributos* do objeto.
 
-\index{class keyword}
+\index{palavra-chave classe}
 
-We use the `class` keyword to define the data and code that will make up each
-of the objects. The class keyword includes the name of the class and begins
-an indented block of code where we include the attributes (data)
-and methods (code).
+usamos a palavra-chave `classe` para definir os dados e o código que compõem cada 
+um dos objetos. A palavra-chave classe inclui o nome da classe e começa um bloco 
+recuado de código onde incluímos os atributos (dados) e métodos (código).
 
 \VerbatimInput{../code3/party2.py}
 
-Each method looks like a function, starting with the `def` keyword and
-consisting of an indented block of code.  This object has one attribute (`x`)
-and one method (`party`).  The methods have a special first parameter that
-we name by convention `self`.
+cada método se parece com uma função, começando com a palavra-chave `def` e 
+consistindo em um bloco de código recuado. Este objeto tem um atribui (`x`)
+e um método (`parte`). Os métodos têm um primeiro parâmetro especial que
+nomeamos por convenção `self`.
 
-Just as the `def` keyword does not cause function code to be executed, the
-`class` keyword does not create an object.  Instead, the `class`
-keyword defines a template indicating what data and code will be contained
-in each object of type `PartyAnimal`.  The class is like a cookie cutter
-and the objects created using the class are the
-cookies^[Cookie image copyright CC-BY
+assim como a palavra `def` não causa a execução do código de função, a palavra
+`class` não cria um objeto.  em vez disso, a `class`define um modelo que indica 
+quais dados e código serão contidos em cada objeto do tipo `PartyAnimal`. 
+A classe é como um cortador de biscoitos e os objetos criados usando a classe 
+são os biscoitos^[Cookie image copyright CC-BY
 https://www.flickr.com/photos/dinnerseries/23570475099].
 You don't put frosting on the cookie cutter;
 you put frosting on the cookies, and you can put different frosting
 on each cookie.
 
-![A Class and Two Objects](height=2.0in@../photos/cookie_cutter_flickr_Didriks)
+![uma classe e dois objetos](height=2.0in@../photos/cookie_cutter_flickr_Didriks)
 
-If we continue through this sample program, we see the first executable line of
-code:
+Se continuarmos através deste programa de exemplo, vemos a primeira linha 
+de código executável:
 
 ~~~~ {.python}
 an = PartyAnimal()
 ~~~~
 
-\index{construct}
-\index{object}
-\index{instance}
-\index{class}
+\index{construtor}
+\index{objeto}
+\index{Instância}
+\index{classe}
 
-This is where we instruct Python to construct (i.e., create) an *object* or
-*instance* of the class `PartyAnimal`. It looks like a function call to the
-class itself. Python constructs the object with the right data and methods
-and returns the object which is then assigned to the variable `an`.
-In a way this is quite similar to the following line which we have
-been using all along:
+É aqui que instruímos o Python a construir (i.e., create) um *objeto* ou
+*instância* da classe `PartyAnimal`. Ele se parece com uma chamada de função 
+para a classe que eu mesmo.  O Python constrói o objeto com os dados e métodos 
+certos e retorna o objeto que é então atribuído à variável `an`.
+De uma maneira, isto é completamente similar à seguinte linha que temos usado:
 
 ~~~~ {.python}
 counts = dict()
 ~~~~
 
-Here we instruct Python to construct an object using the `dict` template
-(already present in Python), return the instance of dictionary,
-and assign it to the variable `counts`.
+Aqui, instruímos o Python a construir um objeto usando o `dict` Modelo
+(já presente em Python), retornar a instância do dicionário,
+e atribuí-lo à variável`counts`.
 
-When the `PartyAnimal` class is used to construct an object, the variable `an`
-is used to point to that object.  We use `an` to access the code and data for that
-particular instance of the `PartyAnimal` class.
+Quando o `PartyAnimal` classe é usada para construir um objeto, a variável `an`
+é usado para apontar para esse objeto. Usamos `an` para acessar o código e os dados para 
+essa instância específica da classe `PartyAnimal`.
 
-Each Partyanimal object/instance contains within it a variable `x`
-and a method/function named `party`. We call the `party` method in this line:
+Cada PartyAnimal  objeto/instância contém dentro dele uma variável `x`
+e um metodo/função nomeada `party`. Chamamos `party` o método nesta linha :
 
 ~~~~ {.python}
 an.party()
 ~~~~
 
-When the `party` method is called, the first parameter (which we call by convention `self`)
-points to the particular instance of the PartyAnimal object that `party` is called from.
-Within the `party` method, we see the line:
+Quando ométodo `party` é chamado, o primeiro parametro (que chamamos por Convenção de `self`)
+aponta para a instância específica do objeto PartyAnimal que é chamado de `party` .
+Dentro do método `party` , vemos a linha:
 
 ~~~~ {.python}
 self.x = self.x + 1
 ~~~~
 
-This syntax using the *dot* operator is saying 'the x within self.' Each time `party()` is
-called, the internal `x` value is incremented by 1 and the value is printed out.
+Essa sintaxe usando o operador *dot*  está dizendo 'o x dentro de si mesmo.' Cada vez que `party()` é
+chamado, o interno `x` valor é incrementado por 1 e o valor é impresso.
 
-The following line is another way to call the `party` method within the `an`
-object:
+A seguinte linha é outra maneira de chamar o método `party`  dentro do `an`
+objeto:
 
 ~~~~ {.python}
 PartyAnimal.party(an)
 ~~~~
 
-In this variation, we access the code from within the class and explicitly
-pass the object pointer `an` as the first parameter (i.e., `self` within the method).
-You can think of `an.party()` as shorthand for the above line.
+Nessa variação, acessamos o código de dentro da classe e explicitamente
+passar o ponteiro do objeto `an` como o primeiro parâmetro(i.e., `self` dentro do método).
+Você pode pensar em `an.party()` como abreviada para a linha acima.
 
-When the program executes, it produces the following output:
+Quando o programa é executado, ele produz a seguinte saída:
 
 ~~~~
 So far 1
@@ -290,8 +286,8 @@ So far 3
 So far 4
 ~~~~
 
-The object is constructed, and the `party` method is called four times, both
-incrementing and printing the value for `x` within the `an` object.
+O objeto é construído e o método  `party`  é chamado quatro vezes,
+incrementando e imprimindo o valor para `x` dentro do objeto `an`.
 
 Classes as types
 ----------------
