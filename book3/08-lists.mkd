@@ -405,11 +405,11 @@ Para remover mais de um elemento, você pode usar `del` com um
 Como sempre, a fatia seleciona todos os elementos até, mas não inclui,
 o segundo índice.
 
-Listas e Funções
+Listas e funções
 -------------------
 
-Há várias funções que podem ser usadas em listas que permitem
-que você examine rapidamente uma lista sem escrever seus próprios loops:
+Há várias funções internas que podem ser usadas em listas que permitem
+que você examine rapidamente uma lista sem escrever seus próprios laços:
 
 ~~~~ {.python .trinket}
 >>> nums = [3, 41, 12, 9, 74, 15]
@@ -425,11 +425,10 @@ que você examine rapidamente uma lista sem escrever seus próprios loops:
 25
 ~~~~
 
-A função `sum()` só funciona quando a lista de elementos são números. 
-As outras funções (`max()`, `len()`,etc.)
-funcionam com listas de strings e outros tipos que podem ser comparados.
+A função `sum()` só funciona quando os elementos da lista são números. 
+As outras funções (`max()`, `len()`,etc.) funcionam com listas de strings e outros tipos semelhantes.
 
-Poderíamos  reescrever um programa anterior que calculasse a 
+Poderíamos  reescrever um programa anterior que calculava a 
 média de uma lista de números inseridos pelo usuário usando uma lista. 
 
 Primeiramente, o programa calcula a média sem uma lista: 
@@ -437,30 +436,30 @@ Primeiramente, o programa calcula a média sem uma lista:
 \VerbatimInput{../code3/avenum.py}
 
 Nesse programa, nós temos as variáveis `count` e `total`
-para manter o número e a quantidade total de números de usuários, 
-conforme solicitamos repetidamente ao usuário um número.
+para guardar o número e a quantidade total dos números do usuário, 
+conforme solicitamos repetidamente ao usuário por um número.
 
 Nós podemos simplesmente lembrar cada número quando o usuário o inserisse 
-e usar  funções internas para calcular a soma e contar no final.
+e usar funções internas para calcular a soma e calcular no final.
 
 \VerbatimInput{../code3/avelist.py}
 
-Fazemos uma lista vazia antes  do  inicio do loop, e 
-a cada vez que  tivermos um número,  o acrescentamos na lista.
+Fazemos uma lista vazia antes  do  inicio do laço, e 
+a cada vez que  temos um número,  o acrescentamos na lista.
 No final do programa, nós simplesmente calculamos a soma dos 
 números na lista e os dividimos pela contagem dos números na 
 lista para chegar à média. 
 
-Listas e Strings
+Listas e strings
 -----------------
 
-\index{list}
+\index{lista}
 \index{string}
-\index{sequence}
+\index{sequência}
 
 Uma string é uma sequência de caracteres e uma lista é uma sequência
 de valores, mas uma lista de caracteres não é o mesmo que uma string. 
-Para converter de uma string para uma lista de caracteres, você pode usar`list`:
+Para converter de uma string para uma lista de caracteres, você pode usar `list`:
 
 \index{list!function}
 \index{function!list}
@@ -472,7 +471,7 @@ Para converter de uma string para uma lista de caracteres, você pode usar`list`
 ['s', 'p', 'a', 'm']
 ~~~~
 
-Porque `list` é o nome de uma função interna, você deve evitar 
+Como `list` é o nome de uma função interna, você deve evitar 
 usá-la como nome de uma variável. Eu além disso evito usar “I” porque 
 parece muito com o número “1”. Então é por isso que eu uso a letra "t".
 
@@ -480,14 +479,14 @@ A função `list` quebra uma string em letras individuais.
 Se você quer quebrar uma string em palavras, você pode usar o método 
 `split`:
 
-\index{split method}
-\index{method!split}
+\index{split método}
+\index{método!split}
 
 ~~~~ {.python .trinket}
->>> s = 'pining for the fjords'
+>>> s = 'sentindo falta dos fiordes'
 >>> t = s.split()
 >>> print(t)
-['pining', 'for', 'the', 'fjords']
+['sentindo', 'falta', 'dos', 'fiordes']
 >>> print(t[2])
 the
 ~~~~
@@ -496,11 +495,11 @@ Depois de você ter usado `split` para dividir a string em uma lista
 de palavras, você pode usar o operador de índices (colchete) para ver 
 uma palavra particular da lista. 
 Você pode chamar `split` com um argumento opcional chamado um
-*delimiter* que especifica qual caractere usar como limites de palavras. 
+*delimiter* que especifica qual caractere usar como limite de palavras. 
 
-\index{optional argument}
-\index{argument!optional}
-\index{delimiter}
+\index{opcional argumento}
+\index{argumento!opcional}
+\index{delimitador}
 
 ~~~~ {.python .trinket}
 >>> s = 'spam-spam-spam'
@@ -514,27 +513,27 @@ e concatena os elementos. `join`  é um método de string, então
 você tem que invocar isso no delimitador 
 e passar a lista como um parâmetro. 
 
-\index{join method}
-\index{method!join}
-\index{concatenation}
+\index{join método}
+\index{método!join}
+\index{concatenação}
 
 ~~~~ {.python .trinket}
->>> t = ['pining', 'for', 'the', 'fjords']
+>>> t = ['sentindo', 'falta', 'dos', 'fiordes']
 >>> delimiter = ' '
 >>> delimiter.join(t)
-'pining for the fjords'
+'sentindo falta dos fiordes'
 ~~~~
 
  Nesse caso, o delimitador é um caractere de espaço, então `join`
- coloca um espaço entre as palavras. Para concatenar, strings sem espaços,
- você pode usar a  string, "",  como um delimitador.
+ coloca um espaço entre as palavras. Para concatenar strings sem espaços,
+ você pode usar a string vazia, "",  como delimitador.
 
-\index{empty string}
-\index{string!empty}
+\index{vaiza string}
+\index{string!vazia}
 
 Linhas aliadas
 -------------
-Normalmente, quando estamos lendo um arquivo, queremos fazer algo com as linhas, além de apenas imprimir a linha inteira. Muitas vezes queremos encontrar as “linhas interessantes” e depois analisá-la para encontrar algo que seja interessante. E se quiséssemos imprimir o dia da semana a partir das linhas que começam com "De"?
+Normalmente, quando estamos lendo um arquivo, queremos fazer algo com as linhas, além de apenas imprimir a linha inteira. Muitas vezes queremos encontrar as “linhas interessantes” e depois analisá-las para encontrar a parte que seja interessante. E se quiséssemos imprimir o dia da semana a partir das linhas que começam com "De"?
 
 ~~~~
 De stephen.marquard@uct.ac.za Sáb Jan  5 09:14:16 2008
@@ -560,17 +559,17 @@ Mais tarde, aprenderemos técnicas cada vez mais sofisticadas para escolher as l
 Objetos e valores
 ------------------
 
-\index{object}
-\index{value}
+\index{objeto}
+\index{valores}
 
-Se nós executarmos estas instruções de atribuição:
+Se nós executarmos estas atribuições:
 
 ~~~~ {.python}
 a = 'banana'
 b = 'banana'
 ~~~~
 
-Sabemos que `a` e `a` se referem a uma string, mas não sabemos se eles se referem à *mesma* string. Existem dois estados possíveis:
+Sabemos que ambos `a` e `b` se referem a uma string, mas não sabemos se eles se referem à *mesma* string. Existem dois estados possíveis:
 
 \index{aliasing}
 
@@ -578,8 +577,8 @@ Sabemos que `a` e `a` se referem a uma string, mas não sabemos se eles se refer
 
 Em um caso, `a` e `b` referem-se a dois objetos diferentes que possuem o mesmo valor. No segundo caso, eles se referem ao mesmo objeto.
 
-\index{is operator}
-\index{operator!is}
+\index{is operador}
+\index{operador!is}
 
 Para verificar se duas variáveis se referem ao mesmo objeto, você pode usar o operador `is`.
 
@@ -604,19 +603,19 @@ False
 
 Nesse caso, diríamos que as duas listas são equivalentes, porque elas têm os mesmos elementos, mas não são idênticas, porque não são o mesmo objeto. Se dois objetos são idênticos, eles também são *equivalentes*, mas se forem equivalentes, eles não são necessariamente *idênticos*.
 
-\index{equivalence}
-\index{identity}
+\index{equivalÊncia}
+\index{identidade}
 
 Até agora, temos usado “objeto” e “valor” de forma intercambiável, mas é mais preciso dizer que um objeto tem um valor. Se você executar `a = [1,2,3]`, onde `a`refere-se a uma lista de objetos cujo valor é uma sequência particular de elementos. Se outra lista tiver os mesmos elementos, diremos que ela tem o mesmo valor.
 
-\index{object}
-\index{value}
+\index{objeto}
+\index{valor}
 
-Aliado
+Aliados
 --------
 
-\index{aliasing}
-\index{reference!aliasing}
+\index{aliado}
+\index{referência!aliado}
 
 Se `a` refere-se a um objeto e você atribui `b = a`, então ambas as variáveis referem-se ao mesmo objeto:
 
@@ -629,11 +628,11 @@ True
 
 A associação de uma variável a um objeto é chamada de *referência*. Neste exemplo, existem duas referências ao mesmo objeto.
 
-\index{reference}
+\index{referência}
 
 Um objeto com mais de uma referência possui mais de um nome, então dizemos que o objeto é *aliado*.
 
-\index{mutability}
+\index{mutabilidade}
 
 Se o objeto aliado for mutável, as alterações feitas com um pseudônimo afetam o outro: 
 
@@ -643,11 +642,11 @@ Se o objeto aliado for mutável, as alterações feitas com um pseudônimo afeta
 [17, 2, 3]
 ~~~~
 
-Embora esse comportamento possa ser útil, é propenso a erros. Em geral, é mais seguro evitar o aliado quando você está trabalhando com objetos mutáveis.
+Embora esse comportamento possa ser útil, é propenso a erros. Em geral, é mais seguro evitar aliados quando você está trabalhando com objetos mutáveis.
 
-\index{immutability}
+\index{imutabilidade}
 
-Para objetos imutáveis como strings, o aliado não é um problema tão grande. Neste exemplo:
+Para objetos imutáveis como strings, aliados não são um problema tão grande. Neste exemplo:
 
 ~~~~ {.python}
 a = 'banana'
@@ -660,13 +659,13 @@ quase nunca tem diferença se `a` e `b` irão se referir à mesma string ou não
 Listas como argumento
 --------------
 
-\index{list!as argument}
-\index{argument}
-\index{argument!list}
-\index{reference}
-\index{parameter}
+\index{lista!como argumento}
+\index{argumento}
+\index{argumento!lista}
+\index{referência}
+\index{parâmetro}
 
-Quando você passa uma lista como argumento de uma função, a função recebe uma referência dessa lista. Se a função modificar o parâmetro desta lista, o chamador verá a alteração. Por exemplo, remove_primeiro_elemento remove o primeiro elemento de uma lista:
+Quando você passa uma lista como argumento de uma função, a função recebe uma referência a essa lista. Se a função modificar o parâmetro desta lista, o chamador verá a alteração. Por exemplo, remove_primeiro_elemento remove o primeiro elemento de uma lista:
 
 ~~~~ {.python}
 def remove_primeiro_elemento(t)
@@ -686,10 +685,10 @@ O parâmetro `t` e a variável `letras` são aliases para o mesmo objeto.
 
 É importante distinguir entre operações que modificam listas e operações que criam novas listas. Por exemplo, o método `append` modifica a lista, porém o operador `+` cria uma nova lista:
 
-\index{append method}
-\index{method!append}
-\index{list!concatenation}
-\index{concatenation!list}
+\index{append método}
+\index{método!append}
+\index{lista!concatenanação}
+\index{concatenação!lista}
 
 ~~~~ {.python .trinket}
 >>> t1 = [1, 2]
@@ -706,17 +705,17 @@ None
 False
 ~~~~
 
-A diferença é importante quando você escreve funções que supostamente modificam listas. Por exemplo, a função *does not* remove o início de uma lista:
+A diferença é importante quando você escreve funções que supostamente modificam listas. Por exemplo, a função *não* remove o início de uma lista:
 
 ~~~~ {.python}
 def errado_remove_primeiro_elemento(t)
 	t = t[1:]               #ERRADO!
 ~~~~
 
-O operador 'slice' cria uma nova lista e a atribuição faz com que `t` se refira a essa, mas nenhuma dessas atribuições tem qualquer efeito sobre a lista passada como referência.
+O operador 'slice' cria uma nova lista e a atribuição faz com que `t` se refira a essa, mas nenhuma dessas atribuições tem qualquer efeito sobre a lista passada como argumento.
 
-\index{slice operator}
-\index{operator!slice}
+\index{slice operador}
+\index{operador!slice}
 
 Uma alternativa é escrever uma função que cria e retorna uma nova lista. Por exemplo, `calda` retorna todos, menos o primeiro elemento da lista:
 
@@ -737,14 +736,14 @@ A função não modifica a lista original. Aqui é mostrado como é usada:
 **Exercício 1: Escreva uma função chamada `corte` que recebe uma lista e a modifica, removendo o primeiro e o último elemento, e retorna `None`. Depois escreva uma função chamada `meio` que recebe uma lista e retorna uma nova lista que contém todos, menos o primeiro e o último elemento.**
 
 
-Depuração
+Debugging
 ---------
 
 \index{debugging}
 
-Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa horas de depuração. Abaixo mostra algumas deslizes comuns e formas de evitá-las:
+Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa horas de debugging. Abaixo mostra algumas deslizes comuns e formas de evitá-los:
 
-1. Não esqueça que a maioria do métodos de listas modifica o argumento e retorna  `None`. Isso é o oposto dos métodos das strings, que    retornam uma nova string e não modifica a string original. 
+1. Não esqueça que a maioria do métodos de listas modifica o argumento e retorna  `None`. Isso é o oposto dos métodos das strings, que    retornam uma nova string e não modificam a string original. 
 
    Se você está acostumado a escrever código de string como este: 
 
@@ -758,10 +757,10 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
     t = t.sort()           # ERRADO!
     ~~~~
 
-    \index{sort method}
-    \index{method!sort}
+    \index{sort método}
+    \index{método!sort}
     
-   Como sort retorna None, a próxima operação que você executar com 't' provavelmente irá falhar.
+   Como sort retorna `None`, a próxima operação que você executar com `t` provavelmente irá falhar.
     
     Antes de usar métodos de listas e operadores, você deve ler a documentação com cuidado e depois testar elas em um modo interativo. Os métodos e os operadores que as listas compartilham com outras sequência (como strings) são documentadas em:
     
@@ -774,7 +773,7 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
 2.  Escolha um "idioma" e fique com ele.
 
     \index{idiom}
-    Parte dos problemas, envolvendo listas, é que existem muitas maneiras para fazer coisas. Por exemplo, para remover um elemento de   uma lista, você pode usar o método `pop`, `remove`, `del`, ou simplesmente, utilizando a função `slice`.
+    Parte dos problemas, envolvendo listas, é que existem muitas maneiras para fazer coisas. Por exemplo, para remover um elemento de   uma lista, você pode usar o método `pop`, `remove`, `del`, ou simplesmente, utilizando uma instrução `slice`.
     
     Para adicionar um elemento, você pode usar o método `append` ou o operador `+`. Porém, não esqueça que estas são as formas corretas de se fazer estes procedimentos:
     
@@ -794,12 +793,12 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
     
     Tente implementar esses exemplos em um modo interativo para ter certeza que você entende o que eles fazem. Note que apenas o último causa erro na compilação, os outros três são permitidos, porém não faz aquilo que é desejado.
 
-3.  Faça cópias para evitar aliases.
+3.  Faça cópias para evitar aliados.
 
-    \index{aliasing!copying to avoid}
-    \index{copy!to avoid aliasing}
+    \index{aliados!copiando para evitar}
+    \index{copie!para evitar aliados}
     
-    Se você quer usar o método 'sort' que modifica o argumento, porém também precisa manter a lista original intacta, você pode criar uma cópia.
+    Se você quer usar o método `sort` que modifica o argumento, porém também precisa manter a lista original intacta, você pode criar uma cópia.
  
     ~~~~ {.python}
     orig = t[:]
@@ -812,19 +811,19 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
     
     Quando nós lemos e analisamos um arquivo, existem várias ocasiões em que a entrada pode causar falhas em nosso programa, então é uma boa ideia revisitar o padrão *guardião* quando se trata de escrever programas que lêem um arquivo e procuram por uma 'agulha no palheiro'.
     
-    Vamos revisitar nosso programa que procura pelo dia da semana nas linhas de nosso arquivo:
+    Vamos revisitar nosso programa que procura pelo dia da semana nas linhas do nosso arquivo:
 
     ~~~~
-    From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+    De stephen.marquard@uct.ac.za Sáb Jan  5 09:14:16 2008
     ~~~~
     
-    Como estamos quebrando essa linha em palavras, nós podemos dispensar o uso do método `startswith` e simplesmente procurar pela primeira palavra que determina se estamos interessados, de fato, nessa linha. Nós podemos usar `continue` para pular linhas que não têm "From" como sua primeira palavra:
+    Como estamos quebrando essa linha em palavras, nós podemos dispensar o uso do método `startswith` e simplesmente procurar pela primeira palavra que determina se estamos interessados, de fato, nessa linha. Nós podemos usar `continue` para pular linhas que não têm "De" como sua primeira palavra:
     
     ~~~~ {.python}
     fhand = open('mbox-short.txt')
     for linha in fhand:
         palavras = line.split()
-        if palavras[0] != 'From' : continue
+        if palavras[0] != 'De' : continue
         print(palavras[2])
     ~~~~
     Isso parece ser bem mais simples, além que não precisamos do método `rstrip` para remover a quebra de linha no final do arquivo. Porém, qual o melhor?
@@ -834,25 +833,25 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
     Sat
     Traceback (most recent call last):
         File "search8.py", line 5, in <module>
-            if palavras[0] != 'From' : continue
+            if palavras[0] != 'De' : continue
     IndexError: list index out of range
     ~~~~
 
-    Isso funciona e vemos o dia a partir da primeira linha (Sat), mas o programa falha com `traceback error`. Então, o que deu errado? Por quê o nosso elegante, inteligente e "Pythonic" programa falhou?
+    Isso funciona e vemos o dia a partir da primeira linha (Sáb), mas o programa falha com `traceback error`. Então, o que deu errado? Por quê o nosso elegante, inteligente e "Pythonic" programa falhou?
     
-    Você poderia encarar seu programa por um longo tempo, quebrar a cabeça tentando decifrá-lo, ou simplesmente pode pedir a ajuda de alguém. Porém a abordagem mais rápida e inteligente é adicionar uma linha de código `print`. O melhor lugar para adicionar essa instrução é logo antes da linha em que o programa falhou e pôr para imprimir na tela o dado que está causando falha.
+    Você poderia encarar seu programa por um longo tempo, quebrar a cabeça tentando decifrá-lo, ou simplesmente pode pedir a ajuda de alguém. Porém, a abordagem mais rápida e inteligente é adicionar uma linha de código `print`. O melhor lugar para adicionar essa instrução é logo antes da linha em que o programa falhou e pôr para imprimir na tela o dado que está causando falha.
 
-    Essa abordagem pode gerar várias linha na saída, pelo menos, você terá, imediatamente, várias pistas sobre o problema em questão. Então, adicionamos um `print` da variável `letras` logo depois da linha cinco. Nós até adicionamos o prefixo "Depuração:" na linha, para podermos manter nossa saída regular separadas de nossa saída depurada.
+    Essa abordagem pode gerar várias linha na saída, pelo menos, você terá, imediatamente, várias pistas sobre o problema em questão. Então, adicionamos um `print` da variável `letras` logo depois da linha cinco. Nós até adicionamos o prefixo "Debugging:" na linha, para podermos manter nossa saída regular separadas de nossa saída de debugging.
     
     ~~~~ {.python}
     for linha in fhand:
         palavras = linha.split()
-        print('Depuração:', palavras)
-        if palavras[0] != 'From' : continue
+        print('Debugging:', palavras)
+        if palavras[0] != 'De' : continue
         print(palavras[2])
     ~~~~
     
-    Quando compilamos o programa, várias saídas são impressas na tela, porém, no final, vemos nossa saída de depuração e o erro para sabermos o que aconteceu logo antes da mensagem de erro.
+    Quando compilamos o programa, várias saídas são impressas na tela, porém, no final, vemos nossa saída de debug e a referência para sabermos o que aconteceu logo antes da mensagem de erro.
     
     ~~~~
     Debug: ['X-DSPAM-Confidence:', '0.8475']
@@ -884,73 +883,73 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
     contador = 0
     for linha in fhand:
         palavras = line.split()
-        # print 'Debug:', words
+        # print 'Debug:', palavras
         if len(palavras) == 0 : continue
-        if palavras[0] != 'From' : continue
+        if palavras[0] != 'De' : continue
         print(palavras[2])
 
     ~~~~ 
     
-    Primeiro, comentamos as linhas que imprimem a depuração, em vez de removê-las (caso nossa modificação falhe, e precisemos da depuração novamente). Depois, adicionamos uma declaração guardiã que checa se temos zero palavras, se sim, nós usamos "continue" para pular para próxima linha do arquivo.
+    Primeiro, comentamos as linhas que imprimem o debug, em vez de removê-las (caso nossa modificação falhe, e precisemos do debuggingz novamente). Depois, adicionamos uma declaração guardiã que checa se temos zero palavras, se sim, nós usamos "continue" para pular para próxima linha do arquivo.
     
-    Podemos pensar nas duas declarações `continue` como um jeito de nos ajudar a refinar o conjunto de linhas que são interessantes para nós, e quais que queremos processar um pouco mais. Uma linha que não tem "From" como sua primeira palavra não é interessante para nós, então a pulamos.
+    Podemos pensar nas duas declarações `continue` como um jeito de nos ajudar a refinar o conjunto de linhas que são interessantes para nós, e quais que queremos processar um pouco mais. Uma linha que não tem "De" como sua primeira palavra não é interessante para nós, então a pulamos.
 
     O programa modificado é executado com sucesso, então, talvez ele esteja correto. Nossa declaração guardiã nos dá a certeza que a `palavras[0]` nunca irá falhar, porém, talvez isso não seja suficiente. Quando estamos programando, nós devemos sempre estar pensando, "O que pode acontecer de errado?" 
 
-**Exercício 2: Descubra qual linha do programa acima não está devidamente protegida. Veja se você pode construir um arquivo de texto que causa falha no programa e depois modifique o programa para que a linha seja propriamente protegida e por fim, teste o programa para ter certeza que ele manipula o novo arquivo de texto.**
+**Exercício 2: Descubra qual linha do programa acima não está devidamente protegida. Veja se você pode construir um arquivo de texto que causa falha no programa e depois modifique o programa para que a linha seja propriamente protegida e por fim, teste o programa para ter certeza que ele manipula corretamente o novo arquivo de texto.**
 
 **Exercício 3: Reescreva o código guardião nos exemplos acima sem duas declarações `if`. Em vez disso, use uma expressão lógica composta usando o operador lógico `and`, com uma única declaração `if`.**
 
 Glossário
 --------
-aliase
+Aliados
 : Circunstância onde duas ou mais variáveis se referem ao mesmo objeto.
-\index{aliasing}
+\index{Aliados}
 
 delimitador
 : Caractere ou string usado para indicar onde a string deve ser dividida
-\index{delimiter}
+\index{delimitador}
 
 elemento
 : Um dos valores em uma lista (ou outra sequência); também chamada de itens.
-\index{element}
+\index{elemento}
 
 equivalente
 : Ter o mesmo valor 
-\index{equivalent}
+\index{equivalente}
 
 índice
 : Um valor inteiro que indica um elemento da lista
-\index{index}\index{}
+\index{índice}\index{}
 
 idêntico
 : Ser o mesmo objeto (o que implica em equivalência)
-\index{identical}
+\index{idêntico}
 
 lista
 : Uma sequência de valores
-\index{list}
+\index{lista}
 
 lista de passagem
 : O acesso sequencial sobre cada elemento da lista
-\index{list!transversal}
+\index{lista!de passagem}
 
 lista aninhada
 : Uma lista que é um elemento de uma outra lista.
-\index{nested list}
+\index{lista aninhada}
 
 objeto
 : Algo que uma variável pode se referir. Um objeto tem um tipo e um valor.
-\index{object}
+\index{objeto}
 
 referência
 : Associação entre variável e seu valor
-\index{reference}
+\index{referência}
 
 Exercícios
 ---------
 
-\index{Romeo and Juliet}
+\index{Romeo e Juliet}
 
 **Exercicio 4: Baixe a copia do arquivo 
 [**www.py4e.com/code3/romeo.txt**](http://www.py4e.com/code3/romeo.txt)**.
@@ -965,13 +964,13 @@ Digite o nome do arquivo: romeo.txt
 'with', 'yonder']
 ~~~~
 
-**Exercício 5: Escreva um programa que leia uma caixa de email, e quando você encontrar uma linha que comece com "From", você vai partir a linha em palavras usando a função `split`. Nós estamos interessados em quem envia a mensagem, o que é a segunda palavra na linha que começa com From.**
+**Exercício 5: Escreva um programa que leia uma caixa de email, e quando você encontrar uma linha que comece com "De", você vai separar a linha em palavras usando a função `split`. Nós estamos interessados em quem envia a mensagem, que é a segunda palavra na linha que começa com From.**
 
 ~~~~
-From stephen.marquard@uct.ac.za Sat Jan 5 09:14:16 2008
+De stephen.marquard@uct.ac.za Sáb Jan 5 09:14:16 2008
 ~~~~
 
-**Você vai analisar a linha que começa com From e irá pôr para imprimir na tela a segunda palavra (para cada linha do tipo) depois o programa também deverá contar o número de linhas que começam com From e imprimir em tela o valor final desse contador. Esse é um bom exemplo da saída com algumas linhas removidas:**
+**Você vai analisar a linha que começa com From e irá pôr para imprimir na tela a segunda palavra (para cada linha do tipo), depois o programa também deverá contar o número de linhas que começam com "De" e imprimir em tela o valor final desse contador. Esse é um bom exemplo da saída com algumas linhas removidas:**
 
 ~~~~
 python fromcount.py
@@ -989,7 +988,7 @@ cwen@iupui.edu
 There were 27 lines in the file with From as the first word
 ~~~~
 
-**Exercício 6: Reescreva o programa que solicita o usuário uma lista de números e que depois imprime em tela o maior número e o menor número quando o usuário digitar a palavra "feito". Escreva um programa para armazenar as entradas do usuário em uma lista e use as funções `max()` e `min()` para computar o número máximo e o mínimo depois que o loop for completo.**
+**Exercício 6: Reescreva o programa que solicita o usuário uma lista de números e prints e imprime em tela o maior número e o menor número quando o usuário digitar a palavra "feito". Escreva um programa para armazenar as entradas do usuário em uma lista e use as funções `max()` e `min()` para computar o número máximo e o mínimo depois que o laço for completo.**
 
 ~~~~
 Digite um número: 6
