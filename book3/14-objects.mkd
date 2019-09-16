@@ -447,103 +447,64 @@ In the `dir` output for the `j` object (instance of the `CricketFan` class), we 
 that it has the attributes and methods of the parent class, as well as the attributes
 and methods that were added when the class was extended to create the `CricketFan` class.
 
-Summary
+Sumário
 -------
 
-This is a very quick introduction to object-oriented programming that focuses mainly
-on terminology and the syntax of defining and using objects.
-Let's quickly review the code that we looked at in the beginning of the chapter.
-At this point you should fully understand what is going on.
+Esta é uma rápida introdução à programação orientada a objetos, que foca principalmente na terminologia e na sintaxe da definição e uso de objetos. Vamos rapidamente rever o código que nós vimos no início do capítulo. Neste ponto você já deve entender completamente o que está acontecendo.
 
 \VerbatimInput{../code3/party1.py}
 
-The first line constructs a `list` *object*.  When Python creates the `list` object,
-it calls the *constructor* method (named `__init__`) to set up the internal
-data attributes that will be used to store the list data. We have not passed any
-parameters to the *constructor*. When the constructor returns, we use the variable
-`stuff` to point to the returned instance of the `list` class.
+A primeira linha constrói uma `list` (lista) de *objetos*. Quando Python cria a `list` de objetos, ele chama o método *construtor* (chamado `__init__`) para inicializar os atributos de dados internos que serão usados para armazenar os dados da lista. Nós não passamos nenhum parâmetro para o *construtor*. Quando o construtor retorna, nós usamos a variável `coisas` para apontar para a instância retornada da classe `list`.
 
-The second and third lines call the `append` method
-with one parameter to add a new item at the end of the list by updating the
-attributes within `stuff`.  Then in the fourth line,
-we call the `sort` method with no parameters to sort the data within the `stuff`
-object.
+A segunda e terceira linhas chamam o método `append` com um parâmetro para adicionar um novo item no fim da lista atualizando os atributos dentro de `coisas`. Então, na linha quatro, chamamos o método `sort` sem nenhum parâmetro para ordenar os dados dentro do objeto `coisas`.
 
-We then print out the first item in the list using the square brackets which are
-a shortcut to calling the `__getitem__` method within the `stuff`.  This
-is equivalent to calling the `__getitem__` method in the `list` *class*
-and passing the `stuff` object as the first parameter and the position
-we are looking for as the second parameter.
+Então, nós iremos imprimir o primeiro item da lista usando colchetes, que são uma maneira mais curta de chamar o método `__getitem__`. Seria o equivalente a chamar o método `__getitem__` da *classe* `list` e passar o objeto `coisas` como primeiro parâmetro e a posição desejada como segundo parâmetro.
 
-At the end of the program, the `stuff` object is discarded but not before
-calling the *destructor* (named `__del__`) so that the object can clean up any
-loose ends as necessary.
+No fim do programa, o objeto `coisas` é descartado, mas não antes de chamar o *destruidor* (chamado `__del__`) para que o objeto possa limpar qualquer dado que tenha sido deixado para trás, conforme o necessário.
 
-Those are the basics of object-oriented programming. There are many additional details
-as to how to best use object-oriented approaches when developing large applications
-and libraries that are beyond the scope of this chapter.^[If
-you are curious about where the `list` class is defined, take a look
-at (hopefully the URL won't change)
+Esses são conceitos básicos para programação orientada a objetos. Há muitos detalhes sobre a melhor maneira de usar abordagens orientadas a objeto ao desenvolver aplicativos, e também grandes bibliotecas que estão fora do escopo deste capítulo.^[Se você estiver curioso sobre onde a classe `list` é definida, dê uma olhada em (espero que a URL não mude)
 https://github.com/python/cpython/blob/master/Objects/listobject.c -
-the list class is written in a language
-called "C". If you take a look at that source code and find it curious
-you might want to explore a few Computer Science courses.]
+a classe list é escrita numa linguagem chamada “C”. Se você der uma olhada nesse código-fonte e achar curioso, talvez queira explorar alguns cursos de Ciência da Computação.]
 
-Glossary
---------
+Glossário
+---------
 
-attribute
-:   A variable that is part of a class.
-\index{attribute}
+atributo
+:   Uma variável que é parte de uma classe.
+\index{atributo}
 
-class
-:   A template that can be used to construct an object.  Defines
-    the attributes and methods that will make up the object.
-\index{class}
+classe
+:   Um modelo usado para a construção de um objeto. Define os atributos e métodos que farão parte do objeto.
+\index{classe}
 
-child class
-:   A new class created when a parent class is extended.  The child class
-    inherits all of the attributes and methods of the parent class.
-\index{child class}
+clase filha
+:   Uma nova classe criada quando a classe pai é estendida. A classe filha herda os atributos e métodos da classe pai.
+\index{classe filha}
 
-constructor
-:   An optional specially named method (`__init__`) that is called at the
-    moment when a class is being used to construct an object.
-    Usually this is used to set up initial values for the object.
-\index{constructor}
+construtor
+:   Um método opcional especialmente nomeado (`__init__`) que é chamado no momento em que uma classe está sendo usada para construir um objeto. Normalmente é usado para definir os valores iniciais do objeto.
+\index{construtor}
 
-destructor
-:   An optional specially named method (`__del__`) that is called at the
-    moment just before an object is destroyed.  Destructors are rarely
-    used.
-\index{destructor}
+destruidor
+:   Um método opcional especialmente nomeado (`__del__`) que é chamado no momento imediatamente anterior ao objeto ser destruído. Destruidores são raramente usados.
+\index{destruidor}
 
-inheritance
-:   When we create a new class (child) by extending an
-    existing class (parent).  The child class has all the attributes
-    and methods of the parent class plus additional attributes and
-    methods defined by the child class.
-\index{inheritance}
+herança
+:   Quando nós criamos uma nova classe (filha) estendendo uma classe existente (pai). A classe filha tem todos os atributos e métodos da classe pai mais atributos e métodos adicionais definidos por ela mesma.
+\index{herança}
 
-method
-:   A function that is contained within a class and the objects
-    that are constructed from the class.  Some object-oriented
-    patterns use 'message' instead of 'method' to describe this concept.
-\index{method}
-\index{message}
+método
+:   Uma função contida numa classe e nos objetos construídos pela classe. Alguns padrões orientados a objeto usam 'mensagem' em vez de 'método' para descrever esse conceito.
+\index{método}
+\index{mensagem}
 
-object
-:   A constructed instance of a class.  An object contains all of
-    the attributes and methods that were defined by the class.
-    Some object-oriented documentation uses the term 'instance'
-    interchangeably with 'object'.
-\index{method}
+objeto
+:   Uma instância construída de uma classe. Um objeto contém todos os atributos e métodos que foram definidos pela classe. Algumas documentações orientadas a objeto usam o termo 'instância' e 'objeto' indistintamente.
+\index{método}
 
-parent class
-:   The class which is being extended to create a new child class.
-    The parent class contributes all of its methods and attributes
-    to the new child class.
-\index{parent class}
+classe pai
+:   A classe que está sendo estendida para criar uma nova classe filha. A classe pai contribui com todos os seus métodos e atributos para a nova classe filha.
+\index{classe pai}
 
 
 
