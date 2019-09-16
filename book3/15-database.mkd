@@ -585,12 +585,9 @@ tables. The basic patterns are:
 
 We will cover each of these in turn.
 
-### Constraints in database tables
+### Restrições em tabelas do banco de dados
 
-As we design our table structures, we can tell the database system that
-we would like it to enforce a few rules on us. These rules help us from
-making mistakes and introducing incorrect data into out tables. When we
-create our tables:
+A medida que planejamos a estrutura de nossa tabela, podemos dizer ao sistema de banco de dados que gostaríamos que ele nos impusesse algumas regras. Essas regras evitam que possamos cometer erros e que dados incorretos sejam introduzidos nas tabelas. Quando criamos nossas tabelas:
 
 ~~~~ {.python}
 cur.execute('''CREATE TABLE IF NOT EXISTS People
@@ -599,63 +596,39 @@ cur.execute('''CREATE TABLE IF NOT EXISTS Follows
     (from_id INTEGER, to_id INTEGER, UNIQUE(from_id, to_id))''')
 ~~~~
 
-We indicate that the `name` column in the `People`
-table must be `UNIQUE`. We also indicate that the combination
-of the two numbers in each row of the `Follows` table must be
-unique. These constraints keep us from making mistakes such as adding
-the same relationship more than once.
 
-We can take advantage of these constraints in the following code:
+Indicamos que a coluna `nome` na tabela `Pessoas` precisa ser `UNIQUE`. Nós também indicamos que a combinação dos dois números em cada linha da tabela `Segue` deve ser única. Essas restrições nos impedem de cometer o erro de adicionar a mesma relação mais de uma vez. 
+
+Podemos nos aproveitar dessas restrições no código a seguir:
 
 ~~~~ {.python}
 cur.execute('''INSERT OR IGNORE INTO People (name, retrieved)
     VALUES ( ?, 0)''', ( friend, ) )
 ~~~~
 
-We add the `OR IGNORE` clause to our `INSERT`
-statement to indicate that if this particular `INSERT` would
-cause a violation of the "`name` must be unique" rule, the
-database system is allowed to ignore the `INSERT`. We are
-using the database constraint as a safety net to make sure we don't
-inadvertently do something incorrect.
+Podemos adicionar a cláusula `OR IGNORE` à declaração `INSERT` para indicar que caso este `INSERT` em particular venha a causar uma violação da regra “`nome` deve ser único“, o sistema de banco de dados está autorizado a ignorar o `INSERT`. Assim, estamos usando as restrições do banco de dados como um filtro de segurança, garantindo que não iremos fazer algo errado inadvertidamente. 
 
-Similarly, the following code ensures that we don't add the exact same
-`Follows` relationship twice.
+De forma similar, o código a seguir assegura que não adicionaremos a mesma relação `Segue` mais de uma vez.  
 
 ~~~~ {.python}
 cur.execute('''INSERT OR IGNORE INTO Follows
     (from_id, to_id) VALUES (?, ?)''', (id, friend_id) )
 ~~~~
 
-Again, we simply tell the database to ignore our attempted
-`INSERT` if it would violate the uniqueness constraint that
-we specified for the `Follows` rows.
+Novamente, apenas dizemos ao banco de dados para ignorar a tentativa `INSERT` caso ela viole a restrição de singularidade que especificamos para as linhas de `Segue`. 
 
-### Retrieve and/or insert a record
 
-When we prompt the user for a Twitter account, if the account exists, we
-must look up its `id` value. If the account does not yet
-exist in the `People` table, we must insert the record and
-get the `id` value from the inserted row.
+### Recuperar e/ou inserir um registro
 
-This is a very common pattern and is done twice in the program above.
-This code shows how we look up the `id` for a friend's
-account when we have extracted a `screen_name` from a `user`
-node in the retrieved Twitter JSON.
+Quando requisitamos ao usuário uma conta do Twitter, se a conta existir, devemos procurar seu valor `id`. Se a conta não existir na tabela `Pessoas`, devemos inserir um registro e guardar o valor `id` da linha inserida.
 
-Since over time it will be increasingly likely that the account will
-already be in the database, we first check to see if the
-`People` record exists using a `SELECT` statement.
+Este é um padrão muito comum e feito duas vezes no programa abaixo. O código mostra como procuramos pelo `id` da conta de um amigo, quando tivermos extraído o `screen_name` do `usuário` presente no Twitter JSON recuperado. 
 
-If all goes well^[In general, when a sentence starts with "if all goes well" you
-will find that the code needs to use try/except.] inside 
-the `try` section, we retrieve
-the record using `fetchone()` and then retrieve the first
-(and only) element of the returned tuple and store it in `friend_id`.
+Já que ao longo do tempo há uma maior chance da conta constar no banco de dados, primeiro verificamos se o registro em `Pessoas` existe, usando a declaração `SELECT`. 
 
-If the `SELECT` fails, the `fetchone()[0]` code
-will fail and control will transfer into the `except`
-section.
+Se tudo ocorrer bem^[Em geral, quando a frase começar com “se tudo ocorrer bem”, você perceberá que o código precisa de um bloco try/except.] dentro da seção `try`, devemos recuperar o registro usando `fetchone()` e então retirar o primeiro (e apenas o primeiro) elemento da tupla obtida e armazená-la em `amigo_id`.
+
+Caso SELECT `resulte` em falha, o código `fetchone()[0]` irá falhar e o controlador executará a seção `except`.
 
 ~~~~ {.python}
     friend = u['screen_name']
@@ -675,35 +648,22 @@ section.
         countnew = countnew + 1
 ~~~~
 
-If we end up in the `except` code, it simply means that the
-row was not found, so we must insert the row. We use `INSERT OR
-IGNORE` just to avoid errors and then call `commit()`
-to force the database to really be updated. After the write is done, we
-can check the `cur.rowcount` to see how many rows were
-affected. Since we are attempting to insert a single row, if the number
-of affected rows is something other than 1, it is an error.
+Caso o código `except` seja executado, apenas significa que a linha não foi encontrada e, portanto, deve ser inserida. Usamos `INSERT OR IGNORE` para evitar erros e então chamar `commit()` para forçar o banco de dados a ser atualizado. Depois da escrita ter sido feita, podemos verificar o `cur_rowcount` para ver quantas linhas foram afetadas. Já que estamos tentando inserir uma única linha, se o número de linhas afetados for diferente de 1, houve um erro. 
 
-If the `INSERT` is successful, we can look at
-`cur.lastrowid` to find out what value the database assigned
-to the `id` column in our newly created row.
+No entanto, se o `INSERT` for bem-sucedido, `cur_lastrowid` pode ser avaliado para encontrar o valor na coluna `id`, atribuído pelo banco de dados, da nova linha.
 
 ### Storing the friend relationship
 
-Once we know the key value for both the Twitter user and the friend in
-the JSON, it is a simple matter to insert the two numbers into the
-`Follows` table with the following code:
+Uma vez que sabemos o valor chave para tanto o usuário do Twitter quanto seu amigo, no JSON, basta inserirmos os dois números na tabela `Segue` com o código abaixo:
 
 ~~~~ {.python}
 cur.execute('INSERT OR IGNORE INTO Follows (from_id, to_id) VALUES (?, ?)',
     (id, friend_id) )
 ~~~~
 
-Notice that we let the database take care of keeping us from
-"double-inserting" a relationship by creating the table with a
-uniqueness constraint and then adding `OR IGNORE` to our
-`INSERT` statement.
+Note que encarregamos o banco de dados de nos prevenir de inserir duas vezes uma relação. Isto se dá ao criarmos uma tabela com a restrição de singularidade e então adicionando `OR IGNORE` à declaração `INSERT`.
 
-Here is a sample execution of this program:
+Aqui está um exemplo da execução deste programa: 
 
 ~~~~
 Enter a Twitter account, or quit:
@@ -720,12 +680,9 @@ New accounts= 17  revisited= 3
 Enter a Twitter account, or quit: quit
 ~~~~
 
-We started with the `drchuck` account and then let the
-program automatically pick the next two accounts to retrieve and add to
-our database.
+Começamos com a conta `drchuck` e então deixamos o programa automaticamente selecionar as duas contas a serem obtidas e adicionadas ao nosso banco de dados.
 
-The following is the first few rows in the `People` and
-`Follows` tables after this run is completed:
+Abaixo estão as primeiras linhas para as tabelas `Pessoas` e `Segue`, após a execução ser finalizada: 
 
 ~~~~
 People:
@@ -744,17 +701,8 @@ Follows:
 60 rows.
 ~~~~
 
-You can see the `id`, `name`, and
-`visited` fields in the `People` table and you see
-the numbers of both ends of the relationship in the `Follows`
-table. In the `People` table, we can see that the first three
-people have been visited and their data has been retrieved. The data in
-the `Follows` table indicates that `drchuck` (user
-1) is a friend to all of the people shown in the first five rows. This
-makes sense because the first data we retrieved and stored was the
-Twitter friends of `drchuck`. If you were to print more rows
-from the `Follows` table, you would see the friends of users
-2 and 3 as well.
+Você pode ver os campos `id`, `nome` e `visitado` na tabela `Pessoas`, bem como os números em ambas as pontas da relação na tabela `Segue`. Na tabela `Pessoas`, vemos que as três primeiras pessoas foram visitadas e suas informações foram obtidas. Os dados na tabela `Segue` indicam que `drchuck` (usuário 1) é amigo de todas as pessoas nas primeiras 5 linhas. Isto faz sentido já que o primeiro conjunto de informações recuperado e armazenado foi referente aos amigos de `drchuck`. Se desejasse imprimir mais linhas da tabela `Segue`, também veria os amigos dos usuários 2 e 3.
+
 
 Three kinds of keys
 -------------------
