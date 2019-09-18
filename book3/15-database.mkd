@@ -1,77 +1,82 @@
-Using Databases and SQL
+Usando Banco de dados e SQL
 =======================
 
-What is a database?
+O que é um banco de dados?
 -------------------
 
-\index{database}
+\index{banco de dados}
 
-A *database* is a file that is organized for storing
-data. Most databases are organized like a dictionary in the sense that
-they map from keys to values. The biggest difference is that the
-database is on disk (or other permanent storage), so it persists after
-the program ends. Because a database is stored on permanent storage, it
-can store far more data than a dictionary, which is limited to the size
-of the memory in the computer.
+Um *banco de dados* é um arquivo que é organizado para armazenar
+dados. A maioria dos bancos de dados são organizados como um dicionário no sentido de
+que mapeiam das chaves aos valores. A maior diferença é que o
+banco de dados está no disco (ou em outro armazenamento permanente), portanto persiste
+depois do programa terminar. Como um banco de dados é guardado em armazenamento permanente,
+ele pode armazenar muito mais dados que um dicionário, o qual é limitado ao tamanho
+da memória no computador.
 
-\index{database!indexes}
 
-Like a dictionary, database software is designed to keep the inserting
-and accessing of data very fast, even for large amounts of data.
-Database software maintains its performance by building
-*indexes* as data is added to the database to allow the
-computer to jump quickly to a particular entry.
+\index{banco de dados!índices}
 
-There are many different database systems which are used for a wide
-variety of purposes including: Oracle, MySQL, Microsoft SQL Server,
-PostgreSQL, and SQLite. We focus on SQLite in this book because it is a
-very common database and is already built into Python. SQLite is
-designed to be *embedded* into other applications to provide database
-support within the application. For example, the Firefox browser also
-uses the SQLite database internally as do many other products.
+Como um dicionário, o software de banco de dados é projetado para manter a inserção
+e o acesso as dados muito rápidos, mesmo para grandes quantidades.
+O software de banco de dados mantém seu desempenho construindo
+*índices* a medida que dados são adicionados ao banco de dados para permitir
+que o computador pule rapidamente para a uma entrada específica.
+
+Existem vários sistemas de banco de dados que são usados para uma larga
+quantidade de propósitos incluindo: Oracle, MySQL, Microsoft SQL Server,
+PostgreSQL, e SQLite. Focamos em SQLite nesse livro porque é um
+banco de dados muito comum e já está incorporado em Python. SQLite é
+desenvolvido para ser *incorporado* em outros aplicativos para prover
+suporte ao banco de dados dentro do aplicativo. Por exemplo, o navegador Firefox
+também usa o banco de dados SQLite internamente assim como muitos outros produtos.
 
 <http://sqlite.org/>
+
+SQLite é adequado para alguns dos problemas de manipulação de dados que
+vemos na Informática como o aplicativo spidering do twitter que
+descrevemos nesse capítulo. 
 
 SQLite is well suited to some of the data manipulation problems that we
 see in Informatics such as the Twitter spidering application that we
 describe in this chapter.
 
-Database concepts
+Conceitos de Banco de dados
 -----------------
 
-When you first look at a database it looks like a spreadsheet with
-multiple sheets. The primary data structures in a database are:
-*tables*, *rows*, and
-*columns*.
+Quando você olha pela primeira vez para um banco de dados parece como uma tabela
+com várias folhas. As estruturas primárias de dados em um banco de dados são:
+*tabelas*, *linhas*, e 
+*colunas*.
 
 ![Relational Databases](height=2.0in@../images/relational)
 
-In technical descriptions of relational databases the concepts of table,
-row, and column are more formally referred to as
-*relation*, *tuple*, and
-*attribute*, respectively. We will use the less formal
-terms in this chapter.
+Nas descrições técnicas dos bancos de dados relacionais, os conceitos de tabela,
+linha, e coluna são formalmente chamadas de
+*relação*, *tupla*, e *atributo*, respectivamente. Nós usaremos os termos
+menos formais nesse capítulo.
 
-Database Browser for SQLite
+Navegador de Banco de Dados para SQLite
 ---------------------------
 
-While this chapter will focus on using Python to work with data in
-SQLite database files, many operations can be done more conveniently
-using software called the *Database Browser for SQLite* which is freely available from:
+Embora esse capítulo irá focar em usar Python para trabalhar com dados em
+arquivos de banco de dados, várias operações podem ser feitas de maneira
+mais conveniente, usando um software chamado *Navegador de Banco de Dados para SQLite*
+que é disponibilizado gratuitamente em:
 
 <http://sqlitebrowser.org/>
 
-Using the browser you can easily create tables, insert data, edit data,
-or run simple SQL queries on the data in the database.
+Usando o navegador você pode criar facilmente tabelas, inserir dados, editar dados,
+ou executar consultas SQL simples nos dados do banco de dados.
 
-In a sense, the database browser is similar to a text editor when
-working with text files. When you want to do one or very few operations
-on a text file, you can just open it in a text editor and make the
-changes you want. When you have many changes that you need to do to a
-text file, often you will write a simple Python program. You will find
-the same pattern when working with databases. You will do simple
-operations in the database manager and more complex operations will be
-most conveniently done in Python.
+Em certo sentido, o navegador de banco de dados é similar a um editor de texto
+quando trabalhando com arquivos de textos. Quando você quer fazer mais de uma ou algumas
+poucas operações em um arquivo de texto, você pode apenas abri-lo em um editor
+e fazer as mudanças que deseja. Quando você tem muitas mudanças que precisa fazer em
+um arquivo de texto, geralmente escreve um programa simples em Python. Você encontrará
+o mesmo padrão quando trabalhar com banco de dados. Você fará operações simples
+no gerenciador do banco de dados e operações mais complexas serão feitas
+mais convenientemente em Python.
 
 Criando uma tabela de banco de dados
 -------------------------
