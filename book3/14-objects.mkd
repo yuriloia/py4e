@@ -289,19 +289,19 @@ So far 4
 O objeto é construído e o método  `party`  é chamado quatro vezes,
 incrementando e imprimindo o valor para `x` dentro do objeto `an`.
 
-Classes as types
+classes como tipos
 ----------------
 
 \index{dir}
-\index{type}
+\index{tipo}
 
-As we have seen, in Python all variables have a type.  We can use the built-in
-`dir` function to examine the capabilities of a variable.  We can also use `type` and
-`dir` with the classes that we create.
+Como vimos, em Python todas as variáveis têm um tipo. Nós podemos usar o built-in
+`dir` função para examinar os recursos de uma variável. Nós também podemos usar `tipo` 
+e `dir` com as classes que criamos.
 
 \VerbatimInput{../code3/party3.py}
 
-When this program executes, it produces the following output:
+Quando este programa é executado, ele produz a seguinte saída:
 
 ~~~~
 Type <class '__main__.PartyAnimal'>
@@ -312,9 +312,9 @@ Type <class 'int'>
 Type <class 'method'>
 ~~~~
 
-You can see that using the `class` keyword, we have created a new type.
-From the `dir` output, you can see both the `x` integer attribute and the `party`
-method are available in the object.
+Você pode ver que usando a palavra `classe` , Criamos um novo tipo.
+A partir da saídac`dir`, Você pode ver tanto o`x` atributo inteiro e o método
+`party` estão disponíveis no objeto.
 
 Object lifecycle
 ----------------
