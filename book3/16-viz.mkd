@@ -1,4 +1,4 @@
-Visualizando dados 
+Visualização de dados 
 ================
 
 Até o momento nós estávamos aprendendo a linguagem Python para depois aprendermos a como utilizar Python, 
@@ -102,33 +102,28 @@ Esta é uma variável em Javascript que contém uma lista de listas. A sintáxe 
 
 Simplismente abra o arquivo *where.html* no seu navegador e veja as localizações. Você poderá se aproximar de cada um dos pins para descrobrir a localização que a API de geocodificação retornará a entrada fornecida pelo usuário. Caso você não consiga ver nenhum dado quando abrir o arquivo *where.html*, você poderá checar o Javascript ou o console de desenvolvimento do seu navegador.
 
-Visualizing networks and interconnections
+Vizualização de redes e interconexões
 -----------------------------------------
 
 \index{Google!page rank}
-\index{Visualization!networks}
-\index{Visualization!page rank}
+\index{Vizualização!redes}
+\index{Vizualização!page rank}
 
-In this application, we will perform some of the functions of a search
-engine. We will first spider a small subset of the web and run a
-simplified version of the Google page rank algorithm to determine which
-pages are most highly connected, and then visualize the page rank and
-connectivity of our small corner of the web. We will use the D3
-JavaScript visualization library <http://d3js.org/> to produce the
-visualization output.
+Nesta aplicação, executaremos algumas das funções de uma ferramenta de busca. Primeiro, criaremos um pequeno subconjunto da web e executaremos um versão simplificada do algoritmo de classificação do Google para determinar quais as páginas estão mais altamente conectadas, para assim visualizar o page rank e a conectividade do nosso pequeno canto da web. Vamos usar o D3 Biblioteca de visualização JavaScript <http://d3js.org/> para produzir a saída de visualização.
 
-You can download and extract this application from:
+
+Você pode fazer o download e extrair essa aplicação do site:
 
 [www.py4e.com/code3/pagerank.zip](http://www.py4e.com/code3/pagerank.zip)
 
 ![A Page Ranking](height=3.5in@../images/pagerank)
 
-The first program (*spider.py*) program crawls a web site
-and pulls a series of pages into the database
-(*spider.sqlite*), recording the links between pages. You
-can restart the process at any time by removing the
-*spider.sqlite* file and rerunning
-*spider.py*.
+O primeiro programa (*spider.py*) rastreia um site
+e armazena uma série de páginas para o banco de dados
+(*spider.sqlite*), gravando os links entre as páginas. Você
+pode reiniciar o processo a qualquer momento removendo o
+arquivo *spider.sqlite* e realizando uma nova execução do programa *spider.py*.
+
 
 ~~~~
 Enter web url or enter: http://www.dr-chuck.com/
@@ -139,11 +134,7 @@ How many pages:2
 How many pages:
 ~~~~
 
-In this sample run, we told it to crawl a website and retrieve two
-pages. If you restart the program and tell it to crawl more pages, it
-will not re-crawl any pages already in the database. Upon restart it
-goes to a random non-crawled page and starts there. So each successive
-run of *spider.py* is additive.
+Nesta amostra de execução, pedimos para rastrear um site e recuperar duas páginas. Se você reiniciar o programa e solicitar que ele rastreie mais páginas, não rastreará nenhuma página que já esteja no banco de dados. Ao reiniciá-lo, ele irá para uma página aleatória não rastreada e começará o rastreio apartir daí. Então, cada execução do programa *spider.py* é aditiva.
 
 ~~~~
 Enter web url or enter: http://www.dr-chuck.com/
@@ -155,12 +146,11 @@ How many pages:3
 How many pages:
 ~~~~
 
-You can have multiple starting points in the same database—within the
-program, these are called "webs". The spider chooses randomly amongst
-all non-visited links across all the webs as the next page to spider.
+Você pode ter vários pontos de partida no mesmo banco de dados (dentro do
+programa), eles são chamados de "webs"(teias em português). A aranha escolhe aleatoriamente entre
+todos os links não visitados em todas as webs como a próxima página para rastrear.
 
-If you want to dump the contents of the *spider.sqlite*
-file, you can run *spdump.py* as follows:
+Se você deseja jogar fora  o conteúdo do *spider.sqlite*, você pode executar o programa *spdump.py* da seguinte maneira:
 
 ~~~~
 (5, None, 1.0, 3, 'http://www.dr-chuck.com/csev-blog')
@@ -186,7 +176,7 @@ How many iterations:2
 [(1, 0.559), (2, 0.659), (3, 0.985), (4, 2.135), (5, 0.659)]
 ~~~~
 
-You can dump the database again to see that page rank has been updated:
+Você pode remover o banco de dados de novo para confirmar que o page rank foi atualizado.
 
 ~~~~
 (5, 1.0, 0.985, 3, 'http://www.dr-chuck.com/csev-blog')
@@ -196,16 +186,13 @@ You can dump the database again to see that page rank has been updated:
 4 rows.
 ~~~~
 
-You can run *sprank.py* as many times as you like and it
-will simply refine the page rank each time you run it. You can even run
-*sprank.py* a few times and then go spider a few more
-pages sith *spider.py* and then run
-*sprank.py* to reconverge the page rank values. A search
-engine usually runs both the crawling and ranking programs all the time.
+Você pode executar o programa *sprank.py* quantas vezes quiser e ele
+simplesmente refinará a classificação da página a cada execução. Você pode até rodar o programa *sprank.py* algumas vezes e depois rastrear mais algumas páginas com o programa *spider.py*, para assim executar o *sprank.py* para reconvergir os valores de classificação da página. Um motor de busca geralmente executa os programas de rastreamento e classificação o tempo todo.
 
-If you want to restart the page rank calculations without respidering
-the web pages, you can use *spreset.py* and then restart
+Se você deseja reiniciar os cálculos de classificação da página sem considerar
+nas páginas da web, você pode usar o programa *spreset.py* e assim reiniciar o programa 
 *sprank.py*.
+
 
 ~~~~
 How many iterations:50
@@ -227,6 +214,18 @@ How many iterations:50
 50 5.10410499467e-05
 [(512, 0.0296), (1, 12.79), (2, 28.93), (3, 6.808), (4, 13.46)]
 ~~~~
+
+Para cada iteração do algoritmo de classificação da página, imprime a média
+mudança no page rank por página. A rede inicialmente é bastante desequilibrada
+e, portanto, os valores individuais de classificação da página mudam bastante entre as iterações.
+Mas em algumas iterações curtas, o page rank converge. Você deveria correr
+* sprank.py * tempo suficiente para que os valores de classificação da página
+convergir.
+
+Se você deseja visualizar as principais páginas atuais em termos de classificação da página,
+execute * spjson.py * para ler o banco de dados e gravar os dados
+para que as páginas mais altamente vinculadas no formato JSON sejam visualizadas em uma Web
+navegador.
 
 For each iteration of the page rank algorithm it prints the average
 change in page rank per page. The network initially is quite unbalanced
