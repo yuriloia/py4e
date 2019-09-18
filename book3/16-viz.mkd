@@ -443,28 +443,23 @@ indiana.edu 2258
 unicon.net 2055
 ~~~~
 
-Note how much more quickly *gbasic.py* runs compared to
-*gmane.py* or even *gmodel.py*. They are
-all working on the same data, but *gbasic.py* is using
-the compressed and normalized data in *index.sqlite*. If
-you have a lot of data to manage, a multistep process like the one in
-this application may take a little longer to develop, but will save you
-a lot of time when you really start to explore and visualize your data.
+Observe com que rapidez o código em *gbasic.py* é executado em comparação com o código em
+*gmane.py* ou mesmo com aquele em *gmodel.py*. Eles estão
+todos trabalhando nos mesmos dados, mas *gbasic.py* está usando
+os dados compactados e normalizados que estão armazenados em *index.sqlite*. E se
+você tem muitos dados para gerenciar, um processo de várias etapas como o desse aplicativo pode demorar um pouco mais para ser desenvolvido, mas você economizará muito tempo quando você realmente começar a explorar e visualizar os seus dados.
 
-You can produce a simple visualization of the word frequency in the
-subject lines in the file *gword.py*:
+Você pode produzir uma simples visualização da frequência de palavra nas linhas de assunto no arquivo *gword.py*:
+
 
 ~~~~
 Range of counts: 33229 129
 Output written to gword.js
 ~~~~
 
-This produces the file *gword.js* which you can visualize
-using *gword.htm* to produce a word cloud similar to the
-one at the beginning of this section.
+Isso produz o arquivo *gword.js* que pode ser visualizado usando o programa *gword.htm* para produzir uma nuvem de palavras semelhante a produzida no início desta seção.
 
-A second visualization is produced by *gline.py*. It
-computes email participation by organizations over time.
+Uma segunda visualização é produzida pelo código em *gline.py*. Neste código é calculado a participação de email por organizações ao longo do tempo.
 
 ~~~~
 Loaded messages= 51330 subjects= 25033 senders= 1584
@@ -475,10 +470,11 @@ Top 10 Oranizations
 Output written to gline.js
 ~~~~
 
-Its output is written to *gline.js* which is visualized
-using *gline.htm*.
+Sua saída é gravada no arquivo *gline.js*, que é visualizada
+usando o programa *gline.htm*.
 
 ![Sakai Mail Activity by Organization](../images/mailorg)
 
-This is a relatively complex and sophisticated application and has
-features to do some real data retrieval, cleaning, and visualization.
+Esta é uma aplicação relativamente complexa e sofisticada e tem
+características para realizar a recuperação, limpeza e visualização de dados reais.
+
