@@ -8,10 +8,8 @@ Listas
 Uma lista é uma sequência
 --------------------
 
-Como uma string, uma * lista * é uma sequência de valores. Em uma
-string, os valores são caracteres; em uma lista, eles podem ser de qualquer tipo. Os
-valores em lista são chamados * elementos * ou às vezes
-*itens*.
+Como uma string, uma *lista* é uma sequência de valores. Em uma
+string, os valores são caracteres; em uma lista, eles podem ser de qualquer tipo. Os valores em lista são chamados *elementos* ou às vezes *itens*.
 
 \ index {element}
 \ index {sequence}
@@ -22,25 +20,25 @@ os elementos entre colchetes ("[" e "]"):
 
 ~~~~ {.python}
 [10, 20, 30, 40]
-['cururu crocante', 'estômago de carneiro', 'vômito de lark']
+['cururu crocante', 'estômago de carneiro', 'vômito de cotovia']
 ~~~~
 
 O primeiro exemplo é uma lista de quatro inteiros. O segundo é uma lista de
-três strings. Os elementos de uma lista não precisam ser do mesmo tipo.
-A lista a seguir contém uma string, um float, um inteiro e (lo!)
+três `strings`. Os elementos de uma lista não precisam ser do mesmo tipo.
+A lista a seguir contém uma `string`, um `float`, um inteiro e (lo!)
 outra lista:
 
 ~~~~ {.python}
 ['spam', 2.0, 5, [10, 20]]
 ~~~~
 
-* Encaixando * uma lista dentro de outra. 
+*Encaixando* uma lista dentro de outra.
 
 \index{nested list}
 \index{list!nested}
 
 Uma lista que não contém elementos é chamada de lista vazia; você pode criar
-um com colchetes vazios, `[]`.
+uma com colchetes vazios, `[]`.
 
 \index{empty list}
 \index{list!empty}
@@ -51,7 +49,7 @@ Como você poderia esperar, você pode atribuir valores de lista a variáveis:
 >>> queijos = ['Cheddar', 'Edam', 'Gouda']
 >>> numbers = [17, 123]
 >>> empty = []
->>> imprimir (queijos, números, vazios)
+>>> print (queijos, números, vazios)
 ['Cheddar', 'Edam', 'Gouda'] [17, 123] []
 ~~~~
 
@@ -67,9 +65,9 @@ Listas são mutáveis
 \index{bracket operator}
 \index{operator!bracket}
 
-A sintaxe para acessar os elementos de uma lista é a mesma que para
-acessando os caracteres de uma string: o operador colchete. A
-expressão dentro dos colchetes especifica o índice. Lembre-se que o
+A sintaxe para acessar os elementos de uma lista é a mesma usada para
+acessar os caracteres de uma `string`, o operador colchete. A
+expressão dentro dos colchetes especifica o índice. Lembre-se que os
 índices começam em 0:
 
 
@@ -78,10 +76,9 @@ expressão dentro dos colchetes especifica o índice. Lembre-se que o
 Cheddar
 ~~~~
 
-Ao contrário das strings, as listas são mutáveis porque você pode alterar a ordem de
-itens em uma lista ou reatribuir um item em uma lista. Quando o operador colchete
-aparece no lado esquerdo de uma tarefa, identifica o elemento de
-a lista que será atribuída.
+Ao contrário das `strings`, as listas são mutáveis porque você pode alterar a ordem dos itens ou atribuir outro valor a um item. Quando o operador colchete
+aparece no lado esquerdo de uma atribuição, ele identifica o elemento da
+a lista que será modificado.
 
 \index{mutability}
 
@@ -92,36 +89,28 @@ a lista que será atribuída.
 [17, 5]
 ~~~~
 
-O último elemento de `numeros`, que costumava ser 123, e
+O último elemento de `numeros`, que costumava ser 123,
 agora é 5.
 
 \index{index!starting at zero}
 \index{zero, index starting at}
 
-
-You can think of a list as a relationship between indices and elements.
-This relationship is called a *mapping*; each index "maps
-to" one of the elements.
-
 Você pode pensar em uma lista como uma relação entre índices e elementos.
-Essa relação é chamada de *mapeamento*; cada index "mapas
-para" um dos elementos.
+Essa relação é chamada de *mapeamento*; cada index "representa" um dos elementos.
 
 \index{item assignment}
 \index{assignment!item}
 
-Os índices de lista funcionam da mesma maneira que os índices de string:
+Os índices de lista funcionam da mesma maneira que os índices de uma `string`:
 
 - Qualquer expressão inteira pode ser usada como um index.
 
-- Se você tentar ler ou escrever um elemento que não existe, você pode 
-    encontrar um "IndexError".
+- Se você tentar ler ou escrever um elemento que não existe, você terá um "IndexError".
 
 \index {exception!IndexError}
 \index {IndexError}
 
-- Se um índice tiver um valor negativo, ele será contado a partir do final de
-    a lista.
+- Se um índice tiver um valor negativo, ele será contado ao contrário iniciando do final da lista.
 
 \index{list!index}
 \index{list!membership}
@@ -133,13 +122,13 @@ O operador `in` também funciona em listas.
 
 ~~~~ {.python .trinket}
 >>> queijos = ['Cheddar', 'Edam', 'Gouda']
->>> 'Edam' em queijos
+>>> 'Edam' in queijos
 Verdade
->>> 'Brie' em queijos
+>>> 'Brie' in queijos
 Falso
 ~~~~
 
-Traversing a list
+Percorrendo uma lista
 -----------------
 
 \index{list!traversal}
@@ -148,12 +137,12 @@ Traversing a list
 \index{loop!for}
 \index{statement!for}
 
-A maneira mais comum de percorrer os elementos de uma lista é com uma
+A maneira mais comum de percorrer os elementos de uma lista é com um laço de
 repetição `for`. A sintaxe é a mesma que para strings:
 
 ~~~~ {.python}
 for queijo in queijos:
-    imprimir (queijo)
+    print (queijo)
 ~~~~
 
 Isso funciona bem se você precisar ler apenas os elementos da lista. Mas
@@ -169,11 +158,11 @@ for i in range(len(numeros)):
 ~~~~
 
 Essa repetição percorre a lista e atualiza cada elemento. `len`
-retorna o número de elementos na lista. `range` retorna um
+retorna o número de elementos na lista. `range` retorna uma
 lista de índices de 0 a $n-1$, onde $n$ é o tamanho da lista.
-Cada vez que passa pela reptição, o `i` recebe o índice do próximo
+Cada vez que passa pela repetição, o `i` recebe o índice do próximo
 elemento. A declaração de atribuição no corpo usa `i` para
-leia o valor antigo do elemento e atribua o novo valor.
+ler o valor antigo do elemento e atribui o novo valor.
 
 \index{item update}
 \index{update!item}
@@ -186,10 +175,7 @@ for x in empty:
 ~~~~
 
 Embora uma lista possa conter outra lista, a lista encaixada ainda conta
-como um único elemento. A duração dessa lista é quatro:
-
-Although a list can contain another list, the nested list still counts
-as a single element. The length of this list is four:
+como um único elemento. O comprimento dessa lista é quatro:
 
 \index{nested list}
 \index{list!nested}
@@ -251,9 +237,8 @@ O operador de fatiamento também funciona em listas:
 ['d', 'e', 'f']
 ~~~~
 
-Se você omitir o primeiro índice, a fatia começará no início. Se você
-omitir o segundo, a fatia vai até o final. Então se você omitir as duas, a
-fatia é uma copia da lista inteira.
+Se você omitir o primeiro índice, a fatia começará do início. Se você
+omitir o segundo, a fatia vai até o final da lista. Então se você omitir as duas, a fatia é uma copia da lista inteira.
 
 \index{lista!cópia}
 \index{fatia!cópia}
@@ -265,12 +250,11 @@ fatia é uma copia da lista inteira.
 ~~~~
 
 Como as listas são mutáveis, geralmente é útil fazer uma cópia antes
-de realizar operações que dobram, perfuram, ou mutilam listas.
+de realizar operações que dobram, perfuram ou mutilam listas.
 
 \index{mutabilidade}
 
-O operador de fatiamento no lado esquerdo de uma atribuição pode atualizar múltiplos
-elementos:
+O operador de fatiamento no lado esquerdo de uma atribuição pode atualizar múltiplos elementos:
 
 \index{fatiamento!atualizar}
 \index{atualizar!fatiamento}
@@ -282,14 +266,14 @@ elementos:
 ['a', 'x', 'y', 'd', 'e', 'f']
 ~~~~
 
-Listar métodos 
+Métodos para listas
 ------------
 
 \index{lista!métodos}
 \index{métodos, lista}
 
-Python fornece metódos que operam em listas. Por exemplo,
-`append` adiciona um novo element ao fim de uma lista:
+Python fornece métodos que operam em listas. Por exemplo,
+`append` adiciona um novo elemento ao final de uma lista:
 
 \index{append método}
 \index{método!append}
@@ -301,8 +285,7 @@ Python fornece metódos que operam em listas. Por exemplo,
 ['a', 'b', 'c', 'd']
 ~~~~
 
-`extend` leva uma lista como um argument e adiciona todos os
-elementos:
+`extend` leva uma lista como um argumento para o método `append` e adiciona todos os elementos o final de uma lista:
 
 \index{extend método}
 \index{método!extend}
@@ -317,7 +300,7 @@ elementos:
 
 Este exemplo deixa `t2` sem modificações.
 
-`sort` organiza os elementos da lista de baixo para cima:
+`sort` ordena os elementos da lista do menor para o maior:
 
 \index{sort método}
 \index{método!sort}
@@ -329,8 +312,7 @@ Este exemplo deixa `t2` sem modificações.
 ['a', 'b', 'c', 'd', 'e']
 ~~~~
 
-A maioria de lista de métodos é vazia; elas modificam a lista e retornam
-`None`. Se você acidentalmente escrever `t = t.sort()`,
+A maioria dos métodos para lista é do tipo `void`; eles modificam a lista e retornam `None`. Se você acidentalmente escrever `t = t.sort()`,
 você se desapontará com o resultado.
 
 \index{vazio método}
@@ -344,8 +326,8 @@ Apagando elementos
 \index{element deletion}
 \index{deletion, element of list}
 
-Existem vários jeitos de excluir elementos de uma lista. Se você sabe o
-índice do elemento que você quer, você pode usar `pop`:
+Existem várias maneiras de excluir elementos de uma lista. Se você sabe o
+índice do elemento que você quer eliminar, você pode usar `pop`:
 
 \index{pop method}
 \index{method!pop}
@@ -360,10 +342,10 @@ b
 ~~~~
 
 `pop` modifica a lista e retorna o elemento que foi
-removido. Se você não possui o índice, ele apaga e retorna o último
-elemento.
+removido. Se você não fornecer um índice, ele deleta e retorna o último
+elemento da lista.
 
-Se você não precisa do valor removido, você pode usar o operador `del`:
+Se você não precisar do valor removido, você pode usar o operador `del`:
 
 \index{del operator}
 \index{operator!del}
@@ -387,7 +369,7 @@ Se você sabe o elemento que quer remover (mas não o índice), você pode usar 
 ['a', 'c']
 ~~~~
 
-O valor retornado de `remove` é `None`.
+O valor retornado por `remove` é `None`.
 
 \index{None special value}
 \index{special value!None}
@@ -402,7 +384,7 @@ Para remover mais de um elemento, você pode usar `del` com um
 ['a', 'f']
 ~~~~
 
-Como sempre, a fatia seleciona todos os elementos até, mas não inclui,
+Como sempre, a fatia seleciona todos os elementos, mas não inclui
 o segundo índice.
 
 Listas e funções
@@ -425,30 +407,30 @@ que você examine rapidamente uma lista sem escrever seus próprios laços:
 25
 ~~~~
 
-A função `sum()` só funciona quando os elementos da lista são números. 
+A função `sum()` só funciona quando os elementos da lista são números.
 As outras funções (`max()`, `len()`,etc.) funcionam com listas de strings e outros tipos semelhantes.
 
-Poderíamos  reescrever um programa anterior que calculava a 
-média de uma lista de números inseridos pelo usuário usando uma lista. 
+Poderíamos  reescrever um programa anterior que calculava a
+média de uma lista de números inseridos pelo usuário usando uma lista.
 
-Primeiramente, o programa calcula a média sem uma lista: 
+Primeiramente, o programa calcula a média sem uma lista:
 
 \VerbatimInput{../code3/avenum.py}
 
 Nesse programa, nós temos as variáveis `count` e `total`
-para guardar o número e a quantidade total dos números do usuário, 
+para guardar o número e a quantidade total dos números do usuário,
 conforme solicitamos repetidamente ao usuário por um número.
 
-Nós podemos simplesmente lembrar cada número quando o usuário o inserisse 
+Nós podemos simplesmente lembrar cada número quando o usuário o inserisse
 e usar funções internas para calcular a soma e calcular no final.
 
 \VerbatimInput{../code3/avelist.py}
 
-Fazemos uma lista vazia antes  do  inicio do laço, e 
+Fazemos uma lista vazia antes  do  inicio do laço, e
 a cada vez que  temos um número,  o acrescentamos na lista.
-No final do programa, nós simplesmente calculamos a soma dos 
-números na lista e os dividimos pela contagem dos números na 
-lista para chegar à média. 
+No final do programa, nós simplesmente calculamos a soma dos
+números na lista e os dividimos pela contagem dos números na
+lista para chegar à média.
 
 Listas e strings
 -----------------
@@ -458,7 +440,7 @@ Listas e strings
 \index{sequência}
 
 Uma string é uma sequência de caracteres e uma lista é uma sequência
-de valores, mas uma lista de caracteres não é o mesmo que uma string. 
+de valores, mas uma lista de caracteres não é o mesmo que uma string.
 Para converter de uma string para uma lista de caracteres, você pode usar `list`:
 
 \index{list!function}
@@ -471,12 +453,12 @@ Para converter de uma string para uma lista de caracteres, você pode usar `list
 ['s', 'p', 'a', 'm']
 ~~~~
 
-Como `list` é o nome de uma função interna, você deve evitar 
-usá-la como nome de uma variável. Eu além disso evito usar “I” porque 
+Como `list` é o nome de uma função interna, você deve evitar
+usá-la como nome de uma variável. Eu além disso evito usar “I” porque
 parece muito com o número “1”. Então é por isso que eu uso a letra "t".
 
-A função `list` quebra uma string em letras individuais. 
-Se você quer quebrar uma string em palavras, você pode usar o método 
+A função `list` quebra uma string em letras individuais.
+Se você quer quebrar uma string em palavras, você pode usar o método
 `split`:
 
 \index{split método}
@@ -491,11 +473,11 @@ Se você quer quebrar uma string em palavras, você pode usar o método
 the
 ~~~~
 
-Depois de você ter usado `split` para dividir a string em uma lista 
-de palavras, você pode usar o operador de índices (colchete) para ver 
-uma palavra particular da lista. 
+Depois de você ter usado `split` para dividir a string em uma lista
+de palavras, você pode usar o operador de índices (colchete) para ver
+uma palavra particular da lista.
 Você pode chamar `split` com um argumento opcional chamado um
-*delimiter* que especifica qual caractere usar como limite de palavras. 
+*delimiter* que especifica qual caractere usar como limite de palavras.
 
 \index{opcional argumento}
 \index{argumento!opcional}
@@ -508,10 +490,10 @@ Você pode chamar `split` com um argumento opcional chamado um
 ['spam', 'spam', 'spam']
 ~~~~
 
-`join` é o inverso de `split`. Ele pega uma lista de strings 
-e concatena os elementos. `join`  é um método de string, então 
-você tem que invocar isso no delimitador 
-e passar a lista como um parâmetro. 
+`join` é o inverso de `split`. Ele pega uma lista de strings
+e concatena os elementos. `join`  é um método de string, então
+você tem que invocar isso no delimitador
+e passar a lista como um parâmetro.
 
 \index{join método}
 \index{método!join}
@@ -634,7 +616,7 @@ Um objeto com mais de uma referência possui mais de um nome, então dizemos que
 
 \index{mutabilidade}
 
-Se o objeto aliado for mutável, as alterações feitas com um pseudônimo afetam o outro: 
+Se o objeto aliado for mutável, as alterações feitas com um pseudônimo afetam o outro:
 
 ~~~~ {.python}
 >>> b[0] = 17
@@ -743,9 +725,9 @@ Debugging
 
 Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa horas de debugging. Abaixo mostra algumas deslizes comuns e formas de evitá-los:
 
-1. Não esqueça que a maioria do métodos de listas modifica o argumento e retorna  `None`. Isso é o oposto dos métodos das strings, que    retornam uma nova string e não modificam a string original. 
+1. Não esqueça que a maioria do métodos de listas modifica o argumento e retorna  `None`. Isso é o oposto dos métodos das strings, que    retornam uma nova string e não modificam a string original.
 
-   Se você está acostumado a escrever código de string como este: 
+   Se você está acostumado a escrever código de string como este:
 
     ~~~~ {.python}
     palavra = palavra.strip()
@@ -759,13 +741,13 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
 
     \index{sort método}
     \index{método!sort}
-    
+
    Como sort retorna `None`, a próxima operação que você executar com `t` provavelmente irá falhar.
-    
+
     Antes de usar métodos de listas e operadores, você deve ler a documentação com cuidado e depois testar elas em um modo interativo. Os métodos e os operadores que as listas compartilham com outras sequência (como strings) são documentadas em:
-    
+
     [docs.python.org/library/stdtypes.html#common-sequence-operations](https://docs.python.org/library/stdtypes.html#common-sequence-operations)
-    
+
     Os métodos e operadores que são apenas aplicadas em sequências mutáveis são documentadas em:
 
     [docs.python.org/library/stdtypes.html#mutable-sequence-types](https://docs.python.org/library/stdtypes.html#mutable-sequence-types)
@@ -774,9 +756,9 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
 
     \index{idiom}
     Parte dos problemas, envolvendo listas, é que existem muitas maneiras para fazer coisas. Por exemplo, para remover um elemento de   uma lista, você pode usar o método `pop`, `remove`, `del`, ou simplesmente, utilizando uma instrução `slice`.
-    
+
     Para adicionar um elemento, você pode usar o método `append` ou o operador `+`. Porém, não esqueça que estas são as formas corretas de se fazer estes procedimentos:
-    
+
     ~~~~ {.python}
     t.append(x)
     t = t + [x]
@@ -790,35 +772,35 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
     t + [x]                # ERRADO!
     t = t + x              # ERRADO!
     ~~~~
-    
+
     Tente implementar esses exemplos em um modo interativo para ter certeza que você entende o que eles fazem. Note que apenas o último causa erro na compilação, os outros três são permitidos, porém não faz aquilo que é desejado.
 
 3.  Faça cópias para evitar aliados.
 
     \index{aliados!copiando para evitar}
     \index{copie!para evitar aliados}
-    
+
     Se você quer usar o método `sort` que modifica o argumento, porém também precisa manter a lista original intacta, você pode criar uma cópia.
- 
+
     ~~~~ {.python}
     orig = t[:]
     t.sort()
     ~~~~
-    
+
     Nesse exemplo, você também pode usar uma função existente chamada `sorted`, que retorna uma nova lista organizada e também mantém a  original intacta. Porém, nesse caso, você deve evitar usar `sorted` como um nome da variável!
-   
+
 4.  Listas, `split`, e arquivos
-    
+
     Quando nós lemos e analisamos um arquivo, existem várias ocasiões em que a entrada pode causar falhas em nosso programa, então é uma boa ideia revisitar o padrão *guardião* quando se trata de escrever programas que lêem um arquivo e procuram por uma 'agulha no palheiro'.
-    
+
     Vamos revisitar nosso programa que procura pelo dia da semana nas linhas do nosso arquivo:
 
     ~~~~
     De stephen.marquard@uct.ac.za Sáb Jan  5 09:14:16 2008
     ~~~~
-    
+
     Como estamos quebrando essa linha em palavras, nós podemos dispensar o uso do método `startswith` e simplesmente procurar pela primeira palavra que determina se estamos interessados, de fato, nessa linha. Nós podemos usar `continue` para pular linhas que não têm "De" como sua primeira palavra:
-    
+
     ~~~~ {.python}
     fhand = open('mbox-short.txt')
     for linha in fhand:
@@ -827,7 +809,7 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
         print(palavras[2])
     ~~~~
     Isso parece ser bem mais simples, além que não precisamos do método `rstrip` para remover a quebra de linha no final do arquivo. Porém, qual o melhor?
-   
+
     ~~~~
     python search8.py
     Sat
@@ -838,11 +820,11 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
     ~~~~
 
     Isso funciona e vemos o dia a partir da primeira linha (Sáb), mas o programa falha com `traceback error`. Então, o que deu errado? Por quê o nosso elegante, inteligente e "Pythonic" programa falhou?
-    
+
     Você poderia encarar seu programa por um longo tempo, quebrar a cabeça tentando decifrá-lo, ou simplesmente pode pedir a ajuda de alguém. Porém, a abordagem mais rápida e inteligente é adicionar uma linha de código `print`. O melhor lugar para adicionar essa instrução é logo antes da linha em que o programa falhou e pôr para imprimir na tela o dado que está causando falha.
 
     Essa abordagem pode gerar várias linha na saída, pelo menos, você terá, imediatamente, várias pistas sobre o problema em questão. Então, adicionamos um `print` da variável `letras` logo depois da linha cinco. Nós até adicionamos o prefixo "Debugging:" na linha, para podermos manter nossa saída regular separadas de nossa saída de debugging.
-    
+
     ~~~~ {.python}
     for linha in fhand:
         palavras = linha.split()
@@ -850,9 +832,9 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
         if palavras[0] != 'De' : continue
         print(palavras[2])
     ~~~~
-    
+
     Quando compilamos o programa, várias saídas são impressas na tela, porém, no final, vemos nossa saída de debug e a referência para sabermos o que aconteceu logo antes da mensagem de erro.
-    
+
     ~~~~
     Debug: ['X-DSPAM-Confidence:', '0.8475']
     Debug: ['X-DSPAM-Probability:', '0.0000']
@@ -862,7 +844,7 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
         if palavras[0] != 'From' : continue
     IndexError: list index out of range
     ~~~~
-    
+
     Cada linha de depuração imprime uma lista de palavras que obtemos quando dividimos a linha em palavras. Se o programa der erro, a lista de palavras é vazia `[]`. Se abrimos o arquivo em um editor de texto e olharmos o mesmo, ele será exibido da seguinte maneira:
 
     ~~~~
@@ -873,9 +855,9 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
 
     Details: http://source.sakaiproject.org/viewsvn/?view=rev&rev=39772
     ~~~~
-    
+
     O erro ocorre quando nosso programa encontra uma linha em branco. Claro que não existem palavras em uma linha em branco. Por quê não pensamos nisso quando estávamos escrevendo o código? Quando o código procura pela primeira palavra (`palavras[0]`) para checar se bate com "From", nós temos um erro de índice fora de alcance ("index out of range").
-    
+
     Obviamente, esse é um local perfeito para adicionarmos algum código *guardião* para evitar a checagem da primeira palavra caso a mesma não esteja lá. Existem várias formas de proteger nosso código; nós iremos escolher checar o número de palavras que temos antes de olhar para a primeira palavra:
 
     ~~~~ {.python}
@@ -888,13 +870,13 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
         if palavras[0] != 'De' : continue
         print(palavras[2])
 
-    ~~~~ 
-    
+    ~~~~
+
     Primeiro, comentamos as linhas que imprimem o debug, em vez de removê-las (caso nossa modificação falhe, e precisemos do debuggingz novamente). Depois, adicionamos uma declaração guardiã que checa se temos zero palavras, se sim, nós usamos "continue" para pular para próxima linha do arquivo.
-    
+
     Podemos pensar nas duas declarações `continue` como um jeito de nos ajudar a refinar o conjunto de linhas que são interessantes para nós, e quais que queremos processar um pouco mais. Uma linha que não tem "De" como sua primeira palavra não é interessante para nós, então a pulamos.
 
-    O programa modificado é executado com sucesso, então, talvez ele esteja correto. Nossa declaração guardiã nos dá a certeza que a `palavras[0]` nunca irá falhar, porém, talvez isso não seja suficiente. Quando estamos programando, nós devemos sempre estar pensando, "O que pode acontecer de errado?" 
+    O programa modificado é executado com sucesso, então, talvez ele esteja correto. Nossa declaração guardiã nos dá a certeza que a `palavras[0]` nunca irá falhar, porém, talvez isso não seja suficiente. Quando estamos programando, nós devemos sempre estar pensando, "O que pode acontecer de errado?"
 
 **Exercício 2: Descubra qual linha do programa acima não está devidamente protegida. Veja se você pode construir um arquivo de texto que causa falha no programa e depois modifique o programa para que a linha seja propriamente protegida e por fim, teste o programa para ter certeza que ele manipula corretamente o novo arquivo de texto.**
 
@@ -915,7 +897,7 @@ elemento
 \index{elemento}
 
 equivalente
-: Ter o mesmo valor 
+: Ter o mesmo valor
 \index{equivalente}
 
 índice
@@ -951,7 +933,7 @@ Exercícios
 
 \index{Romeo e Juliet}
 
-**Exercicio 4: Baixe a copia do arquivo 
+**Exercicio 4: Baixe a copia do arquivo
 [**www.py4e.com/code3/romeo.txt**](http://www.py4e.com/code3/romeo.txt)**.
 Escreva um programa para abrir o arquivo chamado romeo.txt e leia-o linha por linha. Para cada linha, separe-a em uma lista de palavras usando a função `split`. Para cada palavra, cheque se esta palavra já existe na lista. Caso não exista, adicione ela. Quando o programa terminar de verificar, ordene e imprima estas palavras em ordem alfabética.**
 
