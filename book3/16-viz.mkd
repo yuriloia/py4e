@@ -87,7 +87,7 @@ Kokshetau, Kazakhstan 53.2833333 69.3833333
 Open where.html to view the data in a browser
 ~~~~
 
-O arquivo *where.html* consiste em Html e Javascript para visualizar um mapa do Google. Ele lê os dados mais recentes em *where.js* para fazer com que os dados sejam visualizados. Aqui está o formato to arquivo do *where.js*:
+O arquivo *where.html* consiste em um programa escrito em Html e Javascript para visualizar um mapa do Google. Ele lê os dados mais recentes em *where.js* para fazer com que os dados sejam visualizados. Aqui está o formato to arquivo do *where.js*:
 
 ~~~~ {.js}
 myData = [
@@ -215,29 +215,16 @@ How many iterations:50
 [(512, 0.0296), (1, 12.79), (2, 28.93), (3, 6.808), (4, 13.46)]
 ~~~~
 
-Para cada iteração do algoritmo de classificação da página, imprime a média
+Para cada iteração do algoritmo de page rank, é mostrado na tela a média de
 mudança no page rank por página. A rede inicialmente é bastante desequilibrada
 e, portanto, os valores individuais de classificação da página mudam bastante entre as iterações.
-Mas em algumas iterações curtas, o page rank converge. Você deveria correr
-* sprank.py * tempo suficiente para que os valores de classificação da página
-convergir.
+No entando, em algumas poucas iterações, o page rank converge. Você deveria rodar o programa
+*sprank.py* tempo suficiente para que os valores de page rank convirjam.
 
-Se você deseja visualizar as principais páginas atuais em termos de classificação da página,
-execute * spjson.py * para ler o banco de dados e gravar os dados
-para que as páginas mais altamente vinculadas no formato JSON sejam visualizadas em uma Web
-navegador.
+Se você deseja visualizar as principais páginas em termos de classificação da página,
+execute o programa *spjson.py* para ler o banco de dados e gravar os dados no formato JSON,
+para que as páginas mais altamente vinculadas sejam visualizadas em um navegador web.
 
-For each iteration of the page rank algorithm it prints the average
-change in page rank per page. The network initially is quite unbalanced
-and so the individual page rank values change wildly between iterations.
-But in a few short iterations, the page rank converges. You should run
-*sprank.py* long enough that the page rank values
-converge.
-
-If you want to visualize the current top pages in terms of page rank,
-run *spjson.py* to read the database and write the data
-for the most highly linked pages in JSON format to be viewed in a web
-browser.
 
 ~~~~
 Creating JSON output on spider.json...
@@ -245,14 +232,13 @@ How many nodes? 30
 Open force.html in a browser to view the visualization
 ~~~~
 
-You can view this data by opening the file *force.html*
-in your web browser. This shows an automatic layout of the nodes and
-links. You can click and drag any node and you can also double-click on
-a node to find the URL that is represented by the node.
+Você pode visualizar esses dados abrindo o arquivo *force.html*
+no seu navegador da web. Isso mostrará um layout automático dos nós e dos links. Você pode clicar e arrastar qualquer nó e também clicar duas vezes em um nó para encontrar a URL representadado por ele.
 
-If you rerun the other utilities, rerun *spjson.py* and
-press refresh in the browser to get the new data from
-*spider.json*.
+Se você executar novamente os outros utilitários, execute novamente o programa *spjson.py* e
+pressione atualizar no navegador para obter os novos dados de do arquivo *spider.json*.
+
+
 
 Visualizing mail data
 ---------------------
