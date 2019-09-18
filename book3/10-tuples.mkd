@@ -9,15 +9,15 @@ As tuplas são imutáveis
 \index{tipo!tuplas}
 \index{sequência}
 
-Uma tupla^[Fun fact: A palavra "tupla" vem dos nomes dados as sequências
+Uma tupla^[Fato Divertido: A palavra "tupla" vem dos nomes dados as sequências
 de números de comprimentos variados: simples, dobro, triplo, quádruplo,
 quintuplo, sextuplo, septuplo, etc.] é uma seqüência de valores muito parecido com uma lista.Os valores armazenados
-em uma tupla pode ser qualquer tipo, e eles são indexados por números inteiros. O diferença importante é que as tuplas são * imutáveis*. As tuplas também são * comparáveis * e * hashable * para que possamos Ordenar listas deles e usar tuplas como valores-chave em dicionários Python.
+em uma tupla pode ser qualquer tipo, e eles são indexados por números inteiros. Uma diferença importante é que elas são *imutáveis*. Alem disso, também são *comparáveis* e *hashable* para que possamos ordenar listas deles e usá-las como valores-chave em dicionários de Python.
 
 \index{mutabilidade}
 \index{hashable}
 \index{Comparável}
-\index{inmutável}
+\index{imutável}
 
 Sintaticamente, uma tupla é uma lista separada por vírgulas de valores:
 
@@ -26,8 +26,8 @@ Sintaticamente, uma tupla é uma lista separada por vírgulas de valores:
 ~~~~
 
 Embora não seja necessário, é comum incluir tuplas em
-parênteses para nos ajudar a identificar rapidamente tuplas quando olhamos para Python
-Código:
+parênteses para nos ajudar identificá-las rapidamente quando olhamos para códigos
+de Python:
 
 \index{parêntese!tuplas}
 
@@ -46,7 +46,7 @@ Para criar uma tupla com um único elemento, você precisa incluir a vírgula fi
 <type 'tuple'>
 ~~~~
 
-Sem a vírgula Python trata '('a')' como uma expressão com uma cadeia de caracteres entre parênteses que é avaliada como uma cadeia de caracteres:
+Sem a vírgula o Python trata '('a')' como uma expressão com uma string entre parênteses que é avaliada como uma string:
 
 ~~~~ {.python}
 >>> t2 = ('a')
@@ -57,7 +57,7 @@ Sem a vírgula Python trata '('a')' como uma expressão com uma cadeia de caract
 Outra maneira de construir uma tupla é a função interna
 'Tuple'. Sem nenhum argumento, ele cria uma tupla vazia:
 
-\index{funçãode tuplas}
+\index{função de tuplas}
 \index{função!tuplas}
 
 ~~~~ {.python .trinket}
@@ -66,9 +66,9 @@ Outra maneira de construir uma tupla é a função interna
 ()
 ~~~~
 
-Se o argumento for uma seqüência (cadeia de caracteres, lista ou tupla), o resultado de
-a chamada para 'tupla' é uma tupla com os elementos do
-Seqüência:
+Se o argumento for uma seqüência (string, lista ou tupla), o resultado da
+chamada para 'tupla' é uma tupla com os elementos da sequencia:
+
 
 ~~~~ {.python .trinket}
 >>> t = tuple('lupins')
@@ -76,8 +76,7 @@ Seqüência:
 ('l', 'u', 'p', 'i', 'n', 's')
 ~~~~
 
-Porque 'tupla' é o nome de um construtor, você deve
-Evite usá-lo como um nome de variável.
+Porque 'tupla' é o nome de um construtor, você deve evitar usá-lo como um nome de variável.
 
 A maioria dos operadores de lista também funcionam em tuplas. O operador de colchete indexa na elemento:
 
@@ -114,7 +113,7 @@ Mas se você tentar modificar um dos elementos da tupla, você receberá um erro
 TypeError: object doesn't support item assignment
 ~~~~
 
-Não é possível modificar os elementos de uma tupla, mas você pode substituir uma tupla por outra:
+Não é possível modificar os elementos de uma tupla, mas você pode substituí-los por outros:
 
 ~~~~ {.python .trinket}
 >>> t = ('A',) + t[1:]
@@ -130,7 +129,7 @@ Comparando tuplas
 \index{tipo de método}
 \index{método!tipo}
 
-Os operadores de comparação trabalham com tuplas e outras sequências. Python começa comparando o primeiro elemento de cada sequência. Se eles forem iguais, ele passa para o próximo elemento, e assim por diante, até encontrar elementos que diferem. Elementos subseqüentes não são considerados (mesmo se eles são realmente grandes).
+Os operadores de comparação trabalham com tuplas e outras sequências. Python começa comparando o primeiro elemento de cada sequência. Se eles forem iguais, ele passa para o próximo elemento, e assim por diante, até encontrar elementos que diferem. Elementos subsequentes não são considerados (mesmo se eles sejam realmente grandes).
 
 ~~~~ {.python .trinket}
 >>> (0, 1, 2) < (0, 3, 4)
@@ -139,7 +138,7 @@ True
 True
 ~~~~
 
-A função ' Sort ' funciona da mesma forma. Ele classifica principalmente por
+A função 'sort' funciona da mesma forma. Ele ordena principalmente pelo
 primeiro elemento, mas no caso de um empate, ele classifica por segundo elemento, e assim por diante.
 
 Este recurso presta-se a um padrão chamado *DSU* para
@@ -148,37 +147,35 @@ Decorar
 :uma sequência construindo uma lista de tuplas com uma ou mais chaves de classificação
     precedendo os elementos da sequência,
 
-Tipo
-:a lista de tuplas usando o Python embutido ' Sort ', e
+Sort
+:a lista de tuplas usando o Python embutido 'sort', e
 
 Undecorate
 :extraindo os elementos classificados da sequência.
 
-\index{DSU pátrão}
+\index{DSU patrão}
 \index{patraõ!DSU}
 \index{decorar-tipo-desdecorar padrão}
 \index{Padrão!Decorar-Tipo-desdecorar}
 \index{Romeu e Julieta}
 
-Por exemplo, suponha que você tem uma lista de palavras e você deseja classificá-los de mais longo para o mais curto:
+Por exemplo, suponha que você tem uma lista de palavras e você deseja classificá-las do maior para o menor:
 
 \VerbatimInput{../code3/soft.py} 
 
 O primeiro loop cria uma lista de tuplas, onde cada tupla é uma palavra
 precedido pelo seu comprimento.
 
-'Sort' compara o primeiro elemento, comprimento, primeiro e apenas
-considera o segundo elemento a quebrar laços. O argumento de palavra-chave
-'Reverse = true' diz 'Sort' para ir em decrescente
-Ordem.
+'Sort' compara inicialmente o primeiro elemento, comprimento, e apenas
+considera o segundo elemento para quebrar laços. O argumento de palavra-chave
+'Reverse = true' diz 'Sort' para ir em ordem decrescente.
 
 \index{argumento de palavra-chave}
 \index{argumento! palavra-chave}
 \index{Passagem}
 
 O segundo loop atravessa a lista de tuplas e constrói uma lista de palavras
-em ordem decrescente de comprimento. As palavras de quatro caracteres são classificadas em *Reverse* ordem alfabética, então "o que" aparece antes
-"soft" na lista a seguir.
+em ordem decrescente de comprimento. As palavras de quatro caracteres são classificadas em ordem alfabética *reversa*, então "what" aparece antes "soft" na lista a seguir.
 
 A saída do programa é a seguinte:
 
@@ -187,8 +184,7 @@ A saída do programa é a seguinte:
 'soft', 'but', 'in']
 ~~~~
 
-Claro que a linha perde muito do seu impacto poético quando transformado em um
-Lista de Python e classificada em ordem decrescente de comprimento de palavra.
+Claro que a linha perde muito do seu impacto poético quando se transforma em uma Lista de Python e classificada em ordem decrescente de comprimento de palavra.
 
 Tuple assignment
 ----------------
