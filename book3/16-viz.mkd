@@ -270,19 +270,9 @@ read gmane's terms and conditions at this page:
 
 <http://gmane.org/export.php>
 
-*It is very important that you make use of the gmane.org data
-responsibly by adding delays to your access of their services and
-spreading long-running jobs over a longer period of time. Do not abuse
-this free service and ruin it for the rest of us.*
+*É muito importante que você use os dados do gmane.org responsavelmente, de forma a adicionar atrasos ao seu acesso ao acessar os serviços desta plataforma, além disto quando fazer trabalhos de longa duração fazer com que eles se espalhe por um longo período de tempo. Não abuse deste serviço gratuito, pois fará com que ele seja arruinado para o resto de nós.*
 
-When the Sakai email data was spidered using this software, it produced
-nearly a Gigabyte of data and took a number of runs on several days. The
-file *README.txt* in the above ZIP may have instructions
-as to how you can download a pre-spidered copy of the
-*content.sqlite* file for a majority of the Sakai email
-corpus so you don't have to spider for five days just to run the
-programs. If you download the pre-spidered content, you should still run
-the spidering process to catch up with more recent messages.
+Quando os dados do email Sakai foram rastreados usando esse software, este produziu quase um Gigabyte de dados e necessitou de várias execuções em vários dias. O arquivo *README.txt* no ZIP acima pode ter instruções sobre como você pode baixar uma cópia pré-rastreada do arquivo *content.sqlite* para uma grande parte do corpo de e-mail Sakai, para que você não precise rastrear por cinco dias apenas para executar os programas. Se você baixar o conteúdo pré-rastread, ainda deve executar o processo de rastreamento para acompanhar as mensagens mais recentes.
 
 The first step is to spider the gmane repository. The base URL is
 hard-coded in the *gmane.py* and is hard-coded to the
