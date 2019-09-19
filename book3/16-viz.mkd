@@ -264,11 +264,8 @@ Usaremos dados de um serviço gratuito de arquivamento de listas de e-mail chama
 
 Quando os dados do email Sakai foram rastreados usando esse software, este produziu quase um Gigabyte de dados e necessitou de várias execuções em vários dias. O arquivo *README.txt* no ZIP acima pode ter instruções sobre como você pode baixar uma cópia pré-rastreada do arquivo *content.sqlite* para uma grande parte do corpo de e-mail Sakai, para que você não precise rastrear por cinco dias apenas para executar os programas. Se você baixar o conteúdo pré-rastread, ainda deve executar o processo de rastreamento para acompanhar as mensagens mais recentes.
 
-The first step is to spider the gmane repository. The base URL is
-hard-coded in the *gmane.py* and is hard-coded to the
-Sakai developer list. You can spider another repository by changing that
-base url. Make sure to delete the *content.sqlite* file
-if you switch the base url.
+O primeiro passo é rastrar o repositório gmane. A URL base é codificado rigidamente no código em *gmane.py*e na lista de desenvolvedores Sakai. Você também pode rastrear outro repositório alterando o url base. Tenha certeza de deletar o arquivo *content.sqlite* caso você altere o url.
+ 
 
 The *gmane.py* file operates as a responsible caching
 spider in that it runs slowly and retrieves one mail message per second
@@ -277,8 +274,7 @@ a database and can be interrupted and restarted as often as needed. It
 may take many hours to pull all the data down. So you may need to
 restart several times.
 
-Here is a run of *gmane.py* retrieving the last five
-messages of the Sakai developer list:
+Aqui está uma execução do arquivo *gmane.py* retornando as últimas cinco mensagens da lista de desenvolvedores de Sakai
 
 ~~~~
 How many messages:10
