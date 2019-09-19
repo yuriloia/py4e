@@ -856,93 +856,92 @@ using a database is that you have a large amount of data to deal with,
 it is important to model your data efficiently so your programs run as
 fast as possible.
 
-Debugging
+Depurando
 ---------
 
-One common pattern when you are developing a Python program to connect
-to an SQLite database will be to run a Python program and check the
-results using the Database Browser for SQLite. The browser allows you to
-quickly check to see if your program is working properly.
+Um padrão comum quando você está desenvolvendo um programa Python para
+conexão de uma base de dados SQLite será a de iniciar o programa e 
+conferir osresultados usando o navegador de banco de dados pro SQLite.
+O navegador te permite verificar rapidamente se o programa está 
+funcionando corretamente.
 
-You must be careful because SQLite takes care to keep two programs from
-changing the same data at the same time. For example, if you open a
-database in the browser and make a change to the database and have not
-yet pressed the "save" button in the browser, the browser "locks" the
-database file and keeps any other program from accessing the file. In
-particular, your Python program will not be able to access the file if
-it is locked.
+Você precisa ter cuidado pois SQLite se certifica de evitar dois programas
+de modificar o mesmo dado ao mesmo tempo. Por exemplo, se você abrir o
+banco de dados no navegador e modificá-lo, porém não presionar o botão 
+"salvar" ainda, o navegador "trava" o arquivo do banco de dados e evita 
+qualquer outro programa de acessar o arquivo. Em particular, seu programa
+Python não será capaz de acessar o arquivo se ele estiver bloqueado.
 
-So a solution is to make sure to either close the database browser or
-use the *File* menu to close the database in the browser
-before you attempt to access the database from Python to avoid the
-problem of your Python code failing because the database is locked.
+Então a solução é ter certeza de fechar o navegador do banco de dados
+ou usar o menu *Arquivo* para fechar o banco de dados no navegador antes 
+de tentar acessar a base de dados pelo Python para evitar o problema do
+código falhar por causa do banco de dados estar bloqueado.
 
-Glossary
+Glossário
 --------
 
-attribute
-:   One of the values within a tuple. More commonly called a "column" or
-    "field".
+atributo
+:   Um dos valores da tupla. Mais comumente chamado de "coluna" ou 
+    "campo".
 \index{attribute}
 
-constraint
-:   When we tell the database to enforce a rule on a field or a row in a
-    table. A common constraint is to insist that there can be no
-    duplicate values in a particular field (i.e., all the values must be
-    unique).
+restrição
+:   Quando chamamos o banco de dados para import uma regra num campo ou 
+    numa linha numa tabela. Uma regra comum é restringir que não possa haver valores duplicados num campo em particular (i.e., todos os valores devem ser únicos).
 \index{constraint}
 
 cursor
-:   A cursor allows you to execute SQL commands in a database and
-    retrieve data from the database. A cursor is similar to a socket or
-    file handle for network connections and files, respectively.
+:   O cursor te permite executar comandos SQL no banco de dados e 
+    recuperar dados do mesmo. O cursor é similar com o socket ou 
+    o identificaor de arquivo das conexões de internet e arquivos,
+    respectivamente.
 \index{cursor}
 
-database browser
-:   A piece of software that allows you to directly connect to a
-    database and manipulate the database directly without writing a
-    program.
+navegador de banco de dados
+:   *Software* que te permite se conectar diretamente com o banco de dados
+    e manipulá-lo diretamente sem escrever um programa.
 \index{database browser}
 
-foreign key
-:   A numeric key that points to the primary key of a row in another
-    table. Foreign keys establish relationships between rows stored in
-    different tables.
+chave externa
+:   Uma chave numérica que aponta para a primeira chave de uma linha de
+    outra tabela. Chaves externas estabelecem relações entre linhas
+    armazenadas em tabelas diferentes.
 \index{foreign key}
 
-index
-:   Additional data that the database software maintains as rows and
-    inserts into a table to make lookups very fast.
+índice
+:   Dado adicional que o *software* do banco de dados conserva como linhas
+    e adiciona na tabela pra facilitar acelerar a cisualização dos dados.
 \index{index}
 \index{}
 
-logical key
-:   A key that the "outside world" uses to look up a particular row. For
-    example in a table of user accounts, a person's email address might
-    be a good candidate as the logical key for the user's data.
-\index{logical key}
+chave lógica
+:   A chave que o "mundo externo" usa para visualizar uma linha em 
+    particular. Por exemplo em uma tabela de contas de usuários, o email
+    de uma pessoa poderia ser um ótimo candidato a ser uma chave lógica
+    para os dados do usuário.
+    \index{logical key}
 
-normalization
-:   Designing a data model so that no data is replicated. We store each
-    item of data at one place in the database and reference it elsewhere
-    using a foreign key.
+normalização
+:   modelar os dados para que não haja réplicas. Guarda-se cada ítem dos
+    dados em um local no banco de dados e faz-se referência dele em outro
+    lugar utilizando uma chave externa.
 \index{normalization}
 \index{database normalization}
 
-primary key
-:   A numeric key assigned to each row that is used to refer to one row
-    in a table from another table. Often the database is configured to
-    automatically assign primary keys as rows are inserted.
+chave primária
+:   Uma chave numérica atribuída a cada linha é utilizada para se 
+    referenciar uma linha na tabela por meio de outra tabela. Usualmente 
+    os bancos de dados são configurados para atribuir automaticamente 
+    chaves primárias assim que linhas são inseridas.
 \index{primary key}
 
-relation
-:   An area within a database that contains tuples and attributes. More
-    typically called a "table".
+relação
+:   Uma área no banco de dados que contém tuplas e atributos. Mais 
+    comumente chamada como "tabela".
 \index{relation}
 
-tuple
-:   A single entry in a database table that is a set of attributes. More
-    typically called "row".
-
+tupla
+:   Uma entrada simples numa tabela do banco de dados que é um conjunto 
+    de atributos. Mais comumente chamada como "linha".
 \index{tuple}
 
