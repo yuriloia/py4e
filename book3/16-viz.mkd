@@ -284,11 +284,8 @@ corpus so you don't have to spider for five days just to run the
 programs. If you download the pre-spidered content, you should still run
 the spidering process to catch up with more recent messages.
 
-The first step is to spider the gmane repository. The base URL is
-hard-coded in the *gmane.py* and is hard-coded to the
-Sakai developer list. You can spider another repository by changing that
-base url. Make sure to delete the *content.sqlite* file
-if you switch the base url.
+O primeiro passo é rastrar o repositório gmane. A URL base é codificado rigidamente no código em *gmane.py*e na lista de desenvolvedores Sakai. Você também pode rastrear outro repositório alterando o url base. Tenha certeza de deletar o arquivo *content.sqlite* caso você altere o url.
+ 
 
 The *gmane.py* file operates as a responsible caching
 spider in that it runs slowly and retrieves one mail message per second
@@ -297,8 +294,7 @@ a database and can be interrupted and restarted as often as needed. It
 may take many hours to pull all the data down. So you may need to
 restart several times.
 
-Here is a run of *gmane.py* retrieving the last five
-messages of the Sakai developer list:
+Aqui está uma execução do arquivo *gmane.py* retornando as últimas cinco mensagens da lista de desenvolvedores de Sakai
 
 ~~~~
 How many messages:10
