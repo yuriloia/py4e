@@ -240,33 +240,23 @@ pressione atualizar no navegador para obter os novos dados de do arquivo *spider
 
 
 
-Visualizing mail data
+Vizualização de dados de e-mail
 ---------------------
+Até este ponto do livro, você se familiarizou bastante com nossos arquivos de dados *mbox-short.txt* e *mbox.txt*. Agora é hora de levar nossa análise dos dados de email para o próxima nível.
 
-Up to this point in the book, you have become quite familiar with our
-*mbox-short.txt* and *mbox.txt* data
-files. Now it is time to take our analysis of email data to the next
-level.
-
-In the real world, sometimes you have to pull down mail data from
-servers. That might take quite some time and the data might be
-inconsistent, error-filled, and need a lot of cleanup or adjustment. In
-this section, we work with an application that is the most complex so
-far and pull down nearly a gigabyte of data and visualize it.
+No mundo real, às vezes você precisa extrair dados de e-mail de 
+servidores. Isso pode levar algum tempo e os dados podem ser
+inconsistentes, cheio de erros, precisando de uma grande limpeza ou ajuste.
+Nesta seção, trabalharemos com uma aplicação, a mais complexa até agora, que lida com aproximadamente um gigabyte de dados e os visualiza.
 
 ![A Word Cloud from the Sakai Developer List](height=3.5in@../images/wordcloud)
 
-You can download this application from:
+Você pode fazer o download desta aplicação pelo link:
 
 [www.py4e.com/code3/gmane.zip](http://www.py4e.com/code3/gmane.zip)
 
-We will be using data from a free email list archiving service called
-[www.gmane.org](http://www.gmane.org). This service is very popular with open
-source projects because it provides a nice searchable archive of their
-email activity. They also have a very liberal policy regarding accessing
-their data through their API. They have no rate limits, but ask that you
-don't overload their service and take only the data you need. You can
-read gmane's terms and conditions at this page:
+Usaremos dados de um serviço gratuito de arquivamento de listas de e-mail chamado [www.gmane.org] (http://www.gmane.org). Este serviço é muito popular em projetos de código aberto, pois fornece um bom arquivo que pode ser utilizado para pesquisar suas atividades de email. Eles também têm uma política muito liberal em relação ao acesso aos dados por meio da API. Eles não têm limites de taxas, mas solicite que você não sobrecarregue o serviço e utilize apenas os dados necessários. Você pode ler os termos e condições do gmane nesta página:
+
 
 <http://gmane.org/export.php>
 
