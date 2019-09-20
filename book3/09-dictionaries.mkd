@@ -43,14 +43,14 @@ adicionar itens ao dicionário, colchetes, `[]`, podem ser
 utilizados:
 
 \index{chaves}
-\index{bracket!squiggly}
+\index{agrupamentos!chaves}
 
 ~~~~ {.python}
 >>>  ing2port['one'] = 'um' 
 ~~~~
 
 Esta linha cria um item que localiza, a partir da chave
-`‘one’`, o valor "um". Se pedirmos para o conteúdo do 
+`'one'`, o valor "um". Se pedirmos para o conteúdo do 
 dicionário ser mostrado novamente, veremos o par chave-valor
 separados por dois pontos:
 
@@ -149,8 +149,8 @@ dicionário. Não explicarei porque funções hash são tão mágicas,
 porém você pode ler mais sobre em: [wikipedia.org/wiki/Hash\_table](https://wikipedia.org/wiki/Hash_table). 
 
 \index{tabela de dispersão}
-\index{set membership}
-\index{membership!set}
+\index{pertencimento}
+\index{associação!pertencer}
 
 **Exercício 1: Faça o download de uma cópia do arquivo **
 [www.py4e.com/code3/words.txt](http://www.py4e.com/code3/words.txt)
@@ -261,14 +261,14 @@ for c in palavra:
 print(d)
 ~~~~
 
-O uso do método `get` para simplificar essa repetição é um “_idiom_”
+O uso do método `get` para simplificar essa repetição é um “jargão”
 muito comum em Python e nós o usaremos muitas vezes pelo resto 
 deste livro. Portanto, você deveria tomar um tempo para comparar
 o laço utilizando a instrução `if` e o operador `in` com o 
 laço utilizando o método `get`. Ambos fazem a mesma coisa, 
 porém um é mais sucinto.
 
-\index{idiom}
+\index{jargão}
 
 Dicionários e Arquivos
 ----------------------
@@ -368,9 +368,9 @@ annie 42
 
 Novamente, as chaves não estão em uma ordem particular.
 
-\index{idiom}
+\index{jargão}
 
-Podemos usar este padrão para implementar vários “_idioms_”
+Podemos usar este padrão para implementar vários “jargões”
 de repetição que descrevemos anteriormente. Por exemplo, 
 se quisermos encontrar todas as entradas em um dicionário 
 com valor maior que dez, poderíamos escrever o seguinte 
