@@ -33,7 +33,7 @@ Prefácio
 Remisturando um Livro Aberto
 ---------------------
 
-É bem comum para os acadêmicos ouvirem frases como "publique ou pereça" quando se trata de produzir novas ideias, onde se perpetua uma cultura de começar tudo do zero para que se obtenha uma criação genuína. Este livro é um experimento em não começar da etapa inicial, ao invés disso será "misturado" o livro *Pense em Python: Pense como um Cientista da Computação* escrito por Allen B.Downey, Jeff Elkner, e outros.
+É bem comum para os acadêmicos serem instigados com frases como "publique ou pereça" quando se trata de produzir novas ideias, onde se perpetua uma cultura de começar tudo do zero para que se obtenha uma criação genuína. Este livro é um experimento em não começar da etapa inicial, ao invés disso será "misturado" o livro *Pense em Python: Pense como um Cientista da Computação* escrito por Allen B.Downey, Jeff Elkner, e outros.
 
 Por volta de dezembro de 2009, eu estava me preparando para lecionar
 *SI502 - Networked Programming* na University of Michigan pelo quinto semestre seguido, e decidi que estava na hora de escrever um livro de Python focado na exploração de dados ao invés de se limitar ao estudo de algorítimos e abstrações. Meu objetivo naquela turma era para ensinar habilidades vitais utilizando o estudo de dados, para que meus alunos pudessem levar para o resto da vida estes conhecimentos em Python. Poucos destes alunos tinham planos de se tornar cientistas da computação. Como alternativa, eles tinham planos de se tornar economistas, advogados, bibliotecários, biólogos, etc., mas que
