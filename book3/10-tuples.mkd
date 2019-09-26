@@ -186,120 +186,100 @@ A saída do programa é a seguinte:
 
 Claro que a linha perde muito do seu impacto poético quando se transforma em uma Lista de Python e classificada em ordem decrescente de comprimento de palavra.
 
-Tuple assignment
+Atribuição de Tuplas
 ----------------
 
-\index{tuple!assignment}
-\index{assignment!tuple}
-\index{swap pattern}
-\index{pattern!swap}
+\index{tupla!atribuição}
+\index{atribuição!tupla}
+\index{troca de padrão}
+\index{padrão!troca}
 
-One of the unique syntactic features of the Python language is the
-ability to have a tuple on the left side of an assignment statement.
-This allows you to assign more than one variable at a time when the left
-side is a sequence.
+Um dos recursos sintáticos únicos da linguagem Python é a capacidade de ter uma tupla no lado esquerdo de uma declaração de atribuição. Isso permite atribuir mais de uma variável por vez quando o lado esquerdo é uma sequência.
 
-In this example we have a two-element list (which is a sequence) and
-assign the first and second elements of the sequence to the variables
-`x` and `y` in a single statement.
+Neste exemplo, temos uma lista de dois elementos(que é uma sequência) e atribuímos ao primeiro e ao segundo elemento da sequência às variáveis `x` e `y` em uma única instrução.
 
 ~~~~ {.python .trinket}
->>> m = [ 'have', 'fun' ]
+>>> m = [ 'se', 'divirta' ]
 >>> x, y = m
 >>> x
-'have'
+'se'
 >>> y
-'fun'
+'divirta'
 >>>
 ~~~~
 
-It is not magic, Python *roughly* translates the tuple assignment syntax
-to be the following:^[Python does not translate the syntax literally. For example, if
-you try this with a dictionary, it will not work as might expect.]
+Não é mágico, Python traduz *grosseiramente* a sintaxe da atribuição de tupla para o ser o que se segue:^[Python não traduz a sintaxe literalmente. Por exemplo, se você tentar fazer isso com um dicionário, ele não funcionará como o esperado.]
 
 ~~~~ {.python .trinket}
->>> m = [ 'have', 'fun' ]
+>>> m = [ 'se', 'divirta' ]
 >>> x = m[0]
 >>> y = m[1]
 >>> x
-'have'
+'se'
 >>> y
-'fun'
+'divirta'
 >>>
 ~~~~
 
-Stylistically when we use a tuple on the left side of the assignment
-statement, we omit the parentheses, but the following is an equally
-valid syntax:
+Estéticamente, quando usamos uma tupla no lado esquerdo da instrução de atribuição, omitimos os parênteses, mas o que se mostra a seguir é igualmente uma sintaxe válida:
 
 ~~~~ {.python}
->>> m = [ 'have', 'fun' ]
+>>> m = [ 'se', 'divirta' ]
 >>> (x, y) = m
 >>> x
-'have'
+'se'
 >>> y
-'fun'
+'divirta'
 >>>
 ~~~~
 
-A particularly clever application of tuple assignment allows us to
-*swap* the values of two variables in a single statement:
+Uma aplicação particularmente astuta da atribuição de tupla, nos permite *permutar* os valores de duas variáveis em uma única instrução:
 
 ~~~~ {.python}
 >>> a, b = b, a
 ~~~~
 
-Both sides of this statement are tuples, but the left side is a tuple of
-variables; the right side is a tuple of expressions. Each value on the
-right side is assigned to its respective variable on the left side. All
-the expressions on the right side are evaluated before any of the
-assignments.
+Ambos os lados desta declaração são tuplas, mas o lado esquerdo é uma tupla de variáveis; o lado direito é uma tupla de expressões. Cada valor no lado direito é atribuído à sua respectiva variável no lado esquerdo. Todas as expressões no lado direito são avaliadas antes de qualquer uma das atribuições.
 
-The number of variables on the left and the number of values on the
-right must be the same:
+O número de variáveis à esquerda e o número de valores à direita devem impreterivelmente ser os mesmos:
 
-\index{exception!ValueError}
+\index{Exceção!ValueError}
 \index{ValueError}
 
 ~~~~ {.python}
 >>> a, b = 1, 2, 3
-ValueError: too many values to unpack
+ValueError: muitos valores para descompactar
 ~~~~
 
-More generally, the right side can be any kind of sequence (string,
-list, or tuple). For example, to split an email address into a user name
-and a domain, you could write:
+Habitualmente, o lado direito pode ser qualquer tipo de sequência(string, lista ou tupla). Por exemplo, para dividir um endereço de email em um nome de usuário e um domínio, você pode escrever:
 
-\index{split method}
-\index{method!split}
-\index{email address}
+\index{método de separação}
+\index{método!separação}
+\index{endereço de e-mail}
 
 ~~~~ {.python}
->>> addr = 'monty@python.org'
->>> uname, domain = addr.split('@')
+>>> email = 'florzinha@hotmail.com'
+>>> nomedeusuario, dominiodoemail = email.split('@')
 ~~~~
 
-The return value from `split` is a list with two elements;
-the first element is assigned to `uname`, the second to
-`domain`.
+O valor de retorno da operação `split` é uma lista com dois elementos; o primeiro elemento é atribuído ao `nomedeusuario` e o segundo ao `dominiodoemail`.
 
 ~~~~ {.python}
->>> print(uname)
-monty
->>> print(domain)
-python.org
+>>> print(nomedeusuario)
+florzinha
+>>> print(dominiodoemail)
+hotmail.com
 ~~~~
 
-Dictionaries and tuples
+Dicionários e tuplas
 -----------------------
 
-\index{dictionary}
-\index{items method}
-\index{method!items}
-\index{key-value pair}
+\index{dicionário}
+\index{métodos de items}
+\index{métodos!itens}
+\index{par de valores chaves}
 
-Dictionaries have a method called `items` that returns a list
-of tuples, where each tuple is a key-value pair:
+Os dicionários têm um método chamado `items`(atente-se à escrita deste método) que retorna uma lista de tuplas, em que cada tupla é um par de valores-chave:
 
 ~~~~ {.python .trinket}
 >>> d = {'a':10, 'b':1, 'c':22}
@@ -308,13 +288,9 @@ of tuples, where each tuple is a key-value pair:
 [('b', 1), ('a', 10), ('c', 22)]
 ~~~~
 
-As you should expect from a dictionary, the items are in no particular
-order.
+Como você deve esperar de um dicionário, os itens não estão em uma ordem específica.
 
-However, since the list of tuples is a list, and tuples are comparable,
-we can now sort the list of tuples. Converting a dictionary to a list of
-tuples is a way for us to output the contents of a dictionary sorted by
-key:
+No entanto, como a lista de tuplas é uma lista e as tuplas são comparáveis, agora podemos classificar a lista de tuplas. A conversão de um dicionário em uma lista de tuplas é uma maneira de gerar o conteúdo de um dicionário classificado por chave:
 
 ~~~~ {.python}
 >>> d = {'a':10, 'b':1, 'c':22}
@@ -326,7 +302,7 @@ key:
 [('a', 10), ('b', 1), ('c', 22)]
 ~~~~
 
-The new list is sorted in ascending alphabetical order by the key value.
+A nova lista é classificada em ordem alfabética crescente pelo valor da chave.
 
 Múltipla atribuição com dicionários
 ------------------------------------
