@@ -509,7 +509,7 @@ $ wget http://www.py4e.com/cover.jpg
 
 Ambos os comandos tornam a recuperação de páginas da Web e arquivos remotos uma tarefa simples.
 
-Glossary
+Glossário
 --------
 aranha
 :   O ato de ferramentas de pesquisa na web recuperarem uma página e então
