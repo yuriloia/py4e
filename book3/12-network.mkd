@@ -1,4 +1,4 @@
-Progragamas com a rede
+Programas em rede
 =========================
 
 Enquanto vários dos exemplos no livro estão focados em ler arquivos
