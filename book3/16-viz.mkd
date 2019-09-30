@@ -266,13 +266,7 @@ Quando os dados do email Sakai foram rastreados usando esse software, este produ
 
 O primeiro passo é rastrar o repositório gmane. A URL base é codificado rigidamente no código em *gmane.py*e na lista de desenvolvedores Sakai. Você também pode rastrear outro repositório alterando o url base. Tenha certeza de deletar o arquivo *content.sqlite* caso você altere o url.
  
-
-The *gmane.py* file operates as a responsible caching
-spider in that it runs slowly and retrieves one mail message per second
-so as to avoid getting throttled by gmane. It stores all of its data in
-a database and can be interrupted and restarted as often as needed. It
-may take many hours to pull all the data down. So you may need to
-restart several times.
+O arquivo *gmane.py* funciona como uma aranha responsável pelo armazenamento em cache, ele executa lentamente e recupera uma mensagem de e-mail por segundo para evitar ser suprimido pelo gmane. Ele  armazena todos os seus dados em um banco de dados e pode ser interrompido e reiniciado quantas vezes for necessário. Pode ser que leve algumas horas para trabalhar com todos os dados. Desta forma você poderá ter que recomeçar algumas vezes.
 
 Aqui está uma execução do arquivo *gmane.py* retornando as últimas cinco mensagens da lista de desenvolvedores de Sakai
 
@@ -292,47 +286,17 @@ http://download.gmane.org/gmane.comp.cms.sakai.devel/51415/51416 0
 
 Does not start with From
 ~~~~
+O programa escaneia o arquivo *content.sqlite* a partir do número da primeira mensagem que não foi escaneada, começando a partir dela. Ela iria continuar escaneando até alcançar o número desejado de mensagens ou até encontrar uma página com uma mensagem que não está formatada corretamente.
 
-The program scans *content.sqlite* from one up to the
-first message number not already spidered and starts spidering at that
-message. It continues spidering until it has spidered the desired number
-of messages or it reaches a page that does not appear to be a properly
-formatted message.
+As vezes em [gmane.org](gmane.org) está faltando uma mensagem. Possivelmente administradores podem deletar mensagens ou elas são perdidas. Se seu escaneamento parar e parecer que ele encontrou uma mensagem perdida, vá no SQLITE Manager e adicione uma coluna com o Id que falta deixando os outros espaços em branco e reinicie *gmane.py*. Isso fará com que o processo de escaneamento não ficará travado e permitirá que ele continue. Essas mensagens vazias serão ignoradas na próxima fase do processo.
 
-Sometimes [gmane.org](gmane.org) is missing a message. Perhaps
-administrators can delete messages or perhaps they get lost. If your
-spider stops, and it seems it has hit a missing message, go into the
-SQLite Manager and add a row with the missing id leaving all the other
-fields blank and restart *gmane.py*. This will unstick
-the spidering process and allow it to continue. These empty messages
-will be ignored in the next phase of the process.
+Uma coisa boa é que depois de você tiver escaneado todas as suas mensagens, contendo as no arquivo *content.sqlite*, você poderá rodar o programa *gmane.py* novamente para adquirir novas mensagens a medida que elas são adicionadas a lista.
 
-One nice thing is that once you have spidered all of the messages and
-have them in *content.sqlite*, you can run
-*gmane.py* again to get new messages as they are sent to
-the list.
+Os dados de *content.sqlite* são bem crus com um modelo de dados ineficiente, além de não serem comprimidos. Isto é intencional, já que e isto permitirá que você olhe o arquivo *content.sqlite* no seu SQLite Manager para debugar os problemas com o processo de escaneamento. Seria uma má ideia rodar alguma busca sobre este banco de dados, pois ela seria bastante lenta.
 
-The *content.sqlite* data is pretty raw, with an
-inefficient data model, and not compressed. This is intentional as it
-allows you to look at *content.sqlite* in the SQLite
-Manager to debug problems with the spidering process. It would be a bad
-idea to run any queries against this database, as they would be quite
-slow.
+O segundo processo é rodar o programa *gmodel.py*. Ele lerá os dados crus do arquivo *content.sqlite* e produzirá uma versão mais limpa e mais bem modelada dos dados no arquivo *index.sqlite*. Este arquivo será bem menor (geralmente 10x menos) do que o *content.sqlite*, pois ele comprime o cabeçalho e o corpo do texto.
 
-The second process is to run the program *gmodel.py*.
-This program reads the raw data from *content.sqlite* and
-produces a cleaned-up and well-modeled version of the data in the file
-*index.sqlite*. This file will be much smaller (often 10X
-smaller) than *content.sqlite* because it also compresses
-the header and body text.
-
-Each time *gmodel.py* runs it deletes and rebuilds
-*index.sqlite*, allowing you to adjust its parameters and
-edit the mapping tables in *content.sqlite* to tweak the
-data cleaning process. This is a sample run of
-*gmodel.py*. It prints a line out each time 250 mail
-messages are processed so you can see some progress happening, as this
-program may run for a while processing nearly a Gigabyte of mail data.
+Toda vez que o programa *gmodel.py* rodar, ele deletará e reconstruirá o *index.sqlite*, permitindo você ajustar os seus parâmetros e editar as tabelas de mapeamento em *content.sqlite* de forma a fazer você melhorar o processo de limpeza de dados. Aqui está uma amostra de execução do *gmodel.py*. Ele mostra na tela uma linha todas as vezes em que forem processados 250 mensagens de e-mail, desta forma você pode ver uma parte do progresso do programa, este programa poderá estar em execução por um bom tempo, já que ele processará aproximadamente um Gigabyte de dados de e-mail. Gigabyte of mail data.
 
 ~~~~
 Loaded allsenders 1588 and mapping 28 dns mapping 1
