@@ -1,4 +1,4 @@
-The Translation of the book "Python for Everybody" was coordinated by Yuri Loia, and the team was composed by: 
+The Translation of the book "Python for Everybody" was coordinated by Yuri Loia(github.com/yuriloia), and the team was composed by: 
 Alysson Hyago, 
 Andhré Carvalho, 
 Caio Porto, 
