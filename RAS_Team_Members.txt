@@ -1,6 +1,6 @@
 The Translation of the book "Python for Everybody" was coordinated by Yuri Loia(github.com/yuriloia), and the team was composed by: 
 Alysson Hyago - https://github.com/alyssonhyago , 
-Andhré Carvalho, 
+Andhré Carvalho, https://www.linkedin.com/in/andhr%C3%A9-carvalho-7a0aa2121/ , https://github.com/AndhreCarvalho
 Caio Porto, 
 Debora Nunes, 
 Giovana Oliveira - https://www.linkedin.com/in/giovana-oliveira-9a5b08116/, 
