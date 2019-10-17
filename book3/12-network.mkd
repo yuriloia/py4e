@@ -243,78 +243,71 @@ Como exemplo, podemos escrever um programa para recuperar os dados para
 
 Novamente, uma vez que abrimos a página Web, podemos lê-lo como um arquivo local.
 
-Reading binary files using `urllib`
+Lendo Arquivos Binários Utilizando `urllib`
 -----------------------------------
 
-Sometimes you want to retrieve a non-text (or binary) file such as an
-image or video file. The data in these files is generally not useful to
-print out, but you can easily make a copy of a URL to a local file on
-your hard disk using `urllib`.
+Às vezes, você deseja recuperar um arquivo não textual(ou binário), como por exemplo um arquivo de imagem ou vídeo. Os dados contidos nesses arquivos geralmente não são úteis para imprimir, mas você pode facilmente criar uma cópia em uma URL para um arquivo local no disco rígido usando `urllib`.
 
-\index{binary file}
+\index{arquivo binário}
 
-The pattern is to open the URL and use `read` to download the
-entire contents of the document into a string variable
-(`img`) then write that information to a local file as
-follows:
+O padrão é abrir a URL e usar `read` para fazer download de todo o conteúdo do documento em uma variável string(`img`) e, em seguida, armazenar estas informações em um arquivo local da seguinte maneira:
 
 \VerbatimInput{../code3/curl1.py}
 
-This program reads all of the data in at once across the network and
-stores it in the variable `img` in the main memory of your
-computer, then opens the file `cover.jpg` and writes the data
-out to your disk. The `wb` argument for `open()` opens a binary file
-for writing only. This program will work if the size of the file is less than
-the size of the memory of your computer.
+Este programa lê todos os dados de entrada de uma só vez, em toda a rede, e
+armazena-o na variável `img` na memória principal do seu
+computador. Logo após abre o arquivo `cover.jpg` e grava os dados
+para o seu disco. O argumento `wb` para a função ` open () `abre um arquivo binário
+apenas para escrever. Este programa funcionará se o tamanho do arquivo for menor que
+o tamanho da memória do seu computador.
 
-However if this is a large audio or video file, this program may crash
-or at least run extremely slowly when your computer runs out of memory.
-In order to avoid running out of memory, we retrieve the data in blocks
-(or buffers) and then write each block to your disk before retrieving
-the next block. This way the program can read any size file without
-using up all of the memory you have in your computer.
+Entretanto, se este for um arquivo de áudio ou vídeo de um tamanho mais robusto, este programa poderá falhar
+ou pelo menos execute de maneira devagar quando o computador ficar sem memória.
+Para evitar a falta de memória, recuperamos os dados em blocos
+(ou buffers) e, em seguida, armazenamos cada bloco no seu disco antes de recuperar
+o bloco seguinte. Desta forma, o programa pode ler qualquer tamanho de arquivo sem
+usando toda a memória que você tem disponível no seu computador.
 
 \VerbatimInput{../code3/curl2.py}
 
-In this example, we read only 100,000 characters at a time and then
-write those characters to the `cover.jpg` file before
-retrieving the next 100,000 characters of data from the web.
+Neste exemplo, lemos apenas 100.000 caracteres por vez e, em seguida,
+escrevemos estes caracteres no arquivo `cover.jpg` antes
+de retomar os próximos 100.000 caracteres de dados da web.
 
-This program runs as follows:
+Este programa é executado da seguinte maneira:
 
 ~~~~
 python curl2.py
 230210 characters copied.
 ~~~~
 
-Parsing HTML and scraping the web
+Analisando HTML e Raspando a Web
 ---------------------------------
 
-\index{web!scraping}
-\index{parsing HTML}
+\index{web!raspando}
+\index{analisando HTML}
 
-One of the common uses of the `urllib` capability in Python
-is to *scrape* the web. Web scraping is when we write a
-program that pretends to be a web browser and retrieves pages, then
-examines the data in those pages looking for patterns.
+Um dos usos mais comuns do recurso `urllib` no Python
+é *raspar* a web. Raspagem da Web é quando escrevemos um
+programa que finge ser um navegador da web e retorna páginas,
+para em seguida examinar os dados nessas páginas à procura de padrões.
 
-As an example, a search engine such as Google will look at the source of
-one web page and extract the links to other pages and retrieve those
-pages, extracting links, and so on. Using this technique, Google
-*spiders* its way through nearly all of the pages on the
-web.
+Tomando como exemplo, um mecanismo de pesquisa como o Google pode examinar a fonte de
+uma página da web, extraindo os links para outras páginas, para assim recuperar estas
+páginas, extração de links e assim por diante. Usando essa técnica, o Google
+*spider* percorre quase todas as páginas da rede.
 
-Google also uses the frequency of links from pages it finds to a
-particular page as one measure of how "important" a page is and how high
-the page should appear in its search results.
+O Google também usa a frequência dos links nas páginas encontradas para uma
+página específica como um indicador de medição de quão "importante" é uma página e quão alto
+a página deverá aparecer nos resultados do mecanismo de pesquisa.
 
-Parsing HTML using regular expressions
+Analisando HTML Usando Expressões Regulares
 --------------------------------------
 
-One simple way to parse HTML is to use regular expressions to repeatedly
-search for and extract substrings that match a particular pattern.
+Uma maneira simples de analisar o HTML é usar expressões regulares para procurar repetidamente
+e extrair substrings que correspondam a um padrão determinado.
 
-Here is a simple web page:
+Aqui está uma página da web simples:
 
 ~~~~ {.html}
 <h1>The First Page</h1>
@@ -325,43 +318,43 @@ Second Page</a>.
 </p>
 ~~~~
 
-We can construct a well-formed regular expression to match and extract
-the link values from the above text as follows:
+Podemos construir uma expressão regular bem concebida para combinar e extrair
+os valores do link do texto acima, da seguinte maneira:
 
 ~~~~
 href="http[s]?://.+?"
 ~~~~
 
-Our regular expression looks for strings that start with
-"href=\"http://" or "href=\"https://", followed by one or more characters (`.+?`),
-followed by another double quote. The question mark behind the `[s]?` indicates
-to search for the string "http" followed by zero or one "s". 
+Nossa expressão regular procura por strings que começam com
+"href=\"http://" ou "href=\"https://", seguido por um ou mais caracteres (`.+?`),
+seguido por outra citação dupla. O ponto de interrogação atrás do `[s]?` Indica
+que deve-se procurar a string "http" seguida de zero ou um "s".
 
-The question mark added to the `.+?` indicates
-that the match is to be done in a "non-greedy" fashion instead of a
-"greedy" fashion. A non-greedy match tries to find the
-*smallest* possible matching string and a greedy match
-tries to find the *largest* possible matching string.
+O ponto de interrogação adicionado ao `.+?` indica
+que a equivalência deve ser feita de maneira "não gananciosa" em vez de
+moda "gananciosa". Uma partida não gananciosa tenta encontrar o
+*menor* string de correspondência possível e uma correspondência gananciosa
+tenta encontrar a *maior* string possível de correspondência.
 
-\index{greedy}
-\index{non-greedy}
+\index{gananciosa}
+\index{nao-gananciosa}
 
-We add parentheses to our regular expression to indicate which part of
-our matched string we would like to extract, and produce the following
-program:
+Adicionamos parênteses à nossa expressão regular para indicar qual parte da
+nossa string correspondente que gostaríamos de extrair e produzir o seguinte
+programa:
 
-\index{regex!parentheses}
-\index{parentheses!regular expression}
+\index{regex!parenteses}
+\index{parenteses!expressao regular}
 
 \VerbatimInput{../code3/urlregex.py}
 
-The `ssl` library allows this program to access web sites that strictly
-enforce HTTPS. The `read` method returns HTML source code as a bytes object 
-instead of returning an HTTPResponse object. The `findall` regular expression
-method will give us a list of all of the strings that match our
-regular expression, returning only the link text between the double quotes.
+A biblioteca `ssl` permite que este programa acesse sites da web que estritamente
+utilizam HTTPS. O método `read` retorna o código-fonte HTML como um objeto de bytes
+em vez de retornar um objeto HTTPResponse. O método de expressão regular `findall`
+nos fornecerá uma lista de todas as strings que correspondem à nossa
+expressão regular, retornando apenas o texto do link entre aspas duplas.
 
-When we run the program and input a URL, we get the following output:
+Quando executamos o programa e inserimos uma URL, obtemos a seguinte saída:
 
 ~~~~
 Enter - https://docs.python.org
@@ -381,12 +374,12 @@ https://www.python.org/psf/donations/
 http://sphinx.pocoo.org/
 ~~~~
 
-Regular expressions work very nicely when your HTML is well formatted
-and predictable. But since there are a lot of "broken" HTML pages out
-there, a solution only using regular expressions might either miss some
-valid links or end up with bad data.
+Expressões regulares funcionam muito bem quando seu HTML está bem formatado
+e previsível. Mas como existem muitas páginas HTML "quebradas"
+lá, uma solução usando apenas expressões regulares pode perder alguns
+links válidos ou acabam com dados incorretos.
 
-This can be solved by using a robust HTML parsing library.
+Isso pode ser resolvido usando uma robusta biblioteca de análise de HTML.
 
 Análise de HTML usando BeautifulSoup
 ------------------------------------
