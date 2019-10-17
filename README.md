@@ -20,3 +20,21 @@ To host this
 And edit the variables as necessary
 
 See the file `book/README.md` for more details.
+
+# Translation Team
+
+The Translation of the book "Python for Everybody" was coordinated by Yuri Loia(github.com/yuriloia), and the team was composed by: 
+Alysson Hyago - https://github.com/alyssonhyago , 
+Andhré Carvalho, 
+Caio Porto, 
+Debora Nunes, 
+Giovana Oliveira - https://www.linkedin.com/in/giovana-oliveira-9a5b08116/, 
+João Pedro Melquiades, 
+Lara Sobral, 
+Maysa Freire, 
+Natã Macedo, 
+Vinicius França, 
+Pyettra Feitosa, 
+Victor Marinho, 
+Vinicius Formiga, 
+Vitor Araujo
