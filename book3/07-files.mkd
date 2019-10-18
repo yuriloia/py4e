@@ -10,40 +10,38 @@ Persistência
 \index{persistência}
 \index{memória secundaria}
 
-Até agora, aprendemos como escrever programas e comunicar nossas intenções para a unidade central de processamento usando a execução condicional, funções e interações. Aprendemos como criar e usar estruturas de dados na memoria principal. A CPU e a memoria são onde o nosso software funciona e é executado, é onde todo o pensamento acontece.
-
+Até agora, aprendemos como escrever programas e comunicar nossas intenções para a _Unidade Central de Processamento_ usando a execução condicional, funções e iterações. Aprendemos como criar e usar estruturas de dados na _Memória Principal_. A CPU e a memória são onde o nosso software funciona e é executado, é onde todo o "pensamento" acontece. 
 
 Mas se você se lembrar de nossas discussões de arquitetura de hardware, uma vez que a energia é desligada, qualquer coisa armazenada na CPU ou memória principal é apagada. Então, até agora, nossos programas foram apenas exercícios divertidos para aprender Python.
 
-
 ![Secondary Memory](height=2.5in@../images/arch)
 
-Neste capítulo, começamos a trabalhar com memória secundária (ou arquivos). A memória secundária não é apagada quando a alimentação está desligada. Ou, no caso de uma unidade flash USB, os dados que escrevemos de nossos programas podem ser removidos do sistema e transportados para outro sistema.
+Neste capítulo, começamos a trabalhar com _Memória Secundária_ (ou arquivos). Esta não é apagada quando a energia é desligada. Ou, no caso de uma unidade flash USB, os dados que escrevemos de nossos programas podem ser removidos do sistema e transportados para outro sistema.
 
-Nós nos concentraremos principalmente na leitura e escrita de arquivos de texto, como aqueles que criamos em um editor de texto. Mais tarde, veremos como trabalhar com arquivos de banco de dados que são arquivos binários, especificamente projetados para serem lidos e gravados através de software de banco de dados.
+Nós nos concentraremos primeiramente na leitura e escrita de arquivos de texto, como aqueles que criamos em um editor de texto. Mais tarde, veremos como trabalhar com arquivos de banco de dados que são arquivos binários, especificamente projetados para serem lidos e gravados através de software de banco de dados.
 
 Abrindo um arquivo 
 -------------
 
-\index{file!open}
-\index{open function}
-\index{function!open}
+\index{abrir!arquivo}
+\index{função open}
+\index{open!função}
 
-Quando queremos ler ou escrever um arquivo (digamos no seu disco rígido), primeiro devemos abrir o arquivo. Abrir o arquivo se comunica com seu sistema operacional, que sabe onde os dados para cada arquivo são armazenados. Quando abre um ficheiro, está a pedir ao sistema operativo para localizar o ficheiro por nome e certifique-se de que o ficheiro existe. Neste exemplo, abrimos o arquivo mbox. txt, que deve ser armazenado na mesma pasta em que você está quando você inicia o Python. Você pode baixar este arquivo de [www.py4e.com/code3/mbox.txt](http://www.py4e.com/code3/mbox.txt)
+Quando queremos ler ou escrever um arquivo (digamos no seu disco rígido), primeiro devemos _abrir_ ele. Fazendo isso há uma comunicação com seu sistema operacional, que sabe onde os dados para cada arquivo são armazenados. Quando se abre um arquivo, você está pedindo para o sistema operacional achá-lo por nome e ter certeza que ele existe. Nesse exemplo, nós abrimos o arquivo _mbox.txt_, o qual deveria estar armazenado na mesma pasta que você está quando inicia o Python. Você pode baixar este arquivo em [www.py4e.com/code3/mbox.txt]
 
 ~~~~ {.python}
->>> Arquivo = open('teste.txt')
+>>> Arquivo = open('mbox.txt.')
 >>> print(Arquivo)
 <_io.TextIOWrapper name='mbox.txt' mode='r' encoding='cp1252'>
 ~~~~
 
 \index{file handle}
 
-Se `open`for bem-sucedido, o sistema operacional retornará um identificador de arquivo. O identificador de arquivo não é os dados reais contidos no arquivo, mas em vez disso, é um "identificador" que podemos usar para ler os dados. Você recebe um identificador se o arquivo solicitado existe e você tem as permissões apropriadas para ler o arquivo.
+Se `open`for bem-sucedido, o sistema operacional retornará um _identificador de arquivo_. Este não é a informação real contida no arquivo, mas em vez disso, é um "identificador" que podemos usar para ler os dados. Você recebe um identificador se o arquivo solicitado existe e você tem as permissões apropriadas para lê-lo.
 
 ![A File Handle](height=2.0in@../images/handle)
 
-Se o arquivo não existir, `open` falhará com um Traceback e você não receberá um identificador para acessar o conteúdo do arquivo:
+Se o arquivo não existir, `open` falhará com um Traceback e você não receberá um identificador para acessar o conteúdo dele:
 
 ~~~~ {.python}
 >>> fhand = open('stuff.txt')
@@ -59,8 +57,9 @@ Mais tarde, usaremos `try` e `except` para lidar mais graciosamente com a situa�
 Arquivos de texto e linhas
 --------------------
 
-Um arquivo de texto pode ser pensado como uma seqüência de linhas, muito parecido com um Python, cadeia de caracteres pode ser pensado como uma seqüência de caracteres. Por exemplo, este é uma amostra de um arquivo de texto que registra a atividade de correio de vários indivíduos em uma equipe de desenvolvimento de projeto de código aberto:
-
+Um arquivo de texto pode ser pensado como uma sequência de linhas, assim como uma string em python
+pode ser pensada como uma sequência de caracteres. Por exemplo, essa é uma amostra de um arquivo de texto que grava a atividade de emails de vários inivíduos em um
+projeto _open source_ em desenvolvimento.
 
 ~~~~
 From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
@@ -78,97 +77,82 @@ Todo o arquivo de interações de email está disponível a partir de
 
 [www.py4e.com/code3/mbox.txt](http://www.py4e.com/code3/mbox.txt)
 
-e uma versão abreviada do arquivo está disponível a partir de
+e uma versão reduzida do arquivo está disponível a partir de
 
 [www.py4e.com/code3/mbox-short.txt](http://www.py4e.com/code3/mbox-short.txt)
 
-Esses arquivos estão em um formato padrão para um arquivo que contém vários emails,
-mensagens. As linhas que começam com "de" separam as mensagens e
-as linhas que começam com "de:" fazem parte das mensagens. Para mais informações,
-informações sobre o formato mbox, consulte
+Eles estão em um formato padrão para um arquivo que contém várias mensagens de email. As 
+linhas que começam com "From" separam as mensagens e
+as linhas que começam com "From:" fazem parte delas. Para mais informações sobre o formato mbox, consulte
 <https://en.wikipedia.org/wiki/Mbox>.
 
 Para quebrar o arquivo em linhas, há um caractere especial que
 representa o "fim da linha" chamado de * newLine *
-Caractere.
 
 \index{newline}
 
-Em Python, representamos o caractere * newLine * como um
-barra invertida-n em constantes de cadeia de caracteres. Mesmo que isso pareça ser dois
-caracteres, é realmente um único caractere. Quando olhamos para o
-variável inserindo "material" no intérprete, mostra-nos o `\n` em
-a seqüência de caracteres, mas quando usamos ' print ' para mostrar a String, nós
-Ver a cadeia de caracteres dividida em duas linhas pelo caractere de nova linha.
+Em Python, representamos o caractere * newLine * como `\n` em _strings_ constantes. 
+Mesmo que pareça ser dois caracteres, é na verdade um só. Quando olhamos para a
+variável inserindo "algo" no intérprete, ele nos mostra o `\n` na _string_, mas quando usamos 'print' para mostrá-la, nós vemos a _string_ quebrada em duas linhas
+pelo _newline_.
 
 ~~~~ {.python}
->>> coisas = 'Olá\nmundo!'
->>> coisas
+>>> algo = 'Olá\nmundo!'
+>>> algo
 'Olá\nmundo!'
->>> print(coisas)
+>>> print(algo)
 Olá
 mundo!
->>> coisas = 'X\nY'
->>> print(coisas)
+>>> algo = 'X\nY'
+>>> print(algo)
 X
 Y
->>> len(coisas)
+>>> len(algo)
 3
 ~~~~
 
-Você também pode ver que o comprimento da seqüência de caracteres `X\nY` é * três *
-caracteres porque o caractere de nova linha é um único caractere.
+Você também pode ver que o comprimento da _string_ `X\nY` é * três * porque o _newline_ é um único caractere.
 
-Então, quando olhamos para as linhas em um arquivo, precisamos * imaginar * que não
-é um carácter invisível especial chamado a nova linha no final de cada
-linha que marca o fim da linha.
+Então, quando olhamos para as linhas em um arquivo, precisamos * imaginar * que há um caractere especial invisível chamado _newline_ no final de cada
+linha que marca o fim desta.
 
-Portanto, o caractere de nova linha separa os caracteres no arquivo em
-Linhas.
+Portanto, este caractere separa os outros caracteres no arquivo em linhas.
 
-
-Reading files
+Lendo arquivos
 -------------
 
-\index{file!reading}
-\index{counter}
+\index{arquivos!lendo}
+\index{contador}
 
-While the *file handle* does not contain the data for the
-file, it is quite easy to construct a `for` loop to read
-through and count each of the lines in a file:
+Uma vez que o *identificador de arquivo* não contém os dados deste, 
+é bem fácil construir um laço `for` para ler e contar cada linha do arquivo:
 
 \VerbatimInput{../code3/open.py}
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-We can use the file handle as the sequence in our `for` loop.
-Our `for` loop simply counts the number of lines in the file
-and prints them out. The rough translation of the `for` loop
-into English is, "for each line in the file represented by the file
-handle, add one to the `count` variable."
 
-The reason that the `open` function does not read the entire
-file is that the file might be quite large with many gigabytes of data.
-The `open` statement takes the same amount of time regardless
-of the size of the file. The `for` loop actually causes the
-data to be read from the file.
+Podemos usar o identificador de arquivo como a sequencia no nosso loop. Ele simplesmente
+conta o número de linhas no arquivo e mostra elas. Uma tradução grosseira para o loop `for`
+em português é: "para cada linha no arquivo representada pelo identificador, adicione um na
+variável `contagem`."
 
-When the file is read using a `for` loop in this manner,
-Python takes care of splitting the data in the file into separate lines
-using the newline character. Python reads each line through the newline
-and includes the newline as the last character in the `line`
-variable for each iteration of the `for` loop.
+A razão para a função `open` não ler todo o arquivo é que este pode ser bem grande, com
+muitos gigabytes de dados. A sentença `open` toma a mesma quantidade de tmepo independente
+do tamanho do arquivo. O loop na verdade que faz os dados serem lidos.
 
-Because the `for` loop reads the data one line at a time, it
-can efficiently read and count the lines in very large files without
-running out of main memory to store the data. The above program can
-count the lines in any size file using very little memory since each
-line is read, counted, and then discarded.
+Quando o arquivo é lido com o `for` dessa maneira, Python tem cuidado de separar os dados em
+linhas diferente utilizando o _newline_. Ele lê cada linha até o fim e inclui o newline quando
+alcança o último caractere na variável `linha` para cada iteração do loop `for`.
 
-If you know the file is relatively small compared to the size of your
-main memory, you can read the whole file into one string using the
-`read` method on the file handle.
+Uma vez que o laço lê os dados uma linha por vez, ele pode eficientemente ler e contar as linhas
+em arquivos muito grandes sem esgotar a memória principal para armazenar os dados. O programa acima 
+conta as linhas em um arquivo de qualquer tamanho usando bem pouca memória já que cada linha é lida, contada
+e descartada
+
+Se você sabe que o tamanho do arquivo é relativamente pequeno comparado ao da sua memória principal, então
+pode ler o arquivo todo em uma _string_ usando o método `read` do identificador de arquivo.
 
 ~~~~ {.python}
 >>> fhand = open('mbox-short.txt')
@@ -179,16 +163,13 @@ main memory, you can read the whole file into one string using the
 From stephen.marquar
 ~~~~
 
-In this example, the entire contents (all 94,626 characters) of the file
-*mbox-short.txt* are read directly into the variable
-`inp`. We use string slicing to print out the first 20
-characters of the string data stored in `inp`.
+Nesse exemplo, o conteúdo inteiro (todos os 94626 caracteres) do arquivo *mbox-short.txt* é lido e armazenado
+diretamente na variável `inp`. Estamos usando o fatiamento de _strings_  para mostrar os primeiros 20 caracteres
+da _string_ armazenada em `inp`.
 
-
-When the file is read in this manner, all the characters including all
-of the lines and newline characters are one big string in the variable
-`inp`. It is a good idea to store the output of `read` as a variable
-because each call to `read` exhausts the resource:
+Quando o arquivo é lido dessa forma, todos os caracteres, incluindo todos os caracteres de linhas e _newline_ são
+uma grande _string_ na variável `inp`. É uma boa ideia armazenar a saída de `read` como uma variável porque cada
+chamada de `read` cansa o recurso.
 
 ~~~~ {.python}
 >>> fhand = open('mbox-short.txt')
@@ -198,34 +179,32 @@ because each call to `read` exhausts the resource:
 0
 ~~~~
 
-Remember that this form of the `open` function should only be used
-if the file data will fit comfortably in the main memory of your computer.
-If the file is too large to fit in main memory, you should write your
-program to read the file in chunks using a `for` or `while` loop.
+Lembre que essa forma da função `open` deveria apenas ser usada se os dados do arquivo confortavelmente cabem
+na sua memória principal do computador. Se o arquivo é muito grande para a memória, você deveria escrever seu
+programa para ler ele em pedaços usando um `for` ou um `while`.
 
 Searching through a file
 ------------------------
 
-When you are searching through data in a file, it is a very common
-pattern to read through a file, ignoring most of the lines and only
-processing lines which meet a particular condition. We can combine the
-pattern for reading a file with string methods to build simple search
-mechanisms.
+Quando você está procurando por dados em um arquivo, é um padrão
+muito comum em percorrer um arquivo ignorando a maioria das linhas
+e apenas processando as que vão de encontro com uma condição particular.
+Podemos combinar o padrão de ler um arquivo com os métodos da _sting_ para
+construir um simples mecanismo de busca.
 
-\index{filter pattern}
-\index{pattern!filter}
+\index{padrão filtrador}
+\index{padrão!filtrador}
 
-For example, if we wanted to read a file and only print out lines which
-started with the prefix "From:", we could use the string method
-*startswith* to select only those lines with the desired
-prefix:
+Por exemplo, se queremos ler um arquivo e apenas mostrar as linhas que começam
+com o prefixo "From:", podemos usar o método *startswith* para selecionar apenas
+as linhas que possuem o prefixo desejado:
 
 \VerbatimInput{../code3/search1.py}
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-When this program runs, we get the following output:
+Quando esse programa é executado, obtemos a seguinte saída:
 
 ~~~~
 From: stephen.marquard@uct.ac.za
@@ -238,24 +217,27 @@ From: rjlowe@iupui.edu
 ...
 ~~~~
 
-The output looks great since the only lines we are seeing are those
-which start with "From:", but why are we seeing the extra blank lines?
-This is due to that invisible *newline* character. Each
-of the lines ends with a newline, so the `print` statement
-prints the string in the variable *line* which includes a
-newline and then `print` adds *another* newline, resulting in
-the double spacing effect we see.
+A saída parece ótima uma vez que as únicas linhas que estamos vendo
+são as que começam com "From:", mas por que vemos também essas linhas
+em branco extras? Isso é devido ao caractere *newline* invisível. Cada
+uma das linhas termina com um, então a sentença `print` mostra a string
+na variável *linha* que inclui um _newline_ e então o `print` adiciona
+outro, resultando no efeito de duplo espaçamento que observamos.
+
+Nós podíamos usar o fatiamento das linhas para mostrar todos menos o 
+último caractere, mas uma abordagem mais simples é usar o método *rstrip*
+que 
 
 We could use line slicing to print all but the last character, but a
 simpler approach is to use the *rstrip* method which
-strips whitespace from the right side of a string as follows:
+tira os espaços em branco do lado direito da _stirng_, como pode ser observado:
 
 \VerbatimInput{../code3/search2.py}
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-When this program runs, we get the following output:
+Quando esse programa executa, obtemos a seguinte saída:
 
 ~~~~
 From: stephen.marquard@uct.ac.za
@@ -268,39 +250,39 @@ From: cwen@iupui.edu
 ...
 ~~~~
 
-As your file processing programs get more complicated, you may want to
-structure your search loops using `continue`. The basic idea
-of the search loop is that you are looking for "interesting" lines and
-effectively skipping "uninteresting" lines. And then when we find an
-interesting line, we do something with that line.
+Uma vez que seus programas de processamento de arquivos ficam mais complicados,
+você deve querer estruturar seus laços de pesquisa usando `continue`. A ideia 
+básica dos laços de pesquisa é procurar por linhas "interessantes" e efetivamente
+pular as "desinteressantes". E então, quando encontramos uma de nosso interesse, 
+fazemos algo com aquela linha.
 
-We can structure the loop to follow the pattern of skipping
-uninteresting lines as follows:
+Podemos estruturar o laço seguindo o padrão de pular as linhas desinteressantes
+seguindo o modelo:
 
 \VerbatimInput{../code3/search3.py}
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-The output of the program is the same. In English, the uninteresting
-lines are those which do not start with "From:", which we skip using
-`continue`. For the "interesting" lines (i.e., those that
-start with "From:") we perform the processing on those lines.
+A saída do programa é a mesma. Em português, as linhas não interessantes
+são aquelas que não começam com "From:", as quais são puladas utilizando o
+`continue`. Para as linhas "interessantes" (isto é, aquelas que começam com
+"From:") realizamos o processo nelas.
 
-We can use the `find` string method to simulate a text editor
-search that finds lines where the search string is anywhere in the line.
-Since `find` looks for an occurrence of a string within
-another string and either returns the position of the string or -1 if
-the string was not found, we can write the following loop to show lines
-which contain the string "@uct.ac.za" (i.e., they come from the
-University of Cape Town in South Africa):
+Nós podemos usar o método `find` da _string_ para simular um editor de texto
+que encontra linhas onde a _string_ procurada está em qualquer lugar da linha.
+Uma vez que o `find` procura por uma ocorrência de uma _string_ dentro de outra
+e ou retorna a posição dela ou -1 se não for encontrada, podemos escrever o 
+seguinte laço para mostrar linhas que contém a _string_ "@uct.ac.za" (isto é, 
+elas vêm da Universidade de Cape Town na África do Sul):
+
 
 \VerbatimInput{../code3/search4.py}
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-Which produces the following output:
+A qual produz a seguinte saída:
 
 ~~~~
 From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
@@ -314,16 +296,14 @@ Author: david.horwitz@uct.ac.za
 ...
 ~~~~
 
-Here we also use the contracted form of the `if` statement
-where we put the `continue ` on the same line as the
-`if`. This contracted form of the `if` functions
-the same as if the `continue` were on the next line and
-indented.
+Aqui nós também usamos a forma contraída da sentença `if` quando colocamos
+o `continue` na mesma linha do `if`. Essa forma funciona do mesmo jeito que
+se o `continue` estivesse na próxima linha e indentado.
 
 Deixando o usuário escolher o nome do arquivo
 -------------------------------------
 
-Nós realmente não queremos ter quer editar nosso código Python toda vez que quisermos processar um arquivo diferente. Pode ser mais útil pedir ao usuário para inserir a String do nome do arquivo cada vez que o programa for executado, então, nosso programa poderá ser usado em arquivos diferentes sem mudar o código Python.
+Nós realmente não queremos ter quer editar nosso código Python toda vez que quisermos processar um arquivo diferente. Pode ser mais útil pedir ao usuário para inserir a _string_ do nome do arquivo cada vez que o programa for executado, então, nosso programa poderá ser usado em arquivos diferentes sem mudar o código Python.
 
 Isso é bastante simples de fazer, lendo o nome do arquivo do usuário usando `input` como à seguir:
 
@@ -344,7 +324,7 @@ Digite o nome do arquivo: mbox-short.txt
 Havia 27 linhas de conteúdo em mbox-short.txt
 ~~~~
 
-Antes de dar uma olhada na próxima seção, dê uma olhada no programa acima e pergunte a si mesmo: "O que poderia dar errado aqui?" ou “O que nosso amiguinho usuário poderia fazer que pararia desgraçadamente a execução do nosso programinha com um erro de traceback e faria com que não parecêssemos mais tão legais aos olhos do usuário?”
+Antes de dar uma olhada na próxima seção, dê uma olhada no programa acima e pergunte a si mesmo: "O que poderia dar errado aqui?" ou “O que nosso amiguinho usuário poderia fazer que pararia desgraçadamente a execução do nosso programinha com um erro de _traceback_ e faria com que não parecêssemos mais tão legais aos olhos do usuário?”
 
 Usando `try, except,` e `open`
 -----------------------------------------------------
@@ -376,14 +356,14 @@ Não ria. Os usuários eventualmente farão todas as coisas possíveis que podem
 
 A equipe de QA é responsável por encontrar as falhas no programa antes de entregá-lo aos usuários finais que possivelmente estarão comprando o software ou pagando nosso salário para fazer o software. Então a equipe de QA é a melhor amiga do programador.
 
-\index{try statement}
-\index{statement!try}
-\index{open function}
-\index{function!open}
+\index{sentença try}
+\index{try!sentença}
+\index{função open}
+\index{open!função}
 \index{exception!IOError}
 \index{IOError}
 
-Então, agora que vemos a falha no programa, podemos corrigi-lo usando a estrutura `try` / `except`. Precisamos assumir que a chamada do `open` pode falhar e adicionar o código de recuperação da seguinte forma:
+Então, agora que vemos a falha no programa, podemos corrigi-la usando a estrutura `try` / `except`. Precisamos assumir que a chamada do `open` pode falhar e adicionar o código de recuperação da seguinte forma:
 
 \VerbatimInput{../code3/search7.py}
 \begin{trinketfiles}
@@ -406,12 +386,12 @@ File cannot be opened: na na boo boo
 
 Proteger a chamada do `open` é um bom exemplo do uso adequado do `try` e `except` em um programa Python. Usamos o termo "Pythonico" quando estamos fazendo algo do tipo "Python". Podemos dizer que o exemplo acima é a maneira Python de abrir um arquivo.
 
-Uma vez que você se torne mais habilidoso em Python, você pode interagir com outros programadores em Python para decidir qual das duas soluções equivalentes a um problema é "mais Pythonico". O objetivo de ser "mais Pythonico" capta a noção de que a programação é parte engenharia e parte arte. Nem sempre estamos interessados em fazer algo funcionar, queremos também que a nossa solução seja elegante e seja apreciada como elegante pelos nossos pares.
+Uma vez que você se torne mais habilidoso em Python, você pode interagir com outros programadores para decidir qual das duas soluções equivalentes para um problema é "mais Pythonico". O objetivo de ser "mais Pythonico" capta a noção de que a programação é parte engenharia e parte arte. Nem sempre estamos interessados em fazer algo funcionar, queremos também que a nossa solução seja elegante e seja apreciada como elegante pelos nossos pares.
 
 Escrevendo arquivos
 -------------------
 
-\index{file!writing}
+\index{arquivos!abrindo}
 
 Para escrever um arquivo você tem que abri-lo com o modo “w” como segundo parâmetro:
 
@@ -423,7 +403,7 @@ Para escrever um arquivo você tem que abri-lo com o modo “w” como segundo p
 
 Se o arquivo já existir, abri-lo no modo de gravação limpa os dados antigos e começa de novo, por isso tome cuidado! Se o arquivo não existir, um novo será criado.
 
-O método `write` do objeto de manipulação de arquivos coloca dados no arquivo, retornando o número de caracteres gravados. O modo de gravação padrão é o texto para escrever (e ler) strings.
+O método `write` do objeto de manipulação de arquivos coloca dados no arquivo, retornando o número de caracteres gravados. O modo de gravação padrão é texto para escrever (e ler) strings.
 
 
 ~~~~ {.python}
@@ -435,7 +415,7 @@ O método `write` do objeto de manipulação de arquivos coloca dados no arquivo
 \index{newline}
 
 Novamente, o arquivo mantém o controle de onde está, portanto, se você chamar `write` novamente, ele adicionará os novos dados ao final.
-Devemos nos certificar de gerenciar as extremidades das linhas à medida que escrevemos no arquivo inserindo explicitamente o caractere de nova linha quando queremos terminar uma linha. A instrução `print` anexa automaticamente uma nova linha, mas o método `write` não adiciona a nova linha automaticamente.
+Devemos nos certificar de gerenciar as extremidades das linhas à medida que escrevemos no arquivo inserindo explicitamente o caractere de _newline_ quando queremos terminar uma linha. A instrução `print` anexa automaticamente uma nova linha, mas o método `write` não adiciona a nova linha automaticamente.
 
 ~~~~ {.python}
 >>> line2 = 'the emblem of our land.\n'
@@ -451,8 +431,8 @@ Quando terminar de escrever, feche o arquivo para certificar-se de que o último
 
 Poderíamos fechar os arquivos que abrimos para leitura também, mas podemos ser um pouco desleixados se abrirmos apenas alguns arquivos, pois o Python garante que todos os arquivos abertos sejam fechados quando o programa terminar. Quando estamos escrevendo arquivos, queremos fechar explicitamente os arquivos para não deixar nada ao acaso.
 
-\index{close method}
-\index{method!close}
+\index{método close}
+\index{close!método}
 
 Debugging
 ---------
