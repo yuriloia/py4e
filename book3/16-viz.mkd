@@ -1,10 +1,10 @@
 Visualização de dados 
 ================
 
-Até o momento nós estávamos aprendendo a linguagem Python para depois aprendermos a como utilizar Python, 
-as redes de computadores e banco de dados para manipulação de dados.
+Até o momento, nós estávamos aprendendo a linguagem Python para depois aprendermos a como utilizá-lo, 
+junto a bancos de dados e redes de computadores, para manipulação de dados.
 
-Neste capítulo, nós analisaremos três aplicações que reúnem todas esses conceitos para gerir e vizualizar dados. Você poderá usar essas aplicações como um código base para tea ajudar a começar a resolver um problema do mundo real. 
+Neste capítulo, nós analisaremos três aplicações que reúnem todas esses conceitos para gerir e vizualizar dados. Você poderá usar essas aplicações como um código base para te ajudar a começar a resolver um problema do mundo real. 
 
 Todas essas aplicações estão num arquivo ZIP que você pode fazer o dowload e extrair no seu computador.
 
@@ -14,36 +14,36 @@ Construindo um mapa do Google a partir de dados geocodificados
 \index{Google!mapa}
 \index{Visualização!mapa}
 
-Neste projeto, nós usaremos a API do Google de Geocodificação para organizar algumas informações de geográficas de localização de nomes de universidades que foram disponibilizados por usuários, para então colocar esses dados em um Google map.
-
+Neste projeto, nós usaremos a API do Google de Geocodificação para organizar algumas informações geográficas de localização de nomes de universidades que foram disponibilizados por usuários, para então colocar esses dados em um mapa do Google.
 
 ![A Google Map](../images/google-map)
+
 Para começar faça o download da aplicação em:
 
 [www.py4e.com/code3/geodata.zip](http://www.py4e.com/code3/geodata.zip)
 
 O primeiro problema a ser resolvido é que a API de geocodificação gratuita do Google é
-taxa limitada a um determinado número de solicitações por dia. Se você tem muito
-de dados, pode ser necessário parar e reiniciar o processo de pesquisa várias
+limitada a um determinado número de solicitações por dia. Se você tem muitos
+dados, talvez seja necessário parar e reiniciar o processo de pesquisa várias
 vezes. Então por isso dividiremos o problema em duas fases.
 
 \index{cache}
 
-Na primeira fase, utilizam-se os dados de "pesquisa" de entrada no arquivo
+Na primeira fase, utiliza-se os dados de "pesquisa" de entrada no arquivo
 *where.data* e lê-se uma linha de cada vez para recuperar
-as informações geocodificadas do Google e as armazenam em um banco de dados
+as informações geocodificadas do Google e armazená-las em um banco de dados
 *geodata.sqlite*. Antes de usarmos a API de geocodificação para
-cada informação inserida pelo usuário, nós verificamos se já temosos dados dessa linha de entrada específica. 
+cada informação inserida pelo usuário, nós verificamos se já temos os dados dessa linha de entrada específica. 
 O banco de dados está funcionando
-como um "cache" local dos nossos dados de geocodificação para garantir que nunca perguntemos
-Google para os mesmos dados duas vezes.
+como um "cache" local dos nossos dados de geocodificação para garantir que nunca perguntemos ao
+Google sobre os mesmos dados duas vezes.
 
 Você pode reiniciar o processo a qualquer momento removendo o arquivo
 *geodata.sqlite*.
 
-Rode o program *geoload.py*. Este programa lerá as linhas de entrada em *where.data* e para cada linha ele checará se elas já estão no banco de dados. Se não os dados não existirem para o local analisado, a API de geocodificação será chamada para recuperar o dado e guardar no banco de dados.
+Rode o program *geoload.py*. Este programa lerá as linhas de entrada em *where.data* e, para cada linha, ele checará se elas já estão no banco de dados. Em caso de os dados não existirem para o local analisado, a API de geocodificação será chamada para recuperar tais dados e guardar no banco SQL.
 
-Aqui está o uma amostra de execução após já existir dados armazenados no banco de dados:
+Aqui está uma amostra de execução após já existir alguns dados armazenados no banco de dados:
 
 ~~~~
 Found in database  Northeastern University
@@ -67,9 +67,9 @@ Retrieved 1749 characters {    "results" : [
 ...
 ~~~~
 
-Os cinco primeiro lugares já estão no banco de dados e portanto, eles são pulados. O programa escaneia o arquivo até o ponto em que ele encontra novos lugares e começa a recuperá-los.
+Os cinco primeiros lugares já estão no banco de dados e portanto, eles são pulados. O programa escaneia o arquivo até o ponto em que ele encontra novos lugares e começa a recuperá-los.
 
-O programa *geoload.py* pode ser parado a qualquer momento, além disso, existe um contador que você pode utilizar para limitar o número de vezes que se é chamada a API de geocodificação a cada vez que se é executado o programa. Dado que *where.data* apenas possui alguma centena de itens de dados, sua execução não deverá ultrapassar o limite diário, entretanto, se você tiver possuir mais dados, pode ser que sejam necessárias várias execuções ao longo de vários dias para que se consiga extrair os dados geocodificados.
+O programa *geoload.py* pode ser parado a qualquer momento, além disso, existe um contador que você pode utilizar para limitar o número de vezes que se é chamada a API de geocodificação a cada vez que se é executado o programa. Dado que *where.data* apenas possui algumas centenas de itens de dados, sua execução não deverá ultrapassar o limite diário, entretanto, se você precisa de mais dados, pode ser que sejam necessárias várias execuções ao longo de vários dias para que se consiga extrair os dados geocodificados desejados.
 
 Assim que possuir seus dados carregados em *geodata.sqlite*, poderá visualizar os dados usando o programa *geodump.py*. Este programa lê um banco de dados e armazena no arquivo *where.js* a localização, latitude e longitude na forma de um código em Javascript executável.
 
@@ -87,7 +87,7 @@ Kokshetau, Kazakhstan 53.2833333 69.3833333
 Open where.html to view the data in a browser
 ~~~~
 
-O arquivo *where.html* consiste em um programa escrito em Html e Javascript para visualizar um mapa do Google. Ele lê os dados mais recentes em *where.js* para fazer com que os dados sejam visualizados. Aqui está o formato to arquivo do *where.js*:
+O arquivo *where.html* consiste em um programa escrito em Html e Javascript para visualizar um mapa do Google. Ele lê os dados mais recentes em *where.js* para fazer com que os dados sejam visualizados. Aqui está o formato do arquivo do *where.js*:
 
 ~~~~ {.js}
 myData = [
@@ -98,9 +98,9 @@ myData = [
 ];
 ~~~~
 
-Esta é uma variável em Javascript que contém uma lista de listas. A sintáxe para uma lista constante nesta linguagem é muito semelhante a lista em Python, logo esta sintáxe será familiar para você.
+Esta é uma variável em Javascript que contém uma lista de listas. A sintaxe para uma lista constante nesta linguagem é muito semelhante à lista em Python, logo esta sintaxe será familiar para você.
 
-Simplismente abra o arquivo *where.html* no seu navegador e veja as localizações. Você poderá se aproximar de cada um dos pins para descrobrir a localização que a API de geocodificação retornará a entrada fornecida pelo usuário. Caso você não consiga ver nenhum dado quando abrir o arquivo *where.html*, você poderá checar o Javascript ou o console de desenvolvimento do seu navegador.
+Simplesmente abra o arquivo *where.html* no seu navegador e veja as localizações. Você poderá se aproximar de cada um dos pins para descobrir a localização que a API de geocodificação retornará à entrada fornecida pelo usuário. Caso você não consiga ver nenhum dado quando abrir o arquivo *where.html*, talvez seja preciso checar o Javascript ou o console de desenvolvimento do seu navegador.
 
 Vizualização de redes e interconexões
 -----------------------------------------
@@ -109,8 +109,7 @@ Vizualização de redes e interconexões
 \index{Vizualização!redes}
 \index{Vizualização!page rank}
 
-Nesta aplicação, executaremos algumas das funções de uma ferramenta de busca. Primeiro, criaremos um pequeno subconjunto da web e executaremos um versão simplificada do algoritmo de classificação do Google para determinar quais as páginas estão mais altamente conectadas, para assim visualizar o page rank e a conectividade do nosso pequeno canto da web. Vamos usar o D3 Biblioteca de visualização JavaScript <http://d3js.org/> para produzir a saída de visualização.
-
+Nesta aplicação, executaremos algumas das funções de uma ferramenta de busca. Primeiro, criaremos um pequeno subconjunto da web e executaremos uma versão simplificada do algoritmo de classificação do Google para determinar quais as páginas estão mais altamente conectadas, para assim visualizar o _page rank_ (um ranking dado às páginas de acordo com sua relevância nas conexões entre links) e a conectividade do nosso pequeno canto da web. Vamos usar a Biblioteca D3 de visualização em JavaScript <http://d3js.org/> para produzir a saída de visualização.
 
 Você pode fazer o download e extrair essa aplicação do site:
 
@@ -124,7 +123,6 @@ e armazena uma série de páginas para o banco de dados
 pode reiniciar o processo a qualquer momento removendo o
 arquivo *spider.sqlite* e realizando uma nova execução do programa *spider.py*.
 
-
 ~~~~
 Enter web url or enter: http://www.dr-chuck.com/
 ['http://www.dr-chuck.com']
@@ -134,7 +132,7 @@ How many pages:2
 How many pages:
 ~~~~
 
-Nesta amostra de execução, pedimos para rastrear um site e recuperar duas páginas. Se você reiniciar o programa e solicitar que ele rastreie mais páginas, não rastreará nenhuma página que já esteja no banco de dados. Ao reiniciá-lo, ele irá para uma página aleatória não rastreada e começará o rastreio apartir daí. Então, cada execução do programa *spider.py* é aditiva.
+Nesta amostra de execução, pedimos para rastrear um site e recuperar duas páginas. Se você reiniciar o programa e solicitar que ele rastreie mais páginas, não rastreará nenhuma página que já esteja no banco de dados. Ao reiniciá-lo, ele irá para uma página aleatória não rastreada e começará o rastreio a partir daí. Então, cada execução do programa *spider.py* é aditiva.
 
 ~~~~
 Enter web url or enter: http://www.dr-chuck.com/
@@ -147,10 +145,10 @@ How many pages:
 ~~~~
 
 Você pode ter vários pontos de partida no mesmo banco de dados (dentro do
-programa), eles são chamados de "webs"(teias em português). A aranha escolhe aleatoriamente entre
+programa), eles são chamados de "_webs_" ("teias" em português). A "aranha" escolhe aleatoriamente entre
 todos os links não visitados em todas as webs como a próxima página para rastrear.
 
-Se você deseja jogar fora  o conteúdo do *spider.sqlite*, você pode executar o programa *spdump.py* da seguinte maneira:
+Se você deseja visualizar o conteúdo do *spider.sqlite*, você pode executar o programa *spdump.py* da seguinte maneira:
 
 ~~~~
 (5, None, 1.0, 3, 'http://www.dr-chuck.com/csev-blog')
@@ -160,14 +158,14 @@ Se você deseja jogar fora  o conteúdo do *spider.sqlite*, você pode executar 
 4 rows.
 ~~~~
 
-This shows the number of incoming links, the old page rank, the new page
-rank, the id of the page, and the url of the page. The
-*spdump.py* program only shows pages that have at least
-one incoming link to them.
+Isso mostra o número de links gravados, o antigo _page rank_, o novo _page rank_,
+o id da página, e o url dela. O programa *spdump.py* apenas mostra
+páginas que possuem, pelo menos, um link que aponta para elas.
 
-Once you have a few pages in the database, you can run page rank on the
-pages using the *sprank.py* program. You simply tell it
-how many page rank iterations to run.
+Agora, com algumas páginas em seu banco de dados, você pode realizar a
+classificação das páginas (_page rank_) usando o programa *sprank.py*.
+Você simplesmente informa o número de iterações de _page rank_ a serem
+executadas.
 
 ~~~~
 How many iterations:2
@@ -176,7 +174,7 @@ How many iterations:2
 [(1, 0.559), (2, 0.659), (3, 0.985), (4, 2.135), (5, 0.659)]
 ~~~~
 
-Você pode remover o banco de dados de novo para confirmar que o page rank foi atualizado.
+Você pode verificar o banco de dados de novo para confirmar que o page rank foi atualizado.
 
 ~~~~
 (5, 1.0, 0.985, 3, 'http://www.dr-chuck.com/csev-blog')
@@ -186,11 +184,11 @@ Você pode remover o banco de dados de novo para confirmar que o page rank foi a
 4 rows.
 ~~~~
 
-Você pode executar o programa *sprank.py* quantas vezes quiser e ele
-simplesmente refinará a classificação da página a cada execução. Você pode até rodar o programa *sprank.py* algumas vezes e depois rastrear mais algumas páginas com o programa *spider.py*, para assim executar o *sprank.py* para reconvergir os valores de classificação da página. Um motor de busca geralmente executa os programas de rastreamento e classificação o tempo todo.
+Você pode executar o programa *sprank.py* quantas vezes quiser, e ele
+simplesmente refinará a classificação das páginas a cada execução. Você pode até rodar o programa *sprank.py* algumas vezes e depois rastrear mais algumas páginas com o programa *spider.py*, para então executar o *sprank.py* novamente, a fim de reconvergir os valores do page rank. Um motor de busca geralmente executa os programas de rastreamento e classificação o tempo todo.
 
-Se você deseja reiniciar os cálculos de classificação da página sem considerar
-nas páginas da web, você pode usar o programa *spreset.py* e assim reiniciar o programa 
+Se você deseja reiniciar os cálculos de page rank sem executar novamente o 
+*spider.py*, você pode usar o programa *spreset.py* e assim reiniciar o 
 *sprank.py*.
 
 
@@ -217,12 +215,12 @@ How many iterations:50
 
 Para cada iteração do algoritmo de page rank, é mostrado na tela a média de
 mudança no page rank por página. A rede inicialmente é bastante desequilibrada
-e, portanto, os valores individuais de classificação da página mudam bastante entre as iterações.
+e, portanto, os valores individuais de classificação de página mudam bastante entre as iterações.
 No entando, em algumas poucas iterações, o page rank converge. Você deveria rodar o programa
 *sprank.py* tempo suficiente para que os valores de page rank convirjam.
 
-Se você deseja visualizar as principais páginas em termos de classificação da página,
-execute o programa *spjson.py* para ler o banco de dados e gravar os dados no formato JSON,
+Se você deseja visualizar as principais páginas em termos de page rank,
+execute o programa *spjson.py* para ler o banco SQL e gravar os dados no formato JSON,
 para que as páginas mais altamente vinculadas sejam visualizadas em um navegador web.
 
 
@@ -233,40 +231,38 @@ Open force.html in a browser to view the visualization
 ~~~~
 
 Você pode visualizar esses dados abrindo o arquivo *force.html*
-no seu navegador da web. Isso mostrará um layout automático dos nós e dos links. Você pode clicar e arrastar qualquer nó e também clicar duas vezes em um nó para encontrar a URL representadado por ele.
+no seu navegador da web. Isso mostrará um layout automático dos nós e dos links. Você pode clicar e arrastar qualquer nó e também clicar duas vezes em um nó para encontrar o URL representadado por ele.
 
 Se você executar novamente os outros utilitários, execute novamente o programa *spjson.py* e
-pressione atualizar no navegador para obter os novos dados de do arquivo *spider.json*.
-
-
+pressione atualizar no navegador para obter os novos dados do arquivo *spider.json*.
 
 Vizualização de dados de e-mail
 ---------------------
-Até este ponto do livro, você se familiarizou bastante com nossos arquivos de dados *mbox-short.txt* e *mbox.txt*. Agora é hora de levar nossa análise dos dados de email para o próxima nível.
+
+Até este ponto do livro, você se familiarizou bastante com nossos arquivos de dados *mbox-short.txt* e *mbox.txt*. Agora é hora de levar nossa análise dos dados de email para o próximo nível.
 
 No mundo real, às vezes você precisa extrair dados de e-mail de 
-servidores. Isso pode levar algum tempo e os dados podem ser
-inconsistentes, cheio de erros, precisando de uma grande limpeza ou ajuste.
-Nesta seção, trabalharemos com uma aplicação, a mais complexa até agora, que lida com aproximadamente um gigabyte de dados e os visualiza.
+servidores. Isso pode levar algum tempo, e os dados podem ser
+inconsistentes, cheios de erros, precisando de uma grande limpeza ou ajuste.
+Nesta seção, trabalharemos com uma aplicação, a mais complexa até agora, que lida com, aproximadamente, um gigabyte de dados e os visualiza.
 
 ![A Word Cloud from the Sakai Developer List](height=3.5in@../images/wordcloud)
 
-Você pode fazer o download desta aplicação pelo link:
+Você pode fazer o download dessa aplicação pelo link:
 
 [www.py4e.com/code3/gmane.zip](http://www.py4e.com/code3/gmane.zip)
 
-Usaremos dados de um serviço gratuito de arquivamento de listas de e-mail chamado [www.gmane.org] (http://www.gmane.org). Este serviço é muito popular em projetos de código aberto, pois fornece um bom arquivo que pode ser utilizado para pesquisar suas atividades de email. Eles também têm uma política muito liberal em relação ao acesso aos dados por meio da API. Eles não têm limites de taxas, mas solicite que você não sobrecarregue o serviço e utilize apenas os dados necessários. Você pode ler os termos e condições do gmane nesta página:
-
+Usaremos dados de um serviço gratuito de arquivamento de listas de e-mail chamado [www.gmane.org] (http://www.gmane.org). Este serviço é muito popular em projetos de código aberto, pois fornece um bom arquivo que pode ser utilizado para pesquisar suas atividades de email. Eles também têm uma política muito liberal em relação ao acesso aos dados por meio da API. Eles não têm limites de taxas, mas pedem para que você não sobrecarregue o serviço e utilize apenas os dados necessários. Você pode ler os termos e condições do gmane nesta página:
 
 <http://gmane.org/export.php>
 
-*É muito importante que você use os dados do gmane.org responsavelmente, de forma a adicionar atrasos ao seu acesso ao acessar os serviços desta plataforma, além disto quando fazer trabalhos de longa duração fazer com que eles se espalhe por um longo período de tempo. Não abuse deste serviço gratuito, pois fará com que ele seja arruinado para o resto de nós.*
+*É muito importante que você use os dados do gmane.org responsavelmente, de forma a adicionar atrasos em seus acessos aos serviços desta plataforma, e, quando fizer trabalhos de longa duração, fazer com que eles se espalhem por um longo período de tempo. Não abuse deste serviço gratuito, pois fará com que ele seja arruinado para o resto de nós.*
 
-Quando os dados do email Sakai foram rastreados usando esse software, este produziu quase um Gigabyte de dados e necessitou de várias execuções em vários dias. O arquivo *README.txt* no ZIP acima pode ter instruções sobre como você pode baixar uma cópia pré-rastreada do arquivo *content.sqlite* para uma grande parte do corpo de e-mail Sakai, para que você não precise rastrear por cinco dias apenas para executar os programas. Se você baixar o conteúdo pré-rastread, ainda deve executar o processo de rastreamento para acompanhar as mensagens mais recentes.
+Quando os dados do email Sakai foram rastreados usando esse software, este produziu quase um Gigabyte de dados e necessitou de várias execuções em vários dias. O arquivo *README.txt* no ZIP acima pode ter instruções sobre como você pode baixar uma cópia pré-rastreada do arquivo *content.sqlite* para uma grande parte do corpo de e-mail Sakai, para que você não precise rastrear por cinco dias apenas para executar os programas. Se você baixar o conteúdo pré-rastreado, ainda deve executar o processo de rastreamento para acompanhar as mensagens mais recentes.
 
-O primeiro passo é rastrar o repositório gmane. A URL base é codificado rigidamente no código em *gmane.py*e na lista de desenvolvedores Sakai. Você também pode rastrear outro repositório alterando o url base. Tenha certeza de deletar o arquivo *content.sqlite* caso você altere o url.
+O primeiro passo é rastrar o repositório gmane. O URL base é codificado rigidamente no código em *gmane.py* e na lista de desenvolvedores Sakai. Você também pode rastrear outro repositório alterando o url base. Assegure-se de apagar o arquivo *content.sqlite* caso você altere o url.
  
-O arquivo *gmane.py* funciona como uma aranha responsável pelo armazenamento em cache, ele executa lentamente e recupera uma mensagem de e-mail por segundo para evitar ser suprimido pelo gmane. Ele  armazena todos os seus dados em um banco de dados e pode ser interrompido e reiniciado quantas vezes for necessário. Pode ser que leve algumas horas para trabalhar com todos os dados. Desta forma você poderá ter que recomeçar algumas vezes.
+O arquivo *gmane.py* funciona como uma aranha responsável pelo armazenamento em cache, que executa lentamente, buscando uma mensagem de e-mail por segundo para evitar ser suprimido pelo gmane. Ele armazena todos os seus dados em um banco de dados e pode ser interrompido e reiniciado quantas vezes for necessário. Pode ser que leve algumas horas para trabalhar com todos os dados. Desta forma, talvez você tenha que recomeçar algumas vezes.
 
 Aqui está uma execução do arquivo *gmane.py* retornando as últimas cinco mensagens da lista de desenvolvedores de Sakai
 
@@ -286,17 +282,18 @@ http://download.gmane.org/gmane.comp.cms.sakai.devel/51415/51416 0
 
 Does not start with From
 ~~~~
-O programa escaneia o arquivo *content.sqlite* a partir do número da primeira mensagem que não foi escaneada, começando a partir dela. Ela iria continuar escaneando até alcançar o número desejado de mensagens ou até encontrar uma página com uma mensagem que não está formatada corretamente.
 
-As vezes em [gmane.org](gmane.org) está faltando uma mensagem. Possivelmente administradores podem deletar mensagens ou elas são perdidas. Se seu escaneamento parar e parecer que ele encontrou uma mensagem perdida, vá no SQLITE Manager e adicione uma coluna com o Id que falta deixando os outros espaços em branco e reinicie *gmane.py*. Isso fará com que o processo de escaneamento não ficará travado e permitirá que ele continue. Essas mensagens vazias serão ignoradas na próxima fase do processo.
+O programa escaneia o arquivo *content.sqlite* a partir do número da primeira mensagem que não foi escaneada, começando a partir dela. Ele iria continuar escaneando até alcançar o número desejado de mensagens ou até encontrar uma página com uma mensagem que não está formatada corretamente.
 
-Uma coisa boa é que depois de você tiver escaneado todas as suas mensagens, contendo as no arquivo *content.sqlite*, você poderá rodar o programa *gmane.py* novamente para adquirir novas mensagens a medida que elas são adicionadas a lista.
+Às vezes em [gmane.org](gmane.org) está faltando uma mensagem. Possivelmente, administradores podem ter deletado mensagens ou elas terem sido perdidas. Se seu escaneamento parar e parecer que ele encontrou uma mensagem perdida, vá no SQLITE Manager e adicione uma coluna com o Id que falta deixando os outros espaços em branco e reinicie o *gmane.py*. Isso fará com que o processo de escaneamento não fique travado e permitirá que ele continue. Essas mensagens vazias serão ignoradas na próxima fase do processo.
 
-Os dados de *content.sqlite* são bem crus com um modelo de dados ineficiente, além de não serem comprimidos. Isto é intencional, já que e isto permitirá que você olhe o arquivo *content.sqlite* no seu SQLite Manager para debugar os problemas com o processo de escaneamento. Seria uma má ideia rodar alguma busca sobre este banco de dados, pois ela seria bastante lenta.
+Uma coisa boa é que, depois que você houver escaneado todas as suas mensagens, contendo-as no arquivo *content.sqlite*, você poderá rodar o programa *gmane.py* novamente para adquirir novas mensagens a medida que elas são adicionadas à lista.
+
+Os dados de *content.sqlite* são bem crus, com um modelo de dados ineficiente, além de não serem comprimidos. Isto é intencional, já que isto permitirá que você olhe o arquivo *content.sqlite* no seu SQLite Manager para debugar os problemas com o processo de escaneamento. Seria uma má ideia rodar alguma busca sobre este banco de dados, pois ela seria bastante lenta.
 
 O segundo processo é rodar o programa *gmodel.py*. Ele lerá os dados crus do arquivo *content.sqlite* e produzirá uma versão mais limpa e mais bem modelada dos dados no arquivo *index.sqlite*. Este arquivo será bem menor (geralmente 10x menos) do que o *content.sqlite*, pois ele comprime o cabeçalho e o corpo do texto.
 
-Toda vez que o programa *gmodel.py* rodar, ele deletará e reconstruirá o *index.sqlite*, permitindo você ajustar os seus parâmetros e editar as tabelas de mapeamento em *content.sqlite* de forma a fazer você melhorar o processo de limpeza de dados. Aqui está uma amostra de execução do *gmodel.py*. Ele mostra na tela uma linha todas as vezes em que forem processados 250 mensagens de e-mail, desta forma você pode ver uma parte do progresso do programa, este programa poderá estar em execução por um bom tempo, já que ele processará aproximadamente um Gigabyte de dados de e-mail. Gigabyte of mail data.
+Toda vez que o programa *gmodel.py* rodar, ele deletará e reconstruirá o *index.sqlite*, permitindo você ajustar os seus parâmetros e editar as tabelas de mapeamento em *content.sqlite*, de forma a fazer você melhorar o processo de limpeza de dados. Aqui está uma amostra de execução do *gmodel.py*. Ele mostra na tela uma linha a cada vez em que forem processados 250 mensagens de e-mail, permitindo você de ver uma parte do progresso do programa. Este programa poderá estar em execução por um bom tempo, já que ele processará aproximadamente um Gigabyte de dados de e-mail.
 
 ~~~~
 Loaded allsenders 1588 and mapping 28 dns mapping 1
@@ -309,16 +306,14 @@ Loaded allsenders 1588 and mapping 28 dns mapping 1
 
 O programa *gmodel.py* lida com um número de tarefas de limpeza de dados.
 
-Nomes de domínio são truncados em dois níveis quando .com, .org, .edu, and .net. Outros nomes de domínios são truncados em três níveis. Logo, si.umich.edu se torna umich.edu e caret.cam.ac.uk se torna cam.ac.uk. Endereços de e-mail também são forçados a serem minúsculos, além disso alguns dos endereços do @gmane.org são descritos como a seguir
+Os nomes de domínio .com, .org, .edu, and .net são truncados em dois níveis. Outros nomes de domínio são truncados em três níveis. Logo, si.umich.edu se torna umich.edu e caret.cam.ac.uk se torna cam.ac.uk. Endereços de e-mail também são forçados a serem minúsculos, e alguns dos endereços do @gmane.org descritos como o seguinte
 
 ~~~~
 arwhyte-63aXycvo3TyHXe+LvDLADg@public.gmane.org
 ~~~~
+são convertidos para o seu endereço real sempre que existir uma correspondência em outra parte do corpo da mensagem.
 
-estes são convertidos para o seu endereço real sempre que existir uma correspondência em outra parte do corpus da mensagem.
-
-Na base de dados *mapping.sqlite* existem duas tabelas que permitem você mapear ambos os nomes dos domínios e os nomes individuais dos endereços de e-mail que mudam durante o tempo. Por exemplo, Steve Githens utilizou os seguintes endereços de e-mail conforme ele foi mudando de emprego durante o tempo de vida da lista de desenvolvedores de Sakai.
-
+Na base de dados *mapping.sqlite*, existem duas tabelas que permitem você mapear tanto os nomes dos domínios como os endereços de e-mail do indivíduo, que mudam durante o passar do tempo. Por exemplo, Steve Githens utilizou os seguintes endereços de e-mail conforme ele foi mudando de emprego durante o tempo de vida da lista de desenvolvedores de Sakai:
 
 ~~~~
 s-githens@northwestern.edu
@@ -326,16 +321,14 @@ sgithens@cam.ac.uk
 swgithen@mtu.edu
 ~~~~
 
-Você pode adicionar duas entradas para a tabela de Mapeamento em *mapping.sqlite* de forma que *gmodel.py* mapeará todas as três a um único endereço.
-
+Você pode adicionar duas entradas para a tabela de Mapeamento em *mapping.sqlite* de forma que *gmodel.py* mapeará todas os três a um único endereço:
 
 ~~~~
 s-githens@northwestern.edu ->  swgithen@mtu.edu
 sgithens@cam.ac.uk -> swgithen@mtu.edu
 ~~~~
 
-Você também pode fazer entradas similares na tabela DNSMapping se existir múltiplos nomes de DNS que você queira mapear para um único DNS. O mapeamento a seguir foi adicionado aos dados Sakai.
-
+Você também pode fazer entradas similares na tabela DNSMapping se existir múltiplos nomes de DNS que você queira mapear para um único DNS. O mapeamento a seguir foi adicionado aos dados Sakai:
 
 ~~~~
 iupui.edu -> indiana.edu
@@ -343,9 +336,9 @@ iupui.edu -> indiana.edu
 
 logo todas as contas dos vários campus da Universidade de Indiana são monitoradas conjuntamente.
 
-Você pode rodar o programa *gmodel.py* quantas vezes for preciso para melhorar a vizualização dos dados, além de poder adicionar mapeamentos para deixar a os dados mais limpos. Quando você tiver terminado, você terá uma boa versão indexada dos e-mails em *index.sqlite*. Este é o arquivo que deve ser utilizado para fazer a análise dos dados, com ele, a análise será bem rápida.
+Você pode rodar o programa *gmodel.py* quantas vezes for preciso para melhorar a vizualização dos dados, além de poder adicionar mapeamentos para deixar os dados mais limpos. Quando você houver terminado, você terá uma boa versão indexada dos e-mails em *index.sqlite*. Este é o arquivo que deve ser utilizado para fazer a análise dos dados, com ele, a análise será bem rápida.
 
-A primeira e análise de dados mais simple é determinar "quem enviou mais e-mail" e "qual organização enviou mais e-mails"? Isto é feito utilizando o programa *gbasic.py*:
+A primeira análise de dados mais simples é determinar "quem enviou mais e-mails" e "qual organização enviou mais e-mails"? Isto é feito utilizando o programa *gbasic.py*:
 
 ~~~~
 How many to dump? 5
@@ -366,23 +359,22 @@ indiana.edu 2258
 unicon.net 2055
 ~~~~
 
-Observe com que rapidez o código em *gbasic.py* é executado em comparação com o código em
-*gmane.py* ou mesmo com aquele em *gmodel.py*. Eles estão
+Observe com que rapidez o código em *gbasic.py* é executado em comparação ao código em
+*gmane.py*, ou mesmo com aquele em *gmodel.py*. Eles estão
 todos trabalhando nos mesmos dados, mas *gbasic.py* está usando
 os dados compactados e normalizados que estão armazenados em *index.sqlite*. E se
-você tem muitos dados para gerenciar, um processo de várias etapas como o desse aplicativo pode demorar um pouco mais para ser desenvolvido, mas você economizará muito tempo quando você realmente começar a explorar e visualizar os seus dados.
+você tem muitos dados para gerenciar, um processo de várias etapas como o dessa aplicação pode demorar um pouco mais para ser desenvolvido, mas você economizará muito tempo quando você realmente começar a explorar e visualizar os seus dados.
 
-Você pode produzir uma simples visualização da frequência de palavra nas linhas de assunto no arquivo *gword.py*:
-
+Você pode produzir uma simples visualização da frequência de palavras nas linhas de assunto no arquivo *gword.py*:
 
 ~~~~
 Range of counts: 33229 129
 Output written to gword.js
 ~~~~
 
-Isso produz o arquivo *gword.js* que pode ser visualizado usando o programa *gword.htm* para produzir uma nuvem de palavras semelhante a produzida no início desta seção.
+Isso produz o arquivo *gword.js*, que pode ser visualizado usando o programa *gword.htm* para produzir uma nuvem de palavras, semelhante àquela produzida no início desta seção.
 
-Uma segunda visualização é produzida pelo código em *gline.py*. Neste código é calculado a participação de email por organizações ao longo do tempo.
+Uma segunda visualização é produzida pelo código em *gline.py*. Neste código é calculado a participação de email pelas organizações ao longo do tempo.
 
 ~~~~
 Loaded messages= 51330 subjects= 25033 senders= 1584
@@ -398,6 +390,6 @@ usando o programa *gline.htm*.
 
 ![Sakai Mail Activity by Organization](../images/mailorg)
 
-Esta é uma aplicação relativamente complexa e sofisticada e tem
+Esta é uma aplicação relativamente complexa e sofisticada, e tem
 características para realizar a recuperação, limpeza e visualização de dados reais.
 
