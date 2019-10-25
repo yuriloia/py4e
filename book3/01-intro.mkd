@@ -5,10 +5,10 @@
 Por que você deveria aprender a programar?
 =======================================
 
-Escrever programas (ou programar) é uma atividade muito criativa e gratificante. Você pode escrever programas por várias razões, seja para ganhar a vida, para resolver um problema difícil de análises de dados ou apenas se divertir ajudando alguém a solucionar um problema.
-Este livro assume que *todos* precisam saber como programar, e, uma vez  sabendo, você vai descobrir o que deseja fazer com suas novas habilidades.
+Escrever programas (ou programar) é uma atividade muito criativa e gratificante. Você pode escrever programas por várias razões, seja para ganhar a vida, para resolver um problema difícil de análises de dados, ou apenas se divertir ajudando alguém a solucionar um problema.
+Este livro assume que *todos* precisam saber como programar, e, uma vez sabendo, você vai descobrir o que deseja fazer com suas novas habilidades.
 
-Em nosso dia-a-dia, estamos rodeados de computadores, de laptops a celulares. Nós podemos imaginar esses computadores como nossos "assistentes pessoais", que cuidam de muitas de nossas coisas.O \emph{hardware} dos nossos computadores cotidianos é essencialmente construído para nos perguntar continuamente: "O que você deseja que eu faça agora?".
+Em nosso dia-a-dia, estamos rodeados de computadores, de laptops a celulares. Nós podemos imaginar esses computadores como nossos "assistentes pessoais", que cuidam de muitas de nossas coisas. O hardware dos nossos computadores cotidianos é essencialmente construído para nos perguntar continuamente: "O que você deseja que eu faça agora?".
 
 
 ![Personal Digital Assistant](height=1.0in@../images/pda)
@@ -26,9 +26,9 @@ Enter file:words.txt
 de 8
 ~~~~
 
-Nosso "assistente pessoal de análises de informação" rapidamente nos diria que a palavra "de" foi usada oito vezes nos três primeiros parágrafos deste capítulo.
+Nosso "assistente pessoal de análises de informação" rapidamente nos diria que a palavra "de" foi usada oito vezes nos três primeiros parágrafos desse capítulo.
 
-Este mesmo fato de que computadores são bons em coisas que humanos não são é o motivo pelo qual você precisa se tornar hábil em falar a "linguagem computacional". Uma vez que você aprende essa nova linguagem, você pode designar tarefas mundanas para seu parceiro (o computador), sobrando mais tempo para fazer as coisas as quais você é unicamente adequado. Você traz criatividade, intuição e inventividade a essa parceria.
+Esse mesmo fato de que computadores são bons em coisas que humanos não são é o motivo pelo qual você precisa se tornar hábil em falar a "linguagem computacional". Uma vez que você aprende essa nova linguagem, você pode designar tarefas mundanas para seu parceiro (o computador), sobrando mais tempo para fazer as coisas as quais você é unicamente adequado. Você traz criatividade, intuição e inventividade a essa parceria.
 
 Criatividade e motivação
 -------------------------
@@ -48,7 +48,7 @@ Arquitetura de hardware de computadores
 ------------------------------
 
 \index{hardware}
-\index{hardware!architetura}
+\index{hardware!arquitetura}
 
 Antes de começarmos a aprender a linguagem que usamos para dar instruções a computadores para o desenvolvimento de software, precisamos saber um pouco sobre como computadores são construídos. Se você por acaso desmontasse seu computador ou celular, encontraria as seguintes partes:
 
@@ -56,42 +56,43 @@ Antes de começarmos a aprender a linguagem que usamos para dar instruções a c
 
 As definições em alto nível dessas partes são as seguintes:
 
--   A *Unidade de Processamento Central* (ou CPU) é a parte do computador que é construída para ser obcecada com a pergunta "E agora?".     Se seu computador é avaliado em 3.0 Gigahertz, significa que ele irá perguntar "E agora?" três bilhões de vezes por segundo. Você       terá que aprender como falar rápido para acompanhar a CPU.
+-   A *Unidade de Processamento Central* (ou CPU) é a parte do computador que é construída para ser obcecada com a pergunta "E agora?". Se seu computador é avaliado em 3.0 Gigahertz, significa que ele irá perguntar "E agora?" três bilhões de vezes por segundo. Você terá que aprender como falar rápido para acompanhar a CPU.
 
--   A *Memória Principal* é utilizada para armazenar informações que a CPU precisa com urgência. Sendo a memória quase tão rápida quanto     a CPU. Mas a informação armazenada nessa memória desaparece quando o computador é desligado.
+-   A *Memória Principal* é utilizada para armazenar informações que a CPU precisa com urgência. Sendo a memória quase tão rápida quanto a CPU. Mas a informação armazenada nessa memória desaparece quando o computador é desligado.
 
--   A *Memória Secundária* também é utilizada para armazenar informação, mas é muito mais lenta que a memória principal. A vantagem é       que os dados podem ser guardados até quando o computador está desligado.  Exemplos de memória secundária são os discos rígidos ou as     memórias flash (tipicamente encontrados em dispositivos USB e reprodutores de música portáteis).
+-   A *Memória Secundária* também é utilizada para armazenar informação, mas é muito mais lenta que a memória principal. A vantagem é que os dados podem ser guardados até quando o computador está desligado. Exemplos de memória secundária são os discos rígidos ou as memórias flash (tipicamente encontrados em dispositivos USB e em reprodutores de música portáteis).
 
--   Os *Dispositivos de Entrada e Saída* são simplesmente nosso monitor, teclado, mouse, microfone, alto-falante, touchpad, etc. Eles são todas       as maneiras que temos para interagir com o computador.
+-   Os *Dispositivos de Entrada e Saída* são simplesmente nosso monitor, teclado, mouse, microfone, alto-falante, touchpad, etc. Eles são todas as maneiras que temos para interagir com o computador.
 
 -   Atualmente, a maioria dos computadores também tem uma *Conexão de rede* para receber informações de uma rede.
-    Podemos pensar nessa rede como um local muito devagar para armazenar e receber informação que nem sempre pode estar "à disposição".         Então, em resumo, essa rede é uma forma lenta e às vezes não confiável de *Memória Secundária*.
+    Podemos pensar nessa rede como um local muito devagar para armazenar e receber informação que nem sempre pode estar "à disposição". Então, em resumo, essa rede é uma forma lenta e às vezes não confiável de *Memória Secundária*.
 
 Embora seja melhor deixar para construtores de computadores a maioria dos detalhes de como esses componentes funcionam, ter algumas terminologias ajuda uma vez que podemos falar dessas partes à medida que escrevemos nossos programas.
 
-Como um programador, seu trabalho é usar e orquestrar cada um desses recursos para resolver o problema que você precisa resolver e analisar as informações obtidas da solução.  Você vai, na maioria das vezes, estar "falando" com a CPU e dizendo a ela o que fazer agora. Algumas vezes dirá para usar a memória principal, memória secundária, rede, ou os dispositivos de entrada e saída.
+Como um programador, seu trabalho é usar e orquestrar cada um desses recursos para resolver o problema que você precisa resolver e para analisar as informações obtidas da solução.  Você vai, na maioria das vezes, estar "falando" com a CPU e dizendo a ela o que fazer agora. Algumas vezes dirá para usar a memória principal, a memória secundária, a rede, ou os dispositivos de entrada e saída.
 
 
 ![Where Are You?](height=1.75in@../images/arch2)
 
-Você precisa ser a pessoa que responde à pergunta "E agora?" da CPU.  Mas seria bem desconfortável te encolher a um tamanho de 5 mm só para que você emita um comando três bilhões de vezes por segundo. Então, em vez disso, você deve escrever suas instruções antecipadamente.
-Chamamos essas instruções armazenadas de  *programa* e o ato de escrevê-las e garantir que estejam corretas de  *programar*.
+Você precisa ser a pessoa que responde à pergunta "E agora?" da CPU. Mas seria bem desconfortável te encolher a um tamanho de 5 mm só para que você emita um comando três bilhões de vezes por segundo. Então, em vez disso, você deve escrever suas instruções antecipadamente.
+Chamamos essas instruções armazenadas de *programa* e o ato de escrevê-las e garantir que estejam corretas de  *programar*.
 
 Entendendo Programação
 -------------------------
 
-No resto do livro, nós tentaremos te transformar numa pessoa que tem habilidade na arte de programar. No final você será um *programador* --- talvez não um profissional, mas ao menos você terá a capacidade de olhar um problema relacionado a dados e/ou informações e conseguirá desenvolver um programa que solucione o problema.
+No resto do livro, nós tentaremos te transformar numa pessoa que tem habilidade na arte de programar. No final, você será um *programador* --- talvez não um profissional, mas ao menos você terá a capacidade de olhar um problema relacionado a dados e/ou informações e conseguirá desenvolver um programa que solucione o problema.
+
 \index{resolução de problemas}
 
 De um modo ou de outro você precisará de duas habilidades para ser programador:
 
 -  Primeiro, você terá que aprender a linguagem de programação (Python), ou seja, você tem que saber o vocabulário e a gramática. Você tem que ser capaz de soletrar as palavras adequadamente nesta nova linguagem de forma a construir "sentenças" bem elaboradas.
 
--   Segundo, você precisa "contar uma história". Quando se conta uma história se combina palavras e sentenças para se transmitir uma ideia ao leitor. Existe uma habilidade e uma arte na construção de uma história e a habilidade contá-la é aperfeiçoada quando se escreve e alguém avalia o seu trabalho dando um feedback sobre o mesmo. Na área de  programação, o nosso programa é a "história" e o problema que nós estamos querendo solucionar é a "ideia".
+-  Segundo, você precisa "contar uma história". Quando se conta uma história se combina palavras e sentenças para se transmitir uma ideia ao leitor. Existe uma habilidade e uma arte na construção de uma história e a habilidade de contá-la é aperfeiçoada quando se escreve e alguém avalia o seu trabalho dando um feedback sobre ele. Na área de programação,    o nosso programa é a "história" e o problema que nós estamos querendo solucionar é a "ideia".
 
 A partir do momento que você aprende uma linguagem de programação como Python, você terá muito mais facilidade em aprender uma segunda linguagem de programação como Javascript ou C++. A nova linguagem poderá ter gramática e vocabulário diferentes, mas as habilidades para resolver problemas serão as mesmas através de todas elas.
 
-Você aprenderá o "vocabulário" e as "sentenças" de Python muito rápido. Será mais demorado para você aprender a escrever um programa coerente para solucionar um problema novo. Nós ensinamos programação assim como ensinamos a escrever. Nós começaremos lendo e explicando programas, depois nós escreveremos programas simples e logo após vamos passar para programas cada vez mais complexos conforme o tempo for passando. Em algum ponto você "encontrará sua musa" e perceberá padrões por conta própria e verá mais claramente como pegar um problema e escrever um programa que o soluciona. Quando chegar neste ponto programar será um processo agradável e criativo.
+Você aprenderá o "vocabulário" e as "sentenças" de Python muito rápido. Será mais demorado para você aprender a escrever um programa coerente para solucionar um problema novo. Nós ensinamos programação assim como ensinamos a escrever. Nós começaremos lendo e explicando programas, depois nós escreveremos programas simples e logo após vamos passar para programas cada vez mais complexos conforme o tempo for passando. Em algum ponto você "pegará o gancho" e perceberá padrões por conta própria e verá mais claramente como pegar um problema e escrever um programa que o soluciona. Quando chegar nesse ponto, programar será um processo agradável e criativo.
 
 Começaremos com o vocabulário e a estrutura dos programas em Python. Seja paciente, pois os exemplos te lembrarão como foi ler pela primeira vez.
 
