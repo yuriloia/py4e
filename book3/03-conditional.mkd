@@ -40,7 +40,7 @@ eles não são strings:
 ~~~~
 
 O operador `==` é um dos *operadores de comparação*;
-outros operadores dese tipo são:
+outros operadores desse tipo são:
 
 ~~~~ {.python}
 x != y               # x é diferente de y
