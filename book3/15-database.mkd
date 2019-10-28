@@ -711,127 +711,127 @@ Follows:
 Você pode ver os campos `id`, `nome` e `visitado` na tabela `Pessoas`, bem como os números em ambas as pontas da relação na tabela `Segue`. Na tabela `Pessoas`, vemos que as três primeiras pessoas foram visitadas e suas informações foram obtidas. Os dados na tabela `Segue` indicam que `drchuck` (usuário 1) é amigo de todas as pessoas nas primeiras 5 linhas. Isto faz sentido já que o primeiro conjunto de informações recuperado e armazenado foi referente aos amigos de `drchuck`. Se desejasse imprimir mais linhas da tabela `Segue`, também veria os amigos dos usuários 2 e 3.
 
 
-Three kinds of keys
+Três tipos de chaves
 -------------------
 
-Now that we have started building a data model putting our data into
-multiple linked tables and linking the rows in those tables using
-*keys*, we need to look at some terminology around keys.
-There are generally three kinds of keys used in a database model.
+Agora que começamos construindo um modelo de dados colocando nossos dados dentro
+várias tabelas vinculadas e vinculando as linhas nestas tabelas usando
+*chaves*, nós precisamos examinar algumas terminologias entorno das chaves.
+Geralmente existem três tipos de chaves usadas em um modelo de banco de dados.
 
--   A *logical key* is a key that the "real world" might
-    use to look up a row. In our example data model, the
-    `name` field is a logical key. It is the screen name for
-    the user and we indeed look up a user's row several times in the
-    program using the `name` field. You will often find that
-    it makes sense to add a `UNIQUE` constraint to a logical
-    key. Since the logical key is how we look up a row from the outside
-    world, it makes little sense to allow multiple rows with the same
-    value in the table.
+-   Uma *chave lógica* é uma chave que no "mundo real" pode ser
+    usado para procurar uma linha. No nosso exemplo de modelo de dados, o
+    campo `nome` é uma chave lógica. É o nome de tela para
+    o usuário e nós de fato procuramos linhas de um usuários várias vezes no
+    programa usando o campo `nome`. Você vai encontrar frequentemente que
+    isso faz sentido para adicionar uma restrição `ÚNICA` para uma chave lógica.
+    Como a chave lógica é como procurarmos uma linha do lado de fora do mundo, 
+    faz pouco sentido permitir várias linhas com o mesmo
+    valor na tabela.
 
--   A *primary key* is usually a number that is assigned
-    automatically by the database. It generally has no meaning outside
-    the program and is only used to link rows from different tables
-    together. When we want to look up a row in a table, usually
-    searching for the row using the primary key is the fastest way to
-    find the row. Since primary keys are integer numbers, they take up
-    very little storage and can be compared or sorted very quickly. In
-    our data model, the `id` field is an example of a primary
-    key.
+-   Uma *chave primária* é geralmente um número que é atribuído
+    automáticamente pelo banco de dados. Geralmente não tem significado fora
+    do programa e é usado somente para para vincular linhas de diferentes tabelas
+    juntas. Qaundo queremos procurar uma linha em uma tabela, geralmente
+    pesquisamos pela linha usando a chave primária é a maneira mais rápida para
+    encontrar uma linha. Como as chaves primárias são números inteiros, elas ocupam
+    muito pouco armazenamento e podem ser comparadas ou classificadas muito rapidamente. No
+    nosso modelo de dados, o campo `id` é um exemplo de uma chave primária.
+    
 
--   A *foreign key* is usually a number that points to
-    the primary key of an associated row in a different table. An
-    example of a foreign key in our data model is the `from_id`.
+-   Uma *chave estrangeira* é geralmente um número que aponta para
+    uma chave primária de uma linha associada em uma tabela diferente. Como
+    exemplo de uma chave estrangeira em nosso modelo de dados é o `de_id`.
 
-We are using a naming convention of always calling the primary key field
-name `id` and appending the suffix `_id` to any field name
-that is a foreign key.
+Estamos usando uma convenção de nomenclatura de sempre chamar o campo de chave primária 
+nome `identidade` e aparecendo o sufixo `_id` para qualquer campo nome
+que é uma chave estrangeira.
 
-Using JOIN to retrieve data
+Usando JOIN para recuperar dados
 ---------------------------
 
-Now that we have followed the rules of database normalization and have
-data separated into two tables, linked together using primary and
-foreign keys, we need to be able to build a `SELECT` that
-reassembles the data across the tables.
+Agora que temos seguido as regras de normalização de banco de dados e temos
+dados separados dentro de duas tabelas, interligados usando chaves primárias e
+estrangeiras, precisamos estar prontos para construir uma `SELECT` que
+remonta os dados nas tabelas.
 
-SQL uses the `JOIN` clause to reconnect these tables. In the
-`JOIN` clause you specify the fields that are used to
-reconnect the rows between the tables.
+SQL usa a cláusula `JOIN` para reconectar estas tabelas. Na
+cláusula `JOIN` você especifica os campos que são usados para
+reconectar as linhas entre as tabelas.
 
-The following is an example of a `SELECT` with a
-`JOIN` clause:
+A seguir está um exemplo de uma `SELECT` com uma cláusula
+`JOIN`:
 
 ~~~~ {.sql}
-SELECT * FROM Follows JOIN People
-    ON Follows.from_id = People.id WHERE People.id = 1
+SELECT * FROM Seguidores JOIN Pessoa
+    ON Seguidores.de_id = Pessoa.id WHERE Pessoa.id = 1
 ~~~~
 
-The `JOIN` clause indicates that the fields we are selecting
-cross both the `Follows` and `People` tables. The
-`ON` clause indicates how the two tables are to be joined:
-Take the rows from `Follows` and append the row from
-`People` where the field `from_id` in `Follows` is
-the same the `id` value in the `People` table.
+A cláusula `JOIN` indica que os campos que estamos selecionando
+cruze as tabelas `Seguidores` e `Pessoa`. A cláusula
+`ON` indicada como as duas tabelas devem ser unidas:
+Pegue as linhas de `Seguidores` e acrescente a linha de
+`Pessoa` onde o campo `de_id` em `Seguidores` é
+o mesmo valor `id` na tabela `Pssoa`.
 
-![Connecting Tables Using JOIN](height=3.5in@figs2/join)
+![Conectando Tabelas Usando JOIN](height=3.5in@figs2/join)
 
-The result of the JOIN is to create extra-long "metarows" which have
-both the fields from `People` and the matching fields from
-`Follows`. Where there is more than one match between the
-`id` field from `People` and the `from_id` from
-`People`, then JOIN creates a metarow for *each* of the
-matching pairs of rows, duplicating data as needed.
+O resultado de JOIN é criar "metalinhas" extra-longas as quais possuem
+os campos de `Pessoa` e os campos correspondentes de
+`Seguidores`. Onde existem mais que um correspondente entre o campo
+`id` de `Pessoa` e o `from_id` de
+`People`, quando JOIN cria uma metalinha para *cada*
+par de linhas correspondentes, duplicaando dados conforme necessário.
 
-The following code demonstrates the data that we will have in the
-database after the multi-table Twitter spider program (above) has been
-run several times.
+A código a seguir demonstra dados que teremos no banco de dados
+após o programa multi-tables Twitter spider (acima) ser
+executado várias vezes.
 
 \VerbatimInput{../code3/twjoin.py}
 
-In this program, we first dump out the `People` and
-`Follows` and then dump out a subset of the data in the
-tables joined together.
+Nesse programa, nós primeiramente despejamos a `Pessoa` e
+`Seguidores` e quando despejamos um subconjunto do dados nas tabelas
+unidas.
 
-Here is the output of the program:
+Aqui está a saída do programa:
 
 ~~~~
 python twjoin.py
-People:
+Pessoa:
 (1, 'drchuck', 1)
 (2, 'opencontent', 1)
 (3, 'lhawthorn', 1)
 (4, 'steve_coppin', 0)
 (5, 'davidkocher', 0)
-55 rows.
-Follows:
+55 linhas.
+Seguidores:
 (1, 2)
 (1, 3)
 (1, 4)
 (1, 5)
 (1, 6)
-60 rows.
-Connections for id=2:
+60 linhas.
+Conexões para id=2:
 (2, 1, 1, 'drchuck', 1)
 (2, 28, 28, 'cnxorg', 0)
 (2, 30, 30, 'kthanos', 0)
 (2, 102, 102, 'SomethingGirl', 0)
 (2, 103, 103, 'ja_Pac', 0)
-20 rows.
+20 linhas.
 ~~~~
 
-You see the columns from the `People` and
-`Follows` tables and the last set of rows is the result of
-the `SELECT` with the `JOIN` clause.
+Você vê as colunas da tabela `Pessoa` e
+`Seguidores` e o último conjunto de linhas é o resultado de
+ `SELECT` com a cláusula `JOIN`.
 
-In the last select, we are looking for accounts that are friends of
-"opencontent" (i.e., `People.id=2`).
+Na última seleção, estamos olhando para contas que são amigas de
+"opencontent" (i.e., `Pessoa.id=2`).
 
-In each of the "metarows" in the last select, the first two columns are
-from the `Follows` table followed by columns three through
-five from the `People` table. You can also see that the
-second column (`Follows.to_id`) matches the third column
-(`People.id`) in each of the joined-up "metarows".
+Em cada uma das "metalinhas" na última seleção, a primeira das duas colunas são
+da tabela `Seguidores` seguido por três colunas através
+de cinco da tabela `Pessoa`. Você pode também ver que a segunda coluna
+(`Seguidores.to_id`) corresponde a terceira coluna
+(`Pessoa.id`) em cada das "metalinhas" associadas.
 
 Sumário
 -------
