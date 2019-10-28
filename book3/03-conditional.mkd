@@ -1,7 +1,7 @@
 Execução condicional
 =====================
 
-Expressões boleanas
+Expressões booleanas
 -------------------
 
 \index{expressão booleana}
