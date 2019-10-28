@@ -4,10 +4,10 @@ Execução condicional
 Expressões boleanas
 -------------------
 
-\index{expressões booleanas}
+\index{expressão booleana}
+\index{expressão!booleana}
 \index{operador lógico}
-\index{expressão! booleano}
-\index{operador! lógico}
+\index{operador!lógico}
 
 Uma *expressão booleana* é uma expressão que pode ser ou verdadeira ou falsa.
 Os exemplos a seguir utilizam o operador `==`,
@@ -29,7 +29,7 @@ eles não são strings:
 \index{False valor especial}
 \index{valor especial!True}
 \index{valor especial!False}
-\index{bool calsse}
+\index{bool classe}
 \index{tipo!bool}
 
 ~~~~ {.python}
@@ -40,7 +40,7 @@ eles não são strings:
 ~~~~
 
 O operador `==` é um dos *operadores de comparação*;
-outros operadores deste tipo são:
+outros operadores desse tipo são:
 
 ~~~~ {.python}
 x != y               # x é diferente de y
@@ -61,8 +61,8 @@ Lembre-se que `=` é um operador de atribuição e `==` é um
 operador de comparação. Vale mencionar que não há operadores `=<` e `=>`.
 
 
-\index{operador!comparação}
 \index{operador de comparação}
+\index{operador!comparação}
 
 Operadores lógicos
 -----------------
@@ -71,12 +71,12 @@ Operadores lógicos
 \index{operador!lógico}
 
 Existem três operadores lógicos: `and`,
-`or`, e `not`. A semântica (significado) destes
+`or`, e `not`. A semântica (significado) desses
 operadores são similares ao seu significado em Inglês. Por exemplo,
 
 `x > 0 and x < 10`
 
-é verdadeiro só se `x` for maior do que 0 *e* menor que 10.
+só é verdadeiro se `x` for maior do que 0 *e* menor que 10.
 
 \index{operador and}
 \index{operador or}
@@ -101,7 +101,7 @@ True
 ~~~~
 
 Essa flexibilidade pode ser útil, mas existem algumas sutilezas que
-podem ser confusas. Você pode querer evitá-los até você ter
+podem ser confusas. É bom evitá-los até você ter
 certeza de que sabe o que está fazendo.
 
 Execução condicional
@@ -110,28 +110,28 @@ Execução condicional
 \index{declaração! condicional}
 \index{declaração if}
 \index{declaração!if}
-\index{Execuções condicionais}
+\index{execuções condicionais}
 
-A fim de  escrever programas úteis nós sempre necessitamos da habilidade de checar condições e de mudar o comportamento do programa de acordo com elas. *Declarações Condicionais* nos dão esta habilidade. A forma mais simples é a declaração `if`:
+A fim de escrever programas úteis, nós sempre necessitamos da habilidade de checar condições e de mudar o comportamento do programa de acordo com elas. *Declarações Condicionais* nos dão essa habilidade. A forma mais simples é a declaração `if`:
 
 ~~~~ {.python}
 if x > 0 :
     print('x é positivo')
 ~~~~
 
-A expressão boleana depois da declaração `if` é chamada de *condição*. Nós terminamos esta declaração com símbolo de dois pontos (:) e a(s) linha(s) depois da declaração `if`são indentadas.
+A expressão booleana depois da declaração `if` é chamada de *condição*. Nós terminamos essa declaração com símbolo de dois pontos (:) e a(s) linha(s) depois da declaração `if` são indentadas.
 
 ![If Logic](height=1.5in@../images/if)
 
-Se a condição lógica é verdade, então a declaração indentada é executada. Se a condição lógica for falsa, a condição indentada é ignorada.
+Se a condição lógica é verdadeira, então a declaração indentada é executada. Se a condição lógica for falsa, a condição indentada é ignorada.
 
 \index{condição}
 \index{declaração composta}
 \index{declaração! composta}
 
-Declarações `if` tem a mesma com as definições de funções ou laços `for` ^[Nós aprenderemos sobre funções no Capítulo 4 e laços no Capítulo 5.]. A declaração consiste com uma linha de cabeçalho que acaba com um símbolo de dois pontos (:) seguido de um bloco indentado. Declarações como essas são chamadas de *declarações compostas*, pois elas se alongam por mais de uma linha.
+Declarações `if` têm a mesma estrutura que as definições de funções ou laços `for` ^[Nós aprenderemos sobre funções no Capítulo 4 e laços no Capítulo 5.]. A declaração consiste com uma linha de cabeçalho que acaba com um símbolo de dois pontos (:) seguido de um bloco indentado. Declarações como essas são chamadas de *declarações compostas*, pois elas se alongam por mais de uma linha.
 
-Não existe limite para o número de declarações que pode-se aparecer no corpo, mas é necessária que apareça pelo menos uma. Ocasionalmente, é útil deixar um corpo sem declarações (geralmente para guardar o lugar de um código que você ainda não escreveu). Neste caso, você pode utilizar a declaração `pass`, que não faz nada.
+Não existe limite para o número de declarações que se pode aparecer no corpo, mas é necessária que apareça pelo menos uma. Ocasionalmente, é útil deixar um corpo sem declarações (geralmente para guardar o lugar de um código que você ainda não escreveu). Nesse caso, você pode utilizar a declaração `pass`, que não faz nada.
 
 \index{declaração pass}
 \index{declaração!pass}
@@ -166,7 +166,7 @@ Ao utilizar o interpretador Python, você deverá deixar uma linha em branco no 
 SyntaxError: invalid syntax
 ~~~~
 
-Uma linha em branco no final do bloco de declaração não é necessário quando se está escrevendo e executando o script, mas pode melhorar a leitura do seu código.
+Uma linha em branco no final do bloco de declaração não é necessária quando se está escrevendo e executando o script, mas pode melhorar a leitura do seu código.
 
 Execução alternativa
 ---------------------
@@ -244,8 +244,8 @@ Cada condição é verificada em ordem. Se a primeira for falsa, a próxima é v
 Condições aninhadas
 -------------------
 
-\index{condições aninhada}
-\index{condições!aninhada}
+\index{condição aninhada}
+\index{condição!aninhada}
 
 Uma condição pode também ser aninhada com outra. Nós poderiamos ter
 escrito o exemplo com três ramos assim:
