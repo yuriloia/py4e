@@ -7,8 +7,9 @@ Valores e tipos
 \index{valor}
 \index{tipo}
 \index{string}
+
 Um *valor* é uma das coisas mais básicas trabalhadas por um programa, como uma letra ou um número. Os valores que vimos até aqui foram
-1, 2, e "Alo, Mundo!"
+1, 2, e "Alô, Mundo!"
 
 
 Esses valores pertencem a diferentes *tipos*:
@@ -37,7 +38,7 @@ Se você não está tão certo sobre qual é o tipo de um valor, o interpretador
 ~~~~
 
 
-Sem muita surpresa, strings são do tipo `str` e inteiros são do tipo `int`.  Um pouco menos óbvio, números com casas decimais são do tipo `float`,
+Sem muita surpresa, strings são do tipo `str` e inteiros são do tipo `int`. Um pouco menos óbvio, números com casas decimais são do tipo `float`,
 porque esses números são representados em um formato chamado *ponto flutuante*.
 
 
@@ -106,7 +107,7 @@ Uma *declaração por atribuição* cria novas variáveis e atribui valores a el
 ~~~~
 
 
-Neste exemplo, foram feitas três atribuições. A primeira designa uma string para uma nova variável chamada `mensagem`; a segunda atribui o valor inteiro 17 para `n`; a terceira atribui o valor (aproximado) de $\pi$ para a variável `pi`. 
+Nesse exemplo, foram feitas três atribuições. A primeira designa uma string para uma nova variável chamada `mensagem`; a segunda atribui o valor inteiro 17 para `n`; a terceira atribui o valor (aproximado) de $\pi$ para a variável `pi`. 
 
 Para mostrar o valor de uma variável, você pode usar um comando print:
 
@@ -138,8 +139,8 @@ Os programadores geralmente escolhem nomes para suas variáveis que são signifi
 Nomes de variáveis podem ser arbitrariamente longos. Elas podem conter letras e números, mas elas não podem começar com um número. É válido usar letras maiúsculas, mas é uma boa ideia começar nomes de variáveis com uma letra minúscula (você verá o porquê mais tarde).
 
 O caractere de sublinhado ( \_ ) pode aparecer em um nome. É frequentemente usado em nomes com
-várias palavras, such as
-`my_name` or `airspeed_of_unladen_swallow`. 
+várias palavras, como
+`meu_nome` ou `velocidade_de_uma_andorinha_sem_carga`. 
 Nomes de variáveis podem começar com um caractere sublinhado, mas é bom evitar fazer isso a menos que se esteja escrevendo um código de biblioteca para outros.
 
 \index{caractere underscore}
@@ -735,7 +736,7 @@ Valor a ser pago: 96.25
 Não vamos nos preocupar em garantir que nosso pagamento tenha exatamente dois dígitos após a casa decimal por enquanto.  Se você quiser, você pode utilizar com a função nativa do Python `round` função para arredondar corretamente o pagamento resultante para duas casas decimais.
 
 
-**Exercício 4: uponha que executamos as seguintes declaração por atribuição:**
+**Exercício 4: Suponha que executamos as seguintes declaração por atribuição:**
 
 ~~~~
 Largura = 17
