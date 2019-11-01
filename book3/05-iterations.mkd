@@ -11,7 +11,7 @@ Atualizando Variáveis
 \index{variável!atualizando}
 
 Um modelo comum de declaração de atribuição é uma
-que atualiza o valor de uma variável, onde 
+que atualiza o valor de uma variável, na qual 
 o seu novo valor depende do seu anterior. 
 
 ~~~~ {.python}
@@ -19,7 +19,7 @@ x = x + 1
 ~~~~
 
 Isso significa “pegue o valor atual de x, adicione 1 e 
-então atualize x com este novo valor.” 
+então atualize x com esse novo valor.” 
 
 Se você tentar atualizar uma variável que não existe, ocorrerá
 um erro, já que o Python avalia o lado direito da igualdade antes de atribuir
@@ -74,14 +74,14 @@ print('Lançar!')
 ~~~~
 
 A declaração `while` quase pode ser lida como se fosse um texto comum (escrito
-em inglês). Em português teríamos algo como: "Enquanto `n` for maior 
-que 0, mostre o valor de `n` e então subtraia 1 deste valor. Quando
+em português). Em português, teríamos algo como: "Enquanto `n` for maior 
+que 0, mostre o valor de `n` e então subtraia 1 desse valor. Quando
 atingir o valor 0, saia da declaração `while` e mostre 
 a palavra `Lançar!`".
 
 \index{fluxo de execução}
 
-De forma mais formal, o fluxo de execução da declaração `while`
+De maneira mais formal, o fluxo de execução da declaração `while`
 seria:
 
 1.	Análise da condição, retornando um valor `True` 
@@ -93,7 +93,7 @@ seria:
 3.	Se a condição for verdadeira, execute o bloco `while`
     e então retorne ao passo 1.
     
-Este bloco de instruções é chamado de *laço*, pois o terceiro
+Esse bloco de instruções é chamado de *laço*, pois o terceiro
 passo faz retornar ao primeiro. Nomeamos de *iteração* cada vez em que as 
 instruções dentro de um laço são executadas. 
 Para o programa anterior, podemos dizer que “ele teve cinco iterações”,
@@ -103,9 +103,9 @@ ou seja, o corpo do laço foi executado cinco vezes.
 \index{laço}
 \index{corpo}
 
-O corpo do laço normalmente deve alterar o valor de uma ou mais
+O corpo do laço normalmente deve alterar o valor de uma ou de mais
 variáveis, de forma que, eventualmente, a condição de execução 
-se torne falsa e a repetição se encerre. Chamamos esta variável que tem
+se torne falsa e a repetição se encerre. Chamamos essa variável que tem
 seu valor alterado em cada execução do laço e controla quando ele
 deve terminar de *variável de iteração*. Se não houver uma
 variável de iteração, o loop se repetirá eternamente, resultando
@@ -128,8 +128,8 @@ e podemos ver que esse valor fica cada vez menor
 durante o laço, então eventualmente chegaremos ao 0. Outras vezes, um laço
 é claramente infinito, pois não existe variável de iteração.
 
-\index{estrutura break}
-\index{estrutura!break}
+\index{comando break}
+\index{comando!break}
 
 Às vezes você não sabe que é hora de terminar o laço até chegar ao meio
 dele. Nesse caso você pode escrever um laço infinito de propósito
@@ -164,12 +164,12 @@ ele digite `pronto`. Você pode escrever:
 
 \VerbatimInput{../code3/copytildone1.py}
 
-A condição do laço é `True`, que sempre é verdadeiro, então ele
+A condição do laço é `True`, que sempre é verdadeira, então ele
 é executado repetidamente até atingir a estrutura break.
 
 A cada repetição, ele solicita uma entrada do usuário mostrando um sinal de “menor que”.
 Se o usuário digita `pronto`, o comando `break` sai do
-laço. Caso contrário o programa ecoa tudo o que o usuário digita e volta para o 
+laço. Caso contrário, o programa ecoa tudo o que o usuário digita e volta para o 
 primeiro passo. Aqui vemos um exemplo da execução:
 
 ~~~~
@@ -181,7 +181,7 @@ encerrar
 Pronto!
 ~~~~
 
-Esta forma de escrever laços `while` é comum, pois você pode
+Essa forma de escrever laços `while` é comum, pois você pode
 checar a condição em qualquer lugar do bloco (não apenas no topo) e você
 pode expressar a condição de parada afirmativamente (“pare quando isso acontece”)
 melhor do que negativamente (“continue até que aquilo aconteça”).
@@ -189,10 +189,10 @@ melhor do que negativamente (“continue até que aquilo aconteça”).
 Finalizando iterações com `continue`
 -----------------------------------------------
 
-\index{estrutura continue}
-\index{estrutura!continue}
+\index{comando continue}
+\index{comando!continue}
 
-Às vezes, você está em uma iteração de um laço e deseja finalizar esta
+Às vezes, você está em uma iteração de um laço e deseja finalizar essa
 iteração atual e pular imediatamente para a próxima. Nesse
 caso, você pode usar o comando `continue` para avançar para a próxima
 iteração sem executar as instruções restantes da iteração
@@ -209,8 +209,8 @@ Aqui temos um exemplo da execução desse novo programa com `continue`
 adicionado.
 
 ~~~~ 
-> ola
-ola
+> olá
+olá
 > # não exiba isso
 > exiba isso!
 exiba isso!
@@ -227,19 +227,18 @@ a próxima iteração, pulando, portanto, o comando `print`.
 Definindo um laço usando `for` 
 --------------------------------------
 
-\index{comando for}
-\index{comando!for}
+\index{estrutura for}
+\index{estrutura!for}
 
 Às vezes, queremos fazer um laço por meio de um conjunto de coisas, como uma lista de palavras, as linhas em um arquivo, ou uma lista de números. Quando temos uma lista de coisas para iterar sobre, podemos construir um laço definido usando uma declaração `for`.  Nós chamamos a declaração `while` como um laço indefinido, porque ela simplesmente permanece iterando até que alguma condição se torne falsa, enquanto o laço `for` itera sobre um conjunto de itens conhecidos até que sejam executadas tantas iterações quanto o número de itens nesse conjunto.
 
-A sintaxe de um laço `for`  é similar a de um laço `while`, em que há uma declaração ` for` e um corpo de repetição:
+A sintaxe de um laço `for` é similar a de um laço `while`, em que há uma declaração ` for` e um corpo de repetição:
 
 ~~~~ {.python}
 amigos = [‘Jose’, ‘Gleice’, ‘Sara’]
 For amigo in amigos:
-    print('Feliz Ano Novo',amigo)   
-print('Feito !')
-
+    print('Feliz Ano Novo', amigo)   
+print('Feito!')
 ~~~~
 
 Em termos Python, a variável `amigos` é uma lista  [examinaremos as listas com mais detalhes em um capítulo posterior.] de três cadeias de caracteres e o laço `for` percorre a lista e executa o corpo uma vez para cada uma das três palavras na lista, resultando nesta saída:
@@ -251,9 +250,9 @@ Feliz Ano Novo: Sara
 Feito!
 ~~~~
 
-Traduzir este loop `for` para o português não é tão direto quanto o `while`, mas se você pensar em amigos como um *lista*, ele vai como este: "executar as instruções no corpo do `for` uma vez para cada amigo *in* lista de amigos nomeados."
+Traduzir esse loop `for` para o português não é tão direto quanto o `while`, mas se você pensar em amigos como um *lista*, ele interpreta assim: "executar as instruções no corpo do `for` uma vez para cada amigo *in* lista de amigos nomeados."
 
-Olhando para o laço `for`, *for* e *in* são palavras-chave do Python reservadas e `amigo` e `amigos` são variáveis.
+Olhando para o laço `for`, *for* e *in* são palavras-chave reservadas do Python e `amigo` e `amigos` são variáveis.
 
 ~~~~ {.python}
 for amigo in amigos:
@@ -267,7 +266,7 @@ Padrões de laço
 -------------
 
 Muitas vezes usamos um laço `for` ou `while` para percorrer
-uma lista de itens ou conteúdos de um arquivo, neste caso nós estamos procurando por
+uma lista de itens ou conteúdos de um arquivo, nesse caso nós estamos procurando por
 algo como o maior ou menor valor dos dados que nós percorremos.
 
 Esses laços são geralmente construídos:
@@ -280,7 +279,7 @@ Esses laços são geralmente construídos:
 -   Olhando para as variáveis resultantes quando o loop é concluído
 
 Utilizaremos uma lista de números para demonstrar os conceitos e a
-construção destes padrões de loop.
+construção desses padrões de loop.
 
 ### Contando e somando repetições
 
@@ -293,9 +292,9 @@ for itervar in [3, 41, 12, 9, 74, 15]:
 print('Contagem: ', contador)
 ~~~~
 
-Nós ajustamos `contador`  para zero antes do laço começar, então nós escrevemos um laço ` for` para percorrer a lista de números. Nossa variável de *iteração* é chamada de `itervar` e enquanto nós não usamos o `itervar` no laço, ele controla o laço e faz com que o corpo desse laço seja executado uma vez para cada um dos valores na lista.
+Nós ajustamos `contador` para zero antes do laço começar, então nós escrevemos um laço ` for` para percorrer a lista de números. Nossa variável de *iteração* é chamada de `itervar` e enquanto nós não usamos o `itervar` no laço, ele controla o laço e faz com que o corpo desse laço seja executado uma vez para cada um dos valores na lista.
  
-No corpo da repetição, adicionamos 1 ao valor atual de `contador`  para cada um dos valores na lista. Enquanto o laço está executando, o valor de `contador` é o número de valores que percorremos "até agora". 
+No corpo da repetição, adicionamos 1 ao valor atual de `contador` para cada um dos valores na lista. Enquanto o laço está executando, o valor de `contador` é o número de valores que percorremos "até agora". 
  
 Depois que a repetição é concluída, o valor de `contador` é o número total de itens. O  número total "cai do céu" no final do ciclo. Nós construímos o laço para que tenhamos o que queremos quando ele terminar.
  
@@ -308,9 +307,9 @@ for itervar in [3, 41, 12, 9, 74, 15]:
 print('Total: ', total)
 ~~~~
 
-Neste loop, *usamos* a *variável de iteração*. Em vez de simplesmente adicionar um a `contagem`, como na repetição anterior, nós adicionamos o número real (3, 41, 12, etc.) ao total durante cada iteração de repetição. Se você pensar na variável `total`, ela contém o "total de valores percorridos até agora". Então, antes que a repetição comece,`total` é zero porque ainda não vimos nenhum valor. Durante todo o laço `total`  é aualizado e, ao final do laço, `total` é o valor de todos os valores na lista.
+Nesse loop, *usamos* a *variável de iteração*. Em vez de simplesmente adicionar um a `contagem`, como na repetição anterior, nós adicionamos o número real (3, 41, 12, etc.) ao total durante cada iteração de repetição. Se você pensar na variável `total`, ela contém o "total de valores percorridos até agora". Então, antes que a repetição comece,`total` é zero porque ainda não vimos nenhum valor. Durante todo o laço, `total`  é o total atualizado e, ao final do laço, `total` é o valor de todos os valores na lista.
  
-Conforme o laço é executado, `total` acumula a soma dos elementos; uma variável usada desta forma às vezes é chamada de *acumulador*.
+Conforme o laço é executado, `total` acumula a soma dos elementos; uma variável usada dessa forma às vezes é chamada de *acumulador*.
 
 \index{acumulador!soma}
 
@@ -327,13 +326,13 @@ Nem o laço de contagem nem o de soma são particularmente úteis na prática, p
 Para achar o máximo valor em uma lista ou sequência, construímos a seguinte repetição:
 
 ~~~~ {.python}
-maximo = None
-print('Antes:', maximo)
+máximo = None
+print('Antes:', máximo)
 for itervar in [3, 41, 12, 9, 74, 15]:
-    if maximo is None or itervar > maximo :
-        maximo = itervar
-    print('Laço:', itervar, maximo)
-print('Maximo:', maximo)
+    if máximo is None or itervar > máximo :
+        máximo = itervar
+    print('Laço:', itervar, máximo)
+print('Máximo:', máximo)
 ~~~~
 
 Quando o programa é executado, a saída é a seguinte:
@@ -349,27 +348,27 @@ Laço: 15 74
 Maximo: 74
 ~~~~
 
-A variável `maximo` é melhor considerada como o “maior valor que vimos até agora”. Antes da repetição, definimos `maximo` como a constante `None`. `None` é uma constante de valor especial que podemos armazenar em uma variável para marca-la como "vazia".
+A variável `máximo` é melhor considerada como o “maior valor que vimos até agora”. Antes da repetição, definimos `máximo` como a constante `None`. `None` é uma constante de valor especial que podemos armazenar em uma variável para marcá-la como "vazia".
 
-Antes do início do laço, o maior valor que temos até agora é `None`, já que nós ainda não percorremos nenhum valor. Enquanto o laço está sendo executado, se o `maximo` for `None`, então nós pegamos o primeiro valor que vemos como o maior até agora. Você pode ver na primeira iteração quando o valor do `itervar` é 3, já que `maximo` é `None`, nós imediatamente definimos `maximo` como sendo 3.
+Antes do início do laço, o maior valor que temos até agora é `None`, já que nós ainda não percorremos nenhum valor. Enquanto o laço está sendo executado, se o `máximo` for `None`, então nós pegamos o primeiro valor que vemos como o maior até agora. Você pode ver na primeira iteração quando o valor do `itervar` é 3, já que `máximo` é `None`, nós imediatamente definimos `máximo` como sendo 3.
 
-Após a primeira iteração, `maximo` não é mais `None`, então a segunda parte da expressão lógica composta que verifica se `itervar > maximo` é acionada apenas quando vemos um valor que é maior que o "maior até agora". Quando vemos um novo "ainda maior”, nós levamos esse novo valor para o `maximo`. Você pode ver na saída do programa que `maximo` progride de 3 para 41 e de 41 para 74.
+Após a primeira iteração, `máximo` não é mais `None`, então a segunda parte da expressão lógica composta que verifica se `itervar > máximo` é acionada apenas quando vemos um valor que é maior que o "maior até agora". Quando vemos um novo "ainda maior”, nós levamos esse novo valor para o `máximo`. Você pode ver na saída do programa que `máximo` progride de 3 para 41 e de 41 para 74.
 
-No final do laço, verificamos todos os valores e a variável `maximo` agora contém o maior valor da lista.
+No final do laço, verificamos todos os valores e a variável `má+,ximo` agora contém o maior valor da lista.
 
 Para calcular o menor número, o código é muito semelhante com uma pequena alteração:
 
 ~~~~ {.python}
-minimo = None
-print('Antes:', minimo)
+mínimo = None
+print('Antes:', mínimo)
 for itervar in [3, 41, 12, 9, 74, 15]:
-    if minimo is None or itervar < minimo:
-        minimo = itervar
-    print('Laço:', itervar, minimo)
-print('Mínimo:', minimo)
+    if mínimo is None or itervar < mínimo:
+        mínimo = itervar
+    print('Laço:', itervar, mínimo)
+print('Mínimo:', mínimo)
 ~~~~
 
-Novamente, `minimo` é o “menor até agora” antes, durante e depois que o laço é executado. Quando o laço concluir, `minimo` contém o menor valor da lista.
+Novamente, `mínimo` é o “menor até agora” antes, durante e depois que o laço é executado. Quando o laço concluir, `mínimo` contém o menor valor da lista.
  
 Novamente, como na contagem e na soma, as funções incorporadas `max()` e `min()` fazem esses laços desnecessários.
  
@@ -377,14 +376,14 @@ A seguir, uma versão simples da função embutida `min()` do Python:
 
 ~~~~ {.python}
 def min(valores):
-    minimo = None
+    mínimo = None
     for valor in valores:
-        if minimo is None or valor < minimo:
-            minimo = valor
-    return minimo
+        if mínimo is None or valor < mínimo:
+            mínimo = valor
+    return mínimo
 ~~~~
 
-Na versão da função para encontrar o menor valor, nós removemos todas os comandos `print`, de  modo a ser equivalente à função `min` que já está embutida no Python.
+Na versão da função para encontrar o menor valor, nós removemos todas os comandos `print`, de modo a ser equivalente à função `min` que já está embutida no Python.
 
 Debugging 
 -------------
@@ -395,7 +394,7 @@ Ao começar a escrever programas maiores, você pode se encontrar gastando mais 
 
 Um modo de reduzir seu tempo de debugging é "depurar por bisseção". Por exemplo, se existes 100 linhas em seu programa e você verifica uma de cada vez, isso levaria 100 passos.
 
-Em vez disso, experimente quebrar o problema pela metade. Olhe para o meio do programa, ou perto dele, para um valor intermediário que você pode verificar.  Adicione o comando `print` (ou alguma outra coisa que tenha um efeito de verificação) e execute o programa.
+Em vez disso, experimente quebrar o problema pela metade. Olhe para o meio do programa, ou perto dele, para um valor intermediário que você pode verificar. Adicione o comando `print` (ou alguma outra coisa que tenha um efeito de verificação) e execute o programa.
 
 Se a verificação no ponto médio estiver incorreta, o problema deve estar na primeira metade do programa. Se está correta, o problema está na segunda metade.
 
@@ -407,12 +406,12 @@ Glossário
 ---------
 
 Acumulador: Uma variável usada em um laço para adicionar ou acumular um resultado. \index{acumulador}
-Contador: Uma variável usada em um loop para contar o número de vezes que alguma coisa aconteceu. Nós inicializamos um contador em zero e incrementamos o contador cada vez que queremos "contar" alguma coisa. \index{contador}
+Contador: Uma variável usada em um laço para contar o número de vezes que alguma coisa aconteceu. Nós inicializamos um contador em zero e incrementamos o contador cada vez que queremos "contar" alguma coisa. \index{contador}
 Decremento : Uma atualização que diminuiu o valor de uma variável. \index{decremento}
 Inicializar: Uma atribuição que fornece um valor para uma variável que vai ser atualizada.
 Incremento: Uma atualização que aumenta o valor de uma variável (geralmente em um) . \index{incremento}
-Loop infinito:  Um loop cuja condição de término nunca é satisfeita, ou para qual não existe condição de término. \index{ loop infinito}
-Iteração: Execução repetida de um conjunto de instruções usando uma função que chama a si mesma ou um laço. \index {Iteração}
+Laço infinito: Um laço cuja condição de término nunca é satisfeita, ou para qual não existe condição de término. \index{loop infinito}
+Iteração: Execução repetida de um conjunto de instruções usando uma função que chama a si mesma ou a um laço. \index {Iteração}
 
 
 Exercícios
