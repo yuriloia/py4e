@@ -227,8 +227,8 @@ a próxima iteração, pulando, portanto, o comando `print`.
 Definindo um laço usando `for` 
 --------------------------------------
 
-\index{estrutura for}
-\index{estrutura!for}
+\index{comando for}
+\index{comando!for}
 
 Às vezes, queremos fazer um laço por meio de um conjunto de coisas, como uma lista de palavras, as linhas em um arquivo, ou uma lista de números. Quando temos uma lista de coisas para iterar sobre, podemos construir um laço definido usando uma declaração `for`.  Nós chamamos a declaração `while` como um laço indefinido, porque ela simplesmente permanece iterando até que alguma condição se torne falsa, enquanto o laço `for` itera sobre um conjunto de itens conhecidos até que sejam executadas tantas iterações quanto o número de itens nesse conjunto.
 
@@ -354,7 +354,7 @@ Antes do início do laço, o maior valor que temos até agora é `None`, já que
 
 Após a primeira iteração, `máximo` não é mais `None`, então a segunda parte da expressão lógica composta que verifica se `itervar > máximo` é acionada apenas quando vemos um valor que é maior que o "maior até agora". Quando vemos um novo "ainda maior”, nós levamos esse novo valor para o `máximo`. Você pode ver na saída do programa que `máximo` progride de 3 para 41 e de 41 para 74.
 
-No final do laço, verificamos todos os valores e a variável `má+,ximo` agora contém o maior valor da lista.
+No final do laço, verificamos todos os valores e a variável `máximo` agora contém o maior valor da lista.
 
 Para calcular o menor número, o código é muito semelhante com uma pequena alteração:
 
