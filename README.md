@@ -23,7 +23,7 @@ See the file `book/README.md` for more details.
 
 # Translation Team
 
-The Translation of the book "Python for Everybody" was coordinated by Yuri Loia(github.com/yuriloia), and the team was composed by: 
+The Translation of the book "Python for Everybody" was coordinated by Yuri Loia (https://github.com/yuriloia), and the team was composed by: 
 Alysson Hyago - https://github.com/alyssonhyago , 
 Andhré Carvalho, 
 Caio Porto, 
@@ -38,3 +38,6 @@ Pyettra Feitosa,
 Victor Marinho, 
 Vinicius Formiga, 
 Vitor Araujo
+
+
+This work was also reviewd by some colaborators: Gabriel Araújo Medeiros - https://github.com/Galaxhar
