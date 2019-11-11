@@ -1,97 +1,92 @@
 
-Object-oriented programming
+Programação orientada a objetos
 ===========================
 
-Managing larger programs
+Gerenciando programas maiores
 ------------------------
 
-\index{object-oriented}
+\index{orientado a objetos}
 
-At the beginning of this book, we came up with four basic programming
-patterns which we use to construct programs:
+No começo desse livro, vimos quatro tipos básicos de padrões de programação
+que usamos para construir nossos programas:
 
-* Sequential code
-* Conditional code (if statements)
-* Repetitive code (loops)
-* Store and reuse (functions)
+* Código sequencial
+* Código condicional (sentenças "if")
+* Códigos repetitivos (laços)
+* Armazenamento e reuso (funções)
 
-In later chapters, we explored simple variables as well as collection
-data structures like lists, tuples, and dictionaries.
+Em capítulos mais avançados, exploramos variáveis simples assim como coleções
+de estruturas de dados como listas, tuplas e dicionários.
 
-As we build programs, we design data structures and write code
-to manipulate those data structures.   There are many ways to write programs
-and by now, you probably have written some programs that are "not so elegant"
-and other programs that are "more elegant". Even though your programs
-may be small, you are starting to see how there is a bit of art and
-aesthetic to writing code.
+À medida que nós programamos, desenvolvemos a estrutura de dados e escrevemos
+o código para manipular tais estruturas. Há muitas formas de programar, e por
+agora, você provavelmente escreveu alguns programas "não tão elegantes" e outros
+"mais elegantes". Mesmo que os seus programas sejam pequenos, você irá ver como
+existe um pouco de arte e estética na programação.
 
-As programs get to be millions of lines long, it becomes increasingly important
-to write code that is easy to understand.  If you are working on a million-line
-program, you can never keep the entire program in your mind at the same time.
-We need ways to break large programs into multiple smaller pieces so that
-we have less to look at when solving a problem, fix a bug, or add a new feature.
+Ao passo que os programas alcançam bilhões de linhas, fica cada vez mais importante
+escrever um código que seja fácil de entender. Se você está trabalhando em um programa
+de um milhão de linhas, ele nunca estará completamente na sua mente ao mesmo tempo.
+Precisamos de meios de quebrar grandes programas em várias peças pequenas para que assim
+tenhamos menos coisas para ves quando formos resolver problemas, consertar um erro ou
+adicionar algum recurso.
 
-In a way, object oriented programming is a way to arrange your code
-so that you can zoom into 50 lines of the code and understand it
-while ignoring the other 999,950 lines of code for the moment.
+De certo modo, a programação orientada a objetos é uma forma de arrumar seu código, para
+que você consiga focar em 50 linhas de código e entendê-las enquanto ignora as outras
+999,950 linhas no momento.
 
-Getting started
+Primeiros passos
 ---------------
 
-Like many aspects of programming, it is necessary to learn the concepts of
-object oriented programming before you can use them effectively.
-You should approach this chapter as a way to learn some terms and concepts and work
-through a few simple examples to lay a foundation for future learning.
+Assim como vários aspectos de programação, é necessário aprender os conceitos da 
+programação orientada a objetos antes de usá-la efetivamente. Você deveria tomar
+esse capítulo como um meio de aprender alguns termos e conceitos e trabalhar em
+alguns poucos exemplos para estabelecer uma fundação para um futuro aprendizado.
 
-The key outcome of this chapter is to have a basic understanding of how
-objects are constructed and how they function and most importantly how
-we make use of the capabilities of objects that are provided to us by Python
-and Python libraries.
+O resultado principal desse capítulo é ter o básico entendimento de como objetos 
+são construídos e como eles funcionam e mais importante: como fazemos uso das
+capacidades dos objetos que nos são fornecidas por Python e suas bibliotecas.
 
-Using objects
+Usando objetos
 -------------
 
-As it turns out, we have been using objects all along in this book. Python
-provides us with many built-in objects. Here is some simple code
-where the first few lines should feel very simple and natural to you.
+Como se pode ver, estávamos usando objetos durante todo esse livro. Python
+nos fornece vários objetos _built_in_. Aqui está um código simples onde as
+primeiras linhas deveriam parecer bem simples e naturais para você.
 
-\index{list object}
+\index{objeto list}
 
 \VerbatimInput{../code3/party1.py}
 
-Instead of focusing on what these lines accomplish, let's look at what is
-really happening from the point of view of object-oriented programming.
-Don't worry if the following paragraphs don't make any sense the
-first time you read them because we have not yet defined all of these terms.
+Ao invés de focar no que essas linhas querem dizer, vamos olhar no que está
+realmente acontecendo desse ponto de vista de programação orientada a objetos.
+Não se preocupe se os próximos parágrados não fizerem nenhum sentido na primeira
+vez que você lê-los, uma vez que nós não definimos todos esses termos.
 
-The first line *constructs* an object of type `list`, the second and third
-lines *call* the `append()` *method*, the fourth line calls
-the `sort()` method, and the fifth line *retrieves* the item at position 0.
+A primeir alinha *constrói* um objeto do tipo `list`, a segunda e terceira linhas
+*chamam* o *método* `append()`. A quarta linha cham o método `sort()`, e a quinta linha
+*recupera* o item na posição 0.
 
-The sixth line calls the `__getitem__()` method in the `stuff` list
-with a parameter of zero.
+A sexta linha chama o método `__getitem()__` na lista `stuff` com um parâmetro de zero.
+
 
 ~~~~ {.python}
 print (stuff.__getitem__(0))
 ~~~~
 
-The seventh line is an even more verbose way of retrieving the 0th item
-in the list.
+A sétima linha é uma maneira bem mais detalhada de recuperar o primeiro item da lista.
 
 ~~~~ {.python}
 print (list.__getitem__(stuff,0))
 ~~~~
 
-In this code, we call the `__getitem__` method in the `list` class
-and *pass* the list and the item we want retrieved from the list
-as parameters.
+Nesse código, chamamos o método `__getitem()__` na classe `list` e *passamos* a lista
+e o item que queremos recuperar como parâmetros.
 
-The last three lines of the program are equivalent, but it is more
-convenient to simply use the square bracket syntax to look up an item at
-a particular position in a list.
+As últimas três linhas do programa são equivalentes, mas é mais conveniente simplesmente
+utilizar a sintaxe dos colchetes para ver um item de uma posição em particular da lista.
 
-We can take a look at the capabilities of an object by
-looking at the output of the `dir()` function:
+Podemos da ruma olhada nas capacitades de um objeto observando a saída da função `dir()`:
 
     >>> stuff = list()
     >>> dir(stuff)
@@ -107,9 +102,8 @@ looking at the output of the `dir()` function:
     'insert', 'pop', 'remove', 'reverse', 'sort']
     >>>
 
-The rest of this chapter will define all of the above terms so make sure to
-come back after you finish the chapter and re-read the above paragraphs to
-check your understanding.
+O restante desse capítulo vai definir todos os temos acima, então tenha certeza de voltar
+aqui quando terminá-lo e releia os parágrafos acima para checar seu entendimento.
 
 Iniciando com programas
 ----------------------
