@@ -283,7 +283,7 @@ So far 4
 O objeto é construído e o método  `party`  é chamado quatro vezes,
 incrementando e imprimindo o valor para `x` dentro do objeto `an`.
 
-classes como tipos
+Classes como tipos
 ----------------
 
 \index{dir}
@@ -310,27 +310,26 @@ Você pode ver que usando a palavra `classe` , Criamos um novo tipo.
 A partir da saídac`dir`, Você pode ver tanto o`x` atributo inteiro e o método
 `party` estão disponíveis no objeto.
 
-Object lifecycle
+Ciclo de vida de um objeto
 ----------------
 
-\index{constructor}
-\index{destructor}
-\index{object lifecycle}
+\index{construtor}
+\index{destrutor}
+\index{Ciclo de vida de um objeto}
 
-In the previous examples, we define a class (template), use that class
-to create an instance of that class (object), and then use the instance.  When
-the program finishes, all of the variables are discarded.  Usually, we don't think
-much about the creation and destruction of variables, but often as our objects
-become more complex, we need to take some action within the object to set things
-up as the object is constructed and possibly clean things up as the object is
-discarded.
+Em exemplos passados, nós definimos uma classe (_template_), criamos uma instância 
+dessa classe (objeto) e, então, usamos essa instância.  Quando
+o programa termina, todas as variáveis são descartadas.  Normalmente, nós
+não nos preocupamos muito com a criação e destruição de variáveis, mas à medida
+que nossos objetos se tornam mais complexos, precisamos trabalhar
+na criação do objeto, assim como, possivelmente, no descarte dele.
 
-If we want our object to be aware of these moments of construction and destruction,
-we add specially named methods to our object:
+Se quisermos que nosso objeto esteja pronto para esses momentos de criação e 
+de destruição, adicionamos a ele métodos com nomes específicos:
 
 \VerbatimInput{../code3/party4.py}
 
-When this program executes, it produces the following output:
+Quando esse programa é executado, ele gera a seguinte saída:
 
 ~~~~
 I am constructed
@@ -340,56 +339,56 @@ I am destructed 2
 an contains 42
 ~~~~
 
-As Python constructs our object, it calls our `__init__` method to
-give us a chance to set up some default or initial values for the object.
-When Python encounters the line:
+Enquanto o Python constrói nosso objeto, ele chama nosso método `__init__` para
+nos dar uma chance de organizar alguns valores _default_ ou iniciais.
+Quando ele encontra a linha:
 
 ~~~~
 an = 42
 ~~~~
 
-It actually "thows our object away" so it can reuse the `an` variable
-to store the value `42`.  Just at the moment when our `an` object is
-being "destroyed" our destructor code (`__del__`) is called.  We cannot
-stop our variable from being destroyed, but we can do any necessary
-cleanup right before our object no longer exists.
+Ele, na verdade, "joga fora nosso objeto" para poder reutilizar a variável
+`an` armazenando o valor `42`. No exato momento em que nosso objeto `an`
+está sendo destruído, nosso código destrutor (`__del__`) é chamado.
+Nós não podemos impedir que nossa variável seja destruída, mas podemos
+fazer quaisquer alterações necessárias logo antes dela deixar de existir.
 
-When developing objects, it is quite common to add a constructor to an object
-to set up initial values for the object. It is relatively rare to need a
-destructor for an object.
+No desenvolvimento de objetos, é bem comum adicionar um construtor a um objeto
+para estabelecer valores iniciais a ele. É relativamente raro que um objeto 
+necessite de um destrutor.
 
-Multiple instances
+Instâncias múltiplas
 ------------------
 
-So far, we have defined a class, constructed a single object, used
-that object, and then thrown the object away. However, the real power
-in object-oriented programming happens when we construct multiple instances
-of our class.
+Até então, nós definimos uma classe, construímos um único objeto,
+usamos esse objeto e, então, descartamos esse objeto. Entretanto,
+o verdadeiro poder da programação orientada a objeto é manifestado
+quando construímos múltiplas instâncias de nossa classe.
 
-When we construct multiple objects from our class, we might want to set
-up different initial values for each of the objects. We can
-pass data to the constructors to give each object a different initial
-value:
+Quando construímos múltiplos objetos de nossa classe, provavelmente queremos
+estabelecer diferentes valores iniciais para cada um deles. Nós podemos
+passar dados para os construtores a fim de dar um valor inicial diferente
+a cada objeto:
 
 \VerbatimInput{../code3/party5.py}
 
-The constructor has both a `self` parameter that points to the object instance
-and additional parameters that are passed into the constructor as the
-object is constructed:
+O construtor possui tanto um parametro `self` que aponta para a própria
+instância como também parametros adicionais, os quais são passados para o
+construtor no momento da construção do objeto:
 
 ~~~~
 s = PartyAnimal('Sally')
 ~~~~
 
-Within the constructor, the second line copies the parameter (`nam`) that is
-passed into the `name` attribute within the object instance.
+Dentro do construtor, a segunda linha copia o parâmetro (`nam`) que é
+passado para o atributo `name` da instância de objeto.
 
 ~~~~
 self.name = nam
 ~~~~
 
-The output of the program shows that each of the objects (`s` and `j`) contain their own
-independent copies of `x` and `nam`:
+A saída do programa mostra que cada um dos objetos (`s` e `j`) contém sua própria
+cópia de `x` e `nam`, independentes um do outro:
 
 ~~~~
 Sally constructed
@@ -399,28 +398,29 @@ Jim party count 1
 Sally party count 2
 ~~~~
 
-Inheritance
+Herança
 -----------
 
-Another powerful feature of object-oriented programming is the ability to
-create a new class by extending an existing class.  When extending a class,
-we call the original class the *parent class* and the new class the
-*child class*.
+Outra ferramenta poderosa da programação orientada a objeto é a habilidade
+de criar uma nova classe como extensão de uma classe já existente.  Quando
+fazemos isso, chamamos a classe original de *classe pai* e a
+nova de *classe filha*.
 
-For this example, we move our `PartyAnimal` class into its own file.
-Then, we can 'import' the `PartyAnimal` class in a new file and extend it, as follows:
+Neste exemplo, nós movemos nossa classe `PartyAnimal` para seu próprio arquivo.
+Assim, podemos "importar" (_import_) essa classe em um novo arquivo e estendê-la,
+como a seguir:
 
 \VerbatimInput{../code3/party6.py}
 
-When we define the `CricketFan` class, we indicate that we are extending
-the `PartyAnimal` class.  This means that all of the variables (`x`) and methods
-(`party`) from the `PartyAnimal` class are *inherited* by the `CricketFan` class.
-For example, within the `six` method in the `CricketFan` class, we 
-call the `party` method from the `PartyAnimal` class.
+Quando nós definimos a classe `CricketFan`, indicamos que estamos estendendo
+a classe `PartyAnimal`.  Isso significa que todas as variáveis (`x`) e métodos
+(`party`) da classe `PartyAnimal` são *herdadas* pela nova classe. Por exemplo,
+dentro do método `six` da classe `CricketFan`, nós chamamos o método `party`
+da classe `PartyAnimal`.
 
-As the program executes, we create `s` and `j` as independent instances
-of `PartyAnimal` and `CricketFan`. The `j` object has additional capabilities beyond
-the `s` object.
+No dercorrer do programa, criamos `s` e `j` como instâncias independentes
+de `PartyAnimal` e `CricketFan`. O objeto `j` possui capacidades adicionais
+em relação a `s`.
 
 ~~~~
 Sally constructed
@@ -433,9 +433,9 @@ Jim points 6
 'name', 'party', 'points', 'six', 'x']
 ~~~~
 
-In the `dir` output for the `j` object (instance of the `CricketFan` class), we see
-that it has the attributes and methods of the parent class, as well as the attributes
-and methods that were added when the class was extended to create the `CricketFan` class.
+Na saída da função `dir` aplicada em `j` (instância da classe `CricketFan`), vemos
+que ele possui os atributos e métodos da classe pai, assim como os atributos
+e métodos adicionados na criação da classe `CricketFan`, quando a extensão foi feita.
 
 Sumário
 -------
