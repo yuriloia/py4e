@@ -5,14 +5,13 @@ Funções
 Chamadas de Função
 --------------
 
-\index{Chamadas de função}
+\index{Chamada de função}
 
-No contexto da programação, uma *função* é a denominação dada à um
-
+No contexto da programação, uma *função* é a denominação dada a um
 conjunto de instruções que realiza uma computação. Quando você define uma
 função, você especifica o nome e a sequência de instruções. 
 Posteriormente, você poderá "chamar" a função pelo seu nome. 
-Nós já vimos visto um exemplo de uma *chamada de função*:
+Nós já haviamos visto um exemplo de uma *chamada de função*:
 
 
 ~~~~ {.python}
@@ -26,7 +25,7 @@ O argumento é um valor ou variável que estamos passando
 para a função como entrada.
 O resultado, para a função `type`, é o tipo do argumento.
 
-\index{Parentêses!Argumento de entrada}
+\index{Parênteses!Argumento de entrada}
 
 É comum dizer que uma função "recebe" um argumento e "retorna" um
 resultado. O resultado é chamado de *valor retornado*.
@@ -39,7 +38,7 @@ Funções internas
 
 
 O Python fornece várias funções internas importantes que nós 
-podemos usar sem precisar defini-las. Os criadores do Python escreveram 
+podemos usar sem precisar definí-las. Os criadores do Python escreveram 
 um conjunto de funções para solucionar problemas comuns e incluíram elas na 
 linguagem para nosso uso.
 
@@ -91,33 +90,33 @@ converte ele em um inteiro, se for possível, ou reclama, caso contrário:
 \index{Função int}
 \index{Função!int}
 
-~~~ {.python}
+~~~~ {.python}
 >>> int('32')
 32
 >>> int('Olá')
 ValueError: invalid literal for int() with base 10: 'Hello'
-~~~
+~~~~
 
-`int` pode converter valores em pontos-flutuante em inteiros, mas não arredonda-os; ela trunca a parte decimal:
+`int` pode converter valores em pontos-flutuante em inteiros, mas não os arredonda; ela trunca a parte decimal:
 
-~~~ {.python}
+~~~~ {.python}
 >>> int(3.99999)
 3
 >>> int(-2.3)
 -2
-~~~
+~~~~
 
 `float` converte inteiros e strings em números em ponto-flutuante:
 
 \index{Função float}
 \index{Função!float}
 
-~~~ {.python}
+~~~~ {.python}
 >>> float(32)
 32.0
 >>> float('3.14159')
 3.14159
-~~~
+~~~~
 
 Finalmente, `str` converte seu argumento para uma string:
 
@@ -161,7 +160,7 @@ Para acessar uma dessas funções, você deve especificar o nome do módulo e
 o nome da função, separados por um ponto.
 Esse formato é conhecido como *notação de ponto*.
 
-\index{dot notation}
+\index{notação de ponto}
 
 ~~~~ {.python}
 >>> razao = potencia_do_sinal / intensidade_do_ruido
@@ -327,13 +326,13 @@ como suas entradas.
 \index{parênteses!vazios}
 \index{cabeçalho}
 \index{corpo}
-\index{endentação}
+\index{identação}
 \index{dois pontos}
 
 A primeira linha da definição da função é chamada de
 *cabeçalho*; o restante é o *corpo*.
 O cabeçalho tem que encerrar com dois pontos e o
-corpo tem que estar endentado. Por convenção, a endentação é sempre de
+corpo tem que estar identado. Por convenção, a identação é sempre de
 quatro espaços. O corpo pode conter qualquer número de comandos.
 
 
@@ -362,11 +361,11 @@ Definir uma função cria uma variável com o mesmo nome.
 <class 'function'>
 ~~~~
 
-O valor da `print_LetraDeMusica` é um *objeto função*, o qual é do tipo
-“`function`”.
+O valor de `print_LetraDeMusica` é um *objeto de função*, o qual é do tipo
+“_function_”.
 
-\index{objeto função}
-\index{objeto!função}
+\index{objeto de função}
+\index{objeto!de função}
 
 A sintaxe para chamar a nova função é a mesma que para funções internas:
 
@@ -438,7 +437,7 @@ executá-la. Em outras palavras, a definição de função será executada
 antes da primeira vez que seja chamada.
 
 **Exercício 2: Mova a última linha desse programa para o início, assim a chamada
-da função  aparece antes das definições. Execute o programa e veja
+da função aparece antes das definições. Execute o programa e veja
 qual mensagem de erro aparece.**
 
 **Exercício 3: Mova a chamada da função de volta ao final e mova a
@@ -559,23 +558,23 @@ não tem nada a ver com o nome do parâmetro (`bruce`). Não importa
 como o valor é chamado em casa (na chamada da função); aqui em
 `mostra_duas_vezes`, chamamos todo mundo de `bruce`.
 
-Funções frutuosas e funções vazias
+Funções frutíferas e funções vazias
 -------------------------------------
 
-\index{função frutuosa}
+\index{função frutífera}
 \index{função vazia}
-\index{função, frutuosa}
+\index{função, frutífera}
 \index{função, vazia}
 
 Algumas das funções que estamos usando, como as funções matemáticas, produzem
-resultados; por falta de um nome melhor, eu os chamo funções frutuosas.
+resultados; por falta de um nome melhor, eu os chamo *funções frutíferas*.
 Outras funções, como `mostra_duas_vezes`, executam uma
 ação mas não retornam um valor. Elas são chamadas *funções
 vazias*.
 
-Quando você chama uma função frutuosa, você quase sempre quer fazer
-alguma coisa com resultado; por exemplo, você pode atribui-lo a
-uma variável ou usa-lo como parte de uma expressão:
+Quando você chama uma função frutífera, você quase sempre quer fazer
+alguma coisa com resultado; por exemplo, você pode atribuí-la a
+uma variável ou usá-la como parte de uma expressão:
 
 ~~~ {.python}
 x = math.cos(radians)
@@ -589,7 +588,7 @@ Quando você chama uma função no modo interativo, o Python exibe o resultado:
 2.23606797749979
 ~~~
 
-Mas em um `script`, se você chama uma função frutuosa e não armazena o
+Mas em um `script`, se você chama uma função frutífera e não armazena o
 resultado da função em uma variável, o valor de retorno desaparece na névoa!
 
 ~~~ {.python}
@@ -617,7 +616,7 @@ Bing
 None
 ~~~
 
-O valor `None` não é o mesmo que uma `string "None"`. Isto
+O valor `None` não é o mesmo que uma `string "None"`. Ele
 é um valor especial que possui seu próprio tipo:
 
 ~~~ {.python}
@@ -644,7 +643,7 @@ retorna um resultado.
 Quando esse `script` é executado, a declaração ` print` mostrará
 "8" porque a função `soma_dois` foi chamada com 3 e 5
 como argumentos. Dentro de uma função, os parâmetros `a` e
-`b` eram 3 e 5 respectivamente. A função calculou a soma
+`b` eram 3 e 5, respectivamente. A função calculou a soma
 dos dois números e atribuiu à variável local da função nomeada
 `soma`. Então foi usado o comando `return` para
 enviar o valor calculado de volta para o código de chamada como resultado da função,
@@ -660,15 +659,15 @@ Por que funções?
 
 Pode não parecer claro o motivo de dividir o programa em funções. Existem varias razões:
 
--   Criar uma nova função lhe dar a oportunidade de nomear um grupo de instruções, o que torna seu programa mais fácil de ler, e depurar.
+-   Criar uma nova função lhe dar a oportunidade de nomear um grupo de instruções, o que torna seu programa mais fácil de ler, de entender e de depurar.
 
 -   As funções podem tornar um programa menor, eliminando as repetições. Mais tarde, se você fizer uma mudança, só precisará mudar em um lugar.
 
 -   Dividindo um programa em funções permite que você depure as partes uma de cada vez e, em seguida, montá-las em um só trabalho.
 
--   Funções bem projetadas são muitas vezes úteis para muitos programas. Depois de escrever e depurar um, você pode reutiliza-lo.
+-   Funções bem projetadas são muitas vezes úteis para muitos programas. Depois de escrever e depurar um, você pode reutilizá-lo.
 
-Ao longo do resto do livro, muitas vezes usaremos uma definição de função para explicar um conceito. A habilidade de criar e usar funções é ter uma função que capture a ideia corretamente, como "encontrar o menor valor em uma lista de valores". Mais tarde vamos mostrar-lhe o código que encontra o menor valor em uma lista de valores e vamos apresentá-lo para você como uma função chamada `min` que leva uma lista de valores como seu argumento e retorna o menor valor na lista.
+Ao longo do resto do livro, muitas vezes usaremos uma definição de função para explicar um conceito. A habilidade de criar e usar funções é ter uma função que capture a ideia corretamente, como "encontrar o menor valor em uma lista de valores". Mais tarde vamos lhe mostrar o código que encontra o menor valor em uma lista de valores e vamos apresentá-lo para você como uma função chamada `min` que leva uma lista de valores como seu argumento e retorna o menor valor na lista.
 
 Depuração
 ---------
@@ -679,7 +678,7 @@ Se você estiver usando um editor de texto para escrever seus `scripts`, você p
 
 \index{espaço}
 
-Tabulações e espaços são geralmente invisíveis, o que os torna difíceis de depurar, então tente encontrar um editor que gerencia a endentação para você.
+Tabulações e espaços são geralmente invisíveis, o que os torna difíceis de depurar, então tente encontrar um editor que gerencia a identação para você.
 
 Além disso, não se esqueça de salvar seu programa antes de executá-lo. Alguns ambientes de desenvolvimento fazem isso automaticamente, mas alguns não. Nesse caso, o programa que você está olhando no editor de texto não é o mesmo que o programa que você está executando.
 
@@ -695,7 +694,7 @@ algoritmo
 \index {algoritmo}
 
 argumento
-:   Um valor fornecido para uma função quando a função é chamada. Este
+:   Um valor fornecido para uma função quando a função é chamada. Esse
 valor é atribuído ao parâmetro correspondente na função.
 \index {argumento}
 
@@ -742,9 +741,9 @@ função
     resultado.
 \index {função}
 
-função frutuosa
+função frutífera
 :   Uma função que retorna um valor.
-\index {função frutuosa}
+\index {função frutífera}
 
 função vazia
 :   Uma função que não retorna um valor.
@@ -785,7 +784,7 @@ Exercícios
 
 **Exercício 4: Qual a finalidade da palavra-chave "def" em Python**
 
-a)É uma gíria que significa "o código a seguir é muito maneiro"\
+a) É uma gíria que significa "o código a seguir é muito maneiro"\
 b) Ela indica o início de uma função\
 c) Ela indica que a próxima seção endentada do código será guardada para mais tarde\
 d) b e c são verdade\
@@ -811,7 +810,7 @@ c) ABC Zap jane\
 d) ABC Zap ABC\
 e) Zap Zap Zap
 
-**Exercício 6: Reescreve seu programa de cálculo de pagamento com um 1.5 o valor de hora de trabalho por hora extra, crie uma função chamada `calculoPagamento` que aceita dois parâmetros(`horas` e `TaxaHora`)**
+**Exercício 6: Reescreva seu programa de cálculo de pagamento com um 1.5 o valor de hora de trabalho por hora extra, crie uma função chamada `calculoPagamento` que aceita dois parâmetros(`horas` e `TaxaHora`).**
 
 ~~~~
 Insira as Horas: 45
