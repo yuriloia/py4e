@@ -355,9 +355,9 @@ Se você espera que o usuário digite um inteiro, você pode tentar converter o 
 
 
 ~~~~ {.python}
->>> prompt = 'Qual... a velocidade rasante de uma andorinha livre??\n'
+>>> prompt = 'Qual... a velocidade de uma andorinha sem carga??\n'
 >>> velocidade = input(prompt)
-Qual... a velocidade rasante de uma andorinha livre??
+Qual... a velocidade de uma andorinha sem carga??
 17
 >>> int(velocidade)
 17
@@ -369,7 +369,7 @@ Porém, se o usuário digitar algo diferente de uma sequência de dígitos, ocor
 
 ~~~~ {.python}
 >>> velocidade = input(prompt)
-Qual...é a velocidade rasante de uma andorinha sem carga?
+Qual...é a velocidade de uma andorinha sem carga?
 Seja mais específico, uma andorinha africana ou europeia?
 >>> int(velocidade)
 ValueError: invalid literal for int() with base 10:
