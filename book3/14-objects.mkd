@@ -5,7 +5,7 @@ Programação orientada a objetos
 Gerenciando programas maiores
 ------------------------
 
-\index{orientado a objetos}
+\index{orientada a objetos}
 
 No começo desse livro, vimos quatro tipos básicos de padrões de programação
 que usamos para construir nossos programas:
@@ -19,8 +19,7 @@ Em capítulos mais avançados, exploramos variáveis simples assim como coleçõ
 de estruturas de dados como listas, tuplas e dicionários.
 
 À medida que nós programamos, desenvolvemos a estrutura de dados e escrevemos
-o código para manipular tais estruturas. Há muitas formas de programar, e por
-agora, você provavelmente escreveu alguns programas "não tão elegantes" e outros
+o código para manipular tais estruturas. Há muitas formas de programar, e nesse momento, você provavelmente escreveu alguns programas "não tão elegantes" e outros
 "mais elegantes". Mesmo que os seus programas sejam pequenos, você irá ver como
 existe um pouco de arte e estética na programação.
 
@@ -31,7 +30,7 @@ Precisamos de meios de quebrar grandes programas em várias peças pequenas para
 tenhamos menos coisas para ves quando formos resolver problemas, consertar um erro ou
 adicionar algum recurso.
 
-De certo modo, a programação orientada a objetos é uma forma de arrumar seu código, para
+De certo modo, a programação orientada a objetos é uma forma de organizar seu código, para
 que você consiga focar em 50 linhas de código e entendê-las enquanto ignora as outras
 999,950 linhas no momento.
 
@@ -40,12 +39,12 @@ Primeiros passos
 
 Assim como vários aspectos de programação, é necessário aprender os conceitos da 
 programação orientada a objetos antes de usá-la efetivamente. Você deveria tomar
-esse capítulo como um meio de aprender alguns termos e conceitos e trabalhar em
-alguns poucos exemplos para estabelecer uma fundação para um futuro aprendizado.
+esse capítulo como um meio de aprender alguns termos e conceitos, para então trabalhar em
+alguns poucos exemplos estabelecendo uma fundação para um futuro aprendizado.
 
 O resultado principal desse capítulo é ter o básico entendimento de como objetos 
-são construídos e como eles funcionam e mais importante: como fazemos uso das
-capacidades dos objetos que nos são fornecidas por Python e suas bibliotecas.
+são construídos, como eles funcionam e o mais importante: como fazemos uso das
+capacidades dos objetos que nos são fornecidas através do Python e de suas bibliotecas.
 
 Usando objetos
 -------------
@@ -54,7 +53,7 @@ Como se pode ver, estávamos usando objetos durante todo esse livro. Python
 nos fornece vários objetos _built_in_. Aqui está um código simples onde as
 primeiras linhas deveriam parecer bem simples e naturais para você.
 
-\index{objeto list}
+\index{lista de objeto}
 
 \VerbatimInput{../code3/party1.py}
 
@@ -64,7 +63,7 @@ Não se preocupe se os próximos parágrados não fizerem nenhum sentido na prim
 vez que você lê-los, uma vez que nós não definimos todos esses termos.
 
 A primeir alinha *constrói* um objeto do tipo `list`, a segunda e terceira linhas
-*chamam* o *método* `append()`. A quarta linha cham o método `sort()`, e a quinta linha
+*chamam* o *método* `append()`. A quarta linha chama o método `sort()`, e a quinta linha
 *recupera* o item na posição 0.
 
 A sexta linha chama o método `__getitem()__` na lista `stuff` com um parâmetro de zero.
@@ -86,7 +85,7 @@ e o item que queremos recuperar como parâmetros.
 As últimas três linhas do programa são equivalentes, mas é mais conveniente simplesmente
 utilizar a sintaxe dos colchetes para ver um item de uma posição em particular da lista.
 
-Podemos da ruma olhada nas capacitades de um objeto observando a saída da função `dir()`:
+Podemos dar uma olhada nas capacidades de um objeto observando a saída da função `dir()`:
 
     >>> stuff = list()
     >>> dir(stuff)
@@ -127,25 +126,25 @@ um programa) e tem interações bem definidas com o mundo real e com as outras p
 programa.
 
 Se olharmos novamente para a aplicação da extração de link em que usamos a
-biblioteca BeautfulSoup, podemos ver um programa que está contruído por diferentes 
-conexões de objetos juntos para realizar a tarefa
+biblioteca BeautfulSoup, podemos ver um programa que está contruído através de diferentes 
+conexões entre objetos, para juntos conseguirem realizar a tarefa.
 
 \index{BeautifulSoup}
 \index{HTML}
-\index{parsing!HTML}
+\index{análise!HTML}
 
 \VerbatimInput{../code3/urllinks.py}
 
 Nós lemos o URL na string e então passamos para o `urllib` para recuperação dos
-dados da internet. A biblioteca `urllib` usa a biblioteca `socket` para firmar a 
-conexão atual para recuperação dos dados. Captamos a string que o `urllib` retorna e
+dados da internet. A biblioteca `urllib` usa a biblioteca `socket` para estabelecer a 
+conexão atual e recuperar dos dados. Captamos a string que o `urllib` retorna e
 enviamos para o BeautfulSoup analisar. BeautfulSoup utiliza o objeto
 `html.parser`^[https://docs.python.org/3/library/html.parser.html] e retorna um 
 objeto. Utilizamos o método `tags()` do objeto retornado para captar um dicionário
-de objetos tag. Nós iteramos os tags em acionamos o método `get()` para cada tag
+de objetos tag. Nós iteramos os tags e acionamos o método `get()` para cada tag
 e mostramos em tela o atributo `href`,
 
-Nó podemos desenhar uma imagem desse programa e como os objetos trabalham juntos.
+Nós podemos desenhar uma imagem desse programa e como os objetos trabalham juntos.
 
 ![A Program as Network of Objects](height=1.50in@../images/program-oo)
 
@@ -164,14 +163,14 @@ Umas das vantagens da programação orientada a objetos é que ela consegue esco
 a complexidade do código. Por exemplo, enquanto precisamos saber como usar os 
 códigos do `urllib` e BeautifulSoup, nós não precisamos saber como essas bibliotecas 
 funcionam internamente. Isso nos permite focar na resolução do problema e ignorar as
-outras partes do programa
+outras partes do programa.
 
 ![Ignoring Detail When Using an Object](height=1.50in@../images/program-oo-code)
 
 Essa habilidade de focar exclusivamente na parte importante do programa e ignorar
 o resto também é útil para os desenvolvedores dos objetos que usamos. Por exemplo,
-desenvolvendo o BeautifulSoup os programadores não precisam saber ou se importar 
-como recuperamos nossa página HTML, que partes queremos ler ou o quais ou planos 
+desenvolvendo o BeautifulSoup os programadores não precisam saber, ou se importar, 
+como recuperamos nossa página HTML, que partes queremos ler, ou quais os planos 
 que temos com os dados extraídos da página.
 
 ![Ignoring Detail When Building an Object](height=1.50in@../images/program-oo-bs4)
@@ -180,8 +179,8 @@ Nosso primeiro objeto em Python
 -----------------------
 
 Em um nível básico, um objeto é simplesmente algumas estruturas de dados de código que 
-são menores do que um programa inteiro. Definir uma função nos permite armazenar um código 
-,dando-lhe um nome , em seguida, chama-la mais tarde usando o nome da função para usa-la.
+são menores do que um programa inteiro. Definir uma função nos permite armazenar um código,
+dando-lhe um nome , em seguida, chama-la mais tarde usando o nome da função para usa-la.
 
 Um objeto pode conter um número de funções (que chamamos de  *métodos*) bem 
 como os dados que são usados por essas funções.  Chamamos itens de dados que 
