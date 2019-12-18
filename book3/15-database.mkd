@@ -18,10 +18,10 @@ da memória no computador.
 \index{banco de dados!índices}
 
 Como um dicionário, o software de banco de dados é projetado para manter a inserção
-e o acesso as dados muito rápidos, mesmo para grandes quantidades.
+e o acesso aos dados muito rápidos, mesmo para grandes quantidades.
 O software de banco de dados mantém seu desempenho construindo
-*índices* a medida que dados são adicionados ao banco de dados para permitir
-que o computador pule rapidamente para a uma entrada específica.
+*índices* na medida em que dados são adicionados ao banco de dados para permitir
+que o computador pule rapidamente para uma entrada específica.
 
 Existem vários sistemas de banco de dados que são usados para uma larga
 quantidade de propósitos incluindo: Oracle, MySQL, Microsoft SQL Server,
@@ -37,43 +37,36 @@ SQLite é adequado para alguns dos problemas de manipulação de dados que
 vemos na Informática como o aplicativo spidering do twitter que
 descrevemos nesse capítulo. 
 
-SQLite is well suited to some of the data manipulation problems that we
-see in Informatics such as the Twitter spidering application that we
-describe in this chapter.
-
 Conceitos de Banco de dados
 -----------------
 
-Quando você olha pela primeira vez para um banco de dados parece como uma tabela
+Quando você olha pela primeira vez para um banco de dados, ele parece com uma tabela
 com várias folhas. As estruturas primárias de dados em um banco de dados são:
 *tabelas*, *linhas*, e 
 *colunas*.
 
 ![Relational Databases](height=2.0in@../images/relational)
 
-Nas descrições técnicas dos bancos de dados relacionais, os conceitos de tabela,
-linha, e coluna são formalmente chamadas de
+Nas descrições técnicas dos bancos de dados relacionais, os conceitos de tabela, de
+linha, e de coluna são formalmente chamados de
 *relação*, *tupla*, e *atributo*, respectivamente. Nós usaremos os termos
 menos formais nesse capítulo.
 
 Navegador de Banco de Dados para SQLite
 ---------------------------
 
-Embora esse capítulo irá focar em usar Python para trabalhar com dados em
-arquivos de banco de dados, várias operações podem ser feitas de maneira
-mais conveniente, usando um software chamado *Navegador de Banco de Dados para SQLite*
-que é disponibilizado gratuitamente em:
+Já que esse capítulo focará em usar Python para trabalhar com dados em arquivos de bancos de dados SQLite, várias operações podem ser feitas de maneira mais conveniente, usando um software chamado *Database Browser for SQLite* (*Navegador de Banco de Dados para SQLite*), o qual está disponibilizado gratuitamente em:
 
 <http://sqlitebrowser.org/>
 
-Usando o navegador você pode criar facilmente tabelas, inserir dados, editar dados,
+Usando o navegador você pode facilmente criar tabelas, inserir dados, editar dados,
 ou executar consultas SQL simples nos dados do banco de dados.
 
 Em certo sentido, o navegador de banco de dados é similar a um editor de texto
-quando trabalhando com arquivos de textos. Quando você quer fazer mais de uma ou algumas
-poucas operações em um arquivo de texto, você pode apenas abri-lo em um editor
-e fazer as mudanças que deseja. Quando você tem muitas mudanças que precisa fazer em
-um arquivo de texto, geralmente escreve um programa simples em Python. Você encontrará
+quando trabalhando com arquivos de textos. Quando se quer fazer mais de uma ou algumas
+poucas operações em um arquivo de texto, basta apenas abrí-lo em um editor
+e fazer as mudanças que deseja. Quando se tem muitas mudanças que necessárias a fazer em
+um arquivo de texto, geralmente se escreve um programa simples em Python. Você encontrará
 o mesmo padrão quando trabalhar com banco de dados. Você fará operações simples
 no gerenciador do banco de dados e operações mais complexas serão feitas
 mais convenientemente em Python.
@@ -81,18 +74,15 @@ mais convenientemente em Python.
 Criando uma tabela de banco de dados
 -------------------------
 
-Bancos de dados requerem estrutura mais definida do que listas ou bibliotecas Python.^[SQLite actually does allow some flexibility in the type of data
-stored in a column, but we will keep our data types strict in this
-chapter so the concepts apply equally to other database systems such
-as MySQL.].
+Bancos de dados requerem estrutura mais definida do que listas ou bibliotecas Python.^[SQLite de fato permite certa flexibilidade no tipo de dado armazenado em uma coluna, mas vamos manter nossos tipos de dados restritos nesse capítulo para que os conceitos se apliquem igualmente para outros sistemas de bancos de dados, a exemplo do MySQL.].
 
-Quando criamos uma *tabela* de banco de dados, devemos informar antecipadamente os nomes de cada uma das *colunas* da tabela e o tipo de dados que estamos planejando armazenar em cada *coluna*. Quando o software de banco de dados conhece o tipo de dado em cada coluna, ele pode escolher a maneira mais eficiente de armazenar e procurar os dados com base no tipo de dados.
+Quando criamos uma *tabela* de banco de dados, devemos informar antecipadamente os nomes de cada uma das *colunas* da tabela e o tipo de dados que estamos planejando armazenar em cada *coluna*. Quando o software de banco de dados conhece o tipo de dado em cada coluna, ele pode escolher a maneira mais eficiente de armazenar e de procurar os dados com base no seu tipo.
 
 Você pode observar os vários tipos de dados suportados pelo SQLite na seguinte URL:
 
 <http://www.sqlite.org/datatypes.html>
 
-A definição da estrutura dos seus dados antecipadamente pode parecer inconveniente no início, mas a recompensa é o acesso rápido aos seus dados, mesmo quando o banco de dados contém uma grande quantidade de deles.
+A definição da estrutura dos seus dados antecipadamente pode parecer inconveniente no início, mas a recompensa é o acesso rápido aos seus dados, mesmo quando o banco de dados contém uma grande quantidade deles.
 
 O código para criar um arquivo de banco de dados e uma tabela denominada `Tracks` com duas colunas no banco de dados é o seguinte:
 
@@ -101,10 +91,10 @@ O código para criar um arquivo de banco de dados e uma tabela denominada `Track
 
 \VerbatimInput{../code3/db1.py}
 
-\index{connect function}
-\index{function!connect}
-\index{cursor function}
-\index{function!cursor}
+\index{função connect}
+\index{função!connect}
+\index{função cursor}
+\index{função!cursor}
 
 A operação de `connect` faz uma "conexão" com o banco de dados armazenado no arquivo `music.sqlite` no diretório atual. Se o arquivo não existir, ele será criado. O motivo pelo qual isso é chamado de "conexão" é que, às vezes, o banco de dados é armazenado em um "servidor de banco de dados" separado do servidor no qual estamos executando nosso aplicativo. Em nossos exemplos simples, o banco de dados será apenas um arquivo local no mesmo diretório que o código Python que estamos executando.
 
