@@ -104,11 +104,11 @@ Um *cursor* é como um identificador de arquivo que podemos usar para executar o
 
 Uma vez que temos o cursor, podemos começar a executar comandos no conteúdo do banco de dados usando o método `execute()`.
 
-Os comandos do banco de dados são expressos em um idioma especial que foi padronizado em muitos fornecedores diferentes para nos permitir aprender um único idioma de banco de dados. Essa linguagem é chamada de *Structured Query Language* ou *SQL*, para abreviar.
+Os comandos do banco de dados são expressos em um idioma especial que foi padronizado em muitos fornecedores diferentes para nos permitir aprender um único idioma de banco de dados. Essa linguagem é chamada de *Structured Query Language* (*Linguagem de Consulta Estruturada*) ou *SQL*, para abreviar.
 
 <http://en.wikipedia.org/wiki/SQL>
 
-Em nosso exemplo, estamos executando dois comandos SQL em nosso banco de dados. Como convenção, mostraremos as palavras-chave SQL em maiúsculas e as partes do comando que estamos adicionando (como os nomes de tabela e coluna) serão mostradas em minúsculas.
+Em nosso exemplo, estamos executando dois comandos SQL em nosso banco de dados. Como convenção, mostraremos as palavras-chave SQL em maiúsculas e as partes do comando que estamos adicionando (como os nomes de tabela e de coluna) serão mostradas em minúsculas.
 
 O primeiro comando SQL remove a tabela `Tracks` do banco de dados, se existir. Esse padrão é simplesmente para permitir a execução do mesmo programa para criar a tabela `Tracks` repetidamente, sem causar erros. Observe que o comando `DROP TABLE` exclui a tabela e todo o seu conteúdo do banco de dados (ou seja, não há "desfazer").
 
@@ -144,20 +144,20 @@ Tracks:
 
 \index{Unicode}
 
-Nosso loop `for` são encontradas duas linhas, e cada linha é uma tupla Python com o primeiro valor como o `title` e o segundo valor como o número de `plays`.
+Nosso loop `for` encontra duas linhas, e cada linha é uma tupla Python com o primeiro valor como o `title` e o segundo valor como o número de `plays`.
 
-*Nota: Você pode ver cadeias começando com `u'` em outros livros ou na Internet. Essa foi uma indicação no Python 2 de que as strings são strings Unicode capazes de armazenar conjuntos de caracteres não latinos. No Python 3, todas as strings são unicode por padrão.
+*Nota: Você pode ver cadeias começando com `u'` em outros livros ou na Internet. Essa foi uma indicação no Python 2 de que as strings são strings Unicode capazes de armazenar conjuntos de caracteres não latinos. No Python 3, todas as strings são unicode por padrão.*
 
-No final do programa, executamos um comando SQL para `DELETE` as linhas que acabamos de criar, para que possamos executar o programa repetidamente. O comando `DELETE` mostra o uso de uma cláusula `WHERE` que nos permite expressar um critério de seleção para que possamos solicitar ao banco de dados que aplique o comando apenas às linhas que correspondem ao critério. Neste exemplo, o critério se aplica a todas as linhas, de modo que esvaziamos a tabela para que possamos executar o programa repetidamente. Depois que o `DELETE` é executado, também chamamos `commit()` para forçar os dados a serem removidos do banco de dados.
+No final do programa, executamos um comando SQL para `DELETE` as linhas que acabamos de criar, para que possamos executar o programa repetidamente. O comando `DELETE` mostra o uso de uma cláusula `WHERE` que nos permite expressar um critério de seleção para que possamos solicitar ao banco de dados que aplique o comando apenas às linhas que correspondem ao critério. Nesse exemplo, o critério se aplica a todas as linhas, de modo que esvaziamos a tabela para que possamos executar o programa repetidamente. Depois que o `DELETE` é executado, também chamamos `commit()` para forçar os dados a serem removidos do banco de dados.
 
-Resumo da Structured Query Language
+Resumo da Structured Query Language (Linguagem de Consulta Estruturada)
 ---------------------------------
 
 Até o momento, usamos a Structured Query Language em nossos exemplos de Python e cobrimos muitos dos princípios básicos dos comandos SQL. Nesta seção, examinamos a linguagem SQL em particular e fornecemos uma visão geral da sintaxe SQL.
 
 Como existem muitos fornecedores diferentes de banco de dados, a Structured Query Language (SQL) foi padronizada para que pudéssemos nos comunicar de maneira portátil aos sistemas de banco de dados de vários fornecedores.
 
-Um banco de dados relacional é composto de tabelas, linhas e colunas. As colunas geralmente têm um tipo como texto, dados numéricos ou de data. Quando criamos uma tabela, indicamos os nomes e tipos das colunas:
+Um banco de dados relacional é composto de tabelas, linhas e colunas. As colunas geralmente têm um tipo como texto, dados numéricos ou de data. Quando criamos uma tabela, indicamos os nomes e os tipos das colunas:
 
 ~~~~ {.sql}
 CREATE TABLE Tracks (title TEXT, plays INTEGER)
@@ -170,7 +170,7 @@ Para inserir uma linha em uma tabela, usamos o comando SQL `INSERT`:
 INSERT INTO Tracks (title, plays) VALUES ('My Way', 15)
 ~~~~
 
-A instrução `INSERT` especifica o nome da tabela, uma lista dos campos / colunas que você deseja definir na nova linha e, em seguida, a palavra-chave `VALUES` e uma lista dos valores correspondentes para cada um dos campos.
+A instrução `INSERT` especifica o nome da tabela, uma lista dos campos/colunas que você deseja definir na nova linha e, em seguida, a palavra-chave `VALUES` e uma lista dos valores correspondentes para cada um dos campos.
 
 
 O comando SQL `SELECT` é usado para recuperar linhas e colunas de um banco de dados. A instrução `SELECT` permite especificar quais colunas você gostaria de recuperar, bem como uma cláusula `WHERE` para selecionar quais linhas você gostaria de ver. Ele também permite que uma cláusula `ORDER BY` opcional controle a classificação das linhas retornadas.
@@ -229,22 +229,22 @@ status de uma determinada pessoa no Twitter, percorrendo a lista
 de amigos e adicionando cada um dos amigos ao nosso banco de dados 
 que será recuperado no futuro. Depois que vasculharmos a lista dessa pessoa, 
 vamos checar nosso banco de dados e iremos acessar um dos amigos 
-desta lista. Nós vamos fazer isso repetidamente, acessando pessoas 
+dessa lista. Nós vamos fazer isso repetidamente, acessando pessoas 
 ainda "não visitadas", obtendo suas listas de amigos, e adicionando 
 amigos que nós ainda não vimos na nossa lista para uma futura visita.
 
 Também iremos verificar quantas vezes vimos um amigo em particular 
-no nosso banco de dados para ter uma idéia de sua "popularidade".
+no nosso banco de dados para ter uma ideia da "popularidade" dele.
 
-Armazenando nossa lista de contas conhecidas, independente se uma 
-conta ja foi rastreada ou não, e o quão popular uma conta é no 
+Armazenando nossa lista de contas conhecidas, se uma 
+conta ja foi rastreada ou não e o quão popular uma conta é no 
 nosso banco de dados no nosso disco, podemos parar e reiniciar 
 nosso programa quantas vezes quisermos.
 
 O programa é um pouco complexo. É baseado no código do 
 exercício anteriormente exposto nesse livro que usa a API do Twitter.
 
-Aqui está a fonte do código para nossa aplicação de 
+Aqui está o código-fonte para nossa aplicação de 
 rastreamento sobre o Twitter:
 
 \VerbatimInput{../code3/twspider.py}
@@ -252,14 +252,14 @@ rastreamento sobre o Twitter:
 Nosso banco de dados é armazenado no arquivo `spider.sqlite3` e tem 
 uma tabela chamada `Twitter`. Cada linha na tabela `Twitter` tem 
 uma coluna para o nome da conta, caso nós tenhamos obtido os amigos 
-dessa conta e quantas vezes essa conta foi "friended".
+dessa conta e quantas vezes essa conta foi "adicionada".
 
 No laço principal do nosso programa, nós solicitamos do nosso 
 usuário o nome da conta do Twitter ou que ele digite "sair" para 
 sair do programa. Se o usuário entrar com uma conta Twitter, 
 nós iremos rastrear a lista de amigos e os status desse usuário e 
 iremos adicionar cada amigo no nosso banco de dados, caso ainda não 
-esteja no mesmo. Se o amigo já estiver na lista, nós adicionamos 
+esteja nele. Se o amigo já estiver na lista, nós adicionamos 
 1 para o campo `amigos` na linha do banco de dados.
 
 Se o usuário pressionar a tecla "enter", nós olhamos o banco 
@@ -268,14 +268,14 @@ acessamos, obtendo os amigos e os status dessa conta e adicionando-os
 ao banco de dados ou atualizando-os e aumentando o contador `amigos`.
 
 Depois que obtivermos a lista de amigos e seus status, vamos 
-percorrer todos os itens do `usuário` no retorno JSON e recuperamos 
-o `screen_name` para cada usuário. Depois usamos a declaração `SELECT` 
+percorrer todos os itens do `usuário` no retorno JSON e recuperaremos 
+o `screen_name` para cada usuário. Depois usaremos a declaração `SELECT` 
 para ver se já armazenamos um `screen_name` em particular no nosso banco 
 de dados, recuperando a conta amigo (`amigos`) se a gravação existir.
 
 ~~~~ {.python}
-contadorNovo = 0
-contadorId = 0
+contadornovo = 0
+contadorantigo = 0
 for u in js['users'] :
     friend = u['screen_name']
     print(amigo)
@@ -285,12 +285,12 @@ for u in js['users'] :
         contador = cur.fetchone()[0]
         cur.execute('UPDATE Twitter SET amigos = ? WHERE nome = ?',
             (contador+1, amigo) )
-        contadorId = contadorId + 1
+        contadorantigo = contadorantigo + 1
     except:
         cur.execute('''INSERT INTO Twitter (nome, recuperada, amigos)
             VALUES ( ?, 0, 1 )''', ( amigo, ) )
-        contadorNovo = contadorNovo + 1
-print('Novas contas=',contadorNovo,' revisitada=',contadorId)
+        contadornovo = contadornovo + 1
+print('Novas contas=',contadornovo,' revisitada=',contadorantigo)
 conn.commit()
 ~~~~
 
@@ -306,13 +306,13 @@ atual na variável `contador`.
 Se a recuperação for um sucesso, usamos a declaração SQL `UPDATE`
 com a cláusula `WHERE` para adicionar 1 na coluna `amigos` em sua
 respectiva linha conta amigo. Note que temos dois espaços reservados
-(i.e ponto de interrogação) em SQL, e o segundo parâmetro `execute()` 
+(i.e., pontos de interrogação) em SQL, e o segundo parâmetro `execute()` 
 é uma tupla de dois elementos que espera valores para serem substituídos
 no SQL no lugar dos pontos de interrogação.
 
 Se o bloco `try` falhar, provavelmente será porque não houve nenhum
 registro que correspondeu a cláusula `WHERE name = ?` na declaração SELECT.
-Então, no bloco `expect`, usamos a declaração `INSERT` para adicionar um 
+Então, no bloco `expect`, usamos a declaração SQL `INSERT` para adicionar um 
 `screen_name` amigo na tabela, com uma indicação de que ainda não obtivemos 
 um `screen_name` com esse nome, e setamos a contagem desse amigo para zero.
 
@@ -328,11 +328,11 @@ Entre com uma conta Twitter, ou digite sair: sair
 
 Como é a primeira vez que rodamos o programa, nosso banco de 
 dados está vazio. Criamos então um banco de dados no arquivo 
-`spider.sqlite3` e adicionamos, neste banco, uma tabela chamada 
+`spider.sqlite3` e adicionamos, nesse banco, uma tabela chamada 
 `Twitter`. Depois, recuperamos alguns amigos e adicionamos 
 todos ao nosso banco, já que o mesmo está vazio.
 
-Nesse momento, podemos querer escrever um simples dumper de 
+Nesse momento, podemos querer escrever um simples programa que exponha o conteúdo do 
 banco de dados para dar uma olhada no que está em nosso arquivo `spider.sqlite3`:
 
 \VerbatimInput{../code3/twdump.py}
@@ -354,7 +354,7 @@ programa de rastreamento, sua saída será:
 20 linhas.
 ~~~~
 
-Nós vemos que há linha para cada `screen_name`, que não 
+Nós vemos que há uma linha para cada `screen_name`, que não 
 foram recuperados dados para esse `screen_name` e que cada 
 um no banco de dados tem um amigo. 
 
@@ -390,7 +390,7 @@ if ( len(acct) < 1 ) :
 Nós usamos a declaração SQL `SELECT` para recuperar o nome do primeiro 
 usuário (`LIMIT 1`) que ainda tem o valor "nós recuperamos esse usuário" 
 igual a zero. Nós, também, usamos o padrão `fetchone()[0]` dentro do 
-bloco try/except para extrair `screen_name` dos dados recuperados ou 
+bloco try/except ou para extrair `screen_name` dos dados recuperados ou 
 para imprimir em tela uma mensagem de erro e fazer laço novamente.
 
 Se conseguirmos recuperar um `screen_name` ainda não processado, 
@@ -411,10 +411,10 @@ Depois que recuperamos os dados, nós usamos a declaração `UPDATE`
 para setar a coluna `recuperada` para 1, para indicar que nós 
 completamos a recuperação dos amigos dessa conta. Isso evita que 
 recuperemos a mesma informação várias vezes, fazendo que sempre 
-possamos progredir na lista de amigos.
+possamos progredir na lista de amigos do Twitter.
 
-Se rodarmos o programa e pressionando "enter" duas vezes para recuperar 
-o próximo "não visitado" amigo, depois rodarmos o programa dumping, 
+Se rodarmos o programa e pressionarmos "enter" duas vezes para recuperar 
+os próximos amigos não visitados do amigo, depois rodarmos o programa expositor, 
 ele irá nos mostrar a seguinte saída:
 
 ~~~~
@@ -473,15 +473,10 @@ possamos achar uma lista de todas a pessoas que estão seguindo
 esta pessoa em particular.
 
 Como todo mundo provavelmente tem muitas contas que os seguem, 
-nos simplesmente  iremos adicionar uma simples coluna em nossa 
+não podemos simplesmente iremos adicionar uma única coluna em nossa 
 tabela `Twitter`. Então, criaremos uma nova tabela que irá permanecer 
-rastreando pares de amigos. O trecho de código a seguir, é uma 
-simples forma de criar esta nova tabela.
-
-Since everyone will potentially have many accounts that follow them, we
-cannot simply add a single column to our `Twitter` table. So
-we create a new table that keeps track of pairs of friends. The
-following is a simple way of making such a table:
+rastreando pares de amigos. O trecho de código a seguir é uma 
+simples forma de criar essa nova tabela.
 
 ~~~~ {.sql}
 CREATE TABLE Parceiros (de_amigo TEXT, para_amigo TEXT)
@@ -495,7 +490,7 @@ INSERT INTO Parceiros (from_friend,to_friend) VALUES ('drchuck', 'lhawthorn')
 ~~~~
 
 Como estamos processando as informações dos 20 amigos do "feed" 
-do `drchuck`, isto irá inserir 20 registros com "drchuck" como parâmetro, 
+do `drchuck`, iremos inserir 20 registros com "drchuck" como parâmetro, 
 resultando no duplicamento de strings várias vezes no nosso banco de dados.
 
 A duplicação de uma string viola uma das boas práticas de *normalização 
@@ -514,12 +509,11 @@ mais rápida possível.
 
 Iremos armazenar as contas do Twitter em uma tabela chamada `Pessoas` em vez da tabela 
 `Twitter` usada no exemplo anterior. A tabela `Pessoas` tem uma coluna a mais para 
-adicionar uma chave numérica associada com a linha desta conta Twitter. SQLite possui 
+adicionar uma chave numérica associada com a linha dessa conta Twitter. SQLite possui 
 um recurso que automaticamente adiciona uma chave para cada linha inserida na tabela 
 usando um tipo especial de coluna (`INTEGER PRIMARY KEY`)
 
 Podemos criar a tabela `Pessoas` com uma coluna adicional `id` como segue:
-
 
 ~~~~ {.sql}
 CREATE TABLE Pessoas
@@ -535,7 +529,7 @@ SQLite insira duas colunas como o mesmo valor no campo `nome`.
 
 Agora, em vez de criar a tabela `Parceiros`, iremos criar uma tabela 
 chamada `Segue` com duas colunas de inteiros: `de_id` e `para_id` e uma 
-restrição na tabela para que a combinação de `de_id` e `para_id` seja única nessa tabela
+restrição na tabela para que a *combinação* de `de_id` e `para_id` seja única nessa tabela
 (i.e., não podemos inserir linhas duplicadas) em nosso banco de dados.
 
 
@@ -546,15 +540,15 @@ CREATE TABLE Segue
 
 Quando adicionamos a restrição `UNIQUE` em nossas tabelas, estamos impondo certas 
 regras para o nosso banco de dados quando tentarmos inserir novos registros. 
-Estamos criando estas regras como convenção nos nossos programas, como veremos 
-em seguida. As regras nos impedem de cometer erros e torna mais fácil escrever 
+Estamos criando essas regras como convenção nos nossos programas, como veremos 
+em seguida. As regras tanto nos impedem de cometer erros como tornam mais fácil escrever 
 parte do nosso código.
 
 Na essência, quando criamos a tabela `Segue`, estamos modelando uma "relacionamento" 
-onde uma pessoa "segue" alguma outra,e representamos isso com um par de números 
-indicando que a: (a) as pessoas estão conectadas, e (b) a direção do relacionamento.
+onde uma pessoa "segue" alguma outra e representando isso com um par de números 
+indicando que a: (a) as pessoas estão conectadas e (b) a direção do relacionamento.
 
-![Relationships Between Tables](height=3.5in@figs2/twitter)
+![Relações Entre Tabelas](height=3.5in@figs2/twitter)
 
 
 Programando com múltiplas tabelas
@@ -562,7 +556,7 @@ Programando com múltiplas tabelas
 
 Agora iremos refazer nosso programa de rastreamento do Twitter 
 usando duas tabelas, as chaves primárias, e as referências a essas chaves
-como descrito acima. Aqui esta o código da nova versão do nosso programa:
+como descrito acima. Aqui está o código da nova versão do nosso programa:
 
 \VerbatimInput{../code3/twfriends.py}
 
@@ -573,10 +567,10 @@ inteiras para linkar tabelas. Os passos básicos são:
 1.  Criar tabelas com chaves primárias e restrições.
 
 2.  Quando temos uma chave lógica para uma pessoa (i.e, nome da conta) e precisamos 
-    do valor id dessa, independente se esta pessoa já está ou não na tabela 
+    do valor `id` dessa, dependendo se essa pessoa já está ou não na tabela 
     `Pessoas`, teremos que: (1) Procurar essa pessoa na tabela `Pessoas` e recuperar
     o valor do `id` daquela ou (2) adicionar essa pessoa na tabela `Pessoas` e 
-    pegar o valor do `id` desta nova linha adicionada. 
+    pegar o valor do `id` dessa nova linha adicionada. 
 
 3.  Inserir a linha que retorna o relacionamento dos "seguidores"
 
@@ -587,10 +581,10 @@ Nós iremos abordar cada um desses passos por vez.
 A medida que planejamos a estrutura de nossa tabela, podemos dizer ao sistema de banco de dados que gostaríamos que ele nos impusesse algumas regras. Essas regras evitam que possamos cometer erros e que dados incorretos sejam introduzidos nas tabelas. Quando criamos nossas tabelas:
 
 ~~~~ {.python}
-cur.execute('''CREATE TABLE IF NOT EXISTS People
-    (id INTEGER PRIMARY KEY, name TEXT UNIQUE, retrieved INTEGER)''')
-cur.execute('''CREATE TABLE IF NOT EXISTS Follows
-    (from_id INTEGER, to_id INTEGER, UNIQUE(from_id, to_id))''')
+cur.execute('''CREATE TABLE IF NOT EXISTS Pessoas
+    (id INTEGER PRIMARY KEY, nome TEXT UNIQUE, recuperado INTEGER)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS Segue
+    (de_id INTEGER, para_id INTEGER, UNIQUE(de_id, para_id))''')
 ~~~~
 
 
@@ -599,8 +593,8 @@ Indicamos que a coluna `nome` na tabela `Pessoas` precisa ser `UNIQUE`. Nós tam
 Podemos nos aproveitar dessas restrições no código a seguir:
 
 ~~~~ {.python}
-cur.execute('''INSERT OR IGNORE INTO People (name, retrieved)
-    VALUES ( ?, 0)''', ( friend, ) )
+cur.execute('''INSERT OR IGNORE INTO Pessoas (nome, recuperado)
+    VALUES ( ?, 0)''', ( amigo, ) )
 ~~~~
 
 Podemos adicionar a cláusula `OR IGNORE` à declaração `INSERT` para indicar que caso este `INSERT` em particular venha a causar uma violação da regra “`nome` deve ser único“, o sistema de banco de dados está autorizado a ignorar o `INSERT`. Assim, estamos usando as restrições do banco de dados como um filtro de segurança, garantindo que não iremos fazer algo errado inadvertidamente. 
@@ -608,8 +602,8 @@ Podemos adicionar a cláusula `OR IGNORE` à declaração `INSERT` para indicar 
 De forma similar, o código a seguir assegura que não adicionaremos a mesma relação `Segue` mais de uma vez.  
 
 ~~~~ {.python}
-cur.execute('''INSERT OR IGNORE INTO Follows
-    (from_id, to_id) VALUES (?, ?)''', (id, friend_id) )
+cur.execute('''INSERT OR IGNORE INTO Segue
+    (from_id, to_id) VALUES (?, ?)''', (id, amigo_id) )
 ~~~~
 
 Novamente, apenas dizemos ao banco de dados para ignorar a tentativa `INSERT` caso ela viole a restrição de singularidade que especificamos para as linhas de `Segue`. 
@@ -619,48 +613,48 @@ Novamente, apenas dizemos ao banco de dados para ignorar a tentativa `INSERT` ca
 
 Quando requisitamos ao usuário uma conta do Twitter, se a conta existir, devemos procurar seu valor `id`. Se a conta não existir na tabela `Pessoas`, devemos inserir um registro e guardar o valor `id` da linha inserida.
 
-Este é um padrão muito comum e feito duas vezes no programa abaixo. O código mostra como procuramos pelo `id` da conta de um amigo, quando tivermos extraído o `screen_name` do `usuário` presente no Twitter JSON recuperado. 
+Esse é um padrão muito comum e feito duas vezes no programa abaixo. O código mostra como procuramos pelo `id` da conta de um amigo, quando tivermos extraído o `screen_name` do `usuário` presente no Twitter JSON recuperado. 
 
 Já que ao longo do tempo há uma maior chance da conta constar no banco de dados, primeiro verificamos se o registro em `Pessoas` existe, usando a declaração `SELECT`. 
 
 Se tudo ocorrer bem^[Em geral, quando a frase começar com “se tudo ocorrer bem”, você perceberá que o código precisa de um bloco try/except.] dentro da seção `try`, devemos recuperar o registro usando `fetchone()` e então retirar o primeiro (e apenas o primeiro) elemento da tupla obtida e armazená-la em `amigo_id`.
 
-Caso SELECT `resulte` em falha, o código `fetchone()[0]` irá falhar e o controlador executará a seção `except`.
+Caso `SELECT` resulte em falha, o código `fetchone()[0]` irá falhar e o controlador executará a seção `except`.
 
 ~~~~ {.python}
-    friend = u['screen_name']
-    cur.execute('SELECT id FROM People WHERE name = ? LIMIT 1',
-        (friend, ) )
+    amigo = u['screen_name']
+    cur.execute('SELECT id FROM Pessoas WHERE nome = ? LIMIT 1',
+        (amigo, ) )
     try:
-        friend_id = cur.fetchone()[0]
-        countold = countold + 1
+        amigo_id = cur.fetchone()[0]
+        contadorantigo = contadorantigo + 1
     except:
-        cur.execute('''INSERT OR IGNORE INTO People (name, retrieved)
-            VALUES ( ?, 0)''', ( friend, ) )
+        cur.execute('''INSERT OR IGNORE INTO Pessoas (nome, recuperado)
+            VALUES ( ?, 0)''', ( amigo, ) )
         conn.commit()
         if cur.rowcount != 1 :
-            print('Error inserting account:',friend)
+            print('Error inserting account:', amigo)
             continue
-        friend_id = cur.lastrowid
-        countnew = countnew + 1
+        amigo_id = cur.lastrowid
+        contadornovo = contadornovo + 1
 ~~~~
 
 Caso o código `except` seja executado, apenas significa que a linha não foi encontrada e, portanto, deve ser inserida. Usamos `INSERT OR IGNORE` para evitar erros e então chamar `commit()` para forçar o banco de dados a ser atualizado. Depois da escrita ter sido feita, podemos verificar o `cur_rowcount` para ver quantas linhas foram afetadas. Já que estamos tentando inserir uma única linha, se o número de linhas afetados for diferente de 1, houve um erro. 
 
-No entanto, se o `INSERT` for bem-sucedido, `cur_lastrowid` pode ser avaliado para encontrar o valor na coluna `id`, atribuído pelo banco de dados, da nova linha.
+No entanto, se o `INSERT` for bem sucedido, `cur_lastrowid` pode ser avaliado para encontrar o valor na coluna `id`, atribuído pelo banco de dados, da nova linha.
 
 ### Storing the friend relationship
 
 Uma vez que sabemos o valor chave para tanto o usuário do Twitter quanto seu amigo, no JSON, basta inserirmos os dois números na tabela `Segue` com o código abaixo:
 
 ~~~~ {.python}
-cur.execute('INSERT OR IGNORE INTO Follows (from_id, to_id) VALUES (?, ?)',
-    (id, friend_id) )
+cur.execute('INSERT OR IGNORE INTO Segue (de_id, para_id) VALUES (?, ?)',
+    (id, amigo_id) )
 ~~~~
 
 Note que encarregamos o banco de dados de nos prevenir de inserir duas vezes uma relação. Isto se dá ao criarmos uma tabela com a restrição de singularidade e então adicionando `OR IGNORE` à declaração `INSERT`.
 
-Aqui está um exemplo da execução deste programa: 
+Aqui está um exemplo da execução desse programa: 
 
 ~~~~
 Enter a Twitter account, or quit:
@@ -682,14 +676,14 @@ Começamos com a conta `drchuck` e então deixamos o programa automaticamente se
 Abaixo estão as primeiras linhas para as tabelas `Pessoas` e `Segue`, após a execução ser finalizada: 
 
 ~~~~
-People:
+Pessoas:
 (1, 'drchuck', 1)
 (2, 'opencontent', 1)
 (3, 'lhawthorn', 1)
 (4, 'steve_coppin', 0)
 (5, 'davidkocher', 0)
 55 rows.
-Follows:
+Segue:
 (1, 2)
 (1, 3)
 (1, 4)
@@ -698,32 +692,32 @@ Follows:
 60 rows.
 ~~~~
 
-Você pode ver os campos `id`, `nome` e `visitado` na tabela `Pessoas`, bem como os números em ambas as pontas da relação na tabela `Segue`. Na tabela `Pessoas`, vemos que as três primeiras pessoas foram visitadas e suas informações foram obtidas. Os dados na tabela `Segue` indicam que `drchuck` (usuário 1) é amigo de todas as pessoas nas primeiras 5 linhas. Isto faz sentido já que o primeiro conjunto de informações recuperado e armazenado foi referente aos amigos de `drchuck`. Se desejasse imprimir mais linhas da tabela `Segue`, também veria os amigos dos usuários 2 e 3.
+Você pode ver os campos `id`, `nome` e `visitado` na tabela `Pessoas`, bem como os números em ambas as pontas da relação na tabela `Segue`. Na tabela `Pessoas`, vemos que as três primeiras pessoas foram visitadas e suas informações foram obtidas. Os dados na tabela `Segue` indicam que `drchuck` (usuário 1) é amigo de todas as pessoas nas primeiras 5 linhas. Isso faz sentido já que o primeiro conjunto de informações recuperado e armazenado foi referente aos amigos de `drchuck`. Se desejasse imprimir mais linhas da tabela `Segue`, também veria os amigos dos usuários 2 e 3.
 
 
 Três tipos de chaves
 -------------------
 
 Agora que começamos construindo um modelo de dados colocando nossos dados dentro
-várias tabelas vinculadas e vinculando as linhas nestas tabelas usando
-*chaves*, nós precisamos examinar algumas terminologias entorno das chaves.
+várias tabelas vinculadas e vinculando as linhas nessas tabelas usando
+*chaves*, nós precisamos examinar algumas terminologias em torno das chaves.
 Geralmente existem três tipos de chaves usadas em um modelo de banco de dados.
 
--   Uma *chave lógica* é uma chave que no "mundo real" pode ser
+-   Uma *Chave lógica* é uma chave que no "mundo real" pode ser
     usado para procurar uma linha. No nosso exemplo de modelo de dados, o
     campo `nome` é uma chave lógica. É o nome de tela para
     o usuário e nós de fato procuramos linhas de um usuários várias vezes no
-    programa usando o campo `nome`. Você vai encontrar frequentemente que
-    isso faz sentido para adicionar uma restrição `ÚNICA` para uma chave lógica.
-    Como a chave lógica é como procurarmos uma linha do lado de fora do mundo, 
+    programa usando o campo `nome`. Você vai notar frequentemente que
+    isso faz sentido para adicionar uma restrição `UNIQUE` para uma chave lógica.
+    Como a chave lógica é como procuramos uma linha do "mundo externo", 
     faz pouco sentido permitir várias linhas com o mesmo
     valor na tabela.
 
 -   Uma *chave primária* é geralmente um número que é atribuído
-    automáticamente pelo banco de dados. Geralmente não tem significado fora
+    automaticamente pelo banco de dados. Geralmente não tem significado fora
     do programa e é usado somente para para vincular linhas de diferentes tabelas
-    juntas. Qaundo queremos procurar uma linha em uma tabela, geralmente
-    pesquisamos pela linha usando a chave primária é a maneira mais rápida para
+    juntas. Quando queremos procurar uma linha em uma tabela, geralmente
+    pesquisar pela linha usando a chave primária é a maneira mais rápida para
     encontrar uma linha. Como as chaves primárias são números inteiros, elas ocupam
     muito pouco armazenamento e podem ser comparadas ou classificadas muito rapidamente. No
     nosso modelo de dados, o campo `id` é um exemplo de uma chave primária.
@@ -745,7 +739,7 @@ dados separados dentro de duas tabelas, interligados usando chaves primárias e
 estrangeiras, precisamos estar prontos para construir uma `SELECT` que
 remonta os dados nas tabelas.
 
-SQL usa a cláusula `JOIN` para reconectar estas tabelas. Na
+SQL usa a cláusula `JOIN` para reconectar essas tabelas. Na
 cláusula `JOIN` você especifica os campos que são usados para
 reconectar as linhas entre as tabelas.
 
@@ -753,24 +747,24 @@ A seguir está um exemplo de uma `SELECT` com uma cláusula
 `JOIN`:
 
 ~~~~ {.sql}
-SELECT * FROM Seguidores JOIN Pessoa
-    ON Seguidores.de_id = Pessoa.id WHERE Pessoa.id = 1
+SELECT * FROM Seguidores JOIN Pessoas
+    ON Seguidores.de_id = Pessoas.id WHERE Pessoas.id = 1
 ~~~~
 
 A cláusula `JOIN` indica que os campos que estamos selecionando
-cruze as tabelas `Seguidores` e `Pessoa`. A cláusula
+cruze as tabelas `Seguidores` e `Pessoas`. A cláusula
 `ON` indicada como as duas tabelas devem ser unidas:
 Pegue as linhas de `Seguidores` e acrescente a linha de
-`Pessoa` onde o campo `de_id` em `Seguidores` é
-o mesmo valor `id` na tabela `Pssoa`.
+`Pessoas` onde o campo `de_id` em `Seguidores` é
+o mesmo valor `id` na tabela `Pessoas`.
 
 ![Conectando Tabelas Usando JOIN](height=3.5in@figs2/join)
 
 O resultado de JOIN é criar "metalinhas" extra-longas as quais possuem
-os campos de `Pessoa` e os campos correspondentes de
+os campos de `Pessoas` e os campos correspondentes de
 `Seguidores`. Onde existem mais que um correspondente entre o campo
-`id` de `Pessoa` e o `from_id` de
-`People`, quando JOIN cria uma metalinha para *cada*
+`id` de `Pessoas` e o `de_id` de
+`Pessoas`, quando JOIN cria uma metalinha para *cada*
 par de linhas correspondentes, duplicaando dados conforme necessário.
 
 A código a seguir demonstra dados que teremos no banco de dados
@@ -779,15 +773,15 @@ executado várias vezes.
 
 \VerbatimInput{../code3/twjoin.py}
 
-Nesse programa, nós primeiramente despejamos a `Pessoa` e
-`Seguidores` e quando despejamos um subconjunto do dados nas tabelas
+Nesse programa, nós primeiramente expomos as `Pessoa` e os
+`Seguidores` e daí expomos um subconjunto do dados nas tabelas
 unidas.
 
 Aqui está a saída do programa:
 
 ~~~~
 python twjoin.py
-Pessoa:
+Pessoas:
 (1, 'drchuck', 1)
 (2, 'opencontent', 1)
 (3, 'lhawthorn', 1)
@@ -819,17 +813,17 @@ Na última seleção, estamos olhando para contas que são amigas de
 
 Em cada uma das "metalinhas" na última seleção, a primeira das duas colunas são
 da tabela `Seguidores` seguido por três colunas através
-de cinco da tabela `Pessoa`. Você pode também ver que a segunda coluna
+de cinco da tabela `Pessoas`. Você pode também ver que a segunda coluna
 (`Seguidores.to_id`) corresponde a terceira coluna
-(`Pessoa.id`) em cada das "metalinhas" associadas.
+(`Pessoas.id`) em cada das "metalinhas" associadas.
 
 Sumário
 -------
 
-Esse capítulo englobou muito assunto para te dar uma visão geral do basico
+Esse capítulo englobou muito assunto para te dar uma visão geral do básico
 sobre como usar base de dados em Python. É mais complicado escrever o 
 código para usar a base de dados para guardar os dados que dicionários em 
-Python ou arquivos simples então existe uma pequena razão para usar banco de
+Python ou arquivos simples, então existe pouca razão para usar banco de
 dados a não ser que sua aplicação realmente precise das capacidades de um banco
 de dados. As situações que um banco de dados pode ser útil são: (1) quando sua
 aplicação precisa fazer pequenas atualizações aleatórias em um grande conjunto de
@@ -844,21 +838,21 @@ tabelas e conexões/relações entre linhas em diferentes tabelas. Quando começ
 a fazer conexões entre tabelas, é importante fazer um projeto mais pensado e 
 seguir as regras de normalização de base de dados para fazer melhor uso das suas
 capacidades. Visto que a principal motivação para usar um banco de dados é que 
-tem-se uma grande quantidade de dados para lidar, é importante categorizar seus 
-dados de maneira eficiente então seu programa funcionará o mais rápido possível.
+há uma grande quantidade de dados para se lidar, é importante categorizar seus 
+dados de maneira eficiente para que seu programa funcione o mais rápido possível.
 
 Depurando
 ---------
 
 Um padrão comum quando você está desenvolvendo um programa Python para
 conexão de uma base de dados SQLite será a de iniciar o programa e 
-conferir osresultados usando o navegador de banco de dados pro SQLite.
+conferir os resultados usando o navegador de banco de dados pro SQLite.
 O navegador te permite verificar rapidamente se o programa está 
 funcionando corretamente.
 
 Você precisa ter cuidado pois SQLite se certifica de evitar dois programas
-de modificar o mesmo dado ao mesmo tempo. Por exemplo, se você abrir o
-banco de dados no navegador e modificá-lo, porém não presionar o botão 
+de modificarem o mesmo dado ao mesmo tempo. Por exemplo, se você abrir o
+banco de dados no navegador e modificá-lo, porém não pressionar o botão 
 "salvar" ainda, o navegador "trava" o arquivo do banco de dados e evita 
 qualquer outro programa de acessar o arquivo. Em particular, seu programa
 Python não será capaz de acessar o arquivo se ele estiver bloqueado.
@@ -883,14 +877,14 @@ restrição
 
 cursor
 :   O cursor te permite executar comandos SQL no banco de dados e 
-    recuperar dados do mesmo. O cursor é similar com o socket ou 
-    o identificaor de arquivo das conexões de internet e arquivos,
+    recuperar dados dele. O cursor é similar ao socket ou 
+    ao identificaor de arquivo das conexões de internet e arquivos,
     respectivamente.
 \index{cursor}
 
 navegador de banco de dados
 :   *Software* que te permite se conectar diretamente com o banco de dados
-    e manipulá-lo diretamente sem escrever um programa.
+    para manipulá-lo diretamente sem escrever um programa.
 \index{database browser}
 
 chave externa
@@ -901,7 +895,7 @@ chave externa
 
 índice
 :   Dado adicional que o *software* do banco de dados conserva como linhas
-    e adiciona na tabela pra facilitar acelerar a cisualização dos dados.
+    e adiciona na tabela pra facilitar acelerar a visualização dos dados.
 \index{index}
 \index{}
 
@@ -913,8 +907,8 @@ chave lógica
     \index{logical key}
 
 normalização
-:   modelar os dados para que não haja réplicas. Guarda-se cada ítem dos
-    dados em um local no banco de dados e faz-se referência dele em outro
+:   modelar os dados para que não haja réplicas. Guarda-se cada item dos
+    dados em um local no banco de dados e se faz referência dele em outro
     lugar utilizando uma chave externa.
 \index{normalization}
 \index{database normalization}
