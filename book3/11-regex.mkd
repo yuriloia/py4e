@@ -1,76 +1,45 @@
 Regular expressions
 ===================
 
-So far we have been reading through files, looking for patterns and
-extracting various bits of lines that we find interesting. We have been
+Até agora, estivemos lendo arquivos, procurando padrões e
+extraindo vários bits de linhas que achamos interessantes. Nós estivemos métodos de strings como `split` e `find`, além de usar listas e strings slicing para extrais porções das linhas 
 
-using string methods like `split` and `find` and
-using lists and string slicing to extract portions of the lines.
-
-\index{regular expressions}
+\index{expressões regulares}
 \index{regex}
 \index{re module}
 
-This task of searching and extracting is so common that Python has a
-very powerful library called *regular expressions* that
-handles many of these tasks quite elegantly. The reason we have not
-introduced regular expressions earlier in the book is because while they
-are very powerful, they are a little complicated and their syntax takes
-some getting used to.
+Essa tarefa de pesquisar e extrair é tão comum que o Python tem uma biblioteca muito poderosa chamada *expressões regulares* que lida com muitas dessas tarefas com bastante elegância. A razão pela qual não as introduzimos no início do livro é porque, embora sejam muito poderosas, são um pouco complicadas, além de sua sintaxe levar algum tempo para ser compreendida.
 
-Regular expressions are almost their own little programming language for
-searching and parsing strings. As a matter of fact, entire books have
-been written on the topic of regular expressions. In this chapter, we
-will only cover the basics of regular expressions. For more detail on
-regular expressions, see:
+Expressões regulares são quase sua própria linguagem de programação para pesquisar e analisar seqüências de caracteres. De fato, livros inteiros foram escritos sobre este tópico. Neste capítulo, abordaremos apenas o básico dele Para mais detalhes sobre consulte:
 
 <https://en.wikipedia.org/wiki/Regular_expression>
 
 <https://docs.python.org/library/re.html>
 
-The regular expression library `re` must be imported into
-your program before you can use it. The simplest use of the regular
-expression library is the `search()` function. The following
-program demonstrates a trivial use of the search function.
+A biblioteca de expressões regulares `re` deve ser importada para seu programa antes de poder usá-lo. O uso mais simples da biblioteca de expressões regulares é a função `search ()`. O programa a seguir demonstra um uso trivial desta função.
 
-\index{regex!search}
+\index{regex!pesquisa}
 
 \VerbatimInput{../code3/re01.py} 
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-We open the file, loop through each line, and use the regular expression
-`search()` to only print out lines that contain the string
-"From:". This program does not use the real power of regular
-expressions, since we could have just as easily used
-`line.find()` to accomplish the same result.
+Abrimos o arquivo, percorremos cada linha e usamos a expressão regular `search ()` para imprimir apenas linhas que contenham a string "From:". Este programa não usa o poder real das expressões regulares, pois poderíamos ter usado com a mesma facilidade o `line.find ()` para obter o mesmo resultado.
 
 \index{string!find}
 
-The power of the regular expressions comes when we add special
-characters to the search string that allow us to more precisely control
-which lines match the string. Adding these special characters to our
-regular expression allow us to do sophisticated matching and extraction
-while writing very little code.
-
-For example, the caret character is used in regular expressions to match
-"the beginning" of a line. We could change our program to only match
-lines where "From:" was at the beginning of the line as follows:
+O poder das expressões regulares ocorre quando adicionamos caracteres especiais à string de pesquisa, isso nos permite controlar com mais precisão quais linhas correspondem à string. A adição desses caracteres especiais à nossa expressão regular nos permite fazer correspondências e extrações sofisticadas enquanto escrevemos menos linha de código.
+Por exemplo, o caractere de sinal de intercalação é usado em expressões regulares para corresponder ao "início" de uma linha. Poderíamos alterar nosso programa para corresponder apenas às linhas em que "From:" estava no início da linha, da seguinte maneira:
 
 \VerbatimInput{../code3/re02.py} 
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-Now we will only match lines that *start with* the string
-"From:". This is still a very simple example that we could have done
-equivalently with the `startswith()` method from the string
-library. But it serves to introduce the notion that regular expressions
-contain special action characters that give us more control as to what
-will match the regular expression.
+Agora, apenas corresponderemos às linhas que *começam com* a sequência "From:". Este ainda é um exemplo muito simples que poderíamos ter feito de forma equivalente ao método `beginwith ()` da biblioteca de strings. Mas serve para introduzir a noção de que expressões regulares contêm caracteres de ação especial que nos dão mais controle sobre o que corresponderá à expressão regular.
 
-\index{string!startswith}
+\index{string!começam com}
 
 Correspondência de caracteres em expressões regulares
 -----------------------------------------
