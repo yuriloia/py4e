@@ -288,7 +288,7 @@ x
 x + 17
 ~~~~
 
-Se você digitar uma expressão no modo interativo, o interpretador a {\it avaliará} e mostrará o resultado:
+Se você digitar uma expressão no modo interativo, o interpretador a *avaliará* e mostrará o resultado:
 
 ~~~~ {.python}
 >>> 1 + 1
