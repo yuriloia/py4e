@@ -2,7 +2,7 @@
 Contribuições
 =============
 
-Lista de Contribuidores de Python for Everybody 
+Lista de Contribuidores do Livro Python for Everybody 
 -------------------------------------------
 
 Elliott Hauser,
@@ -28,7 +28,7 @@ Você pode ver os detalhes das contribuições em:
 
 https://github.com/csev/py4e/graphs/contributors
 
-Lista de Contribuidores da Tradução de Python para Todos 
+Lista de Tradutores do Livro Python para Todos 
 -------------------------------------------
 
 Responsável pela tradução: Yuri Loia de Medeiros
@@ -38,7 +38,7 @@ Tradutores: Alysson Hyago, Andhré Carvalho, Giovana Oliveira, Lara Sobral, Mays
 Revisores: Caio Porto, Debora Nunes, Gabriel Araújo Medeiros, João Pedro Melquiades, Lara Sobral, Pyettra Feitosa, Vinicius França, Yuri Loia
 
 
-Lista de Contribuidores de Python for Informatics 
+Lista de Contribuidores do Livro Python for Informatics 
 -------------------------------------------
 
 Bruce Shields pela revisão e correção dos primeiros rascunhos, Sarah Hegge, Steven Cherry,
