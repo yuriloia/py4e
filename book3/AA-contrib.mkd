@@ -28,6 +28,16 @@ Você pode ver os detalhes das contribuições em:
 
 https://github.com/csev/py4e/graphs/contributors
 
+Lista de Contribuidores da Tradução de Python para Todos 
+-------------------------------------------
+
+Responsável pela tradução: Yuri Loia de Medeiros
+
+Tradutores: Alysson Hyago, Andhré Carvalho, Giovana Oliveira, Lara Sobral, Maysa Freire, Natã Macedo, Pyettra Feitosa,  Victor Marinho, Vinicius França, Vinicius Formiga, Vitor Araujo, Yuri Loia
+
+Revisores: Caio Porto, Debora Nunes, Gabriel Araújo Medeiros, João Pedro Melquiades, Lara Sobral, Pyettra Feitosa, Vinicius França, Yuri Loia
+
+
 Lista de Contribuidores de Python for Informatics 
 -------------------------------------------
 
