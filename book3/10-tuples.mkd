@@ -525,7 +525,7 @@ tupla
 Exercícios
 ---------
 
-**Exercício 1: Revise um programa anterior como é pedido: Leia e analise as linhas com _"From"_ e retire os endereços dessas linhas. Conte o número de mensagens de cada pessoa usando um dicionário. **
+**Exercício 1: Revise um programa anterior como é pedido: Leia e analise as linhas com _"From"_ e retire os endereços dessas linhas. Conte o número de mensagens de cada pessoa usando um dicionário.**
 **Depois de todos os dados serem lidos, mostre a pessoa com mais envios criando uma lista de tuplas (contagem, email) do dicionário. Então, ordene a lista em ordem reversa e mostre a pessoa na primeira posição.**
 
 ~~~~
