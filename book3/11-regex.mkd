@@ -2,7 +2,7 @@ Regular expressions
 ===================
 
 Até agora, estivemos lendo arquivos, procurando padrões e
-extraindo vários bits de linhas que achamos interessantes. Nós estivemos métodos de strings como `split` e `find`, além de usar listas e strings slicing para extrais porções das linhas 
+extraindo vários bits de linhas que achamos interessantes. Nós estivemos métodos de strings como `split` e `find`, além de particionar listas e strings para extrair porções das linhas 
 
 \index{expressões regulares}
 \index{regex}
@@ -10,13 +10,13 @@ extraindo vários bits de linhas que achamos interessantes. Nós estivemos méto
 
 Essa tarefa de pesquisar e extrair é tão comum que o Python tem uma biblioteca muito poderosa chamada *expressões regulares* que lida com muitas dessas tarefas com bastante elegância. A razão pela qual não as introduzimos no início do livro é porque, embora sejam muito poderosas, são um pouco complicadas, além de sua sintaxe levar algum tempo para ser compreendida.
 
-Expressões regulares são quase sua própria linguagem de programação para pesquisar e analisar seqüências de caracteres. De fato, livros inteiros foram escritos sobre este tópico. Neste capítulo, abordaremos apenas o básico dele Para mais detalhes sobre consulte:
+Expressões regulares são quase sua própria linguagem de programação para pesquisar e analisar seqüências de caracteres. De fato, livros inteiros foram escritos sobre este tópico. Neste capítulo, abordaremos apenas o básico dele. Para mais detalhes sobre consulte:
 
 <https://en.wikipedia.org/wiki/Regular_expression>
 
 <https://docs.python.org/library/re.html>
 
-A biblioteca de expressões regulares `re` deve ser importada para seu programa antes de poder usá-lo. O uso mais simples da biblioteca de expressões regulares é a função `search ()`. O programa a seguir demonstra um uso trivial desta função.
+A biblioteca de expressões regulares `re` deve ser importada para seu programa antes de poder usá-la. O uso mais simples da biblioteca de expressões regulares é a função `search ()`. O programa a seguir demonstra um uso trivial desta função.
 
 \index{regex!pesquisa}
 
@@ -25,19 +25,19 @@ A biblioteca de expressões regulares `re` deve ser importada para seu programa 
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-Abrimos o arquivo, percorremos cada linha e usamos a expressão regular `search ()` para imprimir apenas linhas que contenham a string "From:". Este programa não usa o poder real das expressões regulares, pois poderíamos ter usado com a mesma facilidade o `line.find ()` para obter o mesmo resultado.
+Abrimos o arquivo, percorremos cada linha e usamos a expressão regular `search ()` para imprimir apenas linhas que contenham a string "From:". Este programa não usa o poder real das expressões regulares, pois poderíamos ter usado com a mesma facilidade o `line.find()` para obter o mesmo resultado.
 
 \index{string!find}
 
-O poder das expressões regulares ocorre quando adicionamos caracteres especiais à string de pesquisa, isso nos permite controlar com mais precisão quais linhas correspondem à string. A adição desses caracteres especiais à nossa expressão regular nos permite fazer correspondências e extrações sofisticadas enquanto escrevemos menos linha de código.
-Por exemplo, o caractere de sinal de intercalação é usado em expressões regulares para corresponder ao "início" de uma linha. Poderíamos alterar nosso programa para corresponder apenas às linhas em que "From:" estava no início da linha, da seguinte maneira:
+O poder das expressões regulares ocorre quando adicionamos caracteres especiais à string de pesquisa, isso nos permite controlar com mais precisão quais linhas correspondem à string. A adição desses caracteres especiais à nossa expressão regular nos permite fazer correspondências e extrações sofisticadas enquanto escrevemos menos linhas de código.
+Por exemplo, o caractere de sinal de intercalação é usado em expressões regulares para corresponder ao "início" de uma linha. Poderíamos alterar nosso programa para encontrar apenas as linhas em que "From:" estava no início da linha, da seguinte maneira:
 
 \VerbatimInput{../code3/re02.py} 
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-Agora, apenas corresponderemos às linhas que *começam com* a sequência "From:". Este ainda é um exemplo muito simples que poderíamos ter feito de forma equivalente ao método `beginwith ()` da biblioteca de strings. Mas serve para introduzir a noção de que expressões regulares contêm caracteres de ação especial que nos dão mais controle sobre o que corresponderá à expressão regular.
+Agora, apenas corresponderemos às linhas que *começam com* a sequência "From:". Este ainda é um exemplo muito simples que poderíamos ter feito de forma equivalente ao método `beginwith()` da biblioteca de strings. Mas serve para introduzir a noção de que expressões regulares contêm caracteres de ação especial que nos dão mais controle sobre o que corresponderá à expressão regular.
 
 \index{string!começam com}
 
@@ -98,21 +98,14 @@ conforme o `.+` é empurrado para fora, como mostrado abaixo:
 From: stephen.marquard@uct.ac.za, csev@umich.edu, and cwen @iupui.edu
 ~~~~
 
-É possível dizer que um asterisco ou sinal de mais não seja tão “ganancioso”
-adicionando outro caractere. Veja a documentação detalhada para obter informações
-sobre como desativar o comportamento ganancioso.
+É possível dizer que um asterisco ou sinal de mais não sejam tão “gananciosos” adicionando outro caractere. Veja a documentação detalhada para obter informações sobre como desativar o comportamento ganancioso.
 
 \index{ganancioso}
 
 Extraindo dados usando expressões regulares
 -----------------------------------------
 
-Se quisermos extrair dado de uma string em Python podemos usar o método
-`findall()` para extrair todas as substrings que
-correspondem a expressão regular. Vamos usar o exemplo de querer extrair
-qualquer coisa que pareça um endereço de email de qualquer linha independente do
-formato. Por exemplo, queremos extrair os endereços de email de 
-cada linha a seguir:
+Se quisermos extrair dados de uma string em Python podemos usar o método findall() para extrair todas as substrings que correspondem à expressão regular. Vamos usar o exemplo de querer extrair qualquer frase que pareça um endereço de email de qualquer linha independente do formato. Por exemplo, queremos extrair os endereços de email de cada linha a seguir:
 
 ~~~~
 From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
@@ -124,7 +117,7 @@ Author: stephen.marquard@uct.ac.za
 
 Nós não queremos escrever código para cada um dos tipos de linha, dividindo 
 e fatiando de forma diferente cada linha. O seguinte programa usa
-`findall()` achar as linhas que contenham endereços de email
+`findall()` para achar as linhas que contenham endereços de email
 e extrair um ou mais endereços de cada uma dessas linhas.
 
 \index{findall}
@@ -233,7 +226,7 @@ Se usarmos essa expressão em nosso programa, nosso dado é muito mais limpo:
 ['apache@localhost']
 ~~~~
 
-Perceba que nas linhas `source@collab.sakaiproject.org` lines, nossa expressão 
+Perceba que nas linhas `source@collab.sakaiproject.org`,nossa expressão 
 regular eliminou duas letras no final da string (">;").
 Isso acontece porque quando acrescentamos `[a-zA-Z]` ao final da nossa expressão
 regular, estamos exigindo que qualquer string que o analisador de expressões
@@ -550,10 +543,14 @@ Glossário
 código frágil
 :  Código executado quando os dados de entrada estão em um formato particular, mas são propensos a quebra, caso ocorra algum desvio em relação ao formato correto. Chamamos isto de “código frágil” pois é facilmente quebrado.
 
-correspondência ávida
+correspondência gananciosa
 :   Noção de que os caracteres + e * em uma expressão regular expandem para o exterior, de forma a corresponder à maior string possível.
 \index{greedy}
 \index{greedy matching}
+
+curinga
+:   Caractere especial que corresponde a qualquer tipo de caractere. Em expressões regulares, o trunfo é o período.
+\index{wild card}
 
 expressão regular
 :   A language for expressing more complex search strings. A regular
@@ -564,10 +561,6 @@ expressão regular
 grep
 :   Comando disponível na maioria dos sistemas Unix que executa uma busca entre arquivos de texto, procurando por linhas que correspondem à expressão regular. O nome do comando é ligado à expressão em inglês “Generalized Regular Expression Parser”, em português: “Analisador Generalizado de Expressões Regulares”.
 \index{grep}
-
-wild card
-:   Caractere especial que corresponde a qualquer tipo de caractere. Em expressões regulares, o trunfo é o período.
-\index{wild card}
 
 Exercícios
 ---------
