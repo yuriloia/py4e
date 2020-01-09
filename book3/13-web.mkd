@@ -1,15 +1,15 @@
 Usando serviços da Web
 ==================
 
-Depois que ficou fácil recuperar documentos e analisar documentos por HTTP
-usando programas, não demorou muito para ser desenvolvida uma abordagem em que
+Uma vez que ficou fácil recuperar e analisar documentos por HTTP
+usando programas, não demorou muito para se desenvolver uma abordagem em que
 se começou a produzir documentos projetados especificamente para serem
 consumidos por outros programas (ou seja, não HTML a ser exibido em um
 navegador).
 
-Existem dois formatos comuns que usamos ao trocar dados entre
-rede. A Linguagem de Marcação Extensível (eXtensible Markup Language - XML) 
-está em uso há muito tempo e é mais adequado para a troca de dados no estilo de documento. 
+Existem dois formatos comuns que usamos ao trocar dados pela
+rede. A Linguagem de Marcação Extensível (_eXtensible Markup Language_ - XML) 
+está em uso há muito tempo e é mais adequada para a troca de dados no estilo de documento. 
 Entretanto, quando programas apenas desejam trocar dicionários, listas ou outras
 informações entre si, eles usam a Notação de Objeto JavaScript (JavaScript Object Notation - JSON)
 (consulte [www.json.org] (http://www.json.org)). Vamos conhecer os dois formatos.
@@ -17,7 +17,7 @@ informações entre si, eles usam a Notação de Objeto JavaScript (JavaScript O
 eXtensible Markup Language - XML
 --------------------------------
 
-XML é muito semelhante ao HTML, mas XML é mais estruturado que HTML.
+XML é muito semelhante ao HTML, mas XML se mostra mais estruturado.
 Aqui está uma amostra de um documento XML:
 
 ~~~~ {.xml}
@@ -32,13 +32,13 @@ Aqui está uma amostra de um documento XML:
 
 Cada par de tags de abertura (por exemplo, `<person>`) e fechamento
 (por exemplo, `<\ person>`) representa um *elemento* ou *nó* com o mesmo
-nome que a tag (por exemplo, `pessoa`). Cada elemento pode ter algum texto,
+nome na tag (nesse caso, `person`). Cada elemento pode ter algum texto,
 alguns atributos (por exemplo, `hide`) e outros elementos aninhados. Se o elemento
 XML estiver vazio (ou seja, não tiver conteúdo), poderá ser representado por
 uma tag de fechamento automático (por exemplo, `<email />`).
 
 Muitas vezes, é útil pensar em um documento XML como uma estrutura em árvore
-onde existe um elemento superior (aqui: `pessoa`) e outras tags (por exemplo,
+onde existe um elemento superior (aqui: `person`) e outras tags (por exemplo,
 `phone`) são desenhados como *filhos* de seus elementos *pais*.
 
 ![Uma representação em árvore de XML](height=2.0in@../images/xml-tree)
@@ -50,48 +50,46 @@ Analisando XML
 \index{ElementTree!fromstring}
 \index{ElementTree!find}
 
-Aqui está um aplicativo simples que analisa alguns XML e extrai alguns dados
-elementos do XML:
+Aqui está um aplicativo simples que analisa um XML e extrai alguns 
+elementos de dados dele:
 
 \VerbatimInput{../code3/xml1.py} 
 
 As aspas simples triplas (`'''`), bem como as aspas duplas triplas (`"""`), permitem a criação de strings que abrangem várias linhas.
 
-Chamar `fromstring` converte a representação da string do XML numa 
-"árvore" de elementos XML. Quando o XML está em uma árvore,nós temos 
+Chamar `fromstring` converte a representação sequencial do XML numa 
+"árvore" de elementos XML. Quando o XML está em uma árvore, nós temos 
 uma série de métodos que podemos chamar para extrair porções
 de dados da sequência XML. A função `find` pesquisa
-através da árvore XML e recupera o elemento que corresponde
-a tag especificada.
+através da árvore e recupera o elemento que corresponde
+à tag especificada.
 
 ~~~~
 Name: Chuck
 Attr: yes
 ~~~~
 
-O uso de um analisador XML como o `ElementTree` tem a vantagem
-embora o XML,neste exemplo,seja bastante simples, acontece que
-existem muitas regras em relação a XML válido e o uso de `ElementTree`
-nos permite extrair dados de XML sem se preocupar com as regras da
-sintaxe XML.
+O uso de um analisador XML como o `ElementTree` tem a vantagem de que
+embora o XML seja bastante simples neste exemplo, ainda
+existem muitas regras de sintaxe, e o uso do `ElementTree`
+nos permite extrair dados do XML sem se preocupar com essas regras.
 
 Looping através dos nós
 ---------------------
 
-\index{ÁrvoreElemento!findall}
-\index{ÁrvoreElemento!get}
+\index{ElementTree!findall}
+\index{ElementTree!get}
 
-Frequentemente o XML tem múltiplos nós e precisamos escrever um loop para
+Frequentemente, os códigos em XML têm múltiplos nós e precisamos escrever um loop para
 processar todos esses nós. No programa a seguir, nós percorremos todos os
 nós `user`:
 
-
 \VerbatimInput{../code3/xml2.py} 
 
-O método `findall` recupera uma lista de Python de sub-árvores que
-representam a estrutura  `user` na árvore XML. Então podemos escrever
-um loop `for` que busca em cada nó user, e imprime os elementos de texto `name` 
-e `id` assim como o atributo `x`do nó `user`.
+O método `findall` recupera uma lista de sub-árvores que
+representam as estruturas `user` na árvore XML. Então podemos escrever
+um loop `for` que percorre cada nó user e imprime os elementos de texto do `name` 
+e do `id`, assim como o atributo `x` do nó `user`.
 ~~~~
 User count: 2
 Name Chuck
@@ -103,7 +101,7 @@ Attribute 7
 ~~~~
 
 É importante incluir todos os elementos de nível pai no método 
-`findall` exceto pelo elemento de nível superior (e.g., `users/user`).
+`findall` exceto o elemento de nível superior (por exemplo, `users/user`).
 De outra forma, Python não irá encontrar nenhum nó desejado.
 
 ~~~~ {.python}
@@ -132,12 +130,9 @@ lst2 = stuff.findall('user')
 print('User count:', len(lst2))
 ~~~~
 
-`lst` armazena todos os elementos `user`que estão aninhados dentro
-de seus `users` pai. `lst2` procura por elementos que não estão
-aninhados dentro do elemento `stuff` de nível superior onde não há nenhum.
-`lst` stores all `user` elements that are nested within their `users`
-parent. `lst2` looks for `user` elements that are not nested within
-the top level `stuff` element where there are none.
+`lst` armazena todos os elementos `user` que estão aninhados dentro
+de seu pai `users`. `lst2` procura por elementos `user` que não estão
+aninhados dentro do elemento `stuff` de nível superior, onde não há nenhum.
 
 ~~~~
 User count: 2
@@ -150,14 +145,14 @@ Notação de Objeto JavaScript - JSON
 \index{JSON}
 \index{Notação de Objeto JavaScript}
 
-O formato JSON foi inspirado pelo formato de objeto e array usado na
-linguagem JavaScript. Mas desde que Python foi inventado antes de JavaScript,
-a sintaxe de Python para dicionários e listas influenciou a sintaxe de JSON.
-Então o formato de JSON é quase idêntico a uma combinação de listas
-e dicionários Python.
+O formato JSON foi inspirado no formato de objeto e array usado na
+linguagem JavaScript. Mas como o Python foi inventado antes de 
+JavaScript, a sintaxe de Python para dicionários e listas influenciou a 
+sintaxe de JSON. Então o formato de JSON é quase idêntico a uma 
+combinação das listas e dicionários do Python.
 
-Aqui está uma codificação JSON que é aproximadamente equivalente ao XML simples 
-de cima:
+Aqui está uma codificação JSON que é aproximadamente equivalente ao XML 
+de antes:
 
 ~~~~ {.json}
 {
@@ -172,35 +167,51 @@ de cima:
 }
 ~~~~
 
-Você notará algumas diferenças. Primeiro, em XML, podemos adicionar atributos
-como "intl" para a tag "phone". Em JSON, nós podemos simplesmente ter pares de valores-chave.
-Além disso, a tag XML "person" desapareceu, sendo substituída por um conjunto de chaves.
+Você notará algumas diferenças. Primeiro, em XML, podemos adicionar 
+atributos como "intl" para a tag "phone". Em JSON, nós 
+simplesmente temos pares na forma chave-valor.
+Além disso, a tag XML "person" desapareceu, sendo substituída por um 
+conjunto de chaves externas.
 
-Em geral, estruturas JSON são mais simples que XML pois, JSON tem
-menos capacidades que XML. Mas, JSON tem a vantagem de que mapeia
-*diretamente* para alguma combinação de dicionários e listas.
-E como quase todas as linguagens de programação têm algo equivalente a
-Dicionários e listas do Python, o JSON é um formato muito natural para ter
-dois programas cooperantes trocando dados.
+Em geral, estruturas JSON são mais simples que XML, muito devido ao fato
+de JSON ter menos capacidades que XML. Mas JSON tem a vantagem de 
+mapear *diretamente* para alguma combinação de dicionários e listas.
+E como quase todas as linguagens de programação têm algo equivalente aos 
+dicionários e listas do Python, o JSON é um formato muito natural para
+dois programas cooperantes que trocam dados.
 
-JSON está se tornando rapidamente o formato preferido para quase todas
-as trocas de dados entre aplicativos graças a sua simplicidade 
+JSON está se tornando, rapidamente, o formato preferido para quase todas
+as trocas de dados entre aplicativos, graças a sua simplicidade 
 comparado ao XML.
 
-
-Análise JSON
+Analisando JSON
 ------------
 
-Construímos nosso JSON por dicionários e listas de aninhamento, conforme necessário. Neste exemplo, representamos uma lista de usuários, onde estes fazem parte de um conjunto de pares de valores-chave (por exemplo, um dicionário). Então nós temos uma lista de dicionários.
+Construímos nosso JSON aninhando dicionários e listas, conforme 
+necessário. Neste exemplo, representamos uma lista de usuários, onde 
+estes fazem parte de um conjunto de pares chave-valor (ou seja, 
+um dicionário). Assim, nós temos uma lista de dicionários.
 
-No programa a seguir, usamos a biblioteca `json` interna para analisar o JSON e ler os dados. Compare isso de perto com os dados e códigos XML equivalentes acima. O JSON tem menos detalhes, portanto, devemos saber antecipadamente que estamos obtendo uma lista de usuários, e cada usuário é um conjunto de pares de valores-chave. O JSON é mais sucinto (uma vantagem), mas também é menos autodescritivo (uma desvantagem).
-
+No programa a seguir, usamos a biblioteca interna `json` para analisar o 
+JSON e ler os dados. Compare ele com os dados e códigos para o XML 
+correspondente de antes. O JSON tem menos detalhes, logo precisamos saber 
+de forma antecipada que estamos obtendo uma lista e que essa lista é de 
+usuários e que cada usuário é um conjunto de pares chave-valor. Ele é um 
+formato mais sucinto (uma vantagem), mas também é menos autodescritivo 
+(uma desvantagem).
 
 \VerbatimInput{../code3/json2.py}
 
-Se você comparar o código para extrair dados do JSON e XML analisados, verá que o que obtemos de `json.loads()` é uma lista do Python que percorremos com um loop `for`, e cada item dentro dessa lista é um dicionário do Python. Uma vez que o JSON tenha sido analisado, podemos usar o operador de indexação do Python para extrair os vários bits de dados para cada usuário. Não precisamos usar a biblioteca JSON para analisar o JSON, pois os dados retornados são simplesmente estruturas nativas do Python.
+Se você comparar o código de extrair dados do JSON e do XML já analisados,
+verá que o que obtemos da função `json.loads()` é uma lista do Python que 
+percorremos com um loop `for`, e que cada item dentro dessa lista é um 
+dicionário. Uma vez que o JSON tenha sido analisado, podemos 
+usar o operador de indexação do Python para extrair os vários bits de 
+dados de cada usuário. Não precisamos usar a biblioteca do JSON para 
+escavucar a estrutura analisada, já que os dados retornados são  
+simplesmente estruturas nativas do Python.
 
-A saída deste programa é exatamente igual à versão XML acima.
+A saída deste programa é exatamente igual à versão XML anterior.
 
 ~~~~
 User count: 2
@@ -212,24 +223,61 @@ Id 009
 Attribute 7
 ~~~~
 
-Em geral, há uma tendência do setor de XML e de JSON para serviços da web. Como o JSON é mais simples e mapeia mais diretamente estruturas de dados nativas que já temos nas linguagens de programação, o código de análise e extração de dados é geralmente mais simples e mais direto ao usar o JSON. Mas o XML é mais autodescritivo e, portanto, há alguns aplicativos em que o XML mantém uma vantagem. Por exemplo, a maioria dos processadores de texto armazena documentos internamente usando XML em vez de JSON.
+Em geral, há uma tendência da indústria saindo do XML e indo para JSON,  
+quendo se trata de serviços de web. Como o JSON é mais simples e mapeia 
+mais diretamente estruturas de dados nativas que já temos nas linguagens 
+de programação, o código de análise e extração de dados é geralmente mais 
+simples e mais direto, quando se usa o JSON. Mas o XML é mais 
+autodescritivo e, portanto, há alguns aplicativos em que o XML mantém uma 
+vantagem. Por exemplo, a maioria dos processadores de texto armazena 
+documentos internamente usando XML em vez de JSON.
 
 Interfaces de Programação de Aplicativos
 ----------------------------------
 
-Agora temos a capacidade de trocar dados entre aplicativos usando o HyperText Transport Protocol (HTTP) e uma maneira de representar dados complexos que estamos enviando entre esses aplicativos usando XML (Extensible Markup Language) ou JavaScript Object Notation (JSON).
+Agora, nós temos a capacidade de trocar dados entre aplicativos usando o 
+HTTP (_HyperText Transport Protocol_) e uma maneira de representar os 
+dados complexos que estamos enviando entre esses aplicativos, usando XML 
+(_Extensible Markup Language_) ou JSON (_JavaScript Object Notation_).
 
-O próximo passo é começar a definir e documentar “contratos” entre aplicativos usando essas técnicas. O nome geral para esses contratos de aplicativo é *Application Program Interfaces* (APIs). Quando usamos uma API, geralmente um programa disponibiliza um conjunto de serviços para uso por outros aplicativos e publica as APIs (ou seja, as "regras") que devem ser seguidas para acessar os serviços fornecidos pelo programa.
+O próximo passo é começar a definir e documentar “contratos” entre 
+aplicativos usando essas técnicas. O nome geral dado a esses contratos é  
+*Interfaces de Programação de Aplicativos* (*Application Program Interfaces* - APIs).
+Geralmente, quando usamos uma API, temos um programa 
+que realiza um conjunto de *serviços* disponíveis para serem usados por 
+outros aplicativos, e ele publica as APIs (ou seja, as "regras") que 
+devem ser seguidas para acessar os serviços fornecidos por ele.
 
-Quando começamos a construir nossos programas nos quais a funcionalidade dele inclui o acesso a serviços fornecidos por outros programas, chamamos a abordagem de *Service-Oriented Architecture*  (SOA). Uma abordagem SOA é aquela em que nosso aplicativo geral faz uso dos serviços de outros aplicativos. Uma abordagem não SOA é onde o aplicativo é um aplicativo autônomo único que contém todo o código necessário para implementar o aplicativo.
+Quando começamos a construir nossos programas em que suas funcionalidades 
+incluem o acesso a serviços fornecidos por outros programas, chamamos a 
+abordagem de *arquitetura Orientada a Serviço* (*Service-Oriented architecture* - SOA).
+Uma abordagem SOA é aquela em que nosso aplicativo 
+geral faz uso dos serviços de outros aplicativos. Uma abordagem não SOA é 
+quando temos um único aplicativo autônomo que contém todo o código 
+necessário para implementar suas funcionalidades.
 
-Nós vemos muitos exemplos de SOA quando usamos a web. Podemos ir a um único site e reservar viagens aéreas, hotéis e automóveis em um único site. Os dados para hotéis não são armazenados nos computadores da companhia aérea. Em vez disso, os computadores da companhia aérea entram em contato com os serviços nos computadores do hotel, recuperam os dados do hotel e os apresentam ao usuário. Quando o usuário concorda em fazer uma reserva de hotel usando o site da companhia aérea, o site da companhia aérea usa outro serviço da web nos sistemas do hotel para realmente fazer a reserva. E quando chega a hora de cobrar seu cartão de crédito por toda a transação, outros computadores ficam envolvidos no processo.
+Nós vemos muitos exemplos de SOA quando usamos a web. Podemos ir a um 
+único site e reservar viagens aéreas, hotéis e automóveis apenas usando 
+dele. Os dados para hotéis não são armazenados nos computadores da 
+companhia aérea. Em vez disso, os computadores da companhia aérea entram 
+em contato com os serviços nos computadores do hotel, obtêm os dados de 
+lá e os apresentam ao usuário. Quando ele concorda em fazer uma reserva 
+de hotel usando o site da companhia aérea, este usa outro serviço da web 
+nos sistemas do hotel para realmente fazer a reserva. E quando chega a 
+hora de realizar a cobrança em seu cartão de crédito por toda a transação,
+ainda outros computadores são envolvidos no processo.
 
-![Service-oriented architecture](height=3.0in@../images/soa)
+![Arquitetura Orientada a Serviço](height=3.0in@../images/soa)
 
-Uma Service-Oriented Architecture tem muitas vantagens, incluindo: (1) sempre mantemos apenas uma cópia de dados (isso é particularmente importante para coisas como reservas de hotéis em que não queremos ser excessivamente comprometidos) e (2) os proprietários podem definir as regras sobre o uso de seus dados. Com essas vantagens, um sistema SOA deve ser cuidadosamente projetado para ter um bom desempenho e atender às necessidades do usuário.
+Uma arquitetura Orientada a Serviço tem muitas vantagens, incluindo: (1) 
+sempre mantemos apenas uma cópia dos dados (isso é particularmente 
+importante para coisas como reservas de hotéis em que não queremos ser 
+excessivamente comprometidos) e (2) os proprietários podem definir as 
+regras sobre o uso de seus dados. Com essas vantagens, um sistema SOA 
+deve ser cuidadosamente projetado para ter um bom desempenho e atender às necessidades do usuário.
 
-Quando um aplicativo disponibiliza um conjunto de serviços em sua API pela internet, chamamos de *serviços web*.
+Quando um aplicativo estabelece um conjunto de serviços em sua API 
+disponibilizada na web, chamamos eles de *web services*.
 
 Segurança e uso de API
 ----------------------
@@ -237,32 +285,36 @@ Segurança e uso de API
 \index{OAuth}
 \index{API!key}
 
-É bastante comum você precisar de uma API `Key` para fazer uso de uma API de terceiros. 
-A ideia geral é que eles desejam saber quem e o quanto cada usuário está usando. 
-Talvez eles disponibilizem seus serviços gratuitamente ou eles tenham alguma política que limite 
-o número de requisições que um simples usuário possa fazer durante um período.
+É bastante comum você precisar de uma API _Key_ para fazer uso de uma API 
+de terceiros. A ideia geral é que eles desejam saber quem está acessando 
+seus serviços e o quanto cada usuário está usando. Em alguns casos, eles 
+têm versões gratuitas e pagas de seus serviços ou definem alguma política 
+que limite o número de requisições que um único usuário pode fazer 
+durante um determinado período.
 
-Algumas vezes, quando você consegue uma API `Key`, basta incluir esta chave 
-como uma parte dos dados POST, ou talvez como um parâmetro na URL que você está chamando a API.
+Algumas vezes, quando você consegue uma API _Key_, basta incluir essa chave 
+como uma parte dos dados POST, ou talvez como um parâmetro na URL em que você está chamando a API.
 
-Outras vezes, o fornecedor quer uma maior garantia sobre a origem das requisições, 
-então eles esperam que você envie, criptograficamente, mensagens autenticadas usando 
-chaves e segredos compartilhadas. Uma tecnologia muito comum de ser usada para autenticar
-essas solicitações via internet é chamada *OAuth*. Você pode ler mais sobre o 
-protocolo OAuth em [www.oauth.net](http://www.oauth.net).
+Outras vezes, o fornecedor quer uma maior garantia sobre a origem das 
+requisições, então esperam que você envie, criptograficamente, mensagens 
+autenticadas usando chaves e segredos compartilhados. Uma tecnologia 
+muito comum usada para autenticar essas solicitações via internet é 
+chamada *OAuth*. Você pode ler mais sobre o protocolo OAuth em 
+[www.oauth.net](http://www.oauth.net).
 
-Felizmente existe um número conveniente de bibliotecas OAuth gratuitas,
-para que não seja necessário desenvolver uma implementação OAuth do zero, 
-bastando apenas ler as especificações. Essa bibliotecas são de diferentes 
-níveis de complexidade e de vários degraus de “riquezas”. No site do OAuth
-há informações sobre várias dessas bibliotecas.
-
+Felizmente, existe um número de bibliotecas OAuth gratuitas convenientes 
+o bastante para que você não precise desenvolver uma implementação OAuth 
+do zero, bastando apenas ler as especificações. Essa bibliotecas são de 
+diferentes níveis de complexidade e de vários graus de “riqueza”. No site 
+do OAuth há informações sobre várias dessas bibliotecas.
 
 Glossário
 --------
 
 API
-:   `Application Program Interface` (Interfaces de Programação de Aplicativos) - Um contrato entre aplicações que define padrões de     interações entre dois componentes de um aplicativo. 
+:   _Application Program Interface_ (Interface de Programação de 
+    Aplicativos) - Um contrato entre aplicativos que define padrões de
+    interação entre dois componentes de aplicativo.
 \index{API}
 
 ElementTree
@@ -270,89 +322,160 @@ ElementTree
 \index{ElementTree}
 
 JSON
-:   `\JavaScript Object Notation` - Um formato que permite a marcação de 
-dados estruturados baseados na sintaxe de objetos JavaScript. 
+:   _JavaScript Object Notation_ (Notação de Objeto JavaScript) - Um 
+    formato que permite a marcação de dados estruturados baseado na 
+    sintaxe de objetos JavaScript. 
 \index{JSON} 
-\index{JavaScript Object Notation}
+\index{Notação de Objeto JavaScript}
 
 SOA
-:   `Service-Oriented Architecture` - Quando uma aplicação é feita 
-de componentes conectados em meio à uma rede.  
+:   _Service-Oriented Architecture_ (Arquitetura Orientada a Serviço) - 
+    Quando uma aplicativo é feito de componentes conectados através de uma rede.  
 \index{SOA} 
-\index{Service Oriented Architecture}
+\index{Arquitetura Orientada a Serviço}
 
 XML
-:   `eXtensible Markup Language` - Um formato que permite uma marcação 
-de dados estruturados. 
+:   _eXtensible Markup Language_ (Linguagem de Marcação Extensível) - Um 
+    formato que permite uma marcação de dados estruturados. 
 \index{XML} 
-\index{eXtensible Markup Language}
+\index{Linguagem de Marcação Extensível}
 
-Aplicação 1: Web service de geocódigo Google
+Aplicação 1: Web service de geocódigo do Google
 ----------------------------
 
 \index{Google}
-\index{geocoding}
+\index{geocódigo}
 \index{web service}
 
-A Google tem um excelente serviço web que nos permite fazer uso de sua grande base de dados em relação à informação geográfica. Podemos enviar uma string de busca geográfica como: “Ann Arbor, MI” para sua API de geocódigo e fazer com que a Google nos retorne os melhores palpites para onde, no mapa, podemos encontrar nossa string de busca e nos contar sobre locais próximos
+A Google possui um excelente _web service_ que nos permite fazer uso de 
+sua grande base de dados relacionada à informação geográfica. Podemos 
+enviar uma string de busca geográfica como “Ann Arbor, MI” para sua API 
+de geocódigo e fazer com que a Google nos retorne os melhores palpites 
+para onde, no mapa, podemos encontrar o local que buscamos e nos conte 
+sobre locais próximos.
 
-O serviço de geocódigo é de graça, porém tem taxa limitada, de forma que você não poderá fazer uso ilimitado da API em uma aplicação comercial. Contudo, se você tiver alguns dados de pesquisa, em que o usuário final inseriu a localização em uma caixa de entrada de formato livre, essa API pode ser utilizada ajustar os dados da string de busca.
+O serviço de geocódigo é de graça, porém tem taxa limitada, de forma que 
+você não poderá fazer uso ilimitado da API em uma aplicação comercial. 
+Contudo, se você tiver alguns dados de pesquisa, em que um usuário final 
+inseriu uma localização em uma caixa de entrada de formato livre, você 
+pode utilizar essa API para organizar seus dados.
 
-*Quando se está utilizando uma API gratuita como a API de geocódigo da Google, você precisa fazer uso consciente destes recursos. Se muitas pessoas abusarem do serviço, a Google pode desistir ou reduzir significativamente seus serviços gratuitos.*
+*Quando se está utilizando uma API gratuita como a API de geocódigo da 
+Google, você precisa fazer uso consciente destes recursos. Se muitas 
+pessoas abusarem do serviço, a Google pode desistir ou reduzir 
+significativamente seus serviços gratuitos.*
 
-\index{rate limiting}
+\index{limite de taxa}
 
-Você pode ler a documentação online para este serviço, porém é bem simples e você pode até fazer o teste usando um navegador, basta digitar a URL a seguir:
+Você pode ler a documentação online para esse serviço, porém é bem 
+simples e você pode até fazer um teste usando um navegador, basta digitar 
+a URL a seguir:
 
 [http://maps.googleapis.com/maps/api/geocode/json?address=Ann+Arbor%2C+MI](http://maps.googleapis.com/maps/api/geocode/json?address=Ann+Arbor%2C+MI)
 
-A seguir temos uma simples aplicação para solicitar ao usuário uma string de busca, chamar a API de geocódigo da Google e extrair as informações do JSON retornado.
+Certifique-se copiar o URL retirando qualquer espaço que haja nele antes 
+de colá-lo em seu navegador.
+
+A seguir temos uma simples aplicação que solicita ao usuário uma string 
+de busca, chama a API de geocódigo da Google e extrai as informações do 
+JSON retornado.
 
 \VerbatimInput{../code3/geojson.py} 
 
-O programa pega uma string de busca e constrói uma URL com essa string como parâmetro corretamente codificado, e então usa a `urllib`para recuperar o texto da API de geocódigo. Diferentemente de uma página web fixa, a informação que recebemos depende dos parâmetros que enviamos e dos dados geográficos armazenados nos servidores da Google. 
+O programa pega uma string de busca e constrói uma URL com essa string 
+como parâmetro corretamente codificado, e então usa a `urllib` para obter 
+o texto retornado pela API de geocódigo. Diferentemente de uma página web 
+fixa, a informação que recebemos depende dos parâmetros que enviamos e 
+dos dados geográficos armazenados nos servidores da Google. 
 
-Uma vez que tenhamos recebida os dado JSON, analisamos ela com a biblioteca `json` e fazemos alguns teste para confirmar que recebemos bons dados, por fim extraímos as informações que procuramos. 
+Uma vez que tenhamos recebido os dados JSON, analisamos eles com a 
+biblioteca `json` e fazemos alguns teste para confirmar que recebemos 
+bons dados, e por fim extraímos as informações que procuramos. 
 
-A saída do programa é como a mostrada a seguir (parte do JSON foi retirada):
+A saída do programa é como a mostrada a seguir (parte do JSON retornado 
+foi retirada):
 
 ~~~~
-$ python3 geojson.py
+$ python3 geojson.py 
 Enter location: Ann Arbor, MI
-Retrieving http://maps.googleapis.com/maps/api/
-  geocode/json?address=Ann+Arbor%2C+MI
-Retrieved 1669 characters
+Retrieving http://py4e-data.dr-chuck.net/json?address=Ann+Arbor%2C+MI&key=42
+Retrieved 1736 characters
 ~~~~
 
 ~~~~ {.json}
 {
-  "status": "OK",
-  "results": [
-    {
-      "geometry": {
-        "location_type": "APPROXIMATE",
-        "location": {
-          "lat": 42.2808256,
-          "lng": -83.7430378
-        }
-      },
-      "address_components": [
+    "results": [
         {
-          "long_name": "Ann Arbor",
-          "types": [
-            "locality",
-            "political"
-          ],
-          "short_name": "Ann Arbor"
+            "address_components": [
+                {
+                    "long_name": "Ann Arbor",
+                    "short_name": "Ann Arbor",
+                    "types": [
+                        "locality",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "Washtenaw County",
+                    "short_name": "Washtenaw County",
+                    "types": [
+                        "administrative_area_level_2",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "Michigan",
+                    "short_name": "MI",
+                    "types": [
+                        "administrative_area_level_1",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "United States",
+                    "short_name": "US",
+                    "types": [
+                        "country",
+                        "political"
+                    ]
+                }
+            ],
+            "formatted_address": "Ann Arbor, MI, USA",
+            "geometry": {
+                "bounds": {
+                    "northeast": {
+                        "lat": 42.3239728,
+                        "lng": -83.6758069
+                    },
+                    "southwest": {
+                        "lat": 42.222668,
+                        "lng": -83.799572
+                    }
+                },
+                "location": {
+                    "lat": 42.2808256,
+                    "lng": -83.7430378
+                },
+                "location_type": "APPROXIMATE",
+                "viewport": {
+                    "northeast": {
+                        "lat": 42.3239728,
+                        "lng": -83.6758069
+                    },
+                    "southwest": {
+                        "lat": 42.222668,
+                        "lng": -83.799572
+                    }
+                }
+            },
+            "place_id": "ChIJMx9D1A2wPIgR4rXIhkb5Cds",
+            "types": [
+                "locality",
+                "political"
+            ]
         }
-      ],
-      "formatted_address": "Ann Arbor, MI, USA",
-      "types": [
-        "locality",
-        "political"
-      ]
-    }
-  ]
+    ],
+    "status": "OK"
 }
 lat 42.2808256 lng -83.7430378
 Ann Arbor, MI, USA
@@ -362,29 +485,45 @@ Ann Arbor, MI, USA
 Enter location:
 ~~~~
 
-You can download
-[www.py4e.com/code3/geoxml.py](http://www.py4e.com/code3/geoxml.py) to
-explore the XML variant of the Google geocoding API.
+Você pode baixar
+[www.py4e.com/code3/geoxml.py](http://www.py4e.com/code3/geoxml.py)
+para explorar a versão da API de geocódigo da Google para XML.
 
-**Exercício 1: Altere um dos arquivos** [**geojson.py**](http://www.py4e.com/code3/geojson.py) **ou**
-[**geoxml.py**](http://www.py4e.com/code3/geoxml.py) **para que a saída do programa mostre os dois caracteres referentes ao código de país dos dados recebidos. Adicione verificadores de erro para que o programa não informe um traceback em caso de não haver código de país. Uma vez que o programa esteja funcionando, procure por “Oceano Atlântico” e confirme que o programa pode lidar com localizações que não pertencem a nenhum país.** 
+**Exercício 1: Altere um dos arquivos**
+[**geojson.py**](http://www.py4e.com/code3/geojson.py) **ou**
+[**geoxml.py**](http://www.py4e.com/code3/geoxml.py) 
+**para que a saída do programa mostre os dois caracteres referentes ao 
+código do país dos dados recebidos. Adicione teste(s) de erro para que o 
+programa não retorne um _traceback_ em caso de não haver código de país. 
+Uma vez que o programa esteja funcionando, procure por “Atlantic Ocean” e 
+confirme que o programa pode lidar com localizações que não pertencem a nenhum país.**
 
 Aplicação 2: Twitter
 ----------------------
 
-Como a API Twitter vem se tornado cada vez mais valiosa, o Twitter passou de uma API aberta e pública para uma API que requer o uso de assinaturas OAuth em cada requisição da API. 
+À medida que a API Twitter se tornou cada vez mais valiosa, ela passou de 
+uma API aberta e pública para uma API que requer o uso de assinaturas 
+OAuth em cada requisição. 
 
-Para nosso próximo programa, faça o download dos arquivos *twurl.py*, *hidden.py*, *oauth.py*, e *twitter1.py* de [www.py4e.com/code](http://www.py4e.com/code3) e os deixe na mesma pasta em seu computador.
+Para nosso próximo programa, faça o download dos arquivos *twurl.py*, 
+*hidden.py*, *oauth.py*, e *twitter1.py*, disponíveis em [www.py4e.com/
+code](http://www.py4e.com/code3), e os coloque numa mesma pasta em seu 
+computador.
 
-Para fazer uso deste programa, você precisará ter uma conta no Twitter e autorizar seu código Python com uma aplicação, definir uma key, secret, token e token secret. Você deve editar o arquivo *hidden.py* e por essas quatro strings nas variáveis adequadas, dentro do arquivo:
+Para fazer uso desses programas, você precisará ter uma conta no Twitter 
+e autorizar seu código Python como uma aplicação, definir uma _key_, 
+_secret_, _token_ e _token secret_. Você deve editar o arquivo 
+*hidden.py* e inserir essas quatro strings nas variáveis adequadas, 
+dentro do arquivo:
 
 \VerbatimInput{../code3/hidden.py} 
 
-O web service do Twitter é acessado utilizando uma URL como esta:
+O web service do Twitter é acessado utilizando um URL como esta:
 
 <https://api.twitter.com/1.1/statuses/user_timeline.json>
 
-Porém, uma vez que as informações de segurança tenham sido adicionadas, a URL se parecerá mais como esta:
+Porém, uma vez que as informações de segurança tenham sido adicionadas, a 
+URL se parecerá mais como esta:
 
 ~~~~
 https://api.twitter.com/1.1/statuses/user_timeline.json?count=2
@@ -394,11 +533,19 @@ https://api.twitter.com/1.1/statuses/user_timeline.json?count=2
 &oauth_signature_method=HMAC-SHA1
 ~~~~
 
-Você pode ler a especificação OAuth se quiser saber mais sobre o significado dos diversos parâmetros que foram adicionados ao cumprir os requerimentos de segurança do OAuth.
+Você pode ler a especificação do OAuth se quiser saber mais sobre o 
+significado dos diversos parâmetros que foram adicionados ao cumprir os 
+requerimentos de segurança do OAuth.
 
-Para os programas executados com Twitter, escondemos toda a complexidade nos arquivos *oauth.py* e *twurl.py*. Simplesmente definimos os secrets em *hidden.py* e então enviamos a URL desejada para a função *twurl.augment()* e o código da biblioteca adiciona todos os parâmetros à URL por nós.
+Para os programas que executamos com o Twitter, escondemos toda a 
+complexidade nos arquivos *oauth.py* e *twurl.py*. Simplesmente definimos 
+os _secrets_ em *hidden.py* e, depois, enviamos o URL desejado para a 
+função *twurl.augment()*, e o código da biblioteca adiciona todos os 
+parâmetros necessários à URL por nós.
 
-Este programa requere a timeline para um usuário em particular do Twitter e a retorna numa string em formato JSON. Simplesmente mostramos os primeiros 250 caracteres da string: 
+Este programa obtém a _timeline_ de um usuário em particular do Twitter e 
+a retorna numa string em formato JSON. Simplesmente mostramos os 
+primeiros 250 caracteres da string: 
 
 \VerbatimInput{../code3/twitter1.py} 
 \begin{trinketfiles}
@@ -429,18 +576,31 @@ Remaining 177
 Enter Twitter Account:
 ~~~~
 
-Juntamente com os dados da timeline, o Twitter também nos entrega os metadados em relação à solicitação nos headers da resposta HTTP. Um header em particular, `x-rate-limit-remaining`, nos informa a quantidade de requisições que ainda podem ser feitas antes de sermos desconectados. Podemos observar que nossa quantidade de requisições restantes diminui em uma unidade a cada requisição à API.
+Juntamente com os dados da _timeline_ retornados, o Twitter também nos 
+entrega os metadados em relação à solicitação nos _headers_ da resposta 
+HTTP. Um _header_ em particular, `x-rate-limit-remaining`, nos informa a 
+quantidade de requisições que ainda podemos fazer antes de sermos 
+desconectados por um curto período de tempo. Você pode observar que nossa 
+quantidade de requisições restantes diminui em uma unidade a cada requisição que fazemos à API.
 
-No exemplo a seguir, recebemos informações sobre os amigos de um usuário, no Twitter. Em seguida, analisamos o conteúdo em JSON e extraímos algumas informações sobre os amigos. Ainda, desconsideramos o JSON após análise e mostramos a informação “bonitinha”, com identação de quatro caracteres para permitir examinar os dados quando quisermos extrair mais campos.
+No exemplo a seguir, recebemos informações sobre os amigos de um usuário, 
+no Twitter. Em seguida, analisamos o conteúdo em JSON e extraímos algumas 
+informações sobre os amigos. Ainda, desconsideramos o JSON após análise e 
+mostramos a informação “bonitinha”, com identação de quatro caracteres 
+para permitir examinar os dados quando quisermos extrair mais campos.
 
 \VerbatimInput{../code3/twitter2.py} 
 \begin{trinketfiles}
 ../code3/twurl.py
 \end{trinketfiles}
 
-Já que o JSON se torna um conjunto de listas e dicionários Python aninhados, podemos usar uma combinação de operação indexada e laços `for` para passeamos pela estrutura de dados retornada, usando um código Python bem pequeno.
+Já que o JSON se torna um conjunto de listas e dicionários Python 
+aninhados, podemos usar uma combinação de operação indexada e laços `for` 
+para passearmos pela estrutura de dados retornada, usando um código 
+Python bem pequeno.
 
-A saída do programa é como a mostrada a seguir (alguns dos dados foram encurtados para caber na página):
+A saída do programa é como a mostrada a seguir (alguns dos dados foram 
+encurtados para caber na página):
 
 ~~~~
 Enter Twitter Account:drchuck
@@ -495,8 +655,18 @@ scweeker
 Enter Twitter Account:
 ~~~~
 
-A última parte da saída é onde vemos o laço for lendo os cinco “amigos” mais recentes da conta *@drchuck* no Twitter e mostramos o status mais recente para cada um desses amigos. Muito mais dados estão disponíveis no JSON obtido. Se você olhar na saída do programa, também poderá ver que de “find the friends” de uma conta em particular possui uma taxa de limitação diferente do número de consultas à timeline que são permitidas a serem executadas por período de tempo.
+A última parte da saída é onde vemos o laço _for_ lendo os cinco “amigos” 
+mais recentes da conta *@drchuck* no Twitter e mostrando o status mais 
+recente de cada um desses amigos. Muito mais dados estão disponíveis no 
+JSON obtido. Se você olhar na saída do programa, também poderá ver que o 
+“_find the friends_” de uma conta em particular possui um limite de taxa 
+diferente do número de consultas à timeline que são permitidas a serem 
+executadas por período de tempo.
 
-Essas keys da API são seguras, de forma que o Twitter sabe com confiança quem está usando seus dados e sua API, além das condições de uso. A tática de limitação de taxa nos permite que obtenhamos dados simples e pessoais, porém não permite que se desenvolva um produto que retire dados da API milhões de vezes por dia.
+Essas _keys_ de segurança da API permitem que o Twitter saiba com 
+confiança quem está usando seus dados e sua API, além da intensidade do 
+uso. A tática de limitação de taxa nos permite que obtenhamos dados 
+simples e pessoais, porém não permite que se desenvolva um produto que 
+retire dados da API milhões de vezes por dia.
 
 
