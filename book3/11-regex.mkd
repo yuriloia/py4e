@@ -405,14 +405,14 @@ parentheses around the two digits as follows:
 ^From .* ([0-9][0-9]):
 ~~~~
 
-This results in the following program:
+Isso resulta no seguinte programa:
 
 \VerbatimInput{../code3/re13.py} 
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-When the program runs, it produces the following output:
+Quando o programa é executado, ele produz a seguinte saída:
 
 ~~~~
 ['09']
