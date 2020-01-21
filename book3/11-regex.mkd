@@ -237,43 +237,36 @@ encontrada (i.e., o “g” foi a ultima correspondencia).
 Veja também que a saída do programa é uma lista de Python que contém uma
 string como unico elemento na lista.
 
-Combining searching and extracting
+Combinando pesquisa e extração
 ----------------------------------
 
-If we want to find numbers on lines that start with the string "X-" such
-as:
+Se quisermos encontrar números nas linhas que começam com a string "X-", como:
 
 ~~~~
 X-DSPAM-Confidence: 0.8475
 X-DSPAM-Probability: 0.0000
 ~~~~
 
-we don't just want any floating-point numbers from any lines. We only
-want to extract numbers from lines that have the above syntax.
+nós não queremos apenas o número racional em qualquer linha. Queremos apenas extrair números racionais de linhas que tenham a sintaxe acima.
 
-We can construct the following regular expression to select the lines:
+Podemos construir a seguinte expressão regular para selecionar as linhas:
 
 ~~~~
 ^X-.*: [0-9.]+
 ~~~~
 
-Translating this, we are saying, we want lines that start with `X-`,
-followed by zero or more characters (`.*`), followed by a colon (`:`)
-and then a space. After the space we are looking for one or more
-characters that are either a digit (0-9) or a period `[0-9.]+`. Note
-that inside the square brackets, the period matches an actual period
-(i.e., it is not a wildcard between the square brackets).
+Traduzindo isso estamos dizendo que: queremos linhas que começam com `X-`, seguidas por zero ou mais caracteres (`.*`), seguidas por dois-pontos (`:`) e depois por um espaço. Após o espaço, procuramos um ou mais caracteres que sejam um dígito (0-9) ou um ponto `[0-9.]+`. Observe que dentro dos colchetes, o período corresponde a um período real (ou seja, não está sendo utilizado um wildcard entre os colchetes).
 
-This is a very tight expression that will pretty much match only the
-lines we are interested in as follows:
+Essa é uma expressão muito rígida, ela corresponderá apenas às linhas nas quais estamos interessados da seguinte forma:
+
 
 \VerbatimInput{../code3/re10.py} 
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-When we run the program, we see the data nicely filtered to show only
-the lines we are looking for.
+
+Quando executamos o programa, vemos os dados bem filtrados para mostrar apenas as linhas que estamos procurando.
 
 ~~~~
 X-DSPAM-Confidence: 0.8475
@@ -282,36 +275,27 @@ X-DSPAM-Confidence: 0.6178
 X-DSPAM-Probability: 0.0000
 ~~~~
 
-But now we have to solve the problem of extracting the numbers. While it
-would be simple enough to use `split`, we can use another
-feature of regular expressions to both search and parse the line at the
-same time.
+Entretanto, agora temos que resolver o problema de extrair os números. Embora seja simples o suficiente para usar `split`, podemos usar outro recurso de expressões regulares, este que consegue pesquisar e analisar a linha ao mesmo tempo.
+
 
 \index{string!split}
 
-Parentheses are another special character in regular expressions. When
-you add parentheses to a regular expression, they are ignored when
-matching the string. But when you are using `findall()`,
-parentheses indicate that while you want the whole expression to match,
-you only are interested in extracting a portion of the substring that
-matches the regular expression.
+Parênteses são outro caractere especial em expressões regulares. Quando você adiciona parênteses a uma expressão regular, eles são ignorados quando correspondem à string. Contudo, quando utilizamos `findall()`, parênteses indicam que, enquanto desejmos que toda a expressão corresponda, apenas estamos interessado em extrair uma parte da substring que corresponde à expressão regular.
 
-\index{regex!parentheses}
-\index{parentheses!regular expression}
 
-So we make the following change to our program:
+\index{regex!parênteses}
+\index{parênteses!expressão regular}
+
+Desta forma, faremos a seguinte alteração no nosso programa:
 
 \VerbatimInput{../code3/re11.py} 
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-Instead of calling `search()`, we add parentheses around the
-part of the regular expression that represents the floating-point number
-to indicate we only want `findall()` to give us back the
-floating-point number portion of the matching string.
+Em vez de chamar `search()`, adicionamos parênteses ao redor da parte da expressão regular que representa o número racional para indicar que queremos apenas que `findall()` nos retorne a parte racional do número da string correspondente.
 
-The output from this program is as follows:
+A saída deste programa é a seguinte:
 
 ~~~~
 ['0.8475']
@@ -323,9 +307,9 @@ The output from this program is as follows:
 ..
 ~~~~
 
-The numbers are still in a list and need to be converted from strings to
-floating point, but we have used the power of regular expressions to
-both search and extract the information we found interesting.
+Os números ainda estão em uma lista e precisam ser convertidos de strings para números de ponto flutuante, mas usamos o poder das expressões regulares para pesquisar e extrair as informações que achamos interessantes.
+
+Como outro exemplo dessa técnica, se você olhar para o arquivo, existem várias linhas do formulário:
 
 As another example of this technique, if you look at the file there are
 a number of lines of the form:
