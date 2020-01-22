@@ -1,4 +1,4 @@
-Regular expressions
+Expressões Regulares
 ===================
 
 Até agora, estivemos lendo arquivos, procurando padrões e
@@ -8,7 +8,7 @@ extraindo vários bits de linhas que achamos interessantes. Nós estivemos méto
 \index{regex}
 \index{re module}
 
-Essa tarefa de pesquisar e extrair é tão comum que o Python tem uma biblioteca muito poderosa chamada *expressões regulares* que lida com muitas dessas tarefas com bastante elegância. A razão pela qual não as introduzimos no início do livro é porque, embora sejam muito poderosas, são um pouco complicadas, além de sua sintaxe levar algum tempo para ser compreendida.
+Essa tarefa de pesquisar e extrair é tão comum que o Python tem uma biblioteca muito poderosa chamada *expressões regulares* (_regular expressions_) que lida com muitas dessas tarefas com bastante elegância. A razão pela qual não as introduzimos no início do livro é porque, embora sejam muito poderosas, são um pouco complicadas, além de sua sintaxe levar algum tempo para ser compreendida.
 
 Expressões regulares são quase sua própria linguagem de programação para pesquisar e analisar seqüências de caracteres. De fato, livros inteiros foram escritos sobre este tópico. Neste capítulo, abordaremos apenas o básico dele. Para mais detalhes sobre consulte:
 
@@ -259,12 +259,10 @@ Traduzindo isso estamos dizendo que: queremos linhas que começam com `X-`, segu
 
 Essa é uma expressão muito rígida, ela corresponderá apenas às linhas nas quais estamos interessados da seguinte forma:
 
-
 \VerbatimInput{../code3/re10.py} 
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
-
 
 Quando executamos o programa, vemos os dados bem filtrados para mostrar apenas as linhas que estamos procurando.
 
@@ -277,11 +275,9 @@ X-DSPAM-Probability: 0.0000
 
 Entretanto, agora temos que resolver o problema de extrair os números. Embora seja simples o suficiente para usar `split`, podemos usar outro recurso de expressões regulares, este que consegue pesquisar e analisar a linha ao mesmo tempo.
 
-
 \index{string!split}
 
-Parênteses são outro caractere especial em expressões regulares. Quando você adiciona parênteses a uma expressão regular, eles são ignorados quando correspondem à string. Contudo, quando utilizamos `findall()`, parênteses indicam que, enquanto desejmos que toda a expressão corresponda, apenas estamos interessado em extrair uma parte da substring que corresponde à expressão regular.
-
+Parênteses são outro caractere especial em expressões regulares. Quando você adiciona parênteses a uma expressão regular, eles são ignorados quando correspondem à string. Contudo, quando utilizamos `findall()`, parênteses indicam que, enquanto desejmos que toda a expressão corresponda, apenas estamos interessados em extrair uma parte da substring que corresponde à expressão regular.
 
 \index{regex!parênteses}
 \index{parênteses!expressão regular}
@@ -311,29 +307,20 @@ Os números ainda estão em uma lista e precisam ser convertidos de strings para
 
 Como outro exemplo dessa técnica, se você olhar para o arquivo, existem várias linhas do formulário:
 
-As another example of this technique, if you look at the file there are
-a number of lines of the form:
-
 ~~~~
 Details: http://source.sakaiproject.org/viewsvn/?view=rev&rev=39772
 ~~~~
 
-If we wanted to extract all of the revision numbers (the integer number
-at the end of these lines) using the same technique as above, we could
-write the following program:
+Se quisermos extrair todos os números de revisão (os números inteiros no fim dessas linhas) usando as mesmas técnicas acima, poderíamos escrever o seguinte programa:
 
 \VerbatimInput{../code3/re12.py} 
 \begin{trinketfiles}
 ../code3/mbox-short.txt
 \end{trinketfiles}
 
-Translating our regular expression, we are looking for lines that start
-with `Details:`, followed by any number of characters (`.*`), followed
-by `rev=`, and then by one or more digits. We want to find lines that
-match the entire expression but we only want to extract the integer
-number at the end of the line, so we surround `[0-9]+` with parentheses.
+Traduzindo nossa expressão regular, estamos procurando por linhas que começam com `Details:`, seguidas por quaisquer número de caracteres (`.*`), seguidos por `rev=`, e depois por um ou mais dígitos. Nós queremos encontrar linhas que equivalham com toda essa expressão, mas queremos extrair apenas o número no fim da linha, e, para isso, colocamos `[0-9]+` entre parênteses.
 
-When we run the program, we get the following output:
+Quando executamos o programa, obtemos a seguinte saída:
 
 ~~~~
 ['39772']
@@ -343,47 +330,27 @@ When we run the program, we get the following output:
 ...
 ~~~~
 
-Remember that the `[0-9]+` is "greedy" and it tries to make as large a
-string of digits as possible before extracting those digits. This
-"greedy" behavior is why we get all five digits for each number. The
-regular expression library expands in both directions until it
-encounters a non-digit, or the beginning or the end of a line.
+Lembre que `[0-9]+` é "guloso" e tenta amontoar o máximo de dígitos possíveis antes de extraí-los. Esse comportamento "guloso" é o porquê de conseguirmos extrair todos os cinco dígitos de cada número. A expressão regular expande para ambas as direções até encontrar algo diferente de um dígito, ou encontrar o começo ou o fim da linha.
 
-Now we can use regular expressions to redo an exercise from earlier in
-the book where we were interested in the time of day of each mail
-message. We looked for lines of the form:
+Agora, podemos usar expressões regulares para refazer um exercício anterior do livro, no qual estávamos interessados na hora do dia em que cada messagem de e-mail foi registrada. Procurávamos por linhas como estas:
 
 ~~~~
 From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
 ~~~~
 
-and wanted to extract the hour of the day for each line. Previously we
-did this with two calls to `split`. First the line was split
-into words and then we pulled out the fifth word and split it again on
-the colon character to pull out the two characters we were interested
-in.
+e queríamos extrair a hora presente em cada linha. Anteriormente, fizemos isso chamando o método `split` duas vezes. Primeiro, a linha era quebrada em palavras para podermos pegar a quinta, e então quebrávamos ela baseado no caractere de dois pontos (`:`) para podermos pegar os dois caracteres em que estávamos interessados.
 
-While this worked, it actually results in pretty brittle code that is
-assuming the lines are nicely formatted. If you were to add enough error
-checking (or a big try/except block) to insure that your program never
-failed when presented with incorrectly formatted lines, the code would
-balloon to 10-15 lines of code that was pretty hard to read.
+Embora isso funcionasse, acabávamos chegando a um código bem frágil que assumia que as linhas estavam perfeitamente formatadas. Se adicionássemos tratamentos de erro (ou um grande bloco _try/except_) suficientes para assegurar que o código nunca falhasse quando deparado com linhas mal formatadas, nosso código iria acabar inchando 10-15 linhas que seriam bastante difíceis de ler.
 
-We can do this in a far simpler way with the following regular
-expression:
+Nós podemos fazer isso de uma maneira muito mais simples com a seguinte expressão regular:
 
 ~~~~
 ^From .* [0-9][0-9]:
 ~~~~
 
-The translation of this regular expression is that we are looking for
-lines that start with `From ` (note the space), followed by any number
-of characters (`.*`), followed by a space, followed by two digits
-`[0-9][0-9]`, followed by a colon character. This is the definition of
-the kinds of lines we are looking for.
+A tradução dessa expressão regular é de que estamos procurando linhas que começam com `From ` (atente para o espaço), seguido por quaisquer número de caracteres (`.*`), seguidos por um espaço, seguido por dois dígitos `[0-9][0-9]`, seguidos por dois pontos. Essa é definição dos tipos de linhas que estamos procurando.
 
-In order to pull out only the hour using `findall()`, we add
-parentheses around the two digits as follows:
+Para extrair apenas a hora usando `findall()`, colocamos os dois dígitos entre parênteses como a seguir:
 
 ~~~~
 ^From .* ([0-9][0-9]):
