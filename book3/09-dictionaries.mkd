@@ -153,6 +153,7 @@ porém você pode ler mais sobre em: [wikipedia.org/wiki/Hash\_table](https://wi
 \index{associação!pertencer}
 
 **Exercício 1: Faça o download de uma cópia do arquivo **
+
 [www.py4e.com/code3/words.txt](http://www.py4e.com/code3/words.txt)
 
 **Escreva um programa que leia as palavras em *words.txt* e 
