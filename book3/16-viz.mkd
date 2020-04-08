@@ -8,8 +8,8 @@ Neste capítulo, nós analisaremos três aplicações que reúnem todas esses co
 
 Todas essas aplicações estão num arquivo ZIP que você pode fazer o dowload e extrair no seu computador.
 
-Construindo um mapa do Google a partir de dados geocodificados
-----------------------------------------
+Construindo um mapa do Google
+-----------------------------
 
 \index{Google!mapa}
 \index{Visualização!mapa}

@@ -206,7 +206,8 @@ de mudar um caractere de uma string. Por exemplo:
 ~~~~ {.python}
 >>> Saudacao = 'Alô, Mundo!'
 >>> Saudacao[0] = 'O'
-TypeError: 'str' object does not support item assignment (objeto 'str' não permite atribuição de item)
+TypeError: 'str' object does not support item assignment 
+    (objeto 'str' não permite atribuição de item)
 ~~~~
 
 O "objeto" nesse caso é a string e o "item" é o caractere que você tentou

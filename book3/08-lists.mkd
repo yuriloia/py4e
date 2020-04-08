@@ -744,13 +744,13 @@ Descuido com o uso de listas (e outros objetos mutáveis) pode levar a longa hor
 
    Como sort retorna `None`, a próxima operação que você executar com `t` provavelmente irá falhar.
 
-    Antes de usar métodos de listas e operadores, você deve ler a documentação com cuidado e depois testar elas em um modo interativo. Os métodos e os operadores que as listas compartilham com outras sequência (como strings) são documentadas em:
+   Antes de usar métodos de listas e operadores, você deve ler a documentação com cuidado e depois testar elas em um modo interativo. Os métodos e os operadores que as listas compartilham com outras sequência (como strings) são documentadas em:
 
-    [docs.python.org/library/stdtypes.html#common-sequence-operations](https://docs.python.org/library/stdtypes.html#common-sequence-operations)
+   [docs.python.org/library/stdtypes.html#common-sequence-operations](https://docs.python.org/library/stdtypes.html#common-sequence-operations)
 
-    Os métodos e operadores que são apenas aplicadas em sequências mutáveis são documentadas em:
+   Os métodos e operadores que são apenas aplicadas em sequências mutáveis são documentadas em:
 
-    [docs.python.org/library/stdtypes.html#mutable-sequence-types](https://docs.python.org/library/stdtypes.html#mutable-sequence-types)
+   [docs.python.org/library/stdtypes.html#mutable-sequence-types](https://docs.python.org/library/stdtypes.html#mutable-sequence-types)
 
 2.  Escolha um "idioma" e fique com ele.
 
