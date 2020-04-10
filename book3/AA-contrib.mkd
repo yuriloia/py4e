@@ -9,7 +9,7 @@ Responsável pela tradução: Yuri Loia de Medeiros
 
 Tradutores: Alysson Hyago, Andhré Carvalho, Giovana Oliveira, Lara Sobral, Maysa Freire, Natã Macedo, Pyettra Feitosa,  Victor Marinho, Vinicius França, Vinicius Formiga, Vitor Araujo, Yuri Loia
 
-Revisores: Antonio Marcos, Caio Porto, Debora Nunes, Gabriel Araújo Medeiros, João Pedro Melquiades, Lara Sobral, Pyettra Feitosa, Vinicius França, Yuri Loia
+Revisores: Antonio Marcos, Arthur Carneiro, Caio Porto, Debora Nunes, Gabriel Araújo Medeiros, João Pedro Melquiades, Lara Sobral, Pyettra Feitosa, Vinicius França, Yuri Loia
 
 
 Lista de Contribuidores do Livro Python for Everybody 
