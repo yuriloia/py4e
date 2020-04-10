@@ -2,7 +2,7 @@
 Contribuições
 =============
 
-Lista de Tradutores do Livro Python para Todos 
+Lista de Contribuidores do Livro Python para Todos 
 -------------------------------------------
 
 Responsável pela tradução: Yuri Loia de Medeiros
