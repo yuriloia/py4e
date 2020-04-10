@@ -6,11 +6,12 @@ Créditos
     Suporte Editorial : Elliott Hauser, Sue Blumenberg
     Cover Design: Aimee Andrion
     Contribuidores: Antonio Marcos, Alysson Hyago,
-    Andhré Carvalho, Caio Porto, Debora Nunes, Gabriel
-    Araújo Medeiros, Giovana Oliveira,  João Pedro 
-    Melquiades, Lara Sobral, Maysa Freire, Natã Macedo, 
-    Pyettra Feitosa, Victor Marinho, Vinicius França, 
-    Vinicius Formiga, Vitor Araujo, Yuri Loia
+    Andhré Carvalho, Arthur Carneiro, Caio Porto, 
+    Debora Nunes, Gabriel Araújo Medeiros, Giovana 
+    Oliveira,  João Pedro Melquiades, Lara Sobral, 
+    Maysa Freire, Natã Macedo, Pyettra Feitosa, Victor 
+    Marinho, Vinicius França, Vinicius Formiga, Vitor
+    Araujo, Yuri Loia
 
  
 
