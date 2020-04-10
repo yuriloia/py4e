@@ -5,10 +5,13 @@ Créditos
 
     Suporte Editorial : Elliott Hauser, Sue Blumenberg
     Cover Design: Aimee Andrion
+    Contribuidores: Antonio Marcos, Alysson Hyago, Andhré Carvalho, Caio Porto, Debora Nunes, Gabriel Araújo Medeiros, Giovana Oliveira,  João Pedro Melquiades, Lara Sobral, Maysa Freire, Natã Macedo, Pyettra Feitosa, Victor Marinho, Vinicius França, Vinicius Formiga, Vitor Araujo, Yuri Loia
+
+ 
 
 Printing History
 ----------------
-
+* 2020-Jan-08 Tradução completa para o português de Python 3
 * 2016-Jul-05 Primeira Edição Completa em versão Python 3.0
 * 2015-Dec-20 Conversão inicial para Python 3.0 
 
