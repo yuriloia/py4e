@@ -39,7 +39,7 @@ Você pode ver o que o autor considera como uso comercial e não comercial do tr
 Prefácio
 =======
 
-Python para todos os que falam Português
+Transformações em uma Jornada
 ---------------------
 
 A transformação do livro *Python for Everybody* em **Python para Todos**  é o resultado árduo de um projeto do capítulo sobre Robótica e Automação do IEEE-UFCG (RAS IEEE - UFCG), localizado em Campina Grande - Paraíba - Brasil.
