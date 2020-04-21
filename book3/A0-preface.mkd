@@ -39,6 +39,22 @@ Você pode ver o que o autor considera como uso comercial e não comercial do tr
 Prefácio
 =======
 
+Python para todos os que falam Português
+---------------------
+
+A transformação do livro *Python for Everybody* em **Python para Todos**  é o resultado árduo de um projeto do capítulo sobre Robótica e Automação do IEEE-UFCG (RAS IEEE - UFCG), localizado em Campina Grande - Paraíba - Brasil.
+
+Secretário da RAS no ano de 2018 e graduando em Engenharia Elétrica pela UFCG, Arthur Carneiro foi o pioneiro a tornar este sonho realidade. Em seus estudos e pesquisas sobre a área, descobriu que Charles Severance, autor do *Phyton for Everybody*, é um grande encorajador de qualquer estudante, cientista ou profissional que tope o desafio de traduzir sua obra para outro idioma. 
+
+Arthur aceitou a missão e recrutou o seu time. Em agosto de 2018, 7 pessoas foram convocadas para cumprir a nobre tarefa de tornar o trabalho de Severance acessível a milhares de leitores da Língua Portuguesa. Yuri Loia, aluno de mestrado, com conhecimento prévio em Python e fluência em inglês, foi nomeado como gerente do projeto. Sua equipe era composta por 6 graduandos do curso de Engenharia Elétrica: Allyson Hyago, Andhré Carvalho, João Pedro Melquiades, Maysa Freire, Natã Macedo e Vinicius França.
+
+O grupo trabalhou incansavelmente na tradução do livro até março de 2019, quando receberam mais apoio intelectual para cumprir a meta. Mais 8 apaixonados por Python se juntaram aos demais para seguir com o trabalho: Caio Porto, Débora Nunes, Giovanna Oliveira, Pyettra Feitosa, Vinícius Formiga, Victor Marinho e Vitor Araujo. Com essa força extra, em janeiro de 2020 surge a primeira versão do **Python para Todos**, que, posteriormente, passou por novas melhorias.
+
+Batizamos a obra tal qual o seu nome em Inglês, pois realmente qualquer um pode começar a sua jornada em Python a partir da leitura deste livro. Sua leitura coloquial é proposital e foi traduzida da melhor forma possível para que o entendimento seja abrangente a todos que o tiverem em mãos.
+
+Prepare-se! Sua jornada com Python está prestes a começar!
+
+
 Remisturando um Livro Aberto
 ---------------------
 
