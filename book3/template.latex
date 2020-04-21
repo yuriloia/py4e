@@ -163,6 +163,11 @@ $endfor$
 
 \makeatletter
 \renewcommand*\l@section{\@dottedtocline{1}{1em}{3em}}
+% https://tex.stackexchange.com/questions/30757/change-the-word-chapter-to-something-else
+\renewcommand{\@chapapp}{Capítulo}
+% https://tex.stackexchange.com/questions/129807/how-can-i-rename-appendices-in-the-table-of-contents-and-in-the-text
+\renewcommand\appendixname{Apêndice}
+\renewcommand\indexname{Índice}
 \makeatother
 \makeindex
 
