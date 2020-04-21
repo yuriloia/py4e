@@ -17,7 +17,7 @@ Créditos
 
 Printing History
 ----------------
-* 2020-Jan-08 Tradução completa para o português de Python 3
+* 2020-Jan-08 Tradução completa para o português em Python 3.0
 * 2016-Jul-05 Primeira Edição Completa em versão Python 3.0
 * 2015-Dec-20 Conversão inicial para Python 3.0 
 
