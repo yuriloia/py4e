@@ -1,5 +1,5 @@
 % Python para Todos
-% Explorando Dados Utilizando Python 3
+% Explorando Dados com Python 3
 % Charles R. Severance
 
 Por que você deveria aprender a programar?
