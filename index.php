@@ -10,7 +10,7 @@ require_once "nav.php";
 <?php if ( isset($_SESSION['id']) ) { ?>
 <p>
 Bem-vindo ao meu Curso Online Aberto e Massivo (Massive Open Online Course - MOOC) do Python para Todos. 
-Agora que você entrou na sua conta, você pode acessar os recursos online do curso nesse site.
+Agora que entrou na sua conta, você pode acessar os recursos online do curso nesse site.
 <ul class="list-group">
 <li class="list-group-item">
 Ao passo que você assiste às <a href="lessons">Aulas</a> do curso, você poderá acessar links adicionais para
@@ -25,7 +25,7 @@ Há um
 hospedado pelo Disqus.</li>
 <li class="list-group-item">
 Se você deseja usar esses materiais licenciados nas suas próprias aulas, você pode 
-<a href="materials.php">baixar ou referenciar ao link</a> do conteúdo nesse site,
+<a href="materials.php">baixar ou referenciar o link</a> do conteúdo nesse site,
 <a href="tsugi/cc/export.php">exportar o material do curso</a> pelo
 IMS Common Cartridge®, ou acessar com uma 
 <a href="tsugi/admin/key/index.php">chave ou senha</a> as ferramentas de ensino
@@ -44,16 +44,16 @@ ou
 Você pode usar esse site de várias maneiras:
 <ul class="list-group">
 <li class="list-group-item">
-Você pode explorar meus vídeos e materiais do curso em <a href="lessons">Aulas</a>.  Os materiais que eu desenvolvi
+Você pode explorar meus vídeos e materiais do curso em <a href="lessons">Aulas</a>.  Os materiais que desenvolvi
 para essas aulas são todos licenciados pelo Creative Commons, então você pode baixar ou referenciar o link
-para elas ao incluí-las no seu ensino, caso deseje.</li>
+das aulas ao incluí-las no seu ensino, caso deseje.</li>
 <li class="list-group-item">
 Se você <a href="tsugi/login.php">entrar</a> nesse site,
 é como se você participasse de um curso grátis, aberto, global e online.
 Você tem um boletim, atividades corrigidas automaticamente, um fórum para discussão e pode
 ganhar medalhas pelo seu esforço.</li>
 <li class="list-group-item">
-Nós levamos sua privacidade seriamente nesse site, você pode revisar nossa
+Nós levamos sua privacidade á sério nesse site, você pode revisar nossa
 <a href="privacy">Política de Privacidade</a> para obter mais detalhes.
 </li>
 <li class="list-group-item">
