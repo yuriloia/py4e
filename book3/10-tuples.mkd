@@ -12,7 +12,7 @@ As tuplas são imutáveis
 Uma tupla^[Fato Divertido: A palavra "tupla" vem dos nomes dados as sequências
 de números de comprimentos variados: simples, dobro, triplo, quádruplo,
 quintuplo, sextuplo, septuplo, etc.] é uma seqüência de valores muito parecido com uma lista.Os valores armazenados
-em uma tupla pode ser qualquer tipo, e eles são indexados por números inteiros. Uma diferença importante é que elas são *imutáveis*. Alem disso, também são *comparáveis* e *hashable* para que possamos ordenar listas deles e usá-las como valores-chave em dicionários de Python.
+em uma tupla pode ser qualquer tipo, e eles são indexados por números inteiros. Uma diferença importante é que elas são *imutáveis*. Alem disso, também são *comparáveis* e *hashable* para que possamos ordenar listas deles e usá-las como valores-chave em dicionários de Python.  sasa
 
 \index{mutabilidade}
 \index{hashable}
